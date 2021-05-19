@@ -61,4 +61,9 @@ public class NguoiDungService  implements INguoiDungService{
 		}
 	}
 
+	@Override
+	public NguoiDung findOneByTenDangNhap(String tenDangNhap) {
+		return nguoiDungRepository.findOneByTenDangNhap(tenDangNhap);
+	}
+
 }

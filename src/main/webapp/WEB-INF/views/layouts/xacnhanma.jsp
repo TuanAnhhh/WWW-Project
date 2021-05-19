@@ -15,7 +15,7 @@
 
     <!-- Title Page-->
 
-	<title>Tìm tài khoản</title>
+	<title>Xác Nhận</title>
     <!-- Icons font CSS-->
    <link href="<c:url value="/resources/dangky/vendor/mdi-font/css/material-design-iconic-font.min.css"/>" rel="stylesheet" media="all">
      <link href="<c:url value="/resources/dangky/vendor/font-awesome-4.7/css/font-awesome.min.css"/>" rel="stylesheet" media="all">

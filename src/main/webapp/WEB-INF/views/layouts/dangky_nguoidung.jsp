@@ -14,7 +14,7 @@
     <meta name="keywords" content="Colorlib Templates">
 
     <!-- Title Page-->
-    <title><decorator:title /></title>
+
 
     <!-- Icons font CSS-->
    <link href="<c:url value="/resources/dangky/vendor/mdi-font/css/material-design-iconic-font.min.css"/>" rel="stylesheet" media="all">

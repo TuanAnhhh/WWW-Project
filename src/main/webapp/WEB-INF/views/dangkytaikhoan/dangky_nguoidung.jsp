@@ -95,15 +95,15 @@
 								<form:password cssClass="input--style-4" path="matKhau" />
 							</div>
 						</div>
-						<%-- <div class="col-4">
+						<div class="col-4">
 							<div class="input-group">
 								<form:label path="" class="label">Mật khẩu</form:label>
-								<form:password cssClass="input--style-4" path="matKhau" />
+								<form:password cssClass="input--style-4" path="" />
 							</div>
-						</div> --%>
+						</div>
 
 						<div class="p-t-15">
-							<input class="btn btn--radius-2 btn--blue" type="submit">Đăng ký</input>
+							<input class="btn btn--radius-2 btn--blue" value="Đăng ký" type="submit">
 						</div>
 					</form:form>
 				</div>

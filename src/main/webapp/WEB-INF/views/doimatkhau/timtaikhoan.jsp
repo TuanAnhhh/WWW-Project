@@ -1,54 +1,28 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp"%>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<title>Đăng nhập</title>
-<body class="bg-primary">
-	<div id="layoutAuthentication">
-		<div id="layoutAuthentication_content">
-			
-				<div class="container">
-					<div class="row justify-content-center">
-						<div class="col-lg-5">
-							<div class="card-body">
-								<form:form action="tim-tai-khaon" method="post">
-									<div class="form-group">
-									<form:label cssClass="small mb-1" path="">Tên tài khoản</form:label>
-					
-										<form:input cssClass="form-control py-4" id="inputEmailAddress"
-											type="text" placeholder="Nhập tài khoản" path="tenDangNhap" />
-									</div>
-									<div
-										class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
-										<button type="submit" class="btn btn-primary">Tìm tài khoản</button>
-									</div>
-								</form:form>
-							</div>
-							<div class="card-footer text-center">
-								<div class="small">
-									<a href='<c:url value="dangky"/>'>Chưa có tài khoản? Đăng
-										ký ngay!</a>
-								</div>
-							</div>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<title>Đăng ký tài khoản</title>
+
+<body>
+	<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+		<div class="wrapper wrapper--w680">
+			<div class="card card-4">
+				<div class="card-body">
+					<h2 class="title">Tìm tài khoản</h2>
+					<form >			
+						<div class="col-4">
+						<label class="label" >Tên đăng nhập</label>
+						<input class="input--style-4" type="text" name="tenDangNhap" >
+						
 						</div>
-					</div>
-				</div>
-		</div>
-		
-	</div>
-	<div id="layoutAuthentication_footer">
-		<footer class="py-4 bg-light mt-auto">
-			<div class="container-fluid">
-				<div class="d-flex align-items-center justify-content-between small">
-					<div class="text-muted">Copyright &copy; Your Website 2021</div>
-					<div>
-						<a href="#">Privacy Policy</a> &middot; <a href="#">Terms
-							&amp; Conditions</a>
-					</div>
+						<div class="p-t-15">
+							<input class="btn btn--radius-2 btn--blue" value="Tìm tài khoản" type="submit">
+						</div>
+					</form>
 				</div>
 			</div>
-		</footer>
+		</div>
 	</div>
-	</div>
+
 </body>
 </html>

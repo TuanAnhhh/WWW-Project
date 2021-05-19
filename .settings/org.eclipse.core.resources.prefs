@@ -1,4 +1,5 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/websitedungcuthethao/controller/dangnhap/QuenMatKhau.java=UTF-8
 encoding//src/main/java/com/websitedungcuthethao/service/impl/CustomUserDetailsService.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/nguoidung/danhsachsanpham.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/nguoidung/giohang.jsp=UTF-8

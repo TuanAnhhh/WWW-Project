@@ -16,6 +16,10 @@
 	</decorator>
 	
 	<decorator name="tim-tai-khoan" page="timtaikhoan.jsp">
-		<pattern>/tim-tai-khoan</pattern>
+		<pattern>/doi-mat-khau/tim-tai-khoan</pattern>
 	</decorator>
+	<decorator name="xac-nhan-ma" page="xacnhanma.jsp">
+		<pattern>/doi-mat-khau/</pattern>
+	</decorator>
+	
 </decorators>

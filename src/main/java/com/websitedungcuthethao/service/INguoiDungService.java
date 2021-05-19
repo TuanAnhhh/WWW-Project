@@ -14,4 +14,6 @@ public interface INguoiDungService {
 	List<NguoiDung> findByTenAndHo(String ten,String ho);
 	
 	void doiMatKhau(TaiKhoanDTO taiKhoanDTO);
+	
+	NguoiDung findOneByTenDangNhap(String tenDangNhap);
 }

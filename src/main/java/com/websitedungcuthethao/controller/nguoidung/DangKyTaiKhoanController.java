@@ -1,7 +1,5 @@
 package com.websitedungcuthethao.controller.nguoidung;
 
-import java.time.LocalDate;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
@@ -10,10 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.websitedungcuthethao.constant.SystemConstant;
-import com.websitedungcuthethao.dto.NguoiDungDTONew;
 import com.websitedungcuthethao.entity.NguoiDung;
 import com.websitedungcuthethao.service.impl.LoaiNguoiDungService;
 import com.websitedungcuthethao.service.impl.NguoiDungService;
@@ -24,10 +20,10 @@ public class DangKyTaiKhoanController {
 	
 	@Autowired
 	private NguoiDungService nguoiDungService;
-
+	
 	@Autowired
 	private LoaiNguoiDungService loaiNguoiDungService;
-	
+
 	@GetMapping
 	public String dangKy(Model model) {
 		model.addAttribute("nguoiDung",new NguoiDung());
@@ -37,13 +33,11 @@ public class DangKyTaiKhoanController {
 	@PostMapping
 	public String themNguoiDung(@ModelAttribute("nguoiDung") NguoiDung nguoiDung) {		
 		nguoiDung.setMatKhau(BCrypt.hashpw(nguoiDung.getMatKhau(), BCrypt.gensalt(12)));
-//		nguoiDung.setTrangThai(SystemConstant.ACTIVE_STATUS);
+		nguoiDung.setTrangThai(SystemConstant.ACTIVE_STATUS);
 		System.out.println(nguoiDung.getNgaySinh());
-//		nguoiDung.setLoainguoidung(loaiNguoiDungService.findByTenLoaiNguoiDung(SystemConstant.ROLE_NGUOIDUNG));
+		nguoiDung.setLoainguoidung(loaiNguoiDungService.findByID(SystemConstant.ID_ROLE_NGUOIDUNG));
 		nguoiDungService.saveNguoiDung(nguoiDung);
-		
-		
-		return "redirect:/trang-chu";
+		return "redirect:/dang-nhap";
 	}
 	
 }
