@@ -9,14 +9,14 @@
 			<div class="card card-4">
 				<div class="card-body">
 					<h2 class="title">Tìm tài khoản</h2>
-					<form >			
+					<form action="" method="post">
 						<div class="col-4">
-						<label class="label" >Tên đăng nhập</label>
-						<input class="input--style-4" type="text" name="tenDangNhap" >
-						
+							<label class="label">Tên đăng nhập</label> <input
+								class="input--style-4" type="text" name="tenDangNhap">
 						</div>
 						<div class="p-t-15">
-							<input class="btn btn--radius-2 btn--blue" value="Tìm tài khoản" type="submit">
+							<input type="submit" class="btn btn--radius-2 btn--blue"
+								value="Tìm tài khoản" />
 						</div>
 					</form>
 				</div>

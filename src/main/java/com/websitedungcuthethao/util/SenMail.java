@@ -1,4 +1,4 @@
-package com.websitedungcuthethao.controller.dangnhap;
+package com.websitedungcuthethao.util;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.MailSender;
