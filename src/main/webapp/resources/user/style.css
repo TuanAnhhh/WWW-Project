@@ -1,4 +1,40 @@
-
+/* =====================================
+Template Name: Eshop
+Author Name: Naimur Rahman
+Author URI: http://www.wpthemesgrid.com/
+Description: Eshop - eCommerce HTML5 Template.
+Version:1.0
+========================================*/
+/*======================================
+[ CSS Table of contents ]
+01. Preloader CSS
+02. Header CSS
+	+ Logo
+	+ Category Menu
+	+ Main Menu
+03. Hero Area CSS
+04. Small Banner CSS
+05. Medium Banner CSS
+06. Single Product CSS
+07. Shop Sidebar CSS
+08. Shop Single CSS
+09. Shop Home List CSS
+10. Cart CSS
+11. Checkout CSS
+12. Login & Register CSS
+13. Cowndown CSS
+14. Shop Services CSS
+15. Newslatter CSS
+16. About Us CSS
+17. Team CSS
+18. Blog CSS	
+	+ Blog Archive
+	+ Blog Sidebar
+	+ Blog Single
+19. Contact CSS
+20. 404 Error CSS
+21. Footer CSS
+========================================*/
 .color-plate {
 	position: fixed;
 	display: block;
@@ -655,7 +691,7 @@
 .header.shop .search-bar form {
 	display: inline-block;
 	float: left;
-	width: 100%;
+	width: 260px;
 }
 .header.shop .search-bar input {
 	height: 48px;
@@ -1176,7 +1212,14 @@
 	background: #fff;
 	overflow: hidden;
 }
-
+.hero-slider .single-slider {
+	height: auto;
+	background-image: url('/website-dungcuthethao/resources/images/user/panel.jpg');
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+    height: 510px;
+}
 .hero-slider .text-inner {
 	
 }

@@ -16,18 +16,19 @@ public class NguoiDungDTO extends User {
 		// TODO Auto-generated constructor stub
 	}
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Override
 	public String toString() {
-		return "NguoiDungDTO [getAuthorities()=" + getAuthorities() + ", getPassword()=" + getPassword()
-				+ ", getUsername()=" + getUsername() + ", isEnabled()=" + isEnabled() + ", isAccountNonExpired()="
-				+ isAccountNonExpired() + ", isAccountNonLocked()=" + isAccountNonLocked()
-				+ ", isCredentialsNonExpired()=" + isCredentialsNonExpired() + ", hashCode()=" + hashCode()
-				+ ", toString()=" + super.toString() + ", getClass()=" + getClass() + "]";
+		return fullName;
+	}
+	private String fullName;
+
+	public String getFullName() {
+		return fullName;
+	}
+	public void setFullName(String fullName) {
+		this.fullName = fullName;
 	}
 	
 	

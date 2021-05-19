@@ -42,6 +42,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		
 		
 		NguoiDungDTO nguoiDungDTO= new NguoiDungDTO(nguoiDung.getTenDangNhap(), nguoiDung.getMatKhau(), true, true, true, true, authorties);
+		nguoiDungDTO.setFullName(nguoiDung.getHo()+" "+nguoiDung.getTen());
 		return nguoiDungDTO;
 	}
 

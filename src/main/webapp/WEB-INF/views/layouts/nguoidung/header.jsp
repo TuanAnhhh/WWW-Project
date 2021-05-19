@@ -21,9 +21,11 @@
 					<!-- Top Right -->
 					<div class="right-content">
 						<ul class="list-main">
-							<li><i class="ti-user"></i> <a href="#">Tài khoản</a></li>
-							<li><i class="ti-power-off"></i><a href=" <c:url value="/dang-nhap"/> ">Đăng
-									Nhập</a></li>
+							
+							<li><i class="ti-power-off"></i><a href=" <c:url value="/dang-nhap"/> ">
+							<security:authentication property="principal"/>
+							</a></li>
+							<li><i class="fas fa-arrow-right"></i> <a href="#">Đăng xuất</a></li>
 						</ul>
 					</div>
 					<!-- End Top Right -->
@@ -83,10 +85,7 @@
 				<div class="col-lg-2 col-md-3 col-12">
 					<div class="right-bar">
 						<!-- Search Form -->
-						<div class="sinlge-bar">
-							<a href="#" class="single-icon"><i class="fa fa-heart-o"
-								aria-hidden="true"></i></a>
-						</div>
+						
 						<div class="sinlge-bar">
 							<a href="#" class="single-icon"><i
 								class="fa fa-user-circle-o" aria-hidden="true"></i></a>
