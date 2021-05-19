@@ -38,20 +38,20 @@ public class NguoiDungService  implements INguoiDungService{
 		return nguoiDungRepository.findByTenAndHo(ten, ho);
 	}
 
-	@Override
-	public void UpdateNguoiDung(NguoiDungDTONew nguoiDungDTONew) {
-		NguoiDung nguoiDung= nguoiDungRepository.findOne(nguoiDungDTONew.getId());
-		if(nguoiDung!=null){
-			nguoiDung.setHo(nguoiDungDTONew.getHo());
-			nguoiDung.setTen(nguoiDungDTONew.getTen());
-			nguoiDung.setGioiTinh(nguoiDungDTONew.isGioiTinh());
-			nguoiDung.setEmail(nguoiDungDTONew.getEmail());
-			nguoiDung.setSoDienThoai(nguoiDungDTONew.getSoDienThoai());
-			nguoiDung.setNgaySinh(nguoiDungDTONew.getNgaySinh());
-			nguoiDungRepository.save(nguoiDung);
-		}
-		
-	}
+//	@Override
+//	public void UpdateNguoiDung(NguoiDungDTONew nguoiDungDTONew) {
+//		NguoiDung nguoiDung= nguoiDungRepository.findOne(nguoiDungDTONew.getId());
+//		if(nguoiDung!=null){
+//			nguoiDung.setHo(nguoiDungDTONew.getHo());
+//			nguoiDung.setTen(nguoiDungDTONew.getTen());
+//			nguoiDung.setGioiTinh(nguoiDungDTONew.isGioiTinh());
+//			nguoiDung.setEmail(nguoiDungDTONew.getEmail());
+//			nguoiDung.setSoDienThoai(nguoiDungDTONew.getSoDienThoai());
+//			nguoiDung.setNgaySinh(nguoiDungDTONew.getNgaySinh());
+//			nguoiDungRepository.save(nguoiDung);
+//		}
+//		
+//	}
 
 	@Override
 	public void doiMatKhau(TaiKhoanDTO taiKhoanDTO) {
@@ -64,6 +64,13 @@ public class NguoiDungService  implements INguoiDungService{
 	@Override
 	public NguoiDung findOneByTenDangNhap(String tenDangNhap) {
 		return nguoiDungRepository.findOneByTenDangNhap(tenDangNhap);
+	}
+
+	@Override
+	public void UpdateNguoiDung(NguoiDung nguoiDung) {
+		if(nguoiDung.getId()!=null) {
+			nguoiDungRepository.save(nguoiDung);
+		}
 	}
 
 }

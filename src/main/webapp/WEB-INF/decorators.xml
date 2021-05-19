@@ -16,10 +16,14 @@
 	</decorator>
 	
 	<decorator name="tim-tai-khoan" page="timtaikhoan.jsp">
-		<pattern>/doi-mat-khau/tim-tai-khoan</pattern>
+		<pattern>/quen-mat-khau/tim-tai-khoan</pattern>
 	</decorator>
 	<decorator name="xac-nhan-ma" page="xacnhanma.jsp">
-		<pattern>/doi-mat-khau/</pattern>
+		<pattern>/quen-mat-khau/</pattern>
+	</decorator>
+	
+	<decorator name="doi-mat-khau" page="doimatkhau_quenmatkhau.jsp">
+		<pattern>/quen-mat-khau/</pattern>
 	</decorator>
 	
 </decorators>

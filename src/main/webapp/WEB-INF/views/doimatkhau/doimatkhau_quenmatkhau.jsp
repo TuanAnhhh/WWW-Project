@@ -8,11 +8,13 @@
 		<div class="wrapper wrapper--w680">
 			<div class="card card-4">
 				<div class="card-body">
-					<h2 class="title">Tìm tài khoản</h2>
-					<form action="tim-tai-khoan/xac-nhan" method="post">
+					<h2 class="title">Đổi mật khẩu</h2>
+					<form action="doi-mat-khau/luu-mat-khau" method="post">
 						<div class="col-4">
-							<label class="label">Tên đăng nhập</label> <input
-								class="input--style-4" type="text" name="tenDangNhap">
+							<label class="label">Mật khẩu</label> <input
+								class="input--style-4" type="password" placeholder="mật khẩu mới" name="matkhau">
+								<label class="label">Xác nhận mật khẩu</label> <input
+								class="input--style-4" type="password" placeholder="nhập lại mật khẩu" name="xacnhanmatkhau">
 						</div>
 						<div class="p-t-15">
 							<input type="submit" class="btn btn--radius-2 btn--blue"

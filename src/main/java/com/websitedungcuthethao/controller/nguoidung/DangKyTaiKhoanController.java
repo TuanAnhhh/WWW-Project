@@ -33,11 +33,12 @@ public class DangKyTaiKhoanController {
 	@PostMapping
 	public String themNguoiDung(@ModelAttribute("nguoiDung") NguoiDung nguoiDung) {		
 		nguoiDung.setMatKhau(BCrypt.hashpw(nguoiDung.getMatKhau(), BCrypt.gensalt(12)));
-		nguoiDung.setTrangThai(SystemConstant.ACTIVE_STATUS);
+//		nguoiDung.setTrangThai(SystemConstant.ACTIVE_STATUS);
 		System.out.println(nguoiDung.getNgaySinh());
-		nguoiDung.setLoainguoidung(loaiNguoiDungService.findByID(SystemConstant.ID_ROLE_NGUOIDUNG));
+//		nguoiDung.setLoainguoidung(loaiNguoiDungService.findByID(SystemConstant.ID_ROLE_NGUOIDUNG));
 		nguoiDungService.saveNguoiDung(nguoiDung);
 		return "redirect:/dang-nhap";
 	}
+	
 	
 }
