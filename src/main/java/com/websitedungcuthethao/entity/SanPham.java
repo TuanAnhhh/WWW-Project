@@ -4,9 +4,14 @@ import java.time.LocalDate;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
 
@@ -18,7 +23,16 @@ import lombok.ToString;
 @Setter
 @Entity
 @ToString
-public class SanPham extends BaseEntity {
+public class SanPham {
+	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
+	
+	@CreatedDate
+	private LocalDate ngayTao;
+	
+	@CreatedBy
+	private String nguoiTao;
 
 	private String ten;
 
