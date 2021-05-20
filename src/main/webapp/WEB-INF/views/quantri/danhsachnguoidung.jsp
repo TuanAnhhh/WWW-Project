@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>
 <title>Danh sách người dùng</title>
 
 <body>
@@ -21,35 +22,45 @@
 				<div class="card-body">
 
 					<div class="table-responsive">
-
+						<c:forEach items="${list }" var="nd">
 						<table class="table table-bordered" id="dataTable" width="100%"
 							cellspacing="0">
 							<thead>
 								<tr>
-									<th>Name</th>
-									<th>Position</th>
-									<th>Office</th>
-									<th>Age</th>
-									<th>Start date</th>
-									<th>Salary</th>
+									<th>STT</th>
+									<th>Họ </th>
+									<th>Tên</th>
+									<th>Giới tính</th>
+									<th>Ngày sinh</th>
+									<th>Email</th>
+									<th>Số điện thoại</th>
+									<th>Ngày tạo</th>
+									<th>Tên đăng nhập</th>
+									<th>Trạng thái</th>
 									<th>Quản lý</th>
+									
 								</tr>
 							</thead>
 
 							<tbody>
 								<tr>
-									<td>Tiger Nixon</td>
-									<td>System Architect</td>
-									<td>Edinburgh</td>
-									<td>61</td>
-									<td>2011/04/25</td>
-									<td>$320,800</td>
-									<td><a href=""><i class="far fa-edit"></i></a> <a href=""><i
-											class="fas fa-window-close"></i></a></td>
+									<td>${nd.id }</td>
+									<td>${nd.ho }</td>
+									<td>${nd.ten }</td>
+									<td>${nd.gioiTinh }</td>
+									<td>${nd.ngaySinh }</td>
+									<td>${nd.email }</td>
+									<td>${nd.soDienThoai }</td>
+									<td>${nd.ngayTao }</td>
+									<td>${nd.tenDangNhap }</td>
+									<td>${nd.trangThai }</td>
+									
+									<td><a href="quan-ly-nguoi-dung/sua-trang-thai/${nd.id}"><i class="far fa-edit"></i></a> <a href=""></a></td>
 								</tr>
 							</tbody>
 
 						</table>
+						</c:forEach>
 						<nav aria-label="Page navigation example">
 							<ul class="pagination">
 								<li class="page-item"><a class="page-link" href="#">Previous</a></li>

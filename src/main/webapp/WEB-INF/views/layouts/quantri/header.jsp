@@ -10,7 +10,7 @@
 	<form
 		class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
 		<div class="input-group">
-			<input class="form-control" type="text" placeholder="Tìm kiếm..."
+			<input class="form-control" type="text" name="timKiem" placeholder="Tìm kiếm..."
 				aria-label="Search" aria-describedby="basic-addon2" />
 			<div class="input-group-append">
 				<button class="btn btn-primary" type="button">
