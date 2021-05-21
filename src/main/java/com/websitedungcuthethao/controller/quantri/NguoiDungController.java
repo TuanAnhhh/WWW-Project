@@ -40,6 +40,5 @@ public class NguoiDungController {
 		
 		return new ModelAndView("redirect:/quan-tri/quan-ly-nguoi-dung");
 	}
-	public ModelAndView timKiem
 	
 }

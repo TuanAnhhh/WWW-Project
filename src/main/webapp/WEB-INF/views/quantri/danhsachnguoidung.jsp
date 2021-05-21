@@ -55,7 +55,7 @@
 									<td>${nd.tenDangNhap }</td>
 									<td>${nd.trangThai }</td>
 									
-									<td><a href="quan-ly-nguoi-dung/sua-trang-thai/${nd.id}"><i class="far fa-edit"></i></a> <a href=""></a></td>
+									<td><a href="quan-ly-nguoi-dung/sua-trang-thai/${nd.id}"><i class="far fa-edit"></i></a></td>
 								</tr>
 							</tbody>
 

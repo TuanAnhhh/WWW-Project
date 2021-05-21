@@ -92,5 +92,9 @@ public class SanPhamService implements ISanPhamService {
 		// TODO Auto-generated method stub
 		return sanPhamRepository.findTop3SanPhamGiamGiaNhieuNhat();
 	}
+	@Override
+	public List<SanPham> findByDanhMuc(Long idDM) {
+		return sanPhamRepository.findByDanhMuc(idDM);
+	}
 	
 }

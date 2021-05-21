@@ -14,5 +14,5 @@ public interface ISanPhamService {
 	void updateSanPham(SanPhamDTO sanPhamDTO);
 	List<SanPham> findTop3SanPhamBySoLuotXem();
 	List<SanPham> findTop3SanPhamGiamGiaNhieuNhat();
-	
+	List<SanPham> findByDanhMuc(Long idDM);
 }
