@@ -22,7 +22,7 @@
 				<div class="card-body">
 
 					<div class="table-responsive">
-						<c:forEach items="${list }" var="nd">
+						
 						<table class="table table-bordered" id="dataTable" width="100%"
 							cellspacing="0">
 							<thead>
@@ -43,6 +43,7 @@
 							</thead>
 
 							<tbody>
+							<c:forEach items="${list }" var="nd">
 								<tr>
 									<td>${nd.id }</td>
 									<td>${nd.ho }</td>
@@ -57,10 +58,11 @@
 									
 									<td><a href="quan-ly-nguoi-dung/sua-trang-thai/${nd.id}"><i class="far fa-edit"></i></a></td>
 								</tr>
+								</c:forEach>
 							</tbody>
 
 						</table>
-						</c:forEach>
+						
 						<nav aria-label="Page navigation example">
 							<ul class="pagination">
 								<li class="page-item"><a class="page-link" href="#">Previous</a></li>

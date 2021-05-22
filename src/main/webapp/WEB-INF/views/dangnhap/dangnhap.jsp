@@ -14,7 +14,7 @@
 								không hợp lệ</div>
 						</c:if>
 						<c:if test="${param.accessDenied != null}">
-							<div class="alert alert-danger">you Not authorize</div>
+							<div class="alert alert-danger">Bạn không có quyền truy cập</div>
 						</c:if>
 						<div class="card shadow-lg border-0 rounded-lg mt-5">
 							<div class="card-header">

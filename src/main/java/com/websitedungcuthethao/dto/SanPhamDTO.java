@@ -1,7 +1,5 @@
 package com.websitedungcuthethao.dto;
 
-import java.time.LocalDate;
-
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.Setter;
@@ -28,7 +26,6 @@ public class SanPhamDTO {
 	private String video;
 	private int thoiGianBaoHanh;
 	private boolean trangThai;
-	private LocalDate ngaySua;
 	private String nguoiSua;
 	private String tenThuoctinh;
 	private String giaTriThuocTinh;

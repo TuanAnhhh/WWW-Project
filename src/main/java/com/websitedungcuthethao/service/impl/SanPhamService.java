@@ -10,14 +10,14 @@ import com.websitedungcuthethao.dto.SanPhamDTO;
 import com.websitedungcuthethao.entity.NhaCungCap;
 import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.repository.DanhMucRepository;
-import com.websitedungcuthethao.repository.ISanPhamRepository;
+import com.websitedungcuthethao.repository.SanPhamRepository;
 import com.websitedungcuthethao.repository.NhaCungCapRepository;
 import com.websitedungcuthethao.service.ISanPhamService;
 
 @Service
 public class SanPhamService implements ISanPhamService {
 	@Autowired
-	private ISanPhamRepository sanPhamRepository;
+	private SanPhamRepository sanPhamRepository;
 	
 	@Autowired
 	private DanhMucRepository danhMucRepository;

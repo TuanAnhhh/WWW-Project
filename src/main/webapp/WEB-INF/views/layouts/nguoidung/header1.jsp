@@ -22,7 +22,7 @@
 					<!-- Top Right -->
 					<div class="right-content">
 						<ul class="list-main">
-						
+							
 							<security:authorize access="isAnonymous()">
 								<li><i class="ti-power-off"></i><a href=" <c:url value="/dang-nhap"/> ">Đăng nhập</a></li>
 								<li><i class="ti-arrow-right"></i> <a href="<c:url value="/dangky"/> ">Đăng ký</a></li>
@@ -32,7 +32,6 @@
 								<li><i class="ti-power-off"></i><a href=" <c:url value="/dang-nhap"/> ">Welcome <%=SecurityUtils.getPrincipal().getFullName() %></a></li>
 								<li><i class="ti-arrow-right"></i> <a href="<c:url value="/dang-xuat"/> ">Thoát</a></li>
 							</security:authorize>
-							
 						</ul>
 					</div>
 					<!-- End Top Right -->
@@ -92,13 +91,12 @@
 				<div class="col-lg-2 col-md-3 col-12">
 					<div class="right-bar">
 						<!-- Search Form -->
-
+						
 						<div class="sinlge-bar">
 							<a href="#" class="single-icon"><i
 								class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 						</div>
 						<div class="sinlge-bar shopping">
-							
 							<c:choose>
 								<c:when test="${gioHang.size() > 0}">
 									<a href=" <c:url value="/gio-hang"/> " class="single-icon"><i
@@ -109,8 +107,6 @@
 										class="ti-bag"></i> <span class="total-count">0</span></a>
 								</c:otherwise>
 							</c:choose>
-							<!-- Shopping Item -->
-
 						</div>
 					</div>
 				</div>
@@ -122,37 +118,15 @@
 		<div class="container">
 			<div class="cat-nav-head">
 				<div class="row">
-					<div class="col-lg-3">
-						<div class="all-category">
-							<h3 class="cat-heading">
-								<i class="fa fa-bars" aria-hidden="true"></i>DANH MỤC
-							</h3>
-							<ul class="main-category">
-								<c:forEach items="${dsDanhMuc}" var="item">
-									<li><a href="#">${item.key.ten} <i
-											class="fa fa-angle-right" aria-hidden="true"></i></a>
-
-										<ul class="sub-category">
-											<c:forEach items="${item.value}" var="subItem">
-												<li><a href="#">${subItem.ten}</a></li>
-											</c:forEach>
-										</ul></li>
-								</c:forEach>
-
-							</ul>
-						</div>
-					</div>
-					<div class="col-lg-9 col-12">
+					<div class="col-lg-12 col-12">
 						<div class="menu-area">
 							<!-- Main Menu -->
 							<nav class="navbar navbar-expand-lg">
 								<div class="navbar-collapse">
 									<div class="nav-inner">
 										<ul class="nav main-menu menu navbar-nav">
-											<li class="active"><a href="<c:url value="/"/>">Trang
-													chủ</a></li>
-											<li><a href=" <c:url value="danh-sach-san-pham"/> ">Sản
-													phẩm</a></li>
+											<li class="active"><a href=" <c:url value="/"/>">Trang chủ</a></li>
+											<li><a href=" <c:url value="danh-sach-san-pham"/> ">Sản phẩm</a></li>
 											<li><a href="#">Service</a></li>
 											<li><a href="#">Shop<i class="ti-angle-down"></i><span
 													class="new">New</span></a>

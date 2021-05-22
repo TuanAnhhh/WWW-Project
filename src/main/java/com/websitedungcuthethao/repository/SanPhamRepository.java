@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import com.websitedungcuthethao.entity.SanPham;
 
-public interface ISanPhamRepository extends JpaRepository<SanPham, Long> {
+public interface SanPhamRepository extends JpaRepository<SanPham, Long> {
 	List<SanPham> findAll();
 	List<SanPham> findByTen(String ten);
 	SanPham findById(Long id);

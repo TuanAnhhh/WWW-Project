@@ -29,17 +29,7 @@ public class MenuHandleIntercepter implements HandlerInterceptor{
 			List<DanhMuc> dsDanhMucCon = danhMucService.findAllDanhMucConById(danhMuc.getId());
 			danhMucMap.put(danhMuc,dsDanhMucCon);
 		}
-		request.setAttribute("dsDanhMuc", danhMucMap);
-		
-		dsDanhMuc.forEach(t->{
-			System.out.println("Danhmuccha"+t.toString());
-		});
-		
-		danhMucMap.forEach((k,v)->{
-			System.out.println(k);
-			System.out.println(v);
-		});
-		
+		request.setAttribute("dsDanhMuc", danhMucMap);	
 		return true;
 	}
 

@@ -8,8 +8,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 
 import com.websitedungcuthethao.dto.NguoiDungDTO;
 
-
-
 public class SecurityUtils {
 	public static NguoiDungDTO getPrincipal() {
 		NguoiDungDTO nguoiDungDTO = (NguoiDungDTO) (SecurityContextHolder.getContext()).getAuthentication().getPrincipal();

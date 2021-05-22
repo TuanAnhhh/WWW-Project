@@ -29,7 +29,7 @@ public class CustomUserDetailsService implements UserDetailsService {
 		NguoiDung nguoiDung= nguoiDungRepository.findOneByTenDangNhapAndTrangThai(username, SystemConstant.ACTIVE_STATUS);
 		
 		if(nguoiDung ==null) {
-			throw new UsernameNotFoundException("KhÃ´ng tÃ¬m tháº¥y ngÆ°á»�i dÃ¹ng");
+			throw new UsernameNotFoundException("Không tim thấy người dùng");
 		}
 		// put thong tin nguoi dung vao security  vÃ  duy tri dang nhap
 		System.out.println(nguoiDung.toString());
