@@ -29,4 +29,5 @@ public class SanPhamDTO {
 	private String nguoiSua;
 	private String tenThuoctinh;
 	private String giaTriThuocTinh;
+	
 }

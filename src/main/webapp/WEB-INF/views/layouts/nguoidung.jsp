@@ -18,6 +18,7 @@
 	href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
 	rel="stylesheet">
 
+
 <!-- StyleSheet -->
 
 <!-- Bootstrap -->
@@ -46,6 +47,8 @@
 
 <link rel="stylesheet" href="<c:url value="/resources/user/css/responsive.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/user/style.css"/>">
+
+ <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 </head>
 <!--/head-->
 <body>
@@ -87,5 +90,23 @@
 	<script src="<c:url value="/resources/user/js/easing.js"/>"></script>
 	<!-- Active JS -->
 	<script src="<c:url value="/resources/user/js/active.js"/>"></script>
+	
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
+    <script src="<c:url value="/resources/phantrang/jquery.twbsPagination.js"/>"></script>
+    
+    <script type="text/javascript">
+    $(function () {
+        window.pagObj = $('#pagination').twbsPagination({
+            totalPages: 35,
+            visiblePages: 10,
+            onPageClick: function (event, page) {
+                console.info(page + ' (from options)');
+            }
+        }).on('page', function (event, page) {
+            console.info(page + ' (from event listening)');
+        });
+    });
+</script>
 </body>
 </html>

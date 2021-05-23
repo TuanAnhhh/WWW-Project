@@ -2,11 +2,13 @@ package com.websitedungcuthethao.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+
 import com.websitedungcuthethao.dto.SanPhamDTO;
 import com.websitedungcuthethao.entity.SanPham;
 
 public interface ISanPhamService {
-	List<SanPham> findAll();
+	List<SanPham> findAll(Pageable pageable);
 	List<SanPham> findByTen(String ten);
 	void deleteById(Long id);
 	void save (SanPham sanPham);
@@ -15,4 +17,6 @@ public interface ISanPhamService {
 	List<SanPham> findTop3SanPhamBySoLuotXem();
 	List<SanPham> findTop3SanPhamGiamGiaNhieuNhat();
 	List<SanPham> findByDanhMuc(Long idDM);
+	
+	Long getTotalItem();
 }

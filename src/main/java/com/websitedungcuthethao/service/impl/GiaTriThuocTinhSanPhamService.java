@@ -3,9 +3,8 @@ package com.websitedungcuthethao.service.impl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.websitedungcuthethao.dto.SanPhamDTO;
 import com.websitedungcuthethao.entity.GiaTriThuocTinhSanPham;
-import com.websitedungcuthethao.entity.ThuocTinhSanPham;
+import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.repository.GiaTriThuocTinhSanPhamRepository;
 import com.websitedungcuthethao.repository.ThuocTinhSanPhamRepository;
 import com.websitedungcuthethao.service.IGiaTriThuocTinhSanPhamService;
@@ -26,14 +25,8 @@ public class GiaTriThuocTinhSanPhamService implements IGiaTriThuocTinhSanPhamSer
 	}
 
 	@Override
-	public void updateGTTTSP(SanPhamDTO sanPhamDTO) {
-		ThuocTinhSanPham thuocTinhSanPham= thuocTinhSanPhamRepository.findOneByTenThuoctinh(sanPhamDTO.getTenThuoctinh());
-		GiaTriThuocTinhSanPham giaTriThuocTinhSanPham = giaTriThuocTinhSanPhamRepository.findBySanPhamIDAndThuocTinhSanPhamID(sanPhamDTO.getId(), thuocTinhSanPham.getId());
-		
-		if(giaTriThuocTinhSanPham!=null) {
-			giaTriThuocTinhSanPham.setGiaTriThuocTinh(sanPhamDTO.getGiaTriThuocTinh());
-			giaTriThuocTinhSanPhamRepository.save(giaTriThuocTinhSanPham);
-		}
+	public void updateGTTTSP(SanPham sanPham) {
+	
 	}
 
 	@Override

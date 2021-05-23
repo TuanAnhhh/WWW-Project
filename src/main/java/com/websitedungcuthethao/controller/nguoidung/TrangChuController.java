@@ -1,17 +1,13 @@
 package com.websitedungcuthethao.controller.nguoidung;
 
-import java.security.Principal;
 import java.util.ArrayList;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.websitedungcuthethao.dto.NguoiDungDTO;
 import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.service.impl.DanhMucService;
 import com.websitedungcuthethao.service.impl.SanPhamService;
@@ -29,10 +25,15 @@ public class TrangChuController {
 	public String index(Model model) {
 //		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //		NguoiDungDTO nguoidung = (NguoiDungDTO) auth.getPrincipal();
-
-		ArrayList<SanPham> dsSanPham = (ArrayList<SanPham>) sanPhamService.findAll();
-		model.addAttribute("dsSanPham", dsSanPham);
-
+		
+		
+		
+//		ArrayList<SanPham> dsSanPham = (ArrayList<SanPham>) sanPhamService.findAll();
+//		model.addAttribute("dsSanPham", dsSanPham);
+		
+		
+		
+		
 		ArrayList<SanPham> dsSanPhamLuotXemCaoNhat = (ArrayList<SanPham>) sanPhamService.findTop3SanPhamBySoLuotXem();
 		model.addAttribute("dsSanPhamLuotXemCaoNhat", dsSanPhamLuotXemCaoNhat);
 

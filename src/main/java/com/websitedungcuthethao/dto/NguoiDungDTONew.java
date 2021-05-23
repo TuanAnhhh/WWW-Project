@@ -7,7 +7,7 @@ import java.util.Set;
 import com.websitedungcuthethao.entity.DiaChi;
 
 public class NguoiDungDTONew {
-	private Long id;
+
 
 	private String ho;
 
@@ -26,13 +26,8 @@ public class NguoiDungDTONew {
 	private String matKhau;
 	Set<DiaChi> dsDiaChi = new HashSet<DiaChi>();
 
-	public Long getId() {
-		return id;
-	}
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+	
 
 	public String getHo() {
 		return ho;

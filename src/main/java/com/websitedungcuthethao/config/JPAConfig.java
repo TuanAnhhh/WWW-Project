@@ -17,6 +17,8 @@ import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
 @EnableJpaRepositories(basePackages = {"com.websitedungcuthethao.repository"})
@@ -83,4 +85,12 @@ public class JPAConfig {
 		return mailSender;
 		
 	}
+	@Bean(name = "multipartResolver")
+    public MultipartResolver getMultipartResolver() {
+        CommonsMultipartResolver resover = new CommonsMultipartResolver();
+        // 1MB
+        resover.setMaxUploadSize(1 * 1024 * 1024);
+ 
+        return resover;
+    }
 }

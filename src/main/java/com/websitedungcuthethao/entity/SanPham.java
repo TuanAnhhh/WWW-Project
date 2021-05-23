@@ -73,6 +73,8 @@ public class SanPham {
 
 	@LastModifiedBy
 	private String nguoiSua;
+	
+	
 
 //	@OneToMany(mappedBy = "sanpham")
 //	private List<GiaTriThuocTinhSanPham> dsThuocTinhSanPham = new ArrayList<GiaTriThuocTinhSanPham>();
