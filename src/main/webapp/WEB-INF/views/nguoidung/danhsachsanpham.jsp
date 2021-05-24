@@ -5,7 +5,7 @@
 <title>Danh sách sản phẩm</title>
 
 <body>
-<form action="<c:url value='/danh-sach-san-pham'/>" id="formSubmit" method="get" >
+<form action="<c:url value='/danh-sach-san-pham/?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" id="formSubmit" method="get" >
 	<!-- Product Style -->
 	<section class="product-area shop-sidebar shop section">
 		<div class="container">
@@ -164,9 +164,7 @@
 						</div>
 					</div>
 
-
-
-
+					<!--  load san pham-->
 					<div class="row">
 						<c:forEach items="${dsSanPham}" var="sp">
 							<div class="col-lg-4 col-md-6 col-12">
@@ -227,16 +225,15 @@
 	<content tag="script"> <script type="text/javascript">
 	var totalPages = ${abstractDTO.totalPage};
 	var currentPage = ${abstractDTO.page};
-	var totalPage = ${totalPage};
+	var limit = ${abstractDTO.limit};
 		$(function() {
-			
 			window.pagObj = $('#pagination').twbsPagination({
 				totalPages : totalPages,
 				visiblePages :10,
 				startPage: currentPage,
 				onPageClick : function(event, page) {
 					if (currentPage != page) {
-	            		$('#limit').val(6);
+	            		$('#limit').val(limit);
 						$('#page').val(page);
 						$('#formSubmit').submit();
 					}

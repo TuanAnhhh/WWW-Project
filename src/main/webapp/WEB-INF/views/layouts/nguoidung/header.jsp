@@ -151,7 +151,7 @@
 										<ul class="nav main-menu menu navbar-nav">
 											<li class="active"><a href="<c:url value="/"/>">Trang
 													chủ</a></li>
-											<li><a href=" <c:url value="danh-sach-san-pham"/> ">Sản
+											<li><a href=" <c:url value="/danh-sach-san-pham?page=1&limit=3"/> ">Sản
 													phẩm</a></li>
 											<li><a href="#">Service</a></li>
 											<li><a href="#">Shop<i class="ti-angle-down"></i><span

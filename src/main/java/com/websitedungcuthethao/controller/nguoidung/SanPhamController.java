@@ -22,47 +22,24 @@ public class SanPhamController {
 	@Autowired
 	private SanPhamService sanPhamService;
 	@GetMapping
-	public String index (Model model,@RequestParam("page") int page,@RequestParam("limit") int limit) {
+	public String index (Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
 		
-		System.out.println(1);
+
 		AbstractDTO abstractDTO= new AbstractDTO();
 		abstractDTO.setPage(page);
 		abstractDTO.setLimit(limit);
 		
 		
-		Pageable pageable=new PageRequest(page, limit);
+		Pageable pageable=new PageRequest(page -1, limit);
 		List<SanPham> dsSanPham= sanPhamService.findAll(pageable);
-		System.out.println(1);
-		dsSanPham.forEach(s->{
-			System.out.println("rong");
-		});
-		System.out.println(2);
-		model.addAttribute("dsSanPham",dsSanPham); 
+
 		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
 		abstractDTO.setLimit(limit);
 		
 		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit()));
+		System.out.println(abstractDTO.toString());
 		model.addAttribute("abstractDTO",abstractDTO);
-		
+		model.addAttribute("dsSanPham", dsSanPham);
 		return "nguoidung/danhsachsanpham";
 	}
-//	@GetMapping
-//	public String phanTrang(Model model) {
-//		
-//		System.out.println(1);
-//		AbstractDTO abstractDTO= new AbstractDTO();
-//		abstractDTO.setPage(1);
-//		abstractDTO.setLimit(6);
-//		
-//		
-//		Pageable pageable=new PageRequest(1, 6);
-//		List<SanPham> dsSanPham= sanPhamService.findAll(pageable);
-//		System.out.println(1);
-//		dsSanPham.forEach(s->{
-//			System.out.println("rong");
-//		});
-//		System.out.println(2);
-//		model.addAttribute("dsSanPham",dsSanPham); 		
-//		return "nguoidung/danhsachsanpham";
-//	}
 }

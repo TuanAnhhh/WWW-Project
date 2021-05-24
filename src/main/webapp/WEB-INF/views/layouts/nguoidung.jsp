@@ -90,23 +90,5 @@
 	<script src="<c:url value="/resources/user/js/easing.js"/>"></script>
 	<!-- Active JS -->
 	<script src="<c:url value="/resources/user/js/active.js"/>"></script>
-	
-	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
-    <script src="<c:url value="/resources/phantrang/jquery.twbsPagination.js"/>"></script>
-    
-    <script type="text/javascript">
-    $(function () {
-        window.pagObj = $('#pagination').twbsPagination({
-            totalPages: 35,
-            visiblePages: 10,
-            onPageClick: function (event, page) {
-                console.info(page + ' (from options)');
-            }
-        }).on('page', function (event, page) {
-            console.info(page + ' (from event listening)');
-        });
-    });
-</script>
 </body>
 </html>
