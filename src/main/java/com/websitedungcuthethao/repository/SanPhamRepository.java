@@ -11,6 +11,7 @@ import com.websitedungcuthethao.entity.SanPham;
 public interface SanPhamRepository extends JpaRepository<SanPham, Long> {
 	List<SanPham> findByTen(String ten);
 	SanPham findById(Long id);
+	
 		
 	@Query(value = "SELECT TOP 3 *  FROM SANPHAM order by soLuotXem DESC", nativeQuery = true)
 	List<SanPham> findTop3SanPhamBySoLuotXem();

@@ -5,7 +5,7 @@
 <title>Danh sách sản phẩm</title>
 
 <body>
-<form action="<c:url value='/danh-sach-san-pham'/>" id="formSubmit">
+<form action="<c:url value='/danh-sach-san-pham'/>" id="formSubmit" method="get" >
 	<!-- Product Style -->
 	<section class="product-area shop-sidebar shop section">
 		<div class="container">
@@ -227,11 +227,9 @@
 	<content tag="script"> <script type="text/javascript">
 	var totalPages = ${abstractDTO.totalPage};
 	var currentPage = ${abstractDTO.page};
+	var totalPage = ${totalPage};
 		$(function() {
-			var totalPage = $
-			{
-				totalPage
-			}
+			
 			window.pagObj = $('#pagination').twbsPagination({
 				totalPages : totalPages,
 				visiblePages :10,
