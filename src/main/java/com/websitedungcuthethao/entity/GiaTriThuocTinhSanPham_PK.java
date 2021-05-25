@@ -15,6 +15,16 @@ public class GiaTriThuocTinhSanPham_PK implements Serializable{
 	private static final long serialVersionUID = 1L;
 	private Long sanpham;
 	private Long thuoctinhsanpham;
+	
+	public GiaTriThuocTinhSanPham_PK() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public GiaTriThuocTinhSanPham_PK(Long sanpham, Long thuoctinhsanpham) {
+		super();
+		this.sanpham = sanpham;
+		this.thuoctinhsanpham = thuoctinhsanpham;
+	}
 	public Long getSanpham() {
 		return sanpham;
 	}

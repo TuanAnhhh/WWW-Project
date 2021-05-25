@@ -13,6 +13,16 @@ public class ChiTietHoaDon_PK implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private Long sanpham;
 	private Long hoadon;
+	
+	public ChiTietHoaDon_PK() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	public ChiTietHoaDon_PK(Long sanpham, Long hoadon) {
+		super();
+		this.sanpham = sanpham;
+		this.hoadon = hoadon;
+	}
 	public Long getSanpham() {
 		return sanpham;
 	}
