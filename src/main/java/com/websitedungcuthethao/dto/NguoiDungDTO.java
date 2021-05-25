@@ -18,10 +18,7 @@ public class NguoiDungDTO extends User {
 
 	private static final long serialVersionUID = 1L;
 
-	@Override
-	public String toString() {
-		return fullName;
-	}
+
 	private String fullName;
 
 	public String getFullName() {
@@ -30,6 +27,10 @@ public class NguoiDungDTO extends User {
 	public void setFullName(String fullName) {
 		this.fullName = fullName;
 	}
+//	@Override
+//	public String toString() {
+//		return fullName;
+//	}
 	
 	
 	

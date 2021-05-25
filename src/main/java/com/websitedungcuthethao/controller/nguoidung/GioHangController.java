@@ -17,7 +17,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.websitedungcuthethao.dto.GiohangSanphamDTO;
 import com.websitedungcuthethao.dto.NguoiDungDTO;
+import com.websitedungcuthethao.entity.HoaDon;
 import com.websitedungcuthethao.service.impl.GioHangService;
+import com.websitedungcuthethao.util.SecurityUtils;
 
 @Controller
 @RequestMapping
@@ -70,16 +72,5 @@ public class GioHangController {
 		session.setAttribute("tongSoLuongGioHang", gioHangService.getTongSoLuongGioHang(gioHang));
 		session.setAttribute("tongThanhTienGioHang", gioHangService.getTongThanhTienGioHang(gioHang));
 		return "redirect:"+req.getHeader("Referer");
-	}
-	
-	@GetMapping("/thanh-toan")
-	public String thanhtoan (Model model) {
-		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-		NguoiDungDTO nguoidung = (NguoiDungDTO) auth.getPrincipal();
-		if(nguoidung == null) {
-			return "redirect:/dang-nhap";
-		}
-		
-		return "nguoidung/thanhtoan";
-	}
+	}	
 }

@@ -42,6 +42,7 @@
 									</div> -->
 									<div
 										class="form-group d-flex align-items-center justify-content-between mt-4 mb-0">
+										<a class="small" href='<c:url value="/"/>'>Về trang chủ</a>
 										<a class="small" href='<c:url value="quen-mat-khau/tim-tai-khoan"/>'>Quyên mật khẩu?</a>
 										<button type="submit" class="btn btn-primary">Đăng nhập</button>
 									</div>

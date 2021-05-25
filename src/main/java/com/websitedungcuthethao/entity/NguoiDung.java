@@ -206,7 +206,7 @@ public class NguoiDung {
 		return "NguoiDung [id=" + id + ", ngayTao=" + ngayTao + ", loainguoidung=" + loainguoidung + ", ho=" + ho
 				+ ", ten=" + ten + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email
 				+ ", soDienThoai=" + soDienThoai + ", tenDangNhap=" + tenDangNhap + ", matKhau=" + matKhau
-				+ ", trangThai=" + trangThai + ", dsDiaChi=" + dsDiaChi + "]";
+				+ ", trangThai=" + trangThai + "]";
 	}
 
 		

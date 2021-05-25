@@ -40,7 +40,7 @@
 										<div class="input-group">
 											<div class="button minus">
 												<button type="button" class="btn btn-primary btn-number"
-													disabled="disabled" data-type="minus"
+													 data-type="minus"
 													data-field="quant[${item.key}]">
 													<i class="ti-minus"></i>
 												</button>
@@ -59,12 +59,11 @@
 									<td class="total-amount" data-title="Total"><span>${item.value.tongGia}
 											VND</span></td>
 									<td class="action" data-title="Remove">
+										<button data-id="${item.key}" class="edit-cart"><i class="ti-save"></i>
+										</button>
 										<a href="<c:url value="/gio-hang/xoa/${item.key}"/>" style="margin-right: 10px; color: red"><i
 											class="ti-trash remove-icon"></i>
 										</a>
-										
-										<button data-id="${item.key}" class="edit-cart"><i class="ti-save"></i>
-										</button>
 									</td>
 								</tr>
 							</c:forEach>
@@ -87,10 +86,7 @@
 											<button class="btn">Áp dụng</button>
 										</form>
 									</div>
-									<div class="checkbox">
-										<label class="checkbox-inline" for="2"><input
-											name="news" id="2" type="checkbox"> Shipping (+10$)</label>
-									</div>
+									<a href="<c:url value="/"/>">Tiếp tục mua hàng</a>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
@@ -104,7 +100,7 @@
 												VND</span></li>
 									</ul>
 									<div class="button5">
-										<a href='<c:url value="thanh-toan"/>' class="btn">Mua hàng</a>
+										<a href='<c:url value="/thanh-toan"/>' class="btn">Mua hàng</a>
 										<!-- <a href="#" class="btn">Continue shopping</a>  -->
 									</div>
 								</div>

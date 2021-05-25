@@ -91,8 +91,7 @@ public class DiaChi{
 
 	@Override
 	public String toString() {
-		return "DiaChi [id=" + id + ", nguoidung=" + nguoidung + ", quan=" + quan + ", thanhPho=" + thanhPho + ", tinh="
-				+ tinh + "]";
+		return quan  + "-"+thanhPho +"-"+  tinh ;
 	}
 	
 	

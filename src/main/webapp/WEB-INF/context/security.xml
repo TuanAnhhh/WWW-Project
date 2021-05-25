@@ -10,7 +10,7 @@
 
 	<http auto-config="false" use-expressions="true" disable-url-rewriting="true">
 	
-		<!-- <intercept-url pattern="/quan-tri/*" access="hasAnyRole('QUANTRI')" />  -->
+		 <!-- <intercept-url pattern="/quan-tri/*" access="hasAnyRole('QUANTRI')" />  -->
 		
 		<!-- <intercept-url pattern="/thanh-toan/*" access="hasAnyRole('NGUOIDUNG')" /> -->
 			
