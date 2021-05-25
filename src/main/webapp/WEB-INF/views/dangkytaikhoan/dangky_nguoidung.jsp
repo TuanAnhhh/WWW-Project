@@ -80,14 +80,6 @@
 
 						</div>
 
-
-						<%-- <div class="col-4">
-							<div class="input-group">
-								<form:label path="dsDiaChi" class="label">Địa chỉ</form:label>
-								<form:input cssClass="input--style-4" type="text"
-									path="dsDiaChi" />
-							</div>
-						</div> --%>
 						
 						<div class="col-4">
 							<div class="input-group">

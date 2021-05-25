@@ -67,7 +67,7 @@
 							<a class="nav-link"
 								href=" <c:url value="/quan-tri/quan-ly-nguoi-dung"/> ">Quán
 								lú người dùng</a> <a class="nav-link"
-								href=" <c:url value="/quan-tri/quan-ly-danh-muc"/> ">Quản lý
+								href=" <c:url value="/quan-tri/quan-ly-san-pham?page=1&limit=3"/> ">Quản lý
 								sản phẩm</a> <a class="nav-link" href="layout-sidenav-light.html">Quản
 								lý hóa đơn</a>
 						</nav>
