@@ -31,12 +31,23 @@ public class DangKyTaiKhoanController {
 	}
 	
 	@PostMapping
-	public String themNguoiDung(@ModelAttribute("nguoiDung") NguoiDung nguoiDung) {		
+	public String themNguoiDung(@ModelAttribute("nguoiDung") NguoiDung nguoiDung) {
+	
 		nguoiDung.setMatKhau(BCrypt.hashpw(nguoiDung.getMatKhau(), BCrypt.gensalt(12)));
-//		nguoiDung.setTrangThai(SystemConstant.ACTIVE_STATUS);
-		System.out.println(nguoiDung.getNgaySinh());
-//		nguoiDung.setLoainguoidung(loaiNguoiDungService.findByID(SystemConstant.ID_ROLE_NGUOIDUNG));
-		nguoiDungService.saveNguoiDung(nguoiDung);
+		nguoiDung.setTrangThai(SystemConstant.ACTIVE_STATUS);
+		
+		NguoiDung nd1 = new NguoiDung();
+		nd1.setLoainguoidung(loaiNguoiDungService.findByTenLoaiNguoiDung(SystemConstant.ROLE_NGUOIDUNG));
+		nd1.setTrangThai(SystemConstant.ACTIVE_STATUS);
+		nd1.setHo(nguoiDung.getHo());
+		nd1.setTen(nguoiDung.getTen());
+		nd1.setGioiTinh(nguoiDung.isGioiTinh());
+		nd1.setEmail(nguoiDung.getEmail());
+		nd1.setSoDienThoai(nguoiDung.getSoDienThoai());
+		nd1.setTenDangNhap(nguoiDung.getTenDangNhap());
+		nd1.setMatKhau(nguoiDung.getMatKhau());
+//		nguoiDungService.saveNguoiDung(nd1);
+		System.out.println(nd1.toString());
 		return "redirect:/dang-nhap";
 	}
 	

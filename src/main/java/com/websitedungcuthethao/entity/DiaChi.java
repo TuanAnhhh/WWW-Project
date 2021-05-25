@@ -1,5 +1,6 @@
 package com.websitedungcuthethao.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,10 +22,13 @@ public class DiaChi{
 	@JoinColumn(name = "nguoidungID")
 	private NguoiDung nguoidung;
 	
+	@Column(columnDefinition = "nvarchar(25)")
 	private String quan;
 	
+	@Column(columnDefinition = "nvarchar(25)")
 	private String thanhPho;
 	
+	@Column(columnDefinition = "nvarchar(25)")
 	private String tinh;
 
 	public DiaChi(int id, NguoiDung nguoidung, String quan, String thanhPho, String tinh) {

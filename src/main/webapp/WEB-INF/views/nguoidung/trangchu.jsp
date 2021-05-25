@@ -378,7 +378,7 @@
 										<h5 class="title">
 											<a href="<c:url value="/chi-tiet-san-pham/${item.id}"/>">${item.ten}</a>
 										</h5>
-										<p class="price with-discount">${item.giaGiam}</p>
+										<p class="price with-discount">${item.gia}</p>
 									</div>
 								</div>
 							</div>

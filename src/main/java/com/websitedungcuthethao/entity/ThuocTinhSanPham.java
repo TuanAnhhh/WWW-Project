@@ -3,6 +3,7 @@ package com.websitedungcuthethao.entity;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,21 +21,20 @@ public class ThuocTinhSanPham {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	
-	@NonNull
+	@Column(columnDefinition = "nvarchar(50)")
 	private String tenThuoctinh;
 	
 	@OneToMany(mappedBy = "thuoctinhsanpham")
 	private List<GiaTriThuocTinhSanPham> dsGiaTriThuocTinh = new ArrayList<GiaTriThuocTinhSanPham>();
 
-	public ThuocTinhSanPham(Long id, @NonNull String tenThuoctinh, List<GiaTriThuocTinhSanPham> dsGiaTriThuocTinh) {
+	public ThuocTinhSanPham(Long id, String tenThuoctinh, List<GiaTriThuocTinhSanPham> dsGiaTriThuocTinh) {
 		super();
 		this.id = id;
 		this.tenThuoctinh = tenThuoctinh;
 		this.dsGiaTriThuocTinh = dsGiaTriThuocTinh;
 	}
 
-	public ThuocTinhSanPham(@NonNull String tenThuoctinh, List<GiaTriThuocTinhSanPham> dsGiaTriThuocTinh) {
+	public ThuocTinhSanPham(String tenThuoctinh, List<GiaTriThuocTinhSanPham> dsGiaTriThuocTinh) {
 		super();
 		this.tenThuoctinh = tenThuoctinh;
 		this.dsGiaTriThuocTinh = dsGiaTriThuocTinh;

@@ -5,6 +5,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -34,12 +35,15 @@ public class NguoiDung {
 	@JoinColumn(name = "loainguoidungID")
 	private LoaiNguoiDung loainguoidung;
 
+	@Column(columnDefinition = "nvarchar(50)")
 	private String ho;
 
+	@Column(columnDefinition = "nvarchar(50)")
 	private String ten;
 
 	private boolean gioiTinh;
 	
+	@Column(columnDefinition = "DATE")
 	private LocalDate ngaySinh;
 
 	private String email;

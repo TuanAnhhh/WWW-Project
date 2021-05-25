@@ -17,7 +17,9 @@ public class DanhMuc {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
+	@Column(columnDefinition = "nvarchar(50)")
 	private String ten;
+	
 	@Column(nullable = true)
 	private Long danhMucCha;
 	public DanhMuc(Long id, String ten, Long danhMucCha) {

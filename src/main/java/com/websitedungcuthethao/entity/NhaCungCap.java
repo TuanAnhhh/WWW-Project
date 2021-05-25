@@ -1,5 +1,6 @@
 package com.websitedungcuthethao.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,8 +16,10 @@ public class NhaCungCap {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 
+	@Column(columnDefinition = "nvarchar(50)")
 	private String tenNhaCungCap;
 	
+	@Column(columnDefinition = "nvarchar(50)")
 	private String diachi;
 	
 	private String soDienThoai;

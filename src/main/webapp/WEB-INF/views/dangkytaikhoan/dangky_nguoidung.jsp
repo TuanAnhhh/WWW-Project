@@ -39,11 +39,15 @@
 						<div class="row row-space">
 							<div class="col-2">
 								<div class="input-group">
-									<form:label path="ngaySinh" class="label">Ngày sinh</form:label>
+									<%-- <form:label path="ngaySinh" class="label">Ngày sinh</form:label> --%>
+									<%-- <div class="input-group-icon">
+										<form:input cssClass="input--style-4 "
+											type="date" path="ngaySinh"  />
+									</div> --%>
+									<label class="label">Ngày sinh</label>
 									<div class="input-group-icon">
-										<form:input cssClass="input--style-4 js-datepicker"
-											type="text" path="ngaySinh" />
-										<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
+										<input class="input--style-4 "
+											type="date" name="ngaySinh"/>
 									</div>
 								</div>
 							</div>
@@ -51,14 +55,8 @@
 								<div class="input-group">
 									<form:label path="" class="label">Giới tính</form:label>
 									<div class="p-t-10">
-										<form:label path="gioiTinh" class="radio-container">Nam 
-										<form:radiobutton value="true" path="gioiTinh" />
-											<span Class="checkmark"></span>
-										</form:label>
-										<form:label path="gioiTinh" class="radio-container">Nữ 
-										<form:radiobutton value="false" path="gioiTinh" />
-											<span Class="checkmark"></span>
-										</form:label>
+										<form:radiobutton value="true" path="gioiTinh" label="Nam" />
+										<form:radiobutton value="false" path="gioiTinh" label="Nữ"/>						
 									</div>
 								</div>
 							</div>	
@@ -95,7 +93,7 @@
 						</div>
 
 						<div class="p-t-15">
-							<input class="btn btn--radius-2 btn--blue" value="Đăng ký" type="submit">
+							<button class="btn btn--radius-2 btn--blue" type="submit">Đăng ký</button>
 						</div>
 					</form:form>
 				</div>

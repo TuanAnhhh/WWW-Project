@@ -1,23 +1,23 @@
 package com.websitedungcuthethao.entity;
 
 import java.time.LocalDate;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedBy;
 import org.springframework.data.annotation.LastModifiedDate;
-
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 public class SanPham {
@@ -25,12 +25,7 @@ public class SanPham {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@CreatedDate
-	private LocalDate ngayTao;
-	
-	@CreatedBy
-	private String nguoiTao;
-
+	@Column(columnDefinition = "nvarchar(50)")
 	private String ten;
 
 	@ManyToOne(cascade = CascadeType.ALL)
@@ -41,15 +36,18 @@ public class SanPham {
 	@JoinColumn(name = "nhacungcapID", nullable = false)
 	private NhaCungCap nhacungcap;
 
+	@Column(columnDefinition = "nvarchar(255)")
 	private String moTa;
 
+	@Column(columnDefinition = "nvarchar(50)")
 	private String thuongHieu;
 
+	@Column(columnDefinition = "text")
 	private String noiDung;
 
 	private double gia;
 
-	private double giaGiam;
+	private double phanTramGiamGia;
 
 	private int soLuong;
 
@@ -59,11 +57,15 @@ public class SanPham {
 	
 	private int soLuotMua;
 
-	private String video;
-
 	private int thoiGianBaoHanh;
 
 	private boolean trangThai;
+	
+	@CreatedDate
+	private LocalDate ngayTao;
+	
+	@CreatedBy
+	private String nguoiTao;
 	
 	@LastModifiedDate
 	private LocalDate ngaySua;
@@ -71,14 +73,15 @@ public class SanPham {
 	@LastModifiedBy
 	private String nguoiSua;
 
-	public SanPham(Long id, LocalDate ngayTao, String nguoiTao, String ten, DanhMuc danhmuc, NhaCungCap nhacungcap,
-			String moTa, String thuongHieu, String noiDung, double gia, double giaGiam, int soLuong, String anhDaiDien,
-			int soLuotXem, int soLuotMua, String video, int thoiGianBaoHanh, boolean trangThai, LocalDate ngaySua,
-			String nguoiSua) {
+	@OneToMany(mappedBy = "sanpham")
+	private Set<GiaTriThuocTinhSanPham> dsThuocTinhSanPham = new HashSet<GiaTriThuocTinhSanPham>();
+
+	public SanPham(Long id, String ten, DanhMuc danhmuc, NhaCungCap nhacungcap, String moTa, String thuongHieu,
+			String noiDung, double gia, double phanTramGiamGia, int soLuong, String anhDaiDien, int soLuotXem,
+			int soLuotMua, int thoiGianBaoHanh, boolean trangThai, LocalDate ngayTao, String nguoiTao,
+			LocalDate ngaySua, String nguoiSua) {
 		super();
 		this.id = id;
-		this.ngayTao = ngayTao;
-		this.nguoiTao = nguoiTao;
 		this.ten = ten;
 		this.danhmuc = danhmuc;
 		this.nhacungcap = nhacungcap;
@@ -86,25 +89,24 @@ public class SanPham {
 		this.thuongHieu = thuongHieu;
 		this.noiDung = noiDung;
 		this.gia = gia;
-		this.giaGiam = giaGiam;
+		this.phanTramGiamGia = phanTramGiamGia;
 		this.soLuong = soLuong;
 		this.anhDaiDien = anhDaiDien;
 		this.soLuotXem = soLuotXem;
 		this.soLuotMua = soLuotMua;
-		this.video = video;
 		this.thoiGianBaoHanh = thoiGianBaoHanh;
 		this.trangThai = trangThai;
+		this.ngayTao = ngayTao;
+		this.nguoiTao = nguoiTao;
 		this.ngaySua = ngaySua;
 		this.nguoiSua = nguoiSua;
 	}
 
-	public SanPham(LocalDate ngayTao, String nguoiTao, String ten, DanhMuc danhmuc, NhaCungCap nhacungcap, String moTa,
-			String thuongHieu, String noiDung, double gia, double giaGiam, int soLuong, String anhDaiDien,
-			int soLuotXem, int soLuotMua, String video, int thoiGianBaoHanh, boolean trangThai, LocalDate ngaySua,
+	public SanPham(String ten, DanhMuc danhmuc, NhaCungCap nhacungcap, String moTa, String thuongHieu, String noiDung,
+			double gia, double phanTramGiamGia, int soLuong, String anhDaiDien, int soLuotXem, int soLuotMua,
+			int thoiGianBaoHanh, boolean trangThai, LocalDate ngayTao, String nguoiTao, LocalDate ngaySua,
 			String nguoiSua) {
 		super();
-		this.ngayTao = ngayTao;
-		this.nguoiTao = nguoiTao;
 		this.ten = ten;
 		this.danhmuc = danhmuc;
 		this.nhacungcap = nhacungcap;
@@ -112,14 +114,15 @@ public class SanPham {
 		this.thuongHieu = thuongHieu;
 		this.noiDung = noiDung;
 		this.gia = gia;
-		this.giaGiam = giaGiam;
+		this.phanTramGiamGia = phanTramGiamGia;
 		this.soLuong = soLuong;
 		this.anhDaiDien = anhDaiDien;
 		this.soLuotXem = soLuotXem;
 		this.soLuotMua = soLuotMua;
-		this.video = video;
 		this.thoiGianBaoHanh = thoiGianBaoHanh;
 		this.trangThai = trangThai;
+		this.ngayTao = ngayTao;
+		this.nguoiTao = nguoiTao;
 		this.ngaySua = ngaySua;
 		this.nguoiSua = nguoiSua;
 	}
@@ -135,22 +138,6 @@ public class SanPham {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public LocalDate getNgayTao() {
-		return ngayTao;
-	}
-
-	public void setNgayTao(LocalDate ngayTao) {
-		this.ngayTao = ngayTao;
-	}
-
-	public String getNguoiTao() {
-		return nguoiTao;
-	}
-
-	public void setNguoiTao(String nguoiTao) {
-		this.nguoiTao = nguoiTao;
 	}
 
 	public String getTen() {
@@ -209,12 +196,12 @@ public class SanPham {
 		this.gia = gia;
 	}
 
-	public double getGiaGiam() {
-		return giaGiam;
+	public double getPhanTramGiamGia() {
+		return phanTramGiamGia;
 	}
 
-	public void setGiaGiam(double giaGiam) {
-		this.giaGiam = giaGiam;
+	public void setPhanTramGiamGia(double phanTramGiamGia) {
+		this.phanTramGiamGia = phanTramGiamGia;
 	}
 
 	public int getSoLuong() {
@@ -249,14 +236,6 @@ public class SanPham {
 		this.soLuotMua = soLuotMua;
 	}
 
-	public String getVideo() {
-		return video;
-	}
-
-	public void setVideo(String video) {
-		this.video = video;
-	}
-
 	public int getThoiGianBaoHanh() {
 		return thoiGianBaoHanh;
 	}
@@ -271,6 +250,22 @@ public class SanPham {
 
 	public void setTrangThai(boolean trangThai) {
 		this.trangThai = trangThai;
+	}
+
+	public LocalDate getNgayTao() {
+		return ngayTao;
+	}
+
+	public void setNgayTao(LocalDate ngayTao) {
+		this.ngayTao = ngayTao;
+	}
+
+	public String getNguoiTao() {
+		return nguoiTao;
+	}
+
+	public void setNguoiTao(String nguoiTao) {
+		this.nguoiTao = nguoiTao;
 	}
 
 	public LocalDate getNgaySua() {
@@ -289,21 +284,25 @@ public class SanPham {
 		this.nguoiSua = nguoiSua;
 	}
 
+	public Set<GiaTriThuocTinhSanPham> getDsThuocTinhSanPham() {
+		return dsThuocTinhSanPham;
+	}
+
+	public void setDsThuocTinhSanPham(Set<GiaTriThuocTinhSanPham> dsThuocTinhSanPham) {
+		this.dsThuocTinhSanPham = dsThuocTinhSanPham;
+	}
+
 	@Override
 	public String toString() {
-		return "SanPham [id=" + id + ", ngayTao=" + ngayTao + ", nguoiTao=" + nguoiTao + ", ten=" + ten + ", danhmuc="
-				+ danhmuc + ", nhacungcap=" + nhacungcap + ", moTa=" + moTa + ", thuongHieu=" + thuongHieu
-				+ ", noiDung=" + noiDung + ", gia=" + gia + ", giaGiam=" + giaGiam + ", soLuong=" + soLuong
-				+ ", anhDaiDien=" + anhDaiDien + ", soLuotXem=" + soLuotXem + ", soLuotMua=" + soLuotMua + ", video="
-				+ video + ", thoiGianBaoHanh=" + thoiGianBaoHanh + ", trangThai=" + trangThai + ", ngaySua=" + ngaySua
-				+ ", nguoiSua=" + nguoiSua + "]";
+		return "SanPham [id=" + id + ", ten=" + ten + ", danhmuc=" + danhmuc + ", nhacungcap=" + nhacungcap + ", moTa="
+				+ moTa + ", thuongHieu=" + thuongHieu + ", noiDung=" + noiDung + ", gia=" + gia + ", phanTramGiamGia="
+				+ phanTramGiamGia + ", soLuong=" + soLuong + ", anhDaiDien=" + anhDaiDien + ", soLuotXem=" + soLuotXem
+				+ ", soLuotMua=" + soLuotMua + ", thoiGianBaoHanh=" + thoiGianBaoHanh + ", trangThai=" + trangThai
+				+ ", ngayTao=" + ngayTao + ", nguoiTao=" + nguoiTao + ", ngaySua=" + ngaySua + ", nguoiSua=" + nguoiSua
+				+ "]";
 	}
 	
 	
-	
-
-//	@OneToMany(mappedBy = "sanpham")
-//	private List<GiaTriThuocTinhSanPham> dsThuocTinhSanPham = new ArrayList<GiaTriThuocTinhSanPham>();
 	
 	
 }

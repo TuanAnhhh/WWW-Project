@@ -1,5 +1,6 @@
 package com.websitedungcuthethao.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.IdClass;
@@ -24,6 +25,7 @@ public class GiaTriThuocTinhSanPham {
 	@JoinColumn(name = "thuoctinhID")
 	private ThuocTinhSanPham thuoctinhsanpham;
 	
+	@Column(columnDefinition = "nvarchar(50)")
 	private String giaTriThuocTinh;
 
 	public GiaTriThuocTinhSanPham(SanPham sanpham, ThuocTinhSanPham thuoctinhsanpham, String giaTriThuocTinh) {

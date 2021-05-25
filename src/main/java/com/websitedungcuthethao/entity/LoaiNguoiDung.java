@@ -1,5 +1,6 @@
 package com.websitedungcuthethao.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,12 +15,15 @@ public class LoaiNguoiDung {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
+	@Column(columnDefinition = "nvarchar(50)")
 	private String tenLoai;
 	public LoaiNguoiDung(Long id, String tenLoai) {
 		super();
 		this.id = id;
 		this.tenLoai = tenLoai;
 	}
+
 	public LoaiNguoiDung(String tenLoai) {
 		super();
 		this.tenLoai = tenLoai;

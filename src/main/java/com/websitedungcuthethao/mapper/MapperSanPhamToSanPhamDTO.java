@@ -14,12 +14,11 @@ public class MapperSanPhamToSanPhamDTO {
 		spDTO.setThuongHieu(sp.getThuongHieu());
 		spDTO.setNoiDung(sp.getNoiDung());
 		spDTO.setGia(sp.getGia());
-		spDTO.setGiaGiam(sp.getGiaGiam());
+		spDTO.setGiaGiam(sp.getPhanTramGiamGia());
 		spDTO.setSoLuong(sp.getSoLuong());
 		spDTO.setAnhDaiDien(sp.getAnhDaiDien());
 		spDTO.setSoLuotXem(sp.getSoLuotXem());
 		spDTO.setSoLuotMua(sp.getSoLuotMua());
-		spDTO.setVideo(sp.getVideo());
 		spDTO.setThoiGianBaoHanh(sp.getThoiGianBaoHanh());
 		spDTO.setTrangThai(sp.isTrangThai());
 		spDTO.setNguoiSua(sp.getNguoiSua());

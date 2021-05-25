@@ -16,7 +16,7 @@ public interface SanPhamRepository extends JpaRepository<SanPham, Long> {
 	@Query(value = "SELECT TOP 3 *  FROM SANPHAM order by soLuotXem DESC", nativeQuery = true)
 	List<SanPham> findTop3SanPhamBySoLuotXem();
 	
-	@Query(value = " SELECT TOP 3 *  FROM SANPHAM order by gia-giaGiam desc", nativeQuery = true)
+	@Query(value = " SELECT TOP 3 *  FROM SANPHAM order by gia desc", nativeQuery = true)
 	List<SanPham> findTop3SanPhamGiamGiaNhieuNhat();
 	
 	@Query(value = "select * from SanPham sp where sp.danhmucID=:idDM",nativeQuery = true)

@@ -75,13 +75,16 @@
 						
 						<!--/ End Payment Method Widget -->
 						<!-- Button Widget -->
-						<div class="single-widget get-button">
+						<form method="post" action=" <c:url value="/thanh-toan"/> ">
+							<div class="single-widget get-button">
 							<div class="content">
 								<div class="button">
-									<a href="#" class="btn">Tiến hành đặt hàng</a>
+									<%-- <a href=" <c:url value=""/>" class="btn">Tiến hành đặt hàng</a> --%>
+									<button type="submit" class="btn">Tiến hành đặt hàng</button>
 								</div>
 							</div>
 						</div>
+						</form>
 						<!--/ End Button Widget -->
 					</div>
 				</div>
