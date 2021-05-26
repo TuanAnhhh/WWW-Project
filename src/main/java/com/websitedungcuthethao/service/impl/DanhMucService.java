@@ -21,7 +21,7 @@ public class DanhMucService implements IDanhMucService {
 
 	@Override
 	public DanhMuc findByTen(String ten) {
-		return danhMucRepository.findByTen(ten);
+		return danhMucRepository.findOneByTen(ten);
 	}
 
 	@Override

@@ -1,11 +1,11 @@
 package com.websitedungcuthethao.repository;
 
-import java.util.List;
-
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import com.websitedungcuthethao.entity.NhaCungCap;
 
 public interface NhaCungCapRepository extends JpaRepository<NhaCungCap, Long> {
-	List<NhaCungCap> findByTenNhaCungCap(String ten);
+	@Query(value = "SELECT * FROM NHACUNGCAP WHERE tenNhaCungCap = ?1")
+	NhaCungCap findOneByTenNhaCungCap(String ten);
 }

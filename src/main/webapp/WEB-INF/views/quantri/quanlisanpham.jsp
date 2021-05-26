@@ -6,10 +6,10 @@
 <body>
 	<div class="container">
 		<h2 style="margin-top: 100px; margin-left: 5%;">Quản lí sản phẩm</h2>
-		<form >
+		<form action="quan-ly-san-pham/them-san-pham">
 			<div class="row">
 				<div class="col-1"></div>
-				<div class="col-9">
+				<div class="col-7">
 					<div class="form-group">
 						<label for="exampleFormControlSelect1">Danh Mục</label> 
 						<select class="form-control" id="exampleFormControlSelect1">
@@ -19,10 +19,14 @@
 						</select>
 					</div>
 				</div>
+				<div class="col-1"></div>
+				<div class="col-3" style="margin-top: 29px;">
+					<button type="submit" class="btn btn-primary">Thêm sản phẩm</button>
+				</div>
 			</div>
 
 			<table class="table table-bordered" style="margin-left: 5%;"
-				id="dataTable" width="100%" cellspacing="0">
+				id="dataTable" >
 				<thead>
 					<tr>
 						<th>STT</th>

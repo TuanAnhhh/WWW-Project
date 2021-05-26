@@ -9,7 +9,9 @@ import com.websitedungcuthethao.entity.DanhMuc;
 
 public interface DanhMucRepository extends JpaRepository<DanhMuc, Long> {
 	List<DanhMuc> findAll();
-	DanhMuc findByTen(String ten);
+	
+	@Query(value ="SELECT * FROM DANHMUC WHERE ten = ?1",nativeQuery = true )
+	DanhMuc findOneByTen(String ten);
 
 	List<DanhMuc> findByDanhMucChaNull();
 	

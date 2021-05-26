@@ -21,8 +21,8 @@ public class NhaCungCapService implements INhaCungCapService{
 
 
 	@Override
-	public List<NhaCungCap> findByTenNhaCungCap(String ten) {
-		return nhaCungCapRepository.findByTenNhaCungCap(ten);
+	public NhaCungCap findByTenNhaCungCap(String ten) {
+		return nhaCungCapRepository.findOneByTenNhaCungCap(ten);
 	}
 
 	@Override
@@ -35,5 +35,11 @@ public class NhaCungCapService implements INhaCungCapService{
 	public boolean updateNCC(NhaCungCap nhaCungCap) {
 		// TODO Auto-generated method stub
 		return false;
+	}
+
+
+	@Override
+	public List<NhaCungCap> findAll() {
+		return nhaCungCapRepository.findAll();
 	}
 }
