@@ -6,6 +6,6 @@ import org.springframework.data.jpa.repository.Query;
 import com.websitedungcuthethao.entity.NhaCungCap;
 
 public interface NhaCungCapRepository extends JpaRepository<NhaCungCap, Long> {
-	@Query(value = "SELECT * FROM NHACUNGCAP WHERE tenNhaCungCap = ?1")
+	@Query(value = "SELECT * FROM NHACUNGCAP WHERE tenNhaCungCap = ?1", nativeQuery = true)
 	NhaCungCap findOneByTenNhaCungCap(String ten);
 }

@@ -15,23 +15,16 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.springframework.data.annotation.CreatedDate;
-
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
 
 @Entity
 public class NguoiDung {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-
-	@CreatedDate
+	
 	private LocalDate ngayTao;
-	@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	
+	@ManyToOne
 	@JoinColumn(name = "loainguoidungID")
 	private LoaiNguoiDung loainguoidung;
 
@@ -43,7 +36,6 @@ public class NguoiDung {
 
 	private boolean gioiTinh;
 	
-	@Column(columnDefinition = "DATE")
 	private LocalDate ngaySinh;
 
 	private String email;

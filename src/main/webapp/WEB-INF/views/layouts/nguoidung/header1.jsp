@@ -127,15 +127,7 @@
 										<ul class="nav main-menu menu navbar-nav">
 											<li class="active"><a href=" <c:url value="/"/>">Trang chủ</a></li>
 											<li><a href=" <c:url value="/danh-sach-san-pham?page=1&limit=3"/> ">Sản phẩm</a></li>
-											<li><a href="#">Service</a></li>
-											<li><a href="#">Shop<i class="ti-angle-down"></i><span
-													class="new">New</span></a>
-												<ul class="dropdown">
-													<li><a href="shop-grid.html">Shop Grid</a></li>
-													<li><a href="cart.html">Cart</a></li>
-													<li><a href="checkout.html">Checkout</a></li>
-												</ul></li>
-											<li><a href="contact.html">Liên hệ</a></li>
+											<li><a href=" <c:url value="/thong-tin-cua-hang"/> ">Thông tin cửa hàng</a></li>
 										</ul>
 									</div>
 								</div>

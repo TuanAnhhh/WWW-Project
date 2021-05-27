@@ -23,26 +23,33 @@ public class TrangChuController {
 
 	@GetMapping
 	public String index(Model model) {
-//		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//		NguoiDungDTO nguoidung = (NguoiDungDTO) auth.getPrincipal();
-		
-		
-		
-//		ArrayList<SanPham> dsSanPham = (ArrayList<SanPham>) sanPhamService.findAll();
-//		model.addAttribute("dsSanPham", dsSanPham);
-		
-		
-		
+		ArrayList<SanPham> dsSanPhamNoiBat = (ArrayList<SanPham>) sanPhamService.findDSSanPhamNoiBat();
+		model.addAttribute("dsSanPhamNoiBat", dsSanPhamNoiBat);
 		
 		ArrayList<SanPham> dsSanPhamLuotXemCaoNhat = (ArrayList<SanPham>) sanPhamService.findTop3SanPhamBySoLuotXem();
 		model.addAttribute("dsSanPhamLuotXemCaoNhat", dsSanPhamLuotXemCaoNhat);
 
-		ArrayList<SanPham> dsSanPhamGiamGiaCaoNhat = (ArrayList<SanPham>) sanPhamService
-				.findTop3SanPhamGiamGiaNhieuNhat();
+		ArrayList<SanPham> dsSanPhamGiamGiaCaoNhat = (ArrayList<SanPham>) sanPhamService.findTop3SanPhamGiamGiaNhieuNhat();
 		model.addAttribute("dsSanPhamGiamGiaCaoNhat", dsSanPhamGiamGiaCaoNhat);
 
 
 		return "nguoidung/trangchu";
 	}
-
+	
+	@GetMapping("thong-tin-cua-hang")
+	public String thongTinCuaHang() {
+		return "nguoidung/thongtincuahang";
+	}
+	
+	@GetMapping("gioi-thieu")
+	public String gioiThieu() {
+		return "nguoidung/gioithieu";
+	}
+	
+	@GetMapping("bao-hanh")
+	public String baoHanh() {
+		return "nguoidung/chinhsachbaohanh";
+	}
+	
+	
 }

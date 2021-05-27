@@ -39,15 +39,11 @@
 						<div class="row row-space">
 							<div class="col-2">
 								<div class="input-group">
-									<%-- <form:label path="ngaySinh" class="label">Ngày sinh</form:label> --%>
-									<%-- <div class="input-group-icon">
-										<form:input cssClass="input--style-4 "
-											type="date" path="ngaySinh"  />
-									</div> --%>
-									<label class="label">Ngày sinh</label>
+									<form:label path="ngaySinh" class="label">Ngày sinh</form:label>
 									<div class="input-group-icon">
-										<input class="input--style-4 "
-											type="date" name="ngaySinh"/>
+										<form:input cssClass="input--style-4 js-datepicker"
+											type="text" path="ngaySinh" />
+										<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
 									</div>
 								</div>
 							</div>
@@ -102,4 +98,3 @@
 	</div>
 
 </body>
-</html>

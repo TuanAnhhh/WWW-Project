@@ -1,5 +1,7 @@
 package com.websitedungcuthethao.controller.nguoidung;
 
+import java.time.LocalDate;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.websitedungcuthethao.constant.SystemConstant;
+import com.websitedungcuthethao.dto.NguoiDungDTONew;
 import com.websitedungcuthethao.entity.NguoiDung;
 import com.websitedungcuthethao.service.impl.LoaiNguoiDungService;
 import com.websitedungcuthethao.service.impl.NguoiDungService;
@@ -19,7 +22,7 @@ import com.websitedungcuthethao.service.impl.NguoiDungService;
 public class DangKyTaiKhoanController {
 	
 	@Autowired
-	private NguoiDungService nguoiDungService;
+	NguoiDungService nguoiDungService;
 	
 	@Autowired
 	private LoaiNguoiDungService loaiNguoiDungService;
@@ -27,15 +30,12 @@ public class DangKyTaiKhoanController {
 	@GetMapping
 	public String dangKy(Model model) {
 		model.addAttribute("nguoiDung",new NguoiDung());
-		return "dangkytaikhoan/dangky_nguoidung";
+		return "nguoidung/dangky";
 	}
 	
 	@PostMapping
 	public String themNguoiDung(@ModelAttribute("nguoiDung") NguoiDung nguoiDung) {
 	
-		nguoiDung.setMatKhau(BCrypt.hashpw(nguoiDung.getMatKhau(), BCrypt.gensalt(12)));
-		nguoiDung.setTrangThai(SystemConstant.ACTIVE_STATUS);
-		
 		NguoiDung nd1 = new NguoiDung();
 		nd1.setLoainguoidung(loaiNguoiDungService.findByTenLoaiNguoiDung(SystemConstant.ROLE_NGUOIDUNG));
 		nd1.setTrangThai(SystemConstant.ACTIVE_STATUS);
@@ -45,9 +45,15 @@ public class DangKyTaiKhoanController {
 		nd1.setEmail(nguoiDung.getEmail());
 		nd1.setSoDienThoai(nguoiDung.getSoDienThoai());
 		nd1.setTenDangNhap(nguoiDung.getTenDangNhap());
-		nd1.setMatKhau(nguoiDung.getMatKhau());
-//		nguoiDungService.saveNguoiDung(nd1);
+		nd1.setMatKhau(BCrypt.hashpw(nguoiDung.getMatKhau(), BCrypt.gensalt(12)));
+		nd1.setNgaySinh(nguoiDung.getNgaySinh());
+		nd1.setNgayTao(LocalDate.now());
 		System.out.println(nd1.toString());
+		
+		nguoiDungService.saveNguoiDung(nd1);
+		
+
+	
 		return "redirect:/dang-nhap";
 	}
 	

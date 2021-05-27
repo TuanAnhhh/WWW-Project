@@ -40,11 +40,11 @@ public class HoaDonService implements IHoaDonService {
 		// TODO Auto-generated method stub
 		for(Map.Entry<Long, GiohangSanphamDTO> item : gioHang.entrySet()) {
 			ChiTietHoaDon ct = new ChiTietHoaDon();
-			ct.setHoadon(hoaDonRepository.findOne(idHD));
+//			ct.setHoadon(hoaDonRepository.findOne(idHD));
 			ct.setSanpham(sanPhamRepository.findById(item.getValue().getSanPham().getId()));
 			ct.setSoLuong(item.getValue().getSoLuong());
-			
-			chiTietHoaDonRepository.save(ct);
+			System.out.println(ct.toString());
+			chiTietHoaDonRepository.themCTHD(idHD, ct.getSanpham().getId(), 0, gioHang.values().size());
 		}
 	}
 

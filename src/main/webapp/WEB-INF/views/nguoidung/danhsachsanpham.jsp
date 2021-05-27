@@ -101,9 +101,22 @@
 										<h3>
 											<a href="product-details.html">${sp.ten}</a>
 										</h3>
-										<div class="product-price">
-											<span>$ ${sp.gia}</span>
-										</div>
+										<c:choose>
+										  <c:when test = "${sp.gia == sp.gia + sp.gia*sp.phanTramGiamGia}">
+								            <div class="product-price">
+												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia}" /></span>
+											</div>
+								         </c:when>
+								         <c:otherwise>
+								         	<div class="product-price"
+												style="color: red; text-decoration: line-through;">
+												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia}" /></span>
+											</div>
+											<div class="product-price" style="float: right">
+												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia + sp.gia*sp.phanTramGiamGia}" /></span>
+											</div>
+								         </c:otherwise>
+									</c:choose>
 									</div>
 								</div>
 							</div>

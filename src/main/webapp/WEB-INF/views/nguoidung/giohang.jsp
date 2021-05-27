@@ -33,8 +33,9 @@
 										</p>
 										<p class="product-des">${item.value.sanPham.moTa}</p>
 									</td>
-									<td class="price" data-title="Price"><span>${item.value.sanPham.gia}
-											VND</span></td>
+									<td class="price" data-title="Price">
+											<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.value.sanPham.gia}" /></span>
+											</td>
 									<td class="qty" data-title="Qty">
 										<!-- Input Order -->
 										<div class="input-group">
@@ -56,8 +57,9 @@
 											</div>
 										</div> <!--/ End Input Order -->
 									</td>
-									<td class="total-amount" data-title="Total"><span>${item.value.tongGia}
-											VND</span></td>
+									<td class="total-amount" data-title="Total">
+											<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.value.tongGia}" /></span>
+											</td>
 									<td class="action" data-title="Remove">
 										<button data-id="${item.key}" class="edit-cart"><i class="ti-save"></i>
 										</button>
@@ -86,18 +88,20 @@
 											<button class="btn">Áp dụng</button>
 										</form>
 									</div>
-									<a href="<c:url value="/"/>">Tiếp tục mua hàng</a>
+									<a href="<c:url value="/"/>" class="btn" style="background-color: #F7941D;">Tiếp tục mua hàng</a>
 								</div>
 							</div>
 							<div class="col-lg-4 col-md-7 col-12">
 								<div class="right">
 									<ul>
-										<li>Tổng tiền hàng<span>${tongThanhTienGioHang}
-												VND</span></li>
+										<li>Tổng tiền hàng
+												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${tongThanhTienGioHang}" /></span>
+										</li>
 										<li>Phí vận chuyển<span>Miễn phí</span></li>
 										<!-- <li>Giảm giá<span>$20.00</span></li> -->
-										<li class="last">Tổng thanh toán<span>${tongThanhTienGioHang}
-												VND</span></li>
+										<li class="last">Tổng thanh toán
+											<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${tongThanhTienGioHang}" /></span>
+										</li>
 									</ul>
 									<div class="button5">
 										<a href='<c:url value="/thanh-toan"/>' class="btn">Mua hàng</a>

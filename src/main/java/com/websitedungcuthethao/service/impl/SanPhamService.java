@@ -93,12 +93,23 @@ public class SanPhamService implements ISanPhamService {
 		return sanPhamRepository.findTop3SanPhamGiamGiaNhieuNhat();
 	}
 	@Override
-	public List<SanPham> findByDanhMuc(Long idDM) {
-		return sanPhamRepository.findByDanhMuc(idDM);
+	public List<SanPham> findByDanhMucID(Long idDM) {
+		return sanPhamRepository.findByDanhMucID(idDM);
 	}
 	@Override
 	public Long getTotalItem() {
 		return  sanPhamRepository.count();
+	}
+	@Override
+	public List<SanPham> findDSSanPhamNoiBat() {
+		// TODO Auto-generated method stub
+		
+		return sanPhamRepository.findDSSanPhamNoiBat();
+	}
+	@Override
+	public List<SanPham> findByDanhMucIDAndPaging(Long idDM, Pageable pageable) {
+		// TODO Auto-generated method stub
+		return sanPhamRepository.findByDanhmucId(idDM, pageable);
 	}
 	
 }

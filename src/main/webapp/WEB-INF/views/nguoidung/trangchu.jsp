@@ -22,282 +22,13 @@
 		<!--/ End Single Slider -->
 	</section>
 
-	<!-- Start Product Area -->
-	<div class="product-area section">
-		<div class="container">
-			<div class="row">
-				<div class="col-12">
-					<div class="section-title">
-						<h2>Sản phẩm nổi bật</h2>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-12">
-					<div class="product-info">
-						<div class="nav-main">
-							<!-- Tab Nav -->
-							<ul class="nav nav-tabs" id="myTab" role="tablist">
-								<li class="nav-item"><a class="nav-link active"
-									data-toggle="tab" href="#man" role="tab">Man</a></li>
-								<li class="nav-item"><a class="nav-link" data-toggle="tab"
-									href="#women" role="tab">Woman</a></li>
-								<li class="nav-item"><a class="nav-link" data-toggle="tab"
-									href="#kids" role="tab">Kids</a></li>
-								<li class="nav-item"><a class="nav-link" data-toggle="tab"
-									href="#accessories" role="tab">Accessories</a></li>
-								<li class="nav-item"><a class="nav-link" data-toggle="tab"
-									href="#essential" role="tab">Essential</a></li>
-								<li class="nav-item"><a class="nav-link" data-toggle="tab"
-									href="#prices" role="tab">Prices</a></li>
-							</ul>
-							<!--/ End Tab Nav -->
-						</div>
-						<div class="tab-content" id="myTabContent">
-							<!-- Start Single Tab -->
-							<div class="tab-pane fade show active" id="man" role="tabpanel">
-							
-								<div class="tab-single">
-								
-								
-									<div class="row">
-										<c:forEach items="${dsSanPham}" var="sp">
-										<div class="col-xl-3 col-lg-4 col-md-4">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html"> <img
-														class="default-img"
-														src=" <c:url value="/resources/images/user/sanpham/${sp.anhDaiDien}"/> "alt="#"> <img
-														class="hover-img"
-														src=" <c:url value="/resources/images/user/sanpham/${sp.anhDaiDien}"/> alt="#"> <span
-														class="out-of-stock">Hot</span>
-													</a>
-													<div class="button-head">
-														<div class="product-action">
-															<a data-toggle="modal" data-target="#exampleModal"
-																title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick
-																	Shop</span></a> <a title="Wishlist" href="#"><i
-																class=" ti-heart "></i><span>Add to Wishlist</span></a> <a
-																title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add
-																	to Compare</span></a>
-														</div>
-														<div class="product-action-2">
-															<a title="Add to cart" href="#">Add to cart</a>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3>
-														<a href="product-details.html">${sp.ten}</a>
-													</h3>
-													<div class="product-price">
-														<span class="old">$60.00</span> <span>${sp.gia}</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										</c:forEach>
-									</div>
-									
-								</div>
-								
-								<ul class="pagination" id="pagination"></ul>
-								
-							</div>
-							<!--/ End Single Tab -->
-							
-							<!-- Start Single Tab -->
-							<div class="tab-pane fade" id="women" role="tabpanel">
-								<div class="tab-single">
-									<div class="row">
-									
-										<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html"> <img
-														class="default-img"
-														src="https://via.placeholder.com/550x750" alt="#"> <img
-														class="hover-img"
-														src="https://via.placeholder.com/550x750" alt="#"> <span
-														class="out-of-stock">Hot</span>
-													</a>
-													<div class="button-head">
-														<div class="product-action">
-															<a data-toggle="modal" data-target="#exampleModal"
-																title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick
-																	Shop</span></a> <a title="Wishlist" href="#"><i
-																class=" ti-heart "></i><span>Add to Wishlist</span></a> <a
-																title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add
-																	to Compare</span></a>
-														</div>
-														<div class="product-action-2">
-															<a title="Add to cart" href="#">Add to cart</a>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3>
-														<a href="product-details.html">Black Sunglass For
-															Women</a>
-													</h3>
-													<div class="product-price">
-														<span class="old">$60.00</span> <span>$50.00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--/ End Single Tab -->
-							
-							<!-- Start Single Tab -->
-							<div class="tab-pane fade" id="accessories" role="tabpanel">
-								<div class="tab-single">
-									<div class="row">
-										<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html"> <img
-														class="default-img"
-														src="https://via.placeholder.com/550x750" alt="#"> <img
-														class="hover-img"
-														src="https://via.placeholder.com/550x750" alt="#"> <span
-														class="out-of-stock">Hot</span>
-													</a>
-													<div class="button-head">
-														<div class="product-action">
-															<a data-toggle="modal" data-target="#exampleModal"
-																title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick
-																	Shop</span></a> <a title="Wishlist" href="#"><i
-																class=" ti-heart "></i><span>Add to Wishlist</span></a> <a
-																title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add
-																	to Compare</span></a>
-														</div>
-														<div class="product-action-2">
-															<a title="Add to cart" href="#">Add to cart</a>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3>
-														<a href="product-details.html">Black Sunglass For
-															Women</a>
-													</h3>
-													<div class="product-price">
-														<span class="old">$60.00</span> <span>$50.00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--/ End Single Tab -->
-							<!-- Start Single Tab -->
-							<div class="tab-pane fade" id="essential" role="tabpanel">
-								<div class="tab-single">
-									<div class="row">		
-										<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html"> <img
-														class="default-img"
-														src="https://via.placeholder.com/550x750" alt="#"> <img
-														class="hover-img"
-														src="https://via.placeholder.com/550x750" alt="#">
-													</a>
-													<div class="button-head">
-														<div class="product-action">
-															<a data-toggle="modal" data-target="#exampleModal"
-																title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick
-																	Shop</span></a> <a title="Wishlist" href="#"><i
-																class=" ti-heart "></i><span>Add to Wishlist</span></a> <a
-																title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add
-																	to Compare</span></a>
-														</div>
-														<div class="product-action-2">
-															<a title="Add to cart" href="#">Add to cart</a>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3>
-														<a href="product-details.html">Awesome Bags Collection</a>
-													</h3>
-													<div class="product-price">
-														<span>$29.00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-										
-										
-										
-									</div>
-								</div>
-							</div>
-							<!--/ End Single Tab -->
-							<!-- Start Single Tab -->
-							<div class="tab-pane fade" id="prices" role="tabpanel">
-								<div class="tab-single">
-									<div class="row">
-										
-										<div class="col-xl-3 col-lg-4 col-md-4 col-12">
-											<div class="single-product">
-												<div class="product-img">
-													<a href="product-details.html"> <img
-														class="default-img"
-														src="https://via.placeholder.com/550x750" alt="#"> <img
-														class="hover-img"
-														src="https://via.placeholder.com/550x750" alt="#"> <span
-														class="out-of-stock">Hot</span>
-													</a>
-													<div class="button-head">
-														<div class="product-action">
-															<a data-toggle="modal" data-target="#exampleModal"
-																title="Quick View" href="#"><i class=" ti-eye"></i><span>Quick
-																	Shop</span></a> <a title="Wishlist" href="#"><i
-																class=" ti-heart "></i><span>Add to Wishlist</span></a> <a
-																title="Compare" href="#"><i class="ti-bar-chart-alt"></i><span>Add
-																	to Compare</span></a>
-														</div>
-														<div class="product-action-2">
-															<a title="Add to cart" href="#">Add to cart</a>
-														</div>
-													</div>
-												</div>
-												<div class="product-content">
-													<h3>
-														<a href="product-details.html">Black Sunglass For
-															Women</a>
-													</h3>
-													<div class="product-price">
-														<span class="old">$60.00</span> <span>$50.00</span>
-													</div>
-												</div>
-											</div>
-										</div>
-									</div>
-								</div>
-							</div>
-							<!--/ End Single Tab -->
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- End Product Area -->
-
-
 	<!-- Start Most Popular -->
 	<div class="product-area most-popular section">
 		<div class="container">
 			<div class="row">
 				<div class="col-12">
 					<div class="section-title">
-						<h2>Sản phẩm Hot</h2>
+						<h2>Sản phẩm Nổi bật</h2>
 					</div>
 				</div>
 			</div>
@@ -305,7 +36,7 @@
 				<div class="col-12">
 					<div class="owl-carousel popular-slider">
 
-						<c:forEach items="${dsSanPhamLuotXemCaoNhat}" var="item">
+						<c:forEach items="${dsSanPhamNoiBat}" var="item">
 							<!-- Start Single Product -->
 							<div class="single-product">
 								<div class="product-img">
@@ -317,13 +48,10 @@
 										alt="#">
 									</a>
 									<div class="button-head">
-										<div class="product-action">
-											<a data-toggle="modal" data-target="#exampleModal"
-												title="Quick View" href="#"><i class=" ti-eye"></i><span>Chi
-													tiết</span></a>
-										</div>
 										<div class="product-action-2">
-											<a title="Add to cart" href="<c:url value="/gio-hang/them/${item.id}"/>">Thêm vào giỏ hàng</a>
+											<a title="Add to cart"
+												href="<c:url value="/gio-hang/them/${item.id}"/>">Thêm
+												vào giỏ hàng</a>
 										</div>
 									</div>
 								</div>
@@ -331,9 +59,23 @@
 									<h3>
 										<a href="<c:url value="/chi-tiet-san-pham/${item.id}"/>">${item.ten}</a>
 									</h3>
-									<div class="product-price">
-										<span>${item.gia} VND</span>
-									</div>
+									<c:choose>
+										  <c:when test = "${item.gia == item.gia + item.gia*item.phanTramGiamGia}">
+								            <div class="product-price">
+												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.gia}" /></span>
+											</div>
+								         </c:when>
+								         <c:otherwise>
+								         	<div class="product-price"
+												style="color: red; text-decoration: line-through;">
+												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.gia}" /></span>
+											</div>
+											<div class="product-price" style="float: right">
+												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.gia + item.gia*item.phanTramGiamGia}" /></span>
+											</div>
+								         </c:otherwise>
+									</c:choose>
+									
 								</div>
 							</div>
 							<!-- End Single Product -->
@@ -378,7 +120,29 @@
 										<h5 class="title">
 											<a href="<c:url value="/chi-tiet-san-pham/${item.id}"/>">${item.ten}</a>
 										</h5>
-										<p class="price with-discount">${item.gia}</p>
+										<%-- <p class="price with-discount">${item.gia}</p> --%>
+										<c:choose>
+											<c:when
+												test="${item.gia == item.gia + item.gia*item.phanTramGiamGia}">
+												<div class="price with-discount">
+													<span><fmt:formatNumber type="number"
+															pattern="#,### VND" value="${item.gia}" /></span>
+
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div class="product-price"
+													style="color: red; text-decoration: line-through;">
+													<span><fmt:formatNumber type="number"
+															pattern="#,### VND" value="${item.gia}" /></span>
+												</div>
+												<div class="price with-discount">
+													<span><fmt:formatNumber type="number"
+															pattern="#,### VND"
+															value="${item.gia + item.gia*item.phanTramGiamGia}" /></span>
+												</div>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 							</div>
@@ -412,7 +176,28 @@
 										<h5 class="title">
 											<a href="<c:url value="/chi-tiet-san-pham/${item.id}"/>">${item.ten}</a>
 										</h5>
-										<p class="price with-discount">${item.gia}</p>
+										<c:choose>
+											<c:when
+												test="${item.gia == item.gia + item.gia*item.phanTramGiamGia}">
+												<div class="price with-discount">
+													<span><fmt:formatNumber type="number"
+															pattern="#,### VND" value="${item.gia}" /></span>
+
+												</div>
+											</c:when>
+											<c:otherwise>
+												<div class="product-price"
+													style="color: red; text-decoration: line-through;">
+													<span><fmt:formatNumber type="number"
+															pattern="#,### VND" value="${item.gia}" /></span>
+												</div>
+												<div class="price with-discount">
+													<span><fmt:formatNumber type="number"
+															pattern="#,### VND"
+															value="${item.gia + item.gia*item.phanTramGiamGia}" /></span>
+												</div>
+											</c:otherwise>
+										</c:choose>
 									</div>
 								</div>
 							</div>
@@ -438,7 +223,7 @@
 					<div class="col-lg-6 col-12 padding-left">
 						<div class="content">
 							<div class="heading-block">
-								<p class="small-title">Deal of day</p>
+								<p class="small-title">Giảm giá trong ngày</p>
 								<h3 class="title">Beatutyful dress for women</h3>
 								<p class="text">Suspendisse massa leo, vestibulum cursus
 									nulla sit amet, frungilla placerat lorem. Cars fermentum,
@@ -446,9 +231,6 @@
 								<h1 class="price">
 									$1200 <s>$1890</s>
 								</h1>
-								<div class="coming-time">
-									<div class="clearfix" data-countdown="2021/02/30"></div>
-								</div>
 							</div>
 						</div>
 					</div>
@@ -505,12 +287,12 @@
 	<!-- End Shop Services Area -->
 
 	<!-- Start Shop Newsletter  -->
-	<section class="shop-newsletter section">
+	<!-- <section class="shop-newsletter section">
 		<div class="container">
 			<div class="inner-top">
 				<div class="row">
 					<div class="col-lg-8 offset-lg-2 col-12">
-						<!-- Start Newsletter Inner -->
+						Start Newsletter Inner
 						<div class="inner">
 							<h4>Bản tin</h4>
 							<p>Đăng ký bản tin của chúng tôi và được giảm giá 10% khi mua
@@ -522,12 +304,12 @@
 								<button class="btn">Đăng kí</button>
 							</form>
 						</div>
-						<!-- End Newsletter Inner -->
+						End Newsletter Inner
 					</div>
 				</div>
 			</div>
 		</div>
-	</section>
+	</section> -->
 	<!-- End Shop Newsletter -->
 
 	<!-- Modal -->
@@ -653,6 +435,6 @@
 		</div>
 	</div>
 	<!-- Modal end -->
-	
-	
+
+
 </body>

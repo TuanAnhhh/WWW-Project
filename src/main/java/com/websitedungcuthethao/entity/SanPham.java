@@ -28,11 +28,11 @@ public class SanPham {
 	@Column(columnDefinition = "nvarchar(50)")
 	private String ten;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "danhmucID", nullable = false)
 	private DanhMuc danhmuc;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "nhacungcapID", nullable = false)
 	private NhaCungCap nhacungcap;
 

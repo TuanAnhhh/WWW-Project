@@ -15,8 +15,11 @@ public interface ISanPhamService {
 	SanPham findById(Long id);
 	void updateSanPham(SanPhamDTO sanPhamDTO);
 	List<SanPham> findTop3SanPhamBySoLuotXem();
+	List<SanPham> findDSSanPhamNoiBat();
 	List<SanPham> findTop3SanPhamGiamGiaNhieuNhat();
-	List<SanPham> findByDanhMuc(Long idDM);
+	List<SanPham> findByDanhMucID(Long idDM);
 	
+	List<SanPham> findByDanhMucIDAndPaging(Long idDM, Pageable pageable);
+
 	Long getTotalItem();
 }

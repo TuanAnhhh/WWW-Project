@@ -64,9 +64,9 @@
 							<h2>Tổng tiền hóa đơn</h2>
 							<div class="content">
 								<ul>
-									<li>Sub Total<span>$330.00</span></li>
-									<li>(+) Shipping<span>$10.00</span></li>
-									<li class="last">Total<span>$340.00</span></li>
+									<li>Tổng tiền hàng<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${tongThanhTienGioHang}" /></span></li>
+									<li>(+) Phí vận chuyển<span>0</span></li>
+									<li class="last">Tổng thanh toán<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${tongThanhTienGioHang}" /></span></li>
 								</ul>
 							</div>
 						</div>

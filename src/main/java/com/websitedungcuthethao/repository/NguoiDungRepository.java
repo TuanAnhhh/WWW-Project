@@ -4,6 +4,8 @@ import java.util.List;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.websitedungcuthethao.dto.NguoiDungDTO;
+import com.websitedungcuthethao.dto.NguoiDungDTONew;
 import com.websitedungcuthethao.entity.NguoiDung;
 
 public interface NguoiDungRepository extends JpaRepository<NguoiDung,Long> {
@@ -12,5 +14,5 @@ public interface NguoiDungRepository extends JpaRepository<NguoiDung,Long> {
 	List<NguoiDung> findByTenAndHo(String ten,String ho);
 	
 	NguoiDung findOneByTenDangNhap(String tenDangNhap);
-	
+
 }

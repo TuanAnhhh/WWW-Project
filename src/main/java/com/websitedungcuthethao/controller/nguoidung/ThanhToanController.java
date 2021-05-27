@@ -48,12 +48,20 @@ public class ThanhToanController {
 	}
 	@RequestMapping(value = "/thanh-toan", method = RequestMethod.POST)
 	public String datHang (Model model, HttpSession session) {
-		HoaDon hd = new HoaDon(nguoiDungService.findOneByTenDangNhap(nguoidung.getTenDangNhap()), false, null,null, null, 0,0);
+		
+		int soLuongSp = (int) session.getAttribute("tongSoLuongGioHang");
+		double tongTienHD = (double) session.getAttribute("tongThanhTienGioHang");
+		HoaDon hd = new HoaDon(nguoiDungService.findOneByTenDangNhap(nguoidung.getTenDangNhap()),false,null,null,null,soLuongSp,tongTienHD);
 		hoaDonService.saveHoaDon(hd);
+		System.out.println("HD luu:" +hd.getId()+"......");
 		
 		
 		HashMap<Long, GiohangSanphamDTO> dsSanPhamGioHang  = (HashMap<Long, GiohangSanphamDTO>) session.getAttribute("gioHang");
 		hoaDonService.themDSChiTietHoaDon(hd.getId(), dsSanPhamGioHang);
-		return "nguoidung/thanhtoan";
+		
+		session.removeAttribute("gioHang");
+		session.removeAttribute("tongSoLuongGioHang");
+		session.removeAttribute("tongThanhTienGioHang");
+		return "nguoidung/thong_bao_dat_hang";
 	}
 }

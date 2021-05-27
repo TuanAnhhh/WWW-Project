@@ -16,7 +16,7 @@ public class AnhSanPham{
 	
 	private String anh;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "sanphamID", nullable = false)
 	private SanPham sanpham;
 

@@ -129,12 +129,12 @@
 							</h3>
 							<ul class="main-category">
 								<c:forEach items="${dsDanhMuc}" var="item">
-									<li><a href="#">${item.key.ten} <i
+									<li><a href="<c:url value="/danh-sach-san-pham/danh-muc/${item.key.id}?page=1&limit=3"/>">${item.key.ten} <i
 											class="fa fa-angle-right" aria-hidden="true"></i></a>
 
 										<ul class="sub-category">
 											<c:forEach items="${item.value}" var="subItem">
-												<li><a href="#">${subItem.ten}</a></li>
+												<li><a href="<c:url value="/danh-sach-san-pham/danh-muc/${subItem.id}?page=1&limit=3"/>">${subItem.ten}</a></li>
 											</c:forEach>
 										</ul></li>
 								</c:forEach>
@@ -153,15 +153,8 @@
 													chủ</a></li>
 											<li><a href=" <c:url value="/danh-sach-san-pham?page=1&limit=3"/> ">Sản
 													phẩm</a></li>
-											<li><a href="#">Service</a></li>
-											<li><a href="#">Shop<i class="ti-angle-down"></i><span
-													class="new">New</span></a>
-												<ul class="dropdown">
-													<li><a href="shop-grid.html">Shop Grid</a></li>
-													<li><a href="cart.html">Cart</a></li>
-													<li><a href="checkout.html">Checkout</a></li>
-												</ul></li>
-											<li><a href="contact.html">Liên hệ</a></li>
+											
+											<li><a href=" <c:url value="/thong-tin-cua-hang"/> ">Thông tin cửa hàng</a></li>
 										</ul>
 									</div>
 								</div>
