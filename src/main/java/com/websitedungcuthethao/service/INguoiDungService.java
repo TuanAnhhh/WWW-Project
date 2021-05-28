@@ -2,11 +2,13 @@ package com.websitedungcuthethao.service;
 
 import java.util.List;
 
+import org.springframework.data.domain.Pageable;
+
 import com.websitedungcuthethao.dto.TaiKhoanDTO;
 import com.websitedungcuthethao.entity.NguoiDung;
 
 public interface INguoiDungService {
-	List<NguoiDung> findAll();
+	List<NguoiDung> findAllAndPaging(Pageable pageable);
 	void saveNguoiDung(NguoiDung nguoiDung);
 	void UpdateNguoiDung(NguoiDung nguoiDung);
 	NguoiDung findById(Long id);
@@ -15,4 +17,6 @@ public interface INguoiDungService {
 	void doiMatKhau(TaiKhoanDTO taiKhoanDTO);
 	
 	NguoiDung findOneByTenDangNhap(String tenDangNhap);
+	Long getTotalItem();
+	void setTrangThaiNguoiDung(Long id, boolean tt);
 }

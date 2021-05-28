@@ -3,11 +3,13 @@ package com.websitedungcuthethao.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.websitedungcuthethao.dto.NguoiDungDTONew;
 import com.websitedungcuthethao.dto.TaiKhoanDTO;
 import com.websitedungcuthethao.entity.NguoiDung;
+import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.repository.NguoiDungRepository;
 import com.websitedungcuthethao.service.INguoiDungService;
 
@@ -16,11 +18,6 @@ public class NguoiDungService  implements INguoiDungService{
 	@Autowired
 	private NguoiDungRepository nguoiDungRepository;
 
-
-	@Override
-	public List<NguoiDung> findAll() {
-		return nguoiDungRepository.findAll();
-	}
 
 	@Override
 	public void saveNguoiDung(NguoiDung nguoiDung) {
@@ -36,21 +33,6 @@ public class NguoiDungService  implements INguoiDungService{
 	public List<NguoiDung> findByTenAndHo(String ten, String ho) {
 		return nguoiDungRepository.findByTenAndHo(ten, ho);
 	}
-
-//	@Override
-//	public void UpdateNguoiDung(NguoiDungDTONew nguoiDungDTONew) {
-//		NguoiDung nguoiDung= nguoiDungRepository.findOne(nguoiDungDTONew.getId());
-//		if(nguoiDung!=null){
-//			nguoiDung.setHo(nguoiDungDTONew.getHo());
-//			nguoiDung.setTen(nguoiDungDTONew.getTen());
-//			nguoiDung.setGioiTinh(nguoiDungDTONew.isGioiTinh());
-//			nguoiDung.setEmail(nguoiDungDTONew.getEmail());
-//			nguoiDung.setSoDienThoai(nguoiDungDTONew.getSoDienThoai());
-//			nguoiDung.setNgaySinh(nguoiDungDTONew.getNgaySinh());
-//			nguoiDungRepository.save(nguoiDung);
-//		}
-//		
-//	}
 
 	@Override
 	public void doiMatKhau(TaiKhoanDTO taiKhoanDTO) {
@@ -70,6 +52,24 @@ public class NguoiDungService  implements INguoiDungService{
 		if(nguoiDung.getId()!=null) {
 			nguoiDungRepository.save(nguoiDung);
 		}
+	}
+
+	@Override
+	public List<NguoiDung> findAllAndPaging(Pageable pageable) {
+		List<NguoiDung> list = nguoiDungRepository.findAll(pageable).getContent();
+		return list;
+	}
+
+	@Override
+	public Long getTotalItem() {
+		// TODO Auto-generated method stub
+		return  nguoiDungRepository.count();
+	}
+
+	@Override
+	public void setTrangThaiNguoiDung(Long id, boolean tt) {
+		// TODO Auto-generated method stub
+		nguoiDungRepository.setTrangThaiNguoiDung(id, tt);	
 	}
 
 }

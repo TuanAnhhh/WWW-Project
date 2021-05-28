@@ -90,6 +90,7 @@
 	<!-- Active JS -->
 	<script src="<c:url value="/resources/user/js/active.js"/>"></script>
 	<decorator:getProperty property="page.script"></decorator:getProperty>
+	
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js"></script>
     <script src="<c:url value="/resources/phantrang/jquery.twbsPagination.js"/>"></script>

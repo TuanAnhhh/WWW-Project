@@ -26,7 +26,7 @@ public class SanPhamService implements ISanPhamService {
 	private NhaCungCapRepository nhaCungCapRepository;
 	
 	@Override
-	public List<SanPham> findAll(Pageable pageable) {
+	public List<SanPham> findAllAndPaging(Pageable pageable) {
 		List<SanPham> list = sanPhamRepository.findAll(pageable).getContent();
 		return list;
 	}	
@@ -110,6 +110,15 @@ public class SanPhamService implements ISanPhamService {
 	public List<SanPham> findByDanhMucIDAndPaging(Long idDM, Pageable pageable) {
 		// TODO Auto-generated method stub
 		return sanPhamRepository.findByDanhmucId(idDM, pageable);
+	}
+	@Override
+	public void setTrangThaiSanPham(Long id, boolean tt) {
+		sanPhamRepository.setTrangThaiSanPham(id, false);
+	}
+	@Override
+	public List<SanPham> findAllByTrangThaiAndPaging(boolean tt, Pageable pageable) {
+		List<SanPham> list = sanPhamRepository.findByTrangThai(tt, pageable);
+		return list;
 	}
 	
 }

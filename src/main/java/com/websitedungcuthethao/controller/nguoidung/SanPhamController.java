@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.websitedungcuthethao.constant.SystemConstant;
 import com.websitedungcuthethao.dto.AbstractDTO;
 import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.service.impl.SanPhamService;
@@ -32,7 +33,7 @@ public class SanPhamController {
 		
 		
 		Pageable pageable=new PageRequest(page -1, limit);
-		List<SanPham> dsSanPham= sanPhamService.findAll(pageable);
+		List<SanPham> dsSanPham= sanPhamService.findAllByTrangThaiAndPaging(SystemConstant.ACTIVE_STATUS, pageable);
 
 		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
 		abstractDTO.setLimit(limit);
@@ -53,7 +54,7 @@ public class SanPhamController {
 		
 		
 		Pageable pageable=new PageRequest(page -1, limit);
-		List<SanPham> dsSanPham= sanPhamService.findByDanhMucIDAndPaging(id, pageable);
+		List<SanPham> dsSanPham= sanPhamService.findAllByTrangThaiAndPaging(SystemConstant.ACTIVE_STATUS, pageable);
 		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
 		abstractDTO.setLimit(limit);
 		

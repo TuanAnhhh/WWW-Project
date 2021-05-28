@@ -10,9 +10,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.websitedungcuthethao.constant.SystemConstant;
 import com.websitedungcuthethao.dto.AbstractDTO;
 import com.websitedungcuthethao.dto.SanPhamDTO;
 import com.websitedungcuthethao.dto.ThemSanPhamDTO;
@@ -24,6 +28,7 @@ import com.websitedungcuthethao.service.impl.NhaCungCapService;
 import com.websitedungcuthethao.service.impl.SanPhamService;
 
 @Controller
+@RequestMapping("/quan-tri/quan-ly-san-pham")
 public class QuanLiSanPhamController {
 	@Autowired
 	private DanhMucService danhMucService;
@@ -33,7 +38,7 @@ public class QuanLiSanPhamController {
 	@Autowired
 	private NhaCungCapService nhaCungCapService;
 	
-	@RequestMapping("/quan-tri/quan-ly-san-pham")
+	@GetMapping
 	public String index(Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
 		List<DanhMuc>list= danhMucService.findAll();
 		
@@ -43,13 +48,12 @@ public class QuanLiSanPhamController {
 		
 		
 		Pageable pageable=new PageRequest(page -1, limit);
-		List<SanPham> dsSanPham= sanPhamService.findAll(pageable);
+		List<SanPham> dsSanPham= sanPhamService.findAllAndPaging(pageable);
 
 		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
 		abstractDTO.setLimit(limit);
 		
-		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit()));
-		
+		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
 		model.addAttribute("list",list);
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
@@ -58,7 +62,7 @@ public class QuanLiSanPhamController {
 		return"quantri/quanlisanpham";
 	}
 
-	@RequestMapping("/quan-tri/quan-ly-san-pham/them-san-pham")
+	@GetMapping("/them-san-pham")
 	public String themSanPham(Model model) {
 		ThemSanPhamDTO sanPham= new ThemSanPhamDTO();
 		model.addAttribute("sanPham", sanPham);	
@@ -70,7 +74,7 @@ public class QuanLiSanPhamController {
 	}
 	
 	
-	@RequestMapping("/quan-tri/quan-ly-san-pham/them-san-pham/save")
+	@PostMapping("/them-san-pham")
 	public String luuSanPham(@ModelAttribute("sanPham") ThemSanPhamDTO sanPham) {
 		System.out.println(sanPham.toString());
 		System.out.println(sanPham.getTenDanhMuc());
@@ -84,7 +88,7 @@ public class QuanLiSanPhamController {
 		sp.setThuongHieu(sanPham.getThuongHieu());
 		sp.setNoiDung(sanPham.getNoiDung());
 		sp.setGia(sanPham.getGia());
-		sp.setPhanTramGiamGia(1);
+		sp.setPhanTramGiamGia(0);
 		sp.setSoLuong(sanPham.getSoLuong());
 		sp.setSoLuotMua(0);
 		sp.setSoLuotXem(0);
@@ -93,7 +97,17 @@ public class QuanLiSanPhamController {
 		sp.setNgayTao(LocalDate.now());
 		
 		sanPhamService.save(sp);
-		return "redircet:/quan-tri/quan-ly-san-pham";
+		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
+	}
+	
+	@GetMapping("/xoa-san-pham/{id}")
+	public String tamNgungSanPham(@PathVariable Long id) {
+		try {
+			sanPhamService.setTrangThaiSanPham(id, SystemConstant.INACTIVE_STATUS);
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
+		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
 	}
 	
 }

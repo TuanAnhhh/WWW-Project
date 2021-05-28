@@ -60,13 +60,16 @@ public class QuenMatKhau {
 	
 	@RequestMapping(value ="/quen-mat-khau/doi-mat-khau/luu-mat-khau", method = RequestMethod.POST)
 	public ModelAndView doiMatKhat(@RequestParam String matkhau,@RequestParam String xacnhanmatkhau) {
-		if(!matkhau.equals(xacnhanmatkhau)) {
+		if(!matkhau.trim().equals(xacnhanmatkhau.trim())) {
 			return new ModelAndView("redirect:/quen-mat-khau/doi-mat-khau");
 		}
 		
 		NguoiDung nguoiDung= nguoiDungService.findOneByTenDangNhap(tdn);
-		nguoiDung.setMatKhau(BCrypt.hashpw(nguoiDung.getMatKhau(), BCrypt.gensalt(12)));
+		System.out.println(nguoiDung.getMatKhau());
+		nguoiDung.setMatKhau(BCrypt.hashpw(matkhau.trim(),BCrypt.gensalt(12)));
+		System.out.println(nguoiDung.getMatKhau());
 		nguoiDungService.UpdateNguoiDung(nguoiDung);
+		
 		return new ModelAndView("redirect:/");
 	}
 	

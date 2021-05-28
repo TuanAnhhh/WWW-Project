@@ -13,6 +13,8 @@ public interface SanPhamRepository extends JpaRepository<SanPham, Long> {
 	List<SanPham> findByTen(String ten);
 	SanPham findById(Long id);
 	
+	List<SanPham> findByTrangThai(boolean tt, Pageable pageable);
+	
 	@Query(value = "SELECT TOP 10 *  FROM SANPHAM order by soLuotXem DESC", nativeQuery = true)
 	List<SanPham> findDSSanPhamNoiBat();
 		
@@ -27,6 +29,7 @@ public interface SanPhamRepository extends JpaRepository<SanPham, Long> {
 	
 	List<SanPham> findByDanhmucId(Long id, Pageable pageable);
 	
-	
+	@Query(value = "update SanPham set trangThai=:trangThai where id=:id",nativeQuery = true)
+	void setTrangThaiSanPham(@Param("id") Long id, @Param("trangThai") boolean trangThai);
 	
 }

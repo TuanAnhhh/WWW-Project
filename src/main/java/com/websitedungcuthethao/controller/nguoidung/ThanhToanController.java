@@ -53,8 +53,6 @@ public class ThanhToanController {
 		double tongTienHD = (double) session.getAttribute("tongThanhTienGioHang");
 		HoaDon hd = new HoaDon(nguoiDungService.findOneByTenDangNhap(nguoidung.getTenDangNhap()),false,null,null,null,soLuongSp,tongTienHD);
 		hoaDonService.saveHoaDon(hd);
-		System.out.println("HD luu:" +hd.getId()+"......");
-		
 		
 		HashMap<Long, GiohangSanphamDTO> dsSanPhamGioHang  = (HashMap<Long, GiohangSanphamDTO>) session.getAttribute("gioHang");
 		hoaDonService.themDSChiTietHoaDon(hd.getId(), dsSanPhamGioHang);

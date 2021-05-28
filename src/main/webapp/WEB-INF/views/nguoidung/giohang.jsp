@@ -122,7 +122,7 @@
 		$(".edit-cart").on("click", function(){
 			var id = $(this).data("id");
 			var soluong = $("#so-luong-"+id).val();
-			window.location = "gio-hang/sua/"+id+"/"+soluong;
+			window.location = "quan-tri/quan-ly-san-pham/xoa-san-pham"+id;
 			alert("Cập nhật thành công");
 		});
 	</script>

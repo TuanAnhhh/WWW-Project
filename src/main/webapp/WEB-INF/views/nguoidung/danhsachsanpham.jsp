@@ -5,16 +5,17 @@
 <title>Danh sách sản phẩm</title>
 
 <body>
-<form action="<c:url value='/danh-sach-san-pham/?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" id="formSubmit" method="get" >
+<form action="<c:url value='/danh-sach-san-pham?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" id="formSubmit" method="get" >
 	<!-- Product Style -->
 	<section class="product-area shop-sidebar shop section">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-md-4 col-12">
 					<div class="shop-sidebar">
+
 						<!-- Single Widget -->
 						<div class="single-widget category">
-							<h3 class="title">Categories</h3>
+							<h3 class="title">Categories </h3>
 							<ul class="categor-list">
 								<li><a href="#">T-shirts</a></li>
 								<li><a href="#">jacket</a></li>

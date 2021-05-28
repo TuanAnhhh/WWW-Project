@@ -14,7 +14,7 @@
 								<h3 class="text-center font-weight-light my-4">Đăng ký tài khoản</h3>
 							</div>
 							<div class="card-body">
-								<form:form method="POST" action="dangky" modelAttribute="nguoiDung">
+								<form:form method="POST" action="dangky/xac-nhan" modelAttribute="nguoiDung">
 									<div class="row">
 										<div class="col-5">
 											<div class="form-group">

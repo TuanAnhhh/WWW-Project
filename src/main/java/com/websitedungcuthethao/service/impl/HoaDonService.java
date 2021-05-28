@@ -1,14 +1,17 @@
 package com.websitedungcuthethao.service.impl;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.websitedungcuthethao.dto.GiohangSanphamDTO;
 import com.websitedungcuthethao.entity.ChiTietHoaDon;
 import com.websitedungcuthethao.entity.HoaDon;
+import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.repository.ChiTietHoaDonRepository;
 import com.websitedungcuthethao.repository.HoaDonRepository;
 import com.websitedungcuthethao.repository.SanPhamRepository;
@@ -46,6 +49,18 @@ public class HoaDonService implements IHoaDonService {
 			System.out.println(ct.toString());
 			chiTietHoaDonRepository.themCTHD(idHD, ct.getSanpham().getId(), 0, gioHang.values().size());
 		}
+	}
+
+	@Override
+	public List<HoaDon> findAllByTrangThaiAndPaging(boolean tt, Pageable pageable) {
+		List<HoaDon> list = hoaDonRepository.findByTrangThai(tt, pageable);
+		return list;
+	}
+
+	@Override
+	public Long getTotalItem() {
+		// TODO Auto-generated method stub
+		return hoaDonRepository.count();
 	}
 
 	
