@@ -62,10 +62,10 @@
 							<div class="shop-top">
 								<div class="shop-shorter">									
 									<div class="single-shorter">
-										<label>Sắp xếp theo giá :</label> <select>
+										<label>Sắp xếp theo giá :</label> <select id="sepXep">
 											<option selected="selected">Giá</option>
-											<option>Giá: Thấp đến cao</option>
-											<option>Giá: Cao đến thấp</option>
+											<option value="asc">Giá: Thấp đến cao</option>
+											<option value="desc">Giá: Cao đến thấp</option>
 										</select>
 									</div>
 								</div>
@@ -160,5 +160,11 @@
 				}
 			});
 		});
+		
+		$("#sepXep").change(function() {
+				var x = $("#sepXep").val();
+			  window.location = "danh-sach-san-pham/sap-xep/"+x;
+			  
+			});
 	</script> </content>
 </body>

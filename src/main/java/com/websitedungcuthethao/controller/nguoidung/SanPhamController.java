@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -60,6 +61,25 @@ public class SanPhamController {
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
 //		return "redirect:/danh-sach-san-pham?page=1&limit=3";
+		return "nguoidung/danhsachsanpham";
+	}
+	@GetMapping("sap-xep/{value}")
+	public String sapXep(@PathVariable String value, Model model) {
+		AbstractDTO abstractDTO= new AbstractDTO();
+//		abstractDTO.setPage(page);
+//		abstractDTO.setLimit(limit);
+		
+		
+//		List<SanPham> dsSanPham= sanPhamService.findAll(pageable);
+
+		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
+//		abstractDTO.setLimit(limit);
+		
+		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
+		System.out.println(abstractDTO.toString());
+		model.addAttribute("abstractDTO",abstractDTO);
+//		model.addAttribute("dsSanPham", dsSanPham);
+		
 		return "nguoidung/danhsachsanpham";
 	}
 }

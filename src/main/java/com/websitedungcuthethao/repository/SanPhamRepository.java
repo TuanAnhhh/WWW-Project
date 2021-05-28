@@ -26,4 +26,7 @@ public interface SanPhamRepository extends JpaRepository<SanPham, Long> {
 	List<SanPham> findByDanhMucID(@Param("idDM") Long idDM);
 	
 	List<SanPham> findByDanhmucId(Long id, Pageable pageable);
+	
+	
+	
 }
