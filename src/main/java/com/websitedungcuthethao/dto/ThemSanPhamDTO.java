@@ -11,6 +11,22 @@ public class ThemSanPhamDTO {
 	private int soLuong;
 	private String anhDaiDien;
 	private int thoiGianBaoHanh;
+	private String tenThuocTinh;
+	private String giaTriThuocTinh;
+	
+	
+	public String getTenThuocTinh() {
+		return tenThuocTinh;
+	}
+	public void setTenThuocTinh(String tenThuocTinh) {
+		this.tenThuocTinh = tenThuocTinh;
+	}
+	public String getGiaTriThuocTinh() {
+		return giaTriThuocTinh;
+	}
+	public void setGiaTriThuocTinh(String giaTriThuocTinh) {
+		this.giaTriThuocTinh = giaTriThuocTinh;
+	}
 	public String getTen() {
 		return ten;
 	}

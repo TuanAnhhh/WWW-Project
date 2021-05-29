@@ -56,9 +56,9 @@
 								</thead>
 
 								<tbody>
-									<c:forEach items="${dsSanPham}" var="sp">
+									<c:forEach items="${dsSanPham}" var="sp" varStatus="count">
 										<tr>
-											<td>${sp.id }</td>
+											<td>${count.count}</td>
 											<td>${sp.ten}</td>
 											<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia}" /></span></td>
 											<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia + sp.gia*sp.phanTramGiamGia}" /></span></td>
@@ -67,8 +67,9 @@
 											<td>${sp.thuongHieu }</td>
 											<td>${sp.trangThai? "Đang bán" : "Tạm ngưng" }</td>
 											<td>
-											<a href="" class="mr-2 ml-2"><i class="far fa-edit"></i></a>
-											<button id="xoa-san-pham" type="button" data-id="${sp.id}" ><i class="fas fa-trash-alt "></i></button>											
+											<a href=" <c:url value="/quan-tri/quan-ly-san-pham/sua-san-pham/${sp.id}" />" class="mr-2 ml-2"><i class="far fa-edit"></i></a>
+											
+											<button  type="button" onclick="myFunction(${sp.id})" ><i class="fas fa-trash-alt "></i></button>											
 											</td>
 										</tr>
 									</c:forEach>
@@ -114,15 +115,16 @@
 			});
 		});
 		
-		// xoa san pham
-		$( "#xoa-san-pham" ).on( "click", function() {
-			var id = $(this).data("id");
-			var r = confirm("Are u sure!" + id, "Xác nhận");
-			 if(r == true){
-				 window.location = "xoa-san-pham/"+id;
-			} else{
-				alert("Xóa không thành công")
+		// thay đổi trạng thái sản phẩm
+		
+		function myFunction(id) {
+            var r = confirm("bạn có thay đổi trạng thái sản phẩm ?");
+            if (r == true) {
+                window.location.href= "http://localhost:8080/website-dungcuthethao/quan-tri/quan-ly-san-pham/xoa-san-pham/"+id;
+            } else{
+				alert("Đã hủy thay đổi")
 			}
-		});
+          
+        }
 	</script> </content>
 </body>

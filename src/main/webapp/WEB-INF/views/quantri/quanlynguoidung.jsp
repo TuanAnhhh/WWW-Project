@@ -33,6 +33,7 @@
 									<th>Email</th>
 									<th>Số điện thoại</th>
 									<th>Ngày tạo</th>
+									<th>Trạng thái</th>
 									<th>Quản lý</th>
 									
 								</tr>
@@ -50,9 +51,11 @@
 									<td>${nd.email}</td>
 									<td>${nd.soDienThoai }</td>
 									<td>${nd.ngayTao }</td>
+									<td>${nd.trangThai? "Hoạt động":"Đã chặn" }</td>
 									<td>
-									<a href="" class="mr-2 ml-2"><i class="far fa-edit"></i></a>
-									<a href=""><i class="fas fa-trash-alt"></i></a>
+									
+									
+									<button  type="button" onclick="myFunction(${nd.id})" ><i class="far fa-edit "></i></button>
 									
 									</td>
 								</tr>
@@ -95,5 +98,18 @@
 				}
 			});
 		});
+		
+		
+// thay đổi trạng thái người dùng
+		
+		function myFunction(id) {
+            var r = confirm("bạn có muốn chặn / bỏ chặn người dùng này không ?");
+            if (r == true) {
+                window.location.href= "http://localhost:8080/website-dungcuthethao/quan-tri/quan-ly-nguoi-dung/sua-trang-thai/"+id;
+            } else{
+				alert("Đã hủy thay đổi")
+			}
+          
+        }
 	</script> </content>
 </body>

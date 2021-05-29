@@ -37,7 +37,7 @@
 				<div class="nav">
 					<div class="sb-sidenav-menu-heading">Đơn hàng</div>
 
-					</a> <a class="nav-link" href="tables.html">
+					</a> <a class="nav-link" href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=3" />">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-table"></i>
 						</div> Đơn hàng chưa xác nhận

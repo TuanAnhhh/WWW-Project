@@ -21,15 +21,26 @@ import com.websitedungcuthethao.dto.AbstractDTO;
 import com.websitedungcuthethao.dto.SanPhamDTO;
 import com.websitedungcuthethao.dto.ThemSanPhamDTO;
 import com.websitedungcuthethao.entity.DanhMuc;
+import com.websitedungcuthethao.entity.GiaTriThuocTinhSanPham;
 import com.websitedungcuthethao.entity.NhaCungCap;
 import com.websitedungcuthethao.entity.SanPham;
+import com.websitedungcuthethao.entity.ThuocTinhSanPham;
 import com.websitedungcuthethao.service.impl.DanhMucService;
+import com.websitedungcuthethao.service.impl.GiaTriThuocTinhSanPhamService;
 import com.websitedungcuthethao.service.impl.NhaCungCapService;
 import com.websitedungcuthethao.service.impl.SanPhamService;
+import com.websitedungcuthethao.service.impl.ThuocTinhSanPhamService;
 
 @Controller
 @RequestMapping("/quan-tri/quan-ly-san-pham")
 public class QuanLiSanPhamController {
+	private SanPham sanP=null;
+	@Autowired
+	private ThuocTinhSanPhamService thuocTinhSanPhamService;
+	
+	@Autowired
+	private GiaTriThuocTinhSanPhamService giaTriThuocTinhSanPhamService;
+	
 	@Autowired
 	private DanhMucService danhMucService;
 	@Autowired
@@ -70,12 +81,18 @@ public class QuanLiSanPhamController {
 		model.addAttribute("listDanhMuc", listDanhMuc);
 		List<NhaCungCap> listNhaCungCap= nhaCungCapService.findAll(); 
 		model.addAttribute("listNhaCungCap", listNhaCungCap);
+		
+		List<ThuocTinhSanPham> listThuocTinh= thuocTinhSanPhamService.findAll();
+		model.addAttribute("listThuocTinh", listThuocTinh);
+		
+		
 		return "quantri/themsanpham";
 	}
 	
 	
 	@PostMapping("/them-san-pham")
 	public String luuSanPham(@ModelAttribute("sanPham") ThemSanPhamDTO sanPham) {
+		System.out.println(sanPham.getTenThuocTinh());
 		System.out.println(sanPham.toString());
 		System.out.println(sanPham.getTenDanhMuc());
 		System.out.println(danhMucService.findByTen(sanPham.getTenDanhMuc()));
@@ -95,7 +112,15 @@ public class QuanLiSanPhamController {
 		sp.setThoiGianBaoHanh(sanPham.getThoiGianBaoHanh());
 		sp.setTrangThai(true);
 		sp.setNgayTao(LocalDate.now());
-		
+		System.out.println(thuocTinhSanPhamService.findOneByTenThuoctinh(sanPham.getTenThuocTinh()));
+		System.out.println(1);
+		GiaTriThuocTinhSanPham giaTriThuocTinhSanPham=new GiaTriThuocTinhSanPham();
+		giaTriThuocTinhSanPham.setGiaTriThuocTinh(sanPham.getGiaTriThuocTinh());
+		ThuocTinhSanPham thuocTinhSanPham= thuocTinhSanPhamService.findOneByTenThuoctinh(sanPham.getTenThuocTinh());
+		giaTriThuocTinhSanPham.setSanpham(sp);
+		giaTriThuocTinhSanPham.setThuoctinhsanpham(thuocTinhSanPham);
+//		giaTriThuocTinhSanPhamService.saveGTTTSP(giaTriThuocTinhSanPham);
+		System.out.println(giaTriThuocTinhSanPham);
 		sanPhamService.save(sp);
 		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
 	}
@@ -103,11 +128,41 @@ public class QuanLiSanPhamController {
 	@GetMapping("/xoa-san-pham/{id}")
 	public String tamNgungSanPham(@PathVariable Long id) {
 		try {
-			sanPhamService.setTrangThaiSanPham(id, SystemConstant.INACTIVE_STATUS);
+			System.out.println(sanPhamService.findById(id).isTrangThai());
+			if(sanPhamService.findById(id).isTrangThai()==true) {
+				sanPhamService.setTrangThaiSanPham(id, SystemConstant.INACTIVE_STATUS);
+				
+			}
+			else if(sanPhamService.findById(id).isTrangThai()==false){
+				sanPhamService.setTrangThaiSanPham(id, SystemConstant.ACTIVE_STATUS);
+			}
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
 		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
 	}
+	
+	@GetMapping("/sua-san-pham/{id}")
+	public String suaSanPham(@PathVariable Long id,Model model) {
+		SanPham sanPham= sanPhamService.findById(id);
+		sanP= sanPham;
+		model.addAttribute("sanPham", sanPham);
+		return "quantri/suasanpham";
+	}
+	@PostMapping("/sua-san-pham/luu-thong-tin")
+	public String suaSanPham(@ModelAttribute SanPham sanPham) {
+		sanP.setTen(sanPham.getTen());
+		sanP.setAnhDaiDien(sanPham.getAnhDaiDien());
+		sanP.setGia(sanPham.getGia());
+		sanP.setMoTa(sanPham.getMoTa());
+		sanP.setNoiDung(sanPham.getNoiDung());
+		sanP.setThoiGianBaoHanh(sanPham.getThoiGianBaoHanh());
+		sanP.setThuongHieu(sanPham.getThuongHieu());
+		sanP.setPhanTramGiamGia(sanPham.getPhanTramGiamGia());
+		sanPhamService.updateSanPham(sanP);
+		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
+	}
+	
 	
 }

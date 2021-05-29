@@ -1,5 +1,6 @@
 package com.websitedungcuthethao.controller.nguoidung;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,7 +52,7 @@ public class ThanhToanController {
 		
 		int soLuongSp = (int) session.getAttribute("tongSoLuongGioHang");
 		double tongTienHD = (double) session.getAttribute("tongThanhTienGioHang");
-		HoaDon hd = new HoaDon(nguoiDungService.findOneByTenDangNhap(nguoidung.getTenDangNhap()),false,null,null,null,soLuongSp,tongTienHD);
+		HoaDon hd = new HoaDon(nguoiDungService.findOneByTenDangNhap(nguoidung.getTenDangNhap()),false,LocalDate.now(),LocalDate.now().plusDays(7),null,soLuongSp,tongTienHD);
 		hoaDonService.saveHoaDon(hd);
 		
 		HashMap<Long, GiohangSanphamDTO> dsSanPhamGioHang  = (HashMap<Long, GiohangSanphamDTO>) session.getAttribute("gioHang");

@@ -7,12 +7,12 @@
 	<div id="layoutSidenav_content">
 		<main>
 		<div class="container-fluid">
-		<form action="<c:url value='/quan-tri/quan-ly-hoa-don?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" id="formSubmit"> 
-			<h1 class="mt-4">Quản lý hóa đơn</h1>
+		<form action="<c:url value='/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" id="formSubmit"> 
+			<h1 class="mt-4">Quản lý đơn hàng</h1>
 			
 			<div class="card mb-4">
 				<div class="card-header">
-					<i class="fas fa-table mr-1"></i> Danh sách hóa đơn đã lập
+					<i class="fas fa-table mr-1"></i> Danh sách đơn hàng chờ xác nhận
 				</div>
 
 				<div class="card-body">
@@ -40,7 +40,7 @@
 									<td>${nd.tongTienHoaDon}</td>
 									<td>${nd.ngayDat}</td>
 									<td>
-									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/xem-chi-tiet/${nd.id}" />" class="mr-2 ml-2"><i class="far fa-edit"></i></a>
+									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan/xac-nhan/${nd.id}" />" class="mr-2 ml-2">Xác nhận</a>
 									
 									
 									</td>
@@ -66,7 +66,7 @@
 		</div>
 		</main>
 	</div>
-	<content tag="script"> <script type="text/javascript">
+<content tag="script"> <script type="text/javascript">
 		var totalPages = ${abstractDTO.totalPage};
 		var currentPage = ${abstractDTO.page};
 		var limit = ${abstractDTO.limit};
@@ -84,5 +84,6 @@
 				}
 			});
 		});
-	</script> </content>
+	</script> 
+</content>
 </body>

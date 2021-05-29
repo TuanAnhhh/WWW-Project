@@ -51,18 +51,21 @@ public class QuanLyNguoiDungController {
 	}
 	
 	@RequestMapping("/sua-trang-thai/{id}")
-	public ModelAndView suaTrangThaiNguoiDung(@PathVariable Long id) {
-		NguoiDung nd= nguoiDungService.findById(id);
-		if(nd.isTrangThai()) {
-			nd.setTrangThai(SystemConstant.INACTIVE_STATUS);
-			
-			System.out.println(nd.isTrangThai()+"");
-		}else {
-			nd.setTrangThai(SystemConstant.ACTIVE_STATUS);
+	public String suaTrangThaiNguoiDung(@PathVariable Long id) {
+		try {
+			if(nguoiDungService.findById(id).isTrangThai()==true) {
+				System.out.println(1);
+				nguoiDungService.setTrangThaiNguoiDung(id, SystemConstant.INACTIVE_STATUS);
+				System.out.println(nguoiDungService.findById(id).isTrangThai());
+			}else {
+				nguoiDungService.setTrangThaiNguoiDung(id, SystemConstant.ACTIVE_STATUS);
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
 		}
-		nguoiDungService.UpdateNguoiDung(nd);
 		
-		return new ModelAndView("redirect:/quan-tri/quan-ly-nguoi-dung");
+		
+		return "redirect:/quan-tri/quan-ly-nguoi-dung?page=1&limit=3";
 	}
 	
 }

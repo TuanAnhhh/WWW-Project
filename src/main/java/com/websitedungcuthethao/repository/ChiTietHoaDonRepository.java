@@ -1,5 +1,7 @@
 package com.websitedungcuthethao.repository;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.data.jpa.repository.Modifying;
@@ -15,4 +17,8 @@ public interface ChiTietHoaDonRepository extends CrudRepository<ChiTietHoaDon, L
 	@Query(value = "insert into chitiethoadon(hoadonID,sanphamID,giamGia,soLuong) values (:hoadonID,:sanphamID,:giamGia,:soLuong)", nativeQuery = true)
 	@Transactional
 	void themCTHD(@Param("hoadonID") Long hoadonID, @Param("sanphamID") Long sanphamID, @Param("giamGia") int giamGia,@Param("soLuong") int soLuong);
+
+	
+	@Query(value = "SELECT * FROM CHITIETHOADON WHERE HOADONID = ?1", nativeQuery = true)
+	List<ChiTietHoaDon> findByHoaDon(Long hoadonID);
 }

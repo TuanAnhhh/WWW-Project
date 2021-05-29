@@ -1,5 +1,7 @@
 package com.websitedungcuthethao.service;
 
+import java.util.List;
+
 import com.websitedungcuthethao.entity.ThuocTinhSanPham;
 
 public interface IThuocTinhSanPhamService {
@@ -7,4 +9,5 @@ public interface IThuocTinhSanPhamService {
 	void updateTTSP(ThuocTinhSanPham thuocTinhSanPham);
 	ThuocTinhSanPham findById(Long id);
 	ThuocTinhSanPham findOneByTenThuoctinh(String ten);
+	List<ThuocTinhSanPham> findAll();
 }

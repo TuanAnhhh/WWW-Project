@@ -53,34 +53,10 @@ public class SanPhamService implements ISanPhamService {
 	
 	
 	@Override
-	public void updateSanPham(SanPhamDTO sanPhamDTO) {
-//		SanPham sanPham= sanPhamRepository.findOne(sanPhamDTO.getId());
-//		if(sanPham!=null) {
-//			sanPham.setTen(sanPhamDTO.getTen());
-//			sanPham.setGia(sanPhamDTO.getGia());
-//			sanPham.setAnhDaiDien(sanPhamDTO.getAnhDaiDien());
-//			sanPham.setGiaGiam(sanPhamDTO.getGiaGiam());
-//			sanPham.setSoLuotXem(sanPhamDTO.getSoLuotXem());
-//			sanPham.setMoTa(sanPhamDTO.getMoTa());
-//			sanPham.setNgaySua(LocalDate.now());
-//			sanPham.setNguoiSua(sanPhamDTO.getNguoiSua());
-//			sanPham.setNoiDung(sanPhamDTO.getNoiDung());
-//			sanPham.setSoLuong(sanPhamDTO.getSoLuong());
-//			sanPham.setThuongHieu(sanPhamDTO.getThuongHieu());
-//			sanPham.setTrangThai(sanPhamDTO.isTrangThai());
-//			sanPham.setThoiGianBaoHanh(sanPhamDTO.getThoiGianBaoHanh());
-//			sanPham.setVideo(sanPhamDTO.getVideo());
-//			sanPham.setDanhmuc(danhMucRepository.findByTen(sanPhamDTO.getTenDanhMuc()));
-//			
-//			List<NhaCungCap> caps=nhaCungCapRepository.findByTenNhaCungCap(sanPhamDTO.getTenNhaCungCap());
-//			
-//			sanPham.setNhacungcap(caps.get(0));
-//			sanPham.setSoLuotMua(sanPhamDTO.getSoLuotMua());
-//			
-//			sanPhamRepository.save(sanPham);
-//			
-//		}
-		
+	public void updateSanPham(SanPham sanPham) {
+		if(sanPham!=null) {
+			sanPhamRepository.save(sanPham);
+		}
 	}
 	@Override
 	public List<SanPham> findTop3SanPhamBySoLuotXem() {
@@ -113,7 +89,7 @@ public class SanPhamService implements ISanPhamService {
 	}
 	@Override
 	public void setTrangThaiSanPham(Long id, boolean tt) {
-		sanPhamRepository.setTrangThaiSanPham(id, false);
+		sanPhamRepository.setTrangThaiSanPham(id, tt);
 	}
 	@Override
 	public List<SanPham> findAllByTrangThaiAndPaging(boolean tt, Pageable pageable) {

@@ -63,6 +63,11 @@ public class HoaDonService implements IHoaDonService {
 		return hoaDonRepository.count();
 	}
 
+	@Override
+	public void setTrangThaiHoaDon(Long id, boolean tt) {
+		hoaDonRepository.setTrangThaiHoaDon(id, tt);
+	}
+
 	
 	
 }

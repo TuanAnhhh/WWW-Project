@@ -1,19 +1,16 @@
 package com.websitedungcuthethao.service.impl;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.websitedungcuthethao.dto.GiohangSanphamDTO;
 import com.websitedungcuthethao.entity.ChiTietHoaDon;
 import com.websitedungcuthethao.repository.ChiTietHoaDonRepository;
-import com.websitedungcuthethao.repository.SanPhamRepository;
 import com.websitedungcuthethao.service.IChiTietHoaDonService;
 
-@Transactional
+
 @Service
 public class ChiTietHoaDonService  implements IChiTietHoaDonService{
 	@Autowired 
@@ -22,6 +19,16 @@ public class ChiTietHoaDonService  implements IChiTietHoaDonService{
 	@Override
 	public void saveCTHD(ChiTietHoaDon chiTietHoaDon) {
 		chiTietHoaDonRepository.save(chiTietHoaDon);
+	}
+
+	@Override
+	public ChiTietHoaDon findById(Long id) {
+		return chiTietHoaDonRepository.findOne(id);
+	}
+
+	@Override
+	public List<ChiTietHoaDon> findByMaHoaDon(Long hoadonID) {
+		return chiTietHoaDonRepository.findByHoaDon(hoadonID);
 	}
 
 }

@@ -1,5 +1,7 @@
 package com.websitedungcuthethao.service.impl;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +37,10 @@ public class ThuocTinhSanPhamService implements IThuocTinhSanPhamService {
 	@Override
 	public ThuocTinhSanPham findOneByTenThuoctinh(String ten) {
 		return thuocTinhSanPhamRepository.findOneByTenThuoctinh(ten);
+	}
+
+	@Override
+	public List<ThuocTinhSanPham> findAll() {
+		return thuocTinhSanPhamRepository.findAll();
 	}
 }

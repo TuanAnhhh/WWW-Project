@@ -1,11 +1,12 @@
 package com.websitedungcuthethao.service;
 
-import java.util.HashMap;
+import java.util.List;
 
-import com.websitedungcuthethao.dto.GiohangSanphamDTO;
 import com.websitedungcuthethao.entity.ChiTietHoaDon;
 
 public interface IChiTietHoaDonService {
 	void saveCTHD(ChiTietHoaDon chiTietHoaDon);
 	
+	ChiTietHoaDon findById(Long id);
+	List<ChiTietHoaDon> findByMaHoaDon(Long hoadonID);
 }

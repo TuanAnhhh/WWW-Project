@@ -13,7 +13,7 @@ public interface ISanPhamService {
 	void deleteById(Long id);
 	void save (SanPham sanPham);
 	SanPham findById(Long id);
-	void updateSanPham(SanPhamDTO sanPhamDTO);
+	void updateSanPham(SanPham sanPham);
 	List<SanPham> findTop3SanPhamBySoLuotXem();
 	List<SanPham> findDSSanPhamNoiBat();
 	List<SanPham> findTop3SanPhamGiamGiaNhieuNhat();
