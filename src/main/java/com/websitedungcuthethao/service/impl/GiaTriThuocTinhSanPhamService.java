@@ -19,10 +19,7 @@ public class GiaTriThuocTinhSanPhamService implements IGiaTriThuocTinhSanPhamSer
 	private ThuocTinhSanPhamRepository thuocTinhSanPhamRepository;
 	
 
-	@Override
-	public void saveGTTTSP(GiaTriThuocTinhSanPham giaTriThuocTinhSanPham) {
-		giaTriThuocTinhSanPhamRepository.save(giaTriThuocTinhSanPham);
-	}
+	
 
 	@Override
 	public void updateGTTTSP(SanPham sanPham) {
@@ -32,6 +29,11 @@ public class GiaTriThuocTinhSanPhamService implements IGiaTriThuocTinhSanPhamSer
 	@Override
 	public GiaTriThuocTinhSanPham findByIdSanPhamAndIDThuocTinh(Long idSP, Long idTT) {
 		return giaTriThuocTinhSanPhamRepository.findBySanPhamIDAndThuocTinhSanPhamID(idSP, idTT);
+	}
+
+	@Override
+	public void saveGTTTSP(Long sanPhamID, Long thuocTinhID, String giaTri) {
+		giaTriThuocTinhSanPhamRepository.themGTTTSP(sanPhamID, thuocTinhID, giaTri);
 	}
 
 }

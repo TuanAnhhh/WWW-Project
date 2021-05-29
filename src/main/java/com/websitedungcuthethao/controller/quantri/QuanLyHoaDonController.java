@@ -118,4 +118,25 @@ public class QuanLyHoaDonController {
 		}
 		return"redirect:/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=3";
 	}
+	
+	@GetMapping("don-hang-chua-xac-nhan/tu-choi/{id}")
+	public String tuChoiDonHang(@PathVariable Long id) {
+		System.out.println(id);
+		try {
+			HoaDon hoaDon= hoaDonService.findById(id);
+			NguoiDung nguoiDung=nguoiDungService.findById(hoaDon.getNguoidung().getId());
+			senMail.SenEmail(nguoiDung.getEmail(),
+					"Thong bao huy don dat hang",
+					"Vi mot so li do don hang cua ban da bi huy. Chung toi chan thanh xin loi vi su bat tien nay."+"\n"+"hay truy cap vao website: http://localhost:8080/website-dungcuthethao/  cua chung toi de tiep tuc mua sap"+"\n moi chi tiet vui long lien he: 0702704302");
+			List<ChiTietHoaDon>list= chiTietHoaDonService.findByMaHoaDon(id);
+			System.out.println(list);
+			chiTietHoaDonService.deleteCTHD(list);
+			hoaDonService.deleteHoaDon(hoaDon);
+			System.out.println(hoaDonService.findById(id));
+			
+			
+		} catch (Exception e) {
+		}
+		return"redirect:/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=3";
+	}
 }

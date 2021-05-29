@@ -7,10 +7,6 @@ import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
-
 @Entity
 @IdClass(GiaTriThuocTinhSanPham_PK.class)
 public class GiaTriThuocTinhSanPham {

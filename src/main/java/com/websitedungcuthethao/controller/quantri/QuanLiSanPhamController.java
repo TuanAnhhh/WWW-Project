@@ -1,7 +1,10 @@
 package com.websitedungcuthethao.controller.quantri;
 
+import java.io.IOException;
 import java.time.LocalDate;
 import java.util.List;
+
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -13,15 +16,12 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.websitedungcuthethao.constant.SystemConstant;
 import com.websitedungcuthethao.dto.AbstractDTO;
-import com.websitedungcuthethao.dto.SanPhamDTO;
 import com.websitedungcuthethao.dto.ThemSanPhamDTO;
 import com.websitedungcuthethao.entity.DanhMuc;
-import com.websitedungcuthethao.entity.GiaTriThuocTinhSanPham;
 import com.websitedungcuthethao.entity.NhaCungCap;
 import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.entity.ThuocTinhSanPham;
@@ -30,6 +30,7 @@ import com.websitedungcuthethao.service.impl.GiaTriThuocTinhSanPhamService;
 import com.websitedungcuthethao.service.impl.NhaCungCapService;
 import com.websitedungcuthethao.service.impl.SanPhamService;
 import com.websitedungcuthethao.service.impl.ThuocTinhSanPhamService;
+import com.websitedungcuthethao.util.LuuAnh;
 
 @Controller
 @RequestMapping("/quan-tri/quan-ly-san-pham")
@@ -48,6 +49,11 @@ public class QuanLiSanPhamController {
 	
 	@Autowired
 	private NhaCungCapService nhaCungCapService;
+	
+	
+	@Autowired
+	private LuuAnh luuAnh;
+	
 	
 	@GetMapping
 	public String index(Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
@@ -91,13 +97,15 @@ public class QuanLiSanPhamController {
 	
 	
 	@PostMapping("/them-san-pham")
-	public String luuSanPham(@ModelAttribute("sanPham") ThemSanPhamDTO sanPham) {
+	public String luuSanPham(@ModelAttribute("sanPham") ThemSanPhamDTO sanPham,HttpSession session) throws IOException{
 		System.out.println(sanPham.getTenThuocTinh());
+		
+		
 		System.out.println(sanPham.toString());
 		System.out.println(sanPham.getTenDanhMuc());
 		System.out.println(danhMucService.findByTen(sanPham.getTenDanhMuc()));
 		SanPham sp= new SanPham();
-		sp.setAnhDaiDien(sanPham.getAnhDaiDien());
+		sp.setAnhDaiDien(sanPham.getAnhDaiDien().getOriginalFilename());
 		sp.setTen(sanPham.getTen());
 		sp.setDanhmuc(danhMucService.findByTen(sanPham.getTenDanhMuc()));
 		sp.setNhacungcap(nhaCungCapService.findByTenNhaCungCap(sanPham.getTenNhaCungCap()));
@@ -112,16 +120,18 @@ public class QuanLiSanPhamController {
 		sp.setThoiGianBaoHanh(sanPham.getThoiGianBaoHanh());
 		sp.setTrangThai(true);
 		sp.setNgayTao(LocalDate.now());
+		sanPhamService.save(sp);
+		
+		
 		System.out.println(thuocTinhSanPhamService.findOneByTenThuoctinh(sanPham.getTenThuocTinh()));
 		System.out.println(1);
-		GiaTriThuocTinhSanPham giaTriThuocTinhSanPham=new GiaTriThuocTinhSanPham();
-		giaTriThuocTinhSanPham.setGiaTriThuocTinh(sanPham.getGiaTriThuocTinh());
+		luuAnh.luuAnh(sanPham.getAnhDaiDien(), session);
+		
 		ThuocTinhSanPham thuocTinhSanPham= thuocTinhSanPhamService.findOneByTenThuoctinh(sanPham.getTenThuocTinh());
-		giaTriThuocTinhSanPham.setSanpham(sp);
-		giaTriThuocTinhSanPham.setThuoctinhsanpham(thuocTinhSanPham);
-//		giaTriThuocTinhSanPhamService.saveGTTTSP(giaTriThuocTinhSanPham);
-		System.out.println(giaTriThuocTinhSanPham);
-		sanPhamService.save(sp);
+		
+		giaTriThuocTinhSanPhamService.saveGTTTSP(sp.getId(), thuocTinhSanPham.getId(), sanPham.getGiaTriThuocTinh());
+		
+		
 		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
 	}
 	
@@ -162,6 +172,8 @@ public class QuanLiSanPhamController {
 		sanP.setPhanTramGiamGia(sanPham.getPhanTramGiamGia());
 		sanPhamService.updateSanPham(sanP);
 		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
+		
+		
 	}
 	
 	

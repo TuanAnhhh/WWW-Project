@@ -9,7 +9,7 @@
 				<div class="col-sm-12 text-center mt-3 mb-3">
 					<h3>Thêm sản phẩm</h3>
 				</div>
-				<form:form action="them-san-pham" method="POST" modelAttribute="sanPham">
+				<form:form action="them-san-pham" method="POST" modelAttribute="sanPham" enctype="multipart/form-data">
 				<div class="form-group row">
 					<form:label path="ten" cssClass="col-sm-2 col-form-label">Tên sản phẩm</form:label> 
 					 <div class="col-sm-10">
@@ -122,7 +122,7 @@
 			<div class="form-group row">
 
 		</div>
-
+</div>
 		</main>
 
 	</div>

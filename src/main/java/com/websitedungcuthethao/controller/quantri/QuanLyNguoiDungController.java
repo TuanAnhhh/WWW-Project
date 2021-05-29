@@ -11,13 +11,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
 
 import com.websitedungcuthethao.constant.SystemConstant;
 import com.websitedungcuthethao.dto.AbstractDTO;
-import com.websitedungcuthethao.entity.DanhMuc;
 import com.websitedungcuthethao.entity.NguoiDung;
-import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.service.impl.NguoiDungService;
 
 @Controller

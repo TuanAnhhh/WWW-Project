@@ -4,9 +4,6 @@ import java.io.Serializable;
 
 import javax.persistence.Embeddable;
 
-import lombok.Data;
-import lombok.ToString;
-
 @Embeddable
 public class GiaTriThuocTinhSanPham_PK implements Serializable{
 	/**

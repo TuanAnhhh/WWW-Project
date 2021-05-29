@@ -68,6 +68,11 @@ public class HoaDonService implements IHoaDonService {
 		hoaDonRepository.setTrangThaiHoaDon(id, tt);
 	}
 
+	@Override
+	public void deleteHoaDon(HoaDon hoaDon) {
+		hoaDonRepository.delete(hoaDon);
+	}
+
 	
 	
 }

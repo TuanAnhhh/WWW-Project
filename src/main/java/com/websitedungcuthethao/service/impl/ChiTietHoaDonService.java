@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 import com.websitedungcuthethao.entity.ChiTietHoaDon;
 import com.websitedungcuthethao.repository.ChiTietHoaDonRepository;
@@ -29,6 +28,11 @@ public class ChiTietHoaDonService  implements IChiTietHoaDonService{
 	@Override
 	public List<ChiTietHoaDon> findByMaHoaDon(Long hoadonID) {
 		return chiTietHoaDonRepository.findByHoaDon(hoadonID);
+	}
+
+	@Override
+	public void deleteCTHD(List<ChiTietHoaDon> chiTietHoaDons) {
+		chiTietHoaDonRepository.delete(chiTietHoaDons);
 	}
 
 }

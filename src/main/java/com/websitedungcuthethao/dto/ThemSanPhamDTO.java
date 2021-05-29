@@ -1,5 +1,8 @@
 package com.websitedungcuthethao.dto;
 
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
 public class ThemSanPhamDTO {
 	private String ten;
 	private String tenDanhMuc;
@@ -9,7 +12,7 @@ public class ThemSanPhamDTO {
 	private String noiDung;
 	private double gia;
 	private int soLuong;
-	private String anhDaiDien;
+	private CommonsMultipartFile anhDaiDien;
 	private int thoiGianBaoHanh;
 	private String tenThuocTinh;
 	private String giaTriThuocTinh;
@@ -75,10 +78,13 @@ public class ThemSanPhamDTO {
 	public void setSoLuong(int soLuong) {
 		this.soLuong = soLuong;
 	}
-	public String getAnhDaiDien() {
+	
+	
+	
+	public CommonsMultipartFile getAnhDaiDien() {
 		return anhDaiDien;
 	}
-	public void setAnhDaiDien(String anhDaiDien) {
+	public void setAnhDaiDien(CommonsMultipartFile anhDaiDien) {
 		this.anhDaiDien = anhDaiDien;
 	}
 	public int getThoiGianBaoHanh() {

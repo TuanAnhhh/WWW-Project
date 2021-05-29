@@ -14,6 +14,6 @@ public interface IHoaDonService {
 	void themDSChiTietHoaDon(Long idHD,HashMap<Long, GiohangSanphamDTO> gioHang);
 	List<HoaDon> findAllByTrangThaiAndPaging(boolean tt, Pageable pageable);
 	Long getTotalItem();
-	
+	void deleteHoaDon(HoaDon hoaDon);
 	void setTrangThaiHoaDon(Long id, boolean tt);
 }

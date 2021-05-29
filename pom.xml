@@ -20,14 +20,7 @@
 	</properties>
 
 	<dependencies>
-		<!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<version>1.18.20</version>
-			<scope>provided</scope>
-		</dependency>
-
+		
 		<!-- sql -->
 		<dependency>
 			<groupId>com.microsoft.sqlserver</groupId>
@@ -202,9 +195,6 @@
 			<artifactId>commons-fileupload</artifactId>
 			<version>1.4</version>
 		</dependency>
-
-
-
 	</dependencies>
 
 	<build>

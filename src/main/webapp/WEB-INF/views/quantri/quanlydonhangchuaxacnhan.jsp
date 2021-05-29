@@ -41,7 +41,8 @@
 									<td>${nd.ngayDat}</td>
 									<td>
 									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan/xac-nhan/${nd.id}" />" class="mr-2 ml-2">Xác nhận</a>
-									
+									||
+									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan/tu-choi/${nd.id}" />" class="mr-2 ml-2">Từ chối</a>
 									
 									</td>
 								</tr>
