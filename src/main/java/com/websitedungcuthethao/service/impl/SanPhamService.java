@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.websitedungcuthethao.dto.SanPhamDTO;
 import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.repository.DanhMucRepository;
 import com.websitedungcuthethao.repository.NhaCungCapRepository;
@@ -96,5 +95,15 @@ public class SanPhamService implements ISanPhamService {
 		List<SanPham> list = sanPhamRepository.findByTrangThai(tt, pageable);
 		return list;
 	}
-	
+	@Override
+	public List<SanPham> findAllByTrangThaiAndPagingOrderByGia(boolean tt, String sort, Pageable pageable) {
+		// TODO Auto-generated method stub
+		List<SanPham> list = null;
+		if(sort.equals("asc")) {
+			list = sanPhamRepository.findByTrangThaiOrderByGiaAsc(tt, pageable);
+		}
+		else 
+			list = sanPhamRepository.findByTrangThaiOrderByGiaDesc(tt, pageable);
+		return list;
+	}
 }

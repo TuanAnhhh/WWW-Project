@@ -42,12 +42,12 @@ public class HoaDonService implements IHoaDonService {
 	public void themDSChiTietHoaDon(Long idHD, HashMap<Long, GiohangSanphamDTO> gioHang) {
 		// TODO Auto-generated method stub
 		for(Map.Entry<Long, GiohangSanphamDTO> item : gioHang.entrySet()) {
-			ChiTietHoaDon ct = new ChiTietHoaDon();
+//			ChiTietHoaDon ct = new ChiTietHoaDon();
 //			ct.setHoadon(hoaDonRepository.findOne(idHD));
-			ct.setSanpham(sanPhamRepository.findById(item.getValue().getSanPham().getId()));
-			ct.setSoLuong(item.getValue().getSoLuong());
-			System.out.println(ct.toString());
-			chiTietHoaDonRepository.themCTHD(idHD, ct.getSanpham().getId(), 0, gioHang.values().size());
+//			ct.setSanpham(sanPhamRepository.findById(item.getValue().getSanPham().getId()));
+//			ct.setSoLuong(item.getValue().getSoLuong());
+//			System.out.println(ct.toString());
+			chiTietHoaDonRepository.themCTHD(idHD, item.getKey(), item.getValue().getSoLuong());
 		}
 	}
 

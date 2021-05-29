@@ -28,6 +28,11 @@
 			
 			<div class="row">
 			
+				<label class="col-sm-4 col-form-label">Số điện thoại: ${nguoiDung.soDienThoai} </label> 
+			</div>
+			
+			<div class="row">
+			
 				<label class="col-sm-4 col-form-label">Ngày đặt: ${hoaDon.ngayDat} </label> 
 			</div>
 			

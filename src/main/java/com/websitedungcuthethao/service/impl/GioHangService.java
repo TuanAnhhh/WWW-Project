@@ -24,11 +24,11 @@ public class GioHangService implements IGioHangService {
 		if (sp != null && gioHang.containsKey(id)) {
 			item = gioHang.get(id);
 			item.setSoLuong(item.getSoLuong() + 1);
-			item.setTongGia(item.getSanPham().getGia() * item.getSoLuong());
+			item.setTongGia(item.getGiaBanThucTe() * item.getSoLuong());
 		} else {
 			item.setSanPham(MapperSanPhamToSanPhamDTO.covertSanPhamToSanPhamDTO(sp));
 			item.setSoLuong(1);
-			item.setTongGia(sp.getGia());
+			item.setTongGia(item.getGiaBanThucTe());
 		}
 		gioHang.put(id, item);
 		return gioHang;
@@ -62,7 +62,7 @@ public class GioHangService implements IGioHangService {
 		if (gioHang.containsKey(id)) {
 			item = gioHang.get(id);
 			item.setSoLuong(soluongMoi);
-			item.setTongGia(soluongMoi * item.getSanPham().getGia());
+			item.setTongGia(soluongMoi * item.getGiaBanThucTe());
 		}
 		gioHang.put(id, item);
 		return gioHang;

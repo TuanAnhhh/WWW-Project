@@ -86,7 +86,7 @@
 							<div class="col-lg-4 col-md-6 col-12">
 								<div class="single-product">
 									<div class="product-img">
-										<a href="product-details.html"> <img class="default-img"
+										<a href="<c:url value="/chi-tiet-san-pham/${sp.id}"/>"> <img class="default-img"
 											src="<c:url value="/resources/images/user/sanpham/${sp.anhDaiDien}"/>"
 											alt="#"> <img class="hover-img"
 											src="<c:url value="/resources/images/user/sanpham/${sp.anhDaiDien}"/>"
@@ -100,10 +100,10 @@
 									</div>
 									<div class="product-content">
 										<h3>
-											<a href="product-details.html">${sp.ten}</a>
+											<a href="<c:url value="/chi-tiet-san-pham/${sp.id}"/>">${sp.ten}</a>
 										</h3>
 										<c:choose>
-										  <c:when test = "${sp.gia == sp.gia + sp.gia*sp.phanTramGiamGia}">
+										  <c:when test = "${sp.gia == sp.gia - sp.gia*sp.phanTramGiamGia}">
 								            <div class="product-price">
 												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia}" /></span>
 											</div>
@@ -113,8 +113,8 @@
 												style="color: red; text-decoration: line-through;">
 												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia}" /></span>
 											</div>
-											<div class="product-price" style="float: right">
-												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia + sp.gia*sp.phanTramGiamGia}" /></span>
+											<div class="product-price" >
+												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia - sp.gia*sp.phanTramGiamGia/100}" /></span>
 											</div>
 								         </c:otherwise>
 									</c:choose>
@@ -164,7 +164,7 @@
 		
 		$("#sepXep").change(function() {
 				var x = $("#sepXep").val();
-			  window.location = "danh-sach-san-pham/sap-xep/"+x;
+			  window.location = "danh-sach-san-pham/sap-xep/"+x+"?page=1&limit=3";
 			  
 			});
 	</script> </content>

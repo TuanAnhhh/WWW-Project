@@ -25,8 +25,11 @@
 								<tr>
 									<th>STT</th>
 									<th>Mã hóa đơn</th>
+									<th>Khách hàng</th>
 									<th>Tổng tiền</th>
 									<th>Ngày đặt</th>
+									<th>Ngày dự kiến</th>
+									<th>Trạng thái</th>
 									<th>Tác vụ</th>
 									
 								</tr>
@@ -37,10 +40,13 @@
 								<tr>
 									<td>${stt.count}</td>
 									<td>${nd.id}</td>
-									<td>${nd.tongTienHoaDon}</td>
+									<td>${nd.getNguoidung().getTen()}</td>
+									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${nd.tongTienHoaDon}" /></span></td>
 									<td>${nd.ngayDat}</td>
+									<td>${nd.ngayNhanDuKien}</td>
+									<td>${nd.trangThai}</td>
 									<td>
-									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/xem-chi-tiet/${nd.id}" />" class="mr-2 ml-2"><i class="far fa-edit"></i></a>
+									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/xem-chi-tiet/${nd.id}" />" class="mr-2 ml-2"><i class="fas fa-info-circle mr-2"></i>Xem chi tiết</a>
 									
 									
 									</td>

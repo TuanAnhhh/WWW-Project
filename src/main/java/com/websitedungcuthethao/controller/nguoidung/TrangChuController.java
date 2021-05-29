@@ -31,7 +31,7 @@ public class TrangChuController {
 
 		ArrayList<SanPham> dsSanPhamGiamGiaCaoNhat = (ArrayList<SanPham>) sanPhamService.findTop3SanPhamGiamGiaNhieuNhat();
 		model.addAttribute("dsSanPhamGiamGiaCaoNhat", dsSanPhamGiamGiaCaoNhat);
-
+		
 
 		return "nguoidung/trangchu";
 	}

@@ -14,9 +14,9 @@ import com.websitedungcuthethao.entity.ChiTietHoaDon;
 public interface ChiTietHoaDonRepository extends CrudRepository<ChiTietHoaDon, Long>{
 	
 	@Modifying
-	@Query(value = "insert into chitiethoadon(hoadonID,sanphamID,giamGia,soLuong) values (:hoadonID,:sanphamID,:giamGia,:soLuong)", nativeQuery = true)
+	@Query(value = "insert into chitiethoadon(hoadonID,sanphamID,soLuong) values (:hoadonID,:sanphamID,:soLuong)", nativeQuery = true)
 	@Transactional
-	void themCTHD(@Param("hoadonID") Long hoadonID, @Param("sanphamID") Long sanphamID, @Param("giamGia") int giamGia,@Param("soLuong") int soLuong);
+	void themCTHD(@Param("hoadonID") Long hoadonID, @Param("sanphamID") Long sanphamID,@Param("soLuong") int soLuong);
 
 	
 	@Query(value = "SELECT * FROM CHITIETHOADON WHERE HOADONID = ?1", nativeQuery = true)

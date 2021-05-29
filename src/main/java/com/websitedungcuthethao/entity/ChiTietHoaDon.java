@@ -19,13 +19,11 @@ public class ChiTietHoaDon {
 	@JoinColumn(name = "hoadonID")
 	private HoaDon hoadon;
 	
-	private int giamGia;
 	private int soLuong;
-	public ChiTietHoaDon(SanPham sanpham, HoaDon hoadon, int giamGia, int soLuong) {
+	public ChiTietHoaDon(SanPham sanpham, HoaDon hoadon, int soLuong) {
 		super();
 		this.sanpham = sanpham;
 		this.hoadon = hoadon;
-		this.giamGia = giamGia;
 		this.soLuong = soLuong;
 	}
 	public ChiTietHoaDon() {
@@ -44,12 +42,7 @@ public class ChiTietHoaDon {
 	public void setHoadon(HoaDon hoadon) {
 		this.hoadon = hoadon;
 	}
-	public int getGiamGia() {
-		return giamGia;
-	}
-	public void setGiamGia(int giamGia) {
-		this.giamGia = giamGia;
-	}
+
 	public int getSoLuong() {
 		return soLuong;
 	}
@@ -58,7 +51,7 @@ public class ChiTietHoaDon {
 	}
 	@Override
 	public String toString() {
-		return "ChiTietHoaDon [sanpham=" + sanpham + ", hoadon=" + hoadon + ", giamGia=" + giamGia + ", soLuong="
+		return "ChiTietHoaDon [sanpham=" + sanpham + ", hoadon=" + hoadon  + ", soLuong="
 				+ soLuong + "]";
 	}
 	

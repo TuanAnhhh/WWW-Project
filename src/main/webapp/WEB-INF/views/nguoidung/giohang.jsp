@@ -17,7 +17,7 @@
 								<th class="text-center">Giá</th>
 								<th class="text-center">Số lượng</th>
 								<th class="text-center">Thành tiền</th>
-								<th class="text-center"><i class="ti-settings"></i></th>
+								<th class="text-center"  style="width: 15%;"><i class="ti-settings"></i></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -34,7 +34,7 @@
 										<p class="product-des">${item.value.sanPham.moTa}</p>
 									</td>
 									<td class="price" data-title="Price">
-											<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.value.sanPham.gia}" /></span>
+											<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.value.getGiaBanThucTe()}" /></span>
 											</td>
 									<td class="qty" data-title="Qty">
 										<!-- Input Order -->
@@ -47,8 +47,8 @@
 												</button>
 											</div>
 											<input type="text" name="quant[${item.key}]"
-												class="input-number" data-min="1" data-max="100"
-												value="${item.value.soLuong}" id="so-luong-${item.key}">
+												class="input-number" data-min="1" data-max="${item.value.sanPham.soLuong}"
+												value="${item.value.soLuong}" id="so-luong-${item.key}" >
 											<div class="button plus">
 												<button type="button" class="btn btn-primary btn-number"
 													data-type="plus" data-field="quant[${item.key}]">
@@ -61,7 +61,7 @@
 											<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.value.tongGia}" /></span>
 											</td>
 									<td class="action" data-title="Remove">
-										<button data-id="${item.key}" class="edit-cart"><i class="ti-save"></i>
+										<button data-id="${item.key}" class="edit-cart mr-2"><i class="ti-save"></i>
 										</button>
 										<a href="<c:url value="/gio-hang/xoa/${item.key}"/>" style="margin-right: 10px; color: red"><i
 											class="ti-trash remove-icon"></i>
@@ -82,12 +82,7 @@
 						<div class="row">
 							<div class="col-lg-8 col-md-5 col-12">
 								<div class="left">
-									<div class="coupon">
-										<form action="#" target="_blank">
-											<input name="Coupon" placeholder="Nhập mã giảm giá">
-											<button class="btn">Áp dụng</button>
-										</form>
-									</div>
+									
 									<a href="<c:url value="/"/>" class="btn" style="background-color: #F7941D;">Tiếp tục mua hàng</a>
 								</div>
 							</div>
@@ -122,7 +117,7 @@
 		$(".edit-cart").on("click", function(){
 			var id = $(this).data("id");
 			var soluong = $("#so-luong-"+id).val();
-			window.location = "quan-tri/quan-ly-san-pham/xoa-san-pham"+id;
+			window.location = "gio-hang/sua/"+id+"/"+soluong;
 			alert("Cập nhật thành công");
 		});
 	</script>

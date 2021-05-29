@@ -14,6 +14,8 @@ public interface SanPhamRepository extends JpaRepository<SanPham, Long> {
 	SanPham findById(Long id);
 	
 	List<SanPham> findByTrangThai(boolean tt, Pageable pageable);
+	List<SanPham> findByTrangThaiOrderByGiaAsc(boolean tt, Pageable pageable);
+	List<SanPham> findByTrangThaiOrderByGiaDesc(boolean tt, Pageable pageable);
 	
 	@Query(value = "SELECT TOP 10 *  FROM SANPHAM order by soLuotXem DESC", nativeQuery = true)
 	List<SanPham> findDSSanPhamNoiBat();
@@ -21,7 +23,7 @@ public interface SanPhamRepository extends JpaRepository<SanPham, Long> {
 	@Query(value = "SELECT TOP 3 *  FROM SANPHAM order by soLuotXem DESC", nativeQuery = true)
 	List<SanPham> findTop3SanPhamBySoLuotXem();
 	
-	@Query(value = " SELECT TOP 3 *  FROM SANPHAM order by gia desc", nativeQuery = true)
+	@Query(value = " SELECT TOP 3 *  FROM SANPHAM order by phanTramGiamGia desc", nativeQuery = true)
 	List<SanPham> findTop3SanPhamGiamGiaNhieuNhat();
 	
 	@Query(value = "select * from SanPham sp where sp.danhmucID=:idDM",nativeQuery = true)

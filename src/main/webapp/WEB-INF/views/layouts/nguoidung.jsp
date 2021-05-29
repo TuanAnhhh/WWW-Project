@@ -12,11 +12,16 @@
 <meta name="author" content="">
 <title><decorator:title /></title>
 
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+
+
 <link rel="icon" type="image/png" href="images/favicon.png">
 <!-- Web Font -->
 <link
 	href="https://fonts.googleapis.com/css?family=Poppins:200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&display=swap"
 	rel="stylesheet">
+
 
 
 <!-- StyleSheet -->
@@ -48,7 +53,8 @@
 <link rel="stylesheet" href="<c:url value="/resources/user/css/responsive.css"/>">
 <link rel="stylesheet" href="<c:url value="/resources/user/style.css"/>">
 
- <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
+ 
+  
 </head>
 <!--/head-->
 <body>
@@ -90,5 +96,7 @@
 	<script src="<c:url value="/resources/user/js/easing.js"/>"></script>
 	<!-- Active JS -->
 	<script src="<c:url value="/resources/user/js/active.js"/>"></script>
+	
+		<decorator:getProperty property="page.script"></decorator:getProperty>
 </body>
 </html>

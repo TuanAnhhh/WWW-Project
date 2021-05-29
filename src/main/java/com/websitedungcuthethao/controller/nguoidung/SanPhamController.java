@@ -64,22 +64,23 @@ public class SanPhamController {
 		return "nguoidung/danhsachsanpham";
 	}
 	@GetMapping("sap-xep/{value}")
-	public String sapXep(@PathVariable String value, Model model) {
+	public String sapXep(@PathVariable String value, Model model,  @RequestParam("page") int page,@RequestParam("limit") int limit) {
 		AbstractDTO abstractDTO= new AbstractDTO();
-//		abstractDTO.setPage(page);
-//		abstractDTO.setLimit(limit);
+		abstractDTO.setPage(page);
+		abstractDTO.setLimit(limit);
 		
+		Pageable pageable=new PageRequest(page -1, limit);
 		
-//		List<SanPham> dsSanPham= sanPhamService.findAll(pageable);
+		List<SanPham> dsSanPham= sanPhamService.findAllByTrangThaiAndPagingOrderByGia(SystemConstant.ACTIVE_STATUS, value, pageable);
 
-		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
-//		abstractDTO.setLimit(limit);
+		abstractDTO.setTotalItem(sanPhamService.getTotalItem());		
+		abstractDTO.setLimit(limit);
 		
 		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
 		System.out.println(abstractDTO.toString());
 		model.addAttribute("abstractDTO",abstractDTO);
-//		model.addAttribute("dsSanPham", dsSanPham);
+		model.addAttribute("dsSanPham", dsSanPham);
 		
-		return "nguoidung/danhsachsanpham";
+		return "redirect:/danh-sach-san-pham?page=1&limit=3";
 	}
 }

@@ -13,13 +13,18 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.websitedungcuthethao.dto.GiohangSanphamDTO;
+import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.service.impl.GioHangService;
+import com.websitedungcuthethao.service.impl.SanPhamService;
 
 @Controller
 @RequestMapping
 public class GioHangController {
 	@Autowired
 	GioHangService gioHangService;
+	
+	@Autowired
+	SanPhamService sanPhamService;
 	
 	@GetMapping("/gio-hang")
 	public String index (Model model) {
@@ -29,15 +34,35 @@ public class GioHangController {
 	
 	
 	@GetMapping("/gio-hang/them/{id}")
-	public String themVaoGioHang(HttpServletRequest req,HttpSession session, @PathVariable Long id) {
+	public String themVaoGioHang(HttpServletRequest req,HttpSession session, @PathVariable Long id, Model model) {
 		HashMap<Long, GiohangSanphamDTO> gioHang =(HashMap<Long, GiohangSanphamDTO>) req.getSession().getAttribute("gioHang");
 		if(gioHang == null) {
 			gioHang = new HashMap<Long, GiohangSanphamDTO>(); 
 		}
-		gioHang = gioHangService.themVaoGioHang(id, gioHang);
-		session.setAttribute("gioHang", gioHang);
-		session.setAttribute("tongSoLuongGioHang", gioHangService.getTongSoLuongGioHang(gioHang));
-		session.setAttribute("tongThanhTienGioHang", gioHangService.getTongThanhTienGioHang(gioHang));
+		
+		SanPham sp = sanPhamService.findById(id);
+		
+//		kiem tra so luong sp con lại trước khi thêm
+
+		if(sp.getSoLuong() < 1) {
+			System.out.println("loi so luong");
+			return "redirect:"+req.getHeader("Referer");
+		}
+		else {
+//			them vao giỏ hàng
+			gioHang = gioHangService.themVaoGioHang(id, gioHang);
+			session.setAttribute("gioHang", gioHang);
+			session.setAttribute("tongSoLuongGioHang", gioHangService.getTongSoLuongGioHang(gioHang));
+			session.setAttribute("tongThanhTienGioHang", gioHangService.getTongThanhTienGioHang(gioHang));
+			
+//			cap nhat tăng lượt xem sản phẩm
+			sp.setSoLuotXem(sp.getSoLuotXem()+1);
+			sanPhamService.save(sp);
+		}
+		
+		
+
+		
 		
 		return "redirect:"+req.getHeader("Referer");
 	}

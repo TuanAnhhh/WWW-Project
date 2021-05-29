@@ -15,8 +15,10 @@ import com.websitedungcuthethao.dto.GiohangSanphamDTO;
 import com.websitedungcuthethao.dto.NguoiDungDTO;
 import com.websitedungcuthethao.entity.HoaDon;
 import com.websitedungcuthethao.entity.NguoiDung;
+import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.service.impl.HoaDonService;
 import com.websitedungcuthethao.service.impl.NguoiDungService;
+import com.websitedungcuthethao.service.impl.SanPhamService;
 import com.websitedungcuthethao.util.SecurityUtils;
 
 @Controller
@@ -26,6 +28,9 @@ public class ThanhToanController {
 	
 	@Autowired
 	HoaDonService hoaDonService;
+	
+	@Autowired
+	SanPhamService sanPhamService;
 		
 	NguoiDung nguoidung = null;
 	
@@ -48,11 +53,21 @@ public class ThanhToanController {
 		
 		int soLuongSp = (int) session.getAttribute("tongSoLuongGioHang");
 		double tongTienHD = (double) session.getAttribute("tongThanhTienGioHang");
+//		lap hoa don
 		HoaDon hd = new HoaDon(nguoiDungService.findOneByTenDangNhap(nguoidung.getTenDangNhap()),false,LocalDate.now(),LocalDate.now().plusDays(7),null,soLuongSp,tongTienHD);
 		hoaDonService.saveHoaDon(hd);
-		
+//		them chi tiet hoa don
 		HashMap<Long, GiohangSanphamDTO> dsSanPhamGioHang  = (HashMap<Long, GiohangSanphamDTO>) session.getAttribute("gioHang");
 		hoaDonService.themDSChiTietHoaDon(hd.getId(), dsSanPhamGioHang);
+		
+//		cap nhat san pham (số lượng sp, số lượt mua) giảm
+		dsSanPhamGioHang.forEach((k, v)-> {
+			SanPham sp = sanPhamService.findById(v.getSanPham().getId());
+			sp.setSoLuong(sp.getSoLuong() -v.getSoLuong());
+			sp.setSoLuotMua(sp.getSoLuotMua()+1);
+			sanPhamService.save(sp);
+		});
+		
 		
 		session.removeAttribute("gioHang");
 		session.removeAttribute("tongSoLuongGioHang");

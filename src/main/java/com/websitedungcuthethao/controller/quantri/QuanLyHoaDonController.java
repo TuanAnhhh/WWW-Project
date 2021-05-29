@@ -55,7 +55,9 @@ public class QuanLyHoaDonController {
 		
 		Pageable pageable=new PageRequest(page -1, limit);
 		List<HoaDon> dsHD= hoaDonService.findAllByTrangThaiAndPaging(SystemConstant.ACTIVE_STATUS, pageable);
-
+		dsHD.forEach(t->{
+			
+		});
 		abstractDTO.setTotalItem(hoaDonService.getTotalItem());
 		abstractDTO.setLimit(limit);
 		
@@ -111,9 +113,14 @@ public class QuanLyHoaDonController {
 		try {
 			HoaDon hoaDon= hoaDonService.findById(id);
 			NguoiDung nguoiDung=nguoiDungService.findById(hoaDon.getNguoidung().getId());
+			
+			hoaDonService.setTrangThaiHoaDon(id, SystemConstant.ACTIVE_STATUS);
+			
+			
+//			gui mail thong bao
 			senMail.SenEmail(nguoiDung.getEmail(),
 					"Xac nhan don hang","Don hang cua ban da duoc xac nhan và dang trong qua trinh van chuyen vui long xem cac thong tin duoi day:"+"\n"+"Tong tien:"+hoaDon.getTongTienHoaDon()+" VNĐ"+"\n"+"Ngay nhan du kien:"+hoaDon.getNgayNhanDuKien()+"\n"+"Xin chan thanh cam on su ung ho qua ban."+"\n"+"Moi chi tiet vui long lien he:0702074032");
-			hoaDonService.setTrangThaiHoaDon(id, SystemConstant.ACTIVE_STATUS);
+			
 		} catch (Exception e) {
 		}
 		return"redirect:/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=3";
@@ -121,18 +128,28 @@ public class QuanLyHoaDonController {
 	
 	@GetMapping("don-hang-chua-xac-nhan/tu-choi/{id}")
 	public String tuChoiDonHang(@PathVariable Long id) {
-		System.out.println(id);
+
 		try {
-			HoaDon hoaDon= hoaDonService.findById(id);
-			NguoiDung nguoiDung=nguoiDungService.findById(hoaDon.getNguoidung().getId());
-			senMail.SenEmail(nguoiDung.getEmail(),
-					"Thong bao huy don dat hang",
-					"Vi mot so li do don hang cua ban da bi huy. Chung toi chan thanh xin loi vi su bat tien nay."+"\n"+"hay truy cap vao website: http://localhost:8080/website-dungcuthethao/  cua chung toi de tiep tuc mua sap"+"\n moi chi tiet vui long lien he: 0702704302");
 			List<ChiTietHoaDon>list= chiTietHoaDonService.findByMaHoaDon(id);
-			System.out.println(list);
-			chiTietHoaDonService.deleteCTHD(list);
+			list.forEach(cthd-> {
+				int soLuongSanPhamDatHang = cthd.getSoLuong();
+//				phục hồi lại số lượng sản phẩm
+				SanPham p = cthd.getSanpham();
+				p.setSoLuong(p.getSoLuong() + soLuongSanPhamDatHang);
+				sanPhamService.save(p);
+			});
+			
+//			xoa hoa don + xoa ds cthd
+			HoaDon hoaDon= hoaDonService.findById(id);
 			hoaDonService.deleteHoaDon(hoaDon);
-			System.out.println(hoaDonService.findById(id));
+			
+			
+			
+			
+//			gui mai cho khach hang
+//			senMail.SenEmail(nguoiDung.getEmail(),
+//					"Thong bao huy don dat hang",
+//					"Vi mot so li do don hang cua ban da bi huy. Chung toi chan thanh xin loi vi su bat tien nay."+"\n"+"hay truy cap vao website: http://localhost:8080/website-dungcuthethao/  cua chung toi de tiep tuc mua sap"+"\n moi chi tiet vui long lien he: 0702704302");
 			
 			
 		} catch (Exception e) {

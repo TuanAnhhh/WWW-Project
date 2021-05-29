@@ -287,6 +287,8 @@ public class SanPham {
 	public Set<GiaTriThuocTinhSanPham> getDsThuocTinhSanPham() {
 		return dsThuocTinhSanPham;
 	}
+	
+	
 
 	public void setDsThuocTinhSanPham(Set<GiaTriThuocTinhSanPham> dsThuocTinhSanPham) {
 		this.dsThuocTinhSanPham = dsThuocTinhSanPham;
@@ -301,8 +303,6 @@ public class SanPham {
 				+ ", ngayTao=" + ngayTao + ", nguoiTao=" + nguoiTao + ", ngaySua=" + ngaySua + ", nguoiSua=" + nguoiSua
 				+ "]";
 	}
-	
-	
-	
+
 	
 }

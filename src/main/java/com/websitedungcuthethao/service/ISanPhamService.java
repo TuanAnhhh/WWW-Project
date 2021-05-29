@@ -9,6 +9,7 @@ import com.websitedungcuthethao.entity.SanPham;
 
 public interface ISanPhamService {
 	List<SanPham> findAllAndPaging(Pageable pageable);
+	List<SanPham> findAllByTrangThaiAndPagingOrderByGia(boolean tt, String sort,Pageable pageable);
 	List<SanPham> findByTen(String ten);
 	void deleteById(Long id);
 	void save (SanPham sanPham);
@@ -18,7 +19,6 @@ public interface ISanPhamService {
 	List<SanPham> findDSSanPhamNoiBat();
 	List<SanPham> findTop3SanPhamGiamGiaNhieuNhat();
 	List<SanPham> findByDanhMucID(Long idDM);
-	
 	List<SanPham> findByDanhMucIDAndPaging(Long idDM, Pageable pageable);
 	Long getTotalItem();
 	void setTrangThaiSanPham(Long id, boolean tt);

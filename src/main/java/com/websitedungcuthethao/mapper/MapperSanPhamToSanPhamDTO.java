@@ -14,7 +14,7 @@ public class MapperSanPhamToSanPhamDTO {
 		spDTO.setThuongHieu(sp.getThuongHieu());
 		spDTO.setNoiDung(sp.getNoiDung());
 		spDTO.setGia(sp.getGia());
-		spDTO.setGiaGiam(sp.getPhanTramGiamGia());
+		spDTO.setPhanTramGiamGia(sp.getPhanTramGiamGia());
 		spDTO.setSoLuong(sp.getSoLuong());
 		spDTO.setAnhDaiDien(sp.getAnhDaiDien());
 		spDTO.setSoLuotXem(sp.getSoLuotXem());

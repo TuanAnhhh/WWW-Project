@@ -2005,6 +2005,7 @@ Version:1.0
 	font-size: 14px;
 	font-weight: 500;
 	margin: 0;
+	color: black;
 }
 .single-product .product-content h3 a:hover{
 	color:#F7941D;
@@ -2890,6 +2891,7 @@ Version:1.0
 .shop-home-list .single-list .content .title a{
 	font-size: 14px;
 	font-weight: 600;
+	color: black;
 }
 .shop-home-list .single-list .content .titlea {
 	color: #333;

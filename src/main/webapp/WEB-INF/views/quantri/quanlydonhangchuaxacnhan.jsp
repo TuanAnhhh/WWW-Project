@@ -37,7 +37,7 @@
 								<tr>
 									<td>${stt.count}</td>
 									<td>${nd.id}</td>
-									<td>${nd.tongTienHoaDon}</td>
+									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${nd.tongTienHoaDon}" /></span></td>
 									<td>${nd.ngayDat}</td>
 									<td>
 									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan/xac-nhan/${nd.id}" />" class="mr-2 ml-2">Xác nhận</a>

@@ -35,5 +35,8 @@ public class GiohangSanphamDTO {
 	public void setSanPham(SanPhamDTO sanPham) {
 		this.sanPham = sanPham;
 	}
+	public double getGiaBanThucTe() {
+		return this.sanPham.getGia() - this.sanPham.getGia()*this.sanPham.getPhanTramGiamGia()/100;
+	}
 	
 }

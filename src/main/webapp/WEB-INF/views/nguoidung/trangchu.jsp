@@ -45,7 +45,7 @@
 										src=" <c:url value="/resources/images/user/sanpham/${item.anhDaiDien}"/> "
 										alt="#"> <img class="hover-img"
 										src="<c:url value="/resources/images/user/sanpham/${item.anhDaiDien}"/> "
-										alt="#">
+										alt="#"> <span class="out-of-stock">Hot</span>
 									</a>
 									<div class="button-head">
 										<div class="product-action-2">
@@ -60,22 +60,27 @@
 										<a href="<c:url value="/chi-tiet-san-pham/${item.id}"/>">${item.ten}</a>
 									</h3>
 									<c:choose>
-										  <c:when test = "${item.gia == item.gia + item.gia*item.phanTramGiamGia}">
-								            <div class="product-price">
-												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.gia}" /></span>
+										<c:when
+											test="${item.gia == item.gia - item.gia*item.phanTramGiamGia/100}">
+											<div class="product-price">
+												<span><fmt:formatNumber type="number"
+														pattern="#,### VND" value="${item.gia}" /></span>
 											</div>
-								         </c:when>
-								         <c:otherwise>
-								         	<div class="product-price"
+										</c:when>
+										<c:otherwise>
+											<div class="product-price"
 												style="color: red; text-decoration: line-through;">
-												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.gia}" /></span>
+												<span><fmt:formatNumber type="number"
+														pattern="#,### VND" value="${item.gia}" /></span>
 											</div>
-											<div class="product-price" style="float: right">
-												<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.gia + item.gia*item.phanTramGiamGia}" /></span>
+											<div class="product-price">
+												<span><fmt:formatNumber type="number"
+														pattern="#,### VND"
+														value="${item.gia - item.gia*item.phanTramGiamGia/100}" /></span>
 											</div>
-								         </c:otherwise>
+										</c:otherwise>
 									</c:choose>
-									
+
 								</div>
 							</div>
 							<!-- End Single Product -->
@@ -115,15 +120,16 @@
 											class="fa fa-shopping-bag"></i></a>
 									</div>
 								</div>
+
 								<div class="col-lg-6 col-md-6 col-12 no-padding">
 									<div class="content">
 										<h5 class="title">
 											<a href="<c:url value="/chi-tiet-san-pham/${item.id}"/>">${item.ten}</a>
 										</h5>
-										<%-- <p class="price with-discount">${item.gia}</p> --%>
+
 										<c:choose>
 											<c:when
-												test="${item.gia == item.gia + item.gia*item.phanTramGiamGia}">
+												test="${item.gia == item.gia - item.gia*item.phanTramGiamGia/100}">
 												<div class="price with-discount">
 													<span><fmt:formatNumber type="number"
 															pattern="#,### VND" value="${item.gia}" /></span>
@@ -131,15 +137,17 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div class="product-price"
-													style="color: red; text-decoration: line-through;">
-													<span><fmt:formatNumber type="number"
-															pattern="#,### VND" value="${item.gia}" /></span>
+												<div class="product-price">
+													Giá gốc: <span
+														style="color: red; text-decoration: line-through; margin-right: 10px"><fmt:formatNumber
+															type="number" pattern="#,### VND" value="${item.gia}" /></span>
+
 												</div>
-												<div class="price with-discount">
+												
+												Giá hiện tại:   <div class="price with-discount">
 													<span><fmt:formatNumber type="number"
 															pattern="#,### VND"
-															value="${item.gia + item.gia*item.phanTramGiamGia}" /></span>
+															value="${item.gia - item.gia*item.phanTramGiamGia/100}" /></span>
 												</div>
 											</c:otherwise>
 										</c:choose>
@@ -178,7 +186,7 @@
 										</h5>
 										<c:choose>
 											<c:when
-												test="${item.gia == item.gia + item.gia*item.phanTramGiamGia}">
+												test="${item.gia == item.gia - item.gia*item.phanTramGiamGia/100}">
 												<div class="price with-discount">
 													<span><fmt:formatNumber type="number"
 															pattern="#,### VND" value="${item.gia}" /></span>
@@ -186,15 +194,16 @@
 												</div>
 											</c:when>
 											<c:otherwise>
-												<div class="product-price"
-													style="color: red; text-decoration: line-through;">
-													<span><fmt:formatNumber type="number"
-															pattern="#,### VND" value="${item.gia}" /></span>
-												</div>
-												<div class="price with-discount">
+												<div class="product-price">
+													Giá gốc: <span
+														style="color: red; text-decoration: line-through; margin-right: 10px"><fmt:formatNumber
+															type="number" pattern="#,### VND" value="${item.gia}" /></span>
+
+												</div>												
+												Giá hiện tại:   <div class="price with-discount">
 													<span><fmt:formatNumber type="number"
 															pattern="#,### VND"
-															value="${item.gia + item.gia*item.phanTramGiamGia}" /></span>
+															value="${item.gia - item.gia*item.phanTramGiamGia/100}" /></span>
 												</div>
 											</c:otherwise>
 										</c:choose>
@@ -312,129 +321,6 @@
 	</section> -->
 	<!-- End Shop Newsletter -->
 
-	<!-- Modal -->
-	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span class="ti-close" aria-hidden="true"></span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="row no-gutters">
-						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-							<!-- Product Slider -->
-							<div class="product-gallery">
-								<div class="quickview-slider-active">
-									<div class="single-slider">
-										<img src="https://via.placeholder.com/569x528" alt="#">
-									</div>
-									<div class="single-slider">
-										<img src="https://via.placeholder.com/569x528" alt="#">
-									</div>
-									<div class="single-slider">
-										<img src="https://via.placeholder.com/569x528" alt="#">
-									</div>
-									<div class="single-slider">
-										<img src="https://via.placeholder.com/569x528" alt="#">
-									</div>
-								</div>
-							</div>
-							<!-- End Product slider -->
-						</div>
-						<div class="col-lg-6 col-md-12 col-sm-12 col-xs-12">
-							<div class="quickview-content">
-								<h2>Flared Shift Dress</h2>
-								<div class="quickview-ratting-review">
-									<div class="quickview-ratting-wrap">
-										<div class="quickview-ratting">
-											<i class="yellow fa fa-star"></i> <i
-												class="yellow fa fa-star"></i> <i class="yellow fa fa-star"></i>
-											<i class="yellow fa fa-star"></i> <i class="fa fa-star"></i>
-										</div>
-										<a href="#"> (1 customer review)</a>
-									</div>
-									<div class="quickview-stock">
-										<span><i class="fa fa-check-circle-o"></i> in stock</span>
-									</div>
-								</div>
-								<h3>$29.00</h3>
-								<div class="quickview-peragraph">
-									<p>Lorem ipsum dolor sit amet, consectetur adipisicing
-										elit. Mollitia iste laborum ad impedit pariatur esse optio
-										tempora sint ullam autem deleniti nam in quos qui nemo ipsum
-										numquam.</p>
-								</div>
-								<div class="size">
-									<div class="row">
-										<div class="col-lg-6 col-12">
-											<h5 class="title">Size</h5>
-											<select>
-												<option selected="selected">s</option>
-												<option>m</option>
-												<option>l</option>
-												<option>xl</option>
-											</select>
-										</div>
-										<div class="col-lg-6 col-12">
-											<h5 class="title">Color</h5>
-											<select>
-												<option selected="selected">orange</option>
-												<option>purple</option>
-												<option>black</option>
-												<option>pink</option>
-											</select>
-										</div>
-									</div>
-								</div>
-								<div class="quantity">
-									<!-- Input Order -->
-									<div class="input-group">
-										<div class="button minus">
-											<button type="button" class="btn btn-primary btn-number"
-												disabled="disabled" data-type="minus" data-field="quant[1]">
-												<i class="ti-minus"></i>
-											</button>
-										</div>
-										<input type="text" name="quant[1]" class="input-number"
-											data-min="1" data-max="1000" value="1">
-										<div class="button plus">
-											<button type="button" class="btn btn-primary btn-number"
-												data-type="plus" data-field="quant[1]">
-												<i class="ti-plus"></i>
-											</button>
-										</div>
-									</div>
-									<!--/ End Input Order -->
-								</div>
-								<div class="add-to-cart">
-									<a href="#" class="btn">Add to cart</a> <a href="#"
-										class="btn min"><i class="ti-heart"></i></a> <a href="#"
-										class="btn min"><i class="fa fa-compress"></i></a>
-								</div>
-								<div class="default-social">
-									<h4 class="share-now">Share:</h4>
-									<ul>
-										<li><a class="facebook" href="#"><i
-												class="fa fa-facebook"></i></a></li>
-										<li><a class="twitter" href="#"><i
-												class="fa fa-twitter"></i></a></li>
-										<li><a class="youtube" href="#"><i
-												class="fa fa-pinterest-p"></i></a></li>
-										<li><a class="dribbble" href="#"><i
-												class="fa fa-google-plus"></i></a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	<!-- Modal end -->
 
 
 </body>
