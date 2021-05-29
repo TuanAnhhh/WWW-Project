@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,10 +70,13 @@ public class SanPhamController {
 		abstractDTO.setPage(page);
 		abstractDTO.setLimit(limit);
 		
-		Pageable pageable=new PageRequest(page -1, limit);
+		Pageable pageable=new PageRequest(page -1, limit, Direction.ASC,"gia");
 		
-		List<SanPham> dsSanPham= sanPhamService.findAllByTrangThaiAndPagingOrderByGia(SystemConstant.ACTIVE_STATUS, value, pageable);
-
+		List<SanPham> dsSanPham = sanPhamService.findAllByTrangThaiAndPaging(SystemConstant.ACTIVE_STATUS, pageable);
+		dsSanPham.forEach(t-> {
+			System.out.println(t.getGia());
+		});
+		
 		abstractDTO.setTotalItem(sanPhamService.getTotalItem());		
 		abstractDTO.setLimit(limit);
 		
@@ -81,6 +85,6 @@ public class SanPhamController {
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
 		
-		return "redirect:/danh-sach-san-pham?page=1&limit=3";
+		return "nguoidung/danhsachsanpham";
 	}
 }

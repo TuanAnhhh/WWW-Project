@@ -95,15 +95,4 @@ public class SanPhamService implements ISanPhamService {
 		List<SanPham> list = sanPhamRepository.findByTrangThai(tt, pageable);
 		return list;
 	}
-	@Override
-	public List<SanPham> findAllByTrangThaiAndPagingOrderByGia(boolean tt, String sort, Pageable pageable) {
-		// TODO Auto-generated method stub
-		List<SanPham> list = null;
-		if(sort.equals("asc")) {
-			list = sanPhamRepository.findByTrangThaiOrderByGiaAsc(tt, pageable);
-		}
-		else 
-			list = sanPhamRepository.findByTrangThaiOrderByGiaDesc(tt, pageable);
-		return list;
-	}
 }
