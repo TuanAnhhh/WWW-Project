@@ -24,6 +24,10 @@ public class DiaChiService implements IDiaChiService{
 			diaChiRepository.save(diaChi);
 		}		
 	}
+	@Override
+	public List<DiaChi> findByNguoiDungID(Long id) {
+		return diaChiRepository.findByNguoiDungID(id);
+	}
 	
 
 }

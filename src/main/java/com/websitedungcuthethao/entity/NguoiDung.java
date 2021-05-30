@@ -35,8 +35,7 @@ public class NguoiDung {
 	private String ten;
 
 	private boolean gioiTinh;
-	
-	private LocalDate ngaySinh;
+
 
 	private String email;
 
@@ -52,7 +51,7 @@ public class NguoiDung {
 	Set<DiaChi> dsDiaChi = new HashSet<DiaChi>();
 
 	public NguoiDung(Long id, LocalDate ngayTao, LoaiNguoiDung loainguoidung, String ho, String ten, boolean gioiTinh,
-			LocalDate ngaySinh, String email, String soDienThoai, String tenDangNhap, String matKhau, boolean trangThai,
+			 String email, String soDienThoai, String tenDangNhap, String matKhau, boolean trangThai,
 			Set<DiaChi> dsDiaChi) {
 		super();
 		this.id = id;
@@ -61,7 +60,7 @@ public class NguoiDung {
 		this.ho = ho;
 		this.ten = ten;
 		this.gioiTinh = gioiTinh;
-		this.ngaySinh = ngaySinh;
+
 		this.email = email;
 		this.soDienThoai = soDienThoai;
 		this.tenDangNhap = tenDangNhap;
@@ -71,7 +70,7 @@ public class NguoiDung {
 	}
 
 	public NguoiDung(LocalDate ngayTao, LoaiNguoiDung loainguoidung, String ho, String ten, boolean gioiTinh,
-			LocalDate ngaySinh, String email, String soDienThoai, String tenDangNhap, String matKhau, boolean trangThai,
+			 String email, String soDienThoai, String tenDangNhap, String matKhau, boolean trangThai,
 			Set<DiaChi> dsDiaChi) {
 		super();
 		this.ngayTao = ngayTao;
@@ -79,7 +78,6 @@ public class NguoiDung {
 		this.ho = ho;
 		this.ten = ten;
 		this.gioiTinh = gioiTinh;
-		this.ngaySinh = ngaySinh;
 		this.email = email;
 		this.soDienThoai = soDienThoai;
 		this.tenDangNhap = tenDangNhap;
@@ -141,14 +139,6 @@ public class NguoiDung {
 		this.gioiTinh = gioiTinh;
 	}
 
-	public LocalDate getNgaySinh() {
-		return ngaySinh;
-	}
-
-	public void setNgaySinh(LocalDate ngaySinh) {
-		this.ngaySinh = ngaySinh;
-	}
-
 	public String getEmail() {
 		return email;
 	}
@@ -200,7 +190,7 @@ public class NguoiDung {
 	@Override
 	public String toString() {
 		return "NguoiDung [id=" + id + ", ngayTao=" + ngayTao + ", loainguoidung=" + loainguoidung + ", ho=" + ho
-				+ ", ten=" + ten + ", gioiTinh=" + gioiTinh + ", ngaySinh=" + ngaySinh + ", email=" + email
+				+ ", ten=" + ten + ", gioiTinh=" + gioiTinh + ", email=" + email
 				+ ", soDienThoai=" + soDienThoai + ", tenDangNhap=" + tenDangNhap + ", matKhau=" + matKhau
 				+ ", trangThai=" + trangThai + "]";
 	}

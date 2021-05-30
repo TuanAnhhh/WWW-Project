@@ -1,6 +1,5 @@
 package com.websitedungcuthethao.dto;
 
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.commons.CommonsMultipartFile;
 
 public class ThemSanPhamDTO {
@@ -78,8 +77,6 @@ public class ThemSanPhamDTO {
 	public void setSoLuong(int soLuong) {
 		this.soLuong = soLuong;
 	}
-	
-	
 	
 	public CommonsMultipartFile getAnhDaiDien() {
 		return anhDaiDien;

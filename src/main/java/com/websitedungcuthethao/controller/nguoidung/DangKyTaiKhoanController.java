@@ -1,6 +1,5 @@
 package com.websitedungcuthethao.controller.nguoidung;
 
-import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -56,7 +55,6 @@ public class DangKyTaiKhoanController {
 			nd.setLoainguoidung(loaiNguoiDungService.findByTenLoaiNguoiDung(SystemConstant.ROLE_NGUOIDUNG));
 			nd.setTrangThai(SystemConstant.ACTIVE_STATUS);
 			nd.setMatKhau(BCrypt.hashpw(nd.getMatKhau(), BCrypt.gensalt(12)));
-			nd.setNgaySinh(LocalDate.now());
 			nguoiDungService.saveNguoiDung(nd);
 			return "redirect:/dang-nhap";
 		}

@@ -79,7 +79,7 @@
 									<td>${stt.count}</td>
 									<td>${sp.ten}</td>
 									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia}" /></span></td>
-									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia - sp.gia*sp.phanTramGiamGia}" /></span></td>
+									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia - sp.gia * sp.phanTramGiamGia}" /></span></td>
 									<td>${sp.thoiGianBaoHanh } Tháng</td>
 									<td>${sp.thuongHieu }</td>
 								</tr>

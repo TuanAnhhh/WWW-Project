@@ -17,33 +17,16 @@ public class DiaChi{
 	@ManyToOne
 	@JoinColumn(name = "nguoidungID")
 	private NguoiDung nguoidung;
-	
+	@Column(columnDefinition = "nvarchar(25)")
+	private String soNha;
 	@Column(columnDefinition = "nvarchar(25)")
 	private String quan;
+
 	
 	@Column(columnDefinition = "nvarchar(25)")
-	private String thanhPho;
+	private String tinhTP;
+
 	
-	@Column(columnDefinition = "nvarchar(25)")
-	private String tinh;
-
-	public DiaChi(int id, NguoiDung nguoidung, String quan, String thanhPho, String tinh) {
-		super();
-		this.id = id;
-		this.nguoidung = nguoidung;
-		this.quan = quan;
-		this.thanhPho = thanhPho;
-		this.tinh = tinh;
-	}
-
-	public DiaChi(NguoiDung nguoidung, String quan, String thanhPho, String tinh) {
-		super();
-		this.nguoidung = nguoidung;
-		this.quan = quan;
-		this.thanhPho = thanhPho;
-		this.tinh = tinh;
-	}
-
 	public DiaChi() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -73,25 +56,25 @@ public class DiaChi{
 		this.quan = quan;
 	}
 
-	public String getThanhPho() {
-		return thanhPho;
+	public String getSoNha() {
+		return soNha;
 	}
 
-	public void setThanhPho(String thanhPho) {
-		this.thanhPho = thanhPho;
+	public void setSoNha(String soNha) {
+		this.soNha = soNha;
 	}
 
-	public String getTinh() {
-		return tinh;
+	public String getTinhTP() {
+		return tinhTP;
 	}
 
-	public void setTinh(String tinh) {
-		this.tinh = tinh;
+	public void setTinhTP(String tinhTP) {
+		this.tinhTP = tinhTP;
 	}
 
 	@Override
 	public String toString() {
-		return quan  + "-"+thanhPho +"-"+  tinh ;
+		return ""+soNha + "," + quan + "," + tinhTP ;
 	}
 	
 	

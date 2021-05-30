@@ -106,6 +106,7 @@ public class QuanLiSanPhamController {
 		System.out.println(danhMucService.findByTen(sanPham.getTenDanhMuc()));
 		SanPham sp= new SanPham();
 		sp.setAnhDaiDien(sanPham.getAnhDaiDien().getOriginalFilename());
+		System.out.println(sanPham.getAnhDaiDien().getOriginalFilename());
 		sp.setTen(sanPham.getTen());
 		sp.setDanhmuc(danhMucService.findByTen(sanPham.getTenDanhMuc()));
 		sp.setNhacungcap(nhaCungCapService.findByTenNhaCungCap(sanPham.getTenNhaCungCap()));

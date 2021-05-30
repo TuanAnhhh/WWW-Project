@@ -35,7 +35,18 @@ public class HoaDon{
 	
 	private double tongTienHoaDon;
 	
+	private boolean nguoiDungXacNhan;
 	
+	public boolean isNguoiDungXacNhan() {
+		return nguoiDungXacNhan;
+	}
+
+
+	public void setNguoiDungXacNhan(boolean nguoiDungXacNhan) {
+		this.nguoiDungXacNhan = nguoiDungXacNhan;
+	}
+
+
 	@OneToMany(mappedBy = "hoadon")
 	private Set<ChiTietHoaDon> dsChiTietHoaDon = new HashSet<ChiTietHoaDon>();
 

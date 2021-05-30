@@ -32,14 +32,7 @@
 									
 									<div class="form-group">
 										<div class="row">
-											<div class="col-7">
-												<form:label path="ngaySinh" class="small mb-1">Ngày sinh</form:label>
-												<div class="input-group-icon">
-													<form:input cssClass="input--style-4 js-datepicker"
-														type="text" path="ngaySinh" />
-													<i class="zmdi zmdi-calendar-note input-icon js-btn-calendar"></i>
-												</div>
-											</div>
+											
 											<div class="col-5">
 												<form:label path="gioiTinh" class="small mb-1">Giới tính</form:label>
 												<div class="p-t-10">
