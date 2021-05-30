@@ -99,7 +99,7 @@
 						
 						
 						<div class="sinlge-bar">
-							<a href="<c:url value="don-hang" />" class="single-icon"><i class="ti-alarm-clock"></i></a>
+							<a href="<c:url value="don-hang" />" class="single-icon"><i class="ti-alarm-clock"></i><span class="total-count"></span></a>
 						</div>
 						
 						<div class="sinlge-bar shopping">
@@ -131,8 +131,8 @@
 								<div class="navbar-collapse">
 									<div class="nav-inner">
 										<ul class="nav main-menu menu navbar-nav">
-											<li class="active"><a href=" <c:url value="/"/>">Trang chủ</a></li>
-											<li><a href=" <c:url value="/danh-sach-san-pham?page=1&limit=3"/> ">Sản phẩm</a></li>
+											<li ><a href=" <c:url value="/"/>">Trang chủ</a></li>
+											<li class="active"><a href=" <c:url value="/danh-sach-san-pham?page=1&limit=12"/> ">Sản phẩm</a></li>
 											<li><a href=" <c:url value="/thong-tin-cua-hang"/> ">Thông tin cửa hàng</a></li>
 										</ul>
 									</div>

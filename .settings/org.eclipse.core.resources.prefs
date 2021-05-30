@@ -2,6 +2,7 @@ eclipse.preferences.version=1
 encoding//src/main/java/com/websitedungcuthethao/controller/dangnhap/QuenMatKhau.java=UTF-8
 encoding//src/main/java/com/websitedungcuthethao/controller/nguoidung/DangKyTaiKhoanController.java=UTF-8
 encoding//src/main/java/com/websitedungcuthethao/controller/nguoidung/GioHangController.java=UTF-8
+encoding//src/main/java/com/websitedungcuthethao/controller/nguoidung/SanPhamController.java=UTF-8
 encoding//src/main/java/com/websitedungcuthethao/controller/nguoidung/ThanhToanController.java=UTF-8
 encoding//src/main/java/com/websitedungcuthethao/controller/nguoidung/TrangChuController.java=UTF-8
 encoding//src/main/java/com/websitedungcuthethao/controller/quantri/QuanLyHoaDonController.java=UTF-8

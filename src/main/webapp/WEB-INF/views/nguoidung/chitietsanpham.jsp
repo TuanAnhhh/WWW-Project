@@ -37,7 +37,7 @@
 												<i class="yellow fa fa-star"></i>
 												<i class="yellow fa fa-star"></i> <i class="fa fa-star"></i>
 											</div>
-											<a href="#"> ( ${sp.soLuotMua} customer review)</a>
+											<a href="#"> ( ${sp.soLuotXem} lượt xem)</a>
 										</div>
 										<div class="quickview-stock">
 										<c:if test="${sp.soLuong > 0}">
@@ -52,52 +52,30 @@
 											
 										</div>
 									</div>
-									<h3>${sp.gia - sp.gia*sp.phanTramGiamGia} VNĐ</h3>
+									<c:choose>
+										<c:when
+											test="${sp.gia == sp.gia - sp.gia*sp.phanTramGiamGia/100}">
+											<div class="product-price">
+												<span><fmt:formatNumber type="number"
+														pattern="#,### VND" value="${sp.gia}" /></span>
+											</div>
+										</c:when>
+										<c:otherwise>
+											<div class="product-price"
+												style="color: red; text-decoration: line-through;">
+												<span><fmt:formatNumber type="number"
+														pattern="#,### VND" value="${sp.gia}" /></span>
+											</div>
+											<div class="product-price">
+												<span><fmt:formatNumber type="number"
+														pattern="#,### VND"
+														value="${sp.gia - sp.gia*sp.phanTramGiamGia/100}" /></span>
+											</div>
+										</c:otherwise>
+									</c:choose>
 									<div class="quickview-peragraph">
 										<p>${sp.moTa}</p>
 									</div>
-									<!-- <div class="size">
-										<div class="row">
-											<div class="col-lg-6 col-12">
-												<h5 class="title">Size</h5>
-												<select>
-													<option selected="selected">s</option>
-													<option>m</option>
-													<option>l</option>
-													<option>xl</option>
-												</select>
-											</div>
-											<div class="col-lg-6 col-12">
-												<h5 class="title">Color</h5>
-												<select>
-													<option selected="selected">orange</option>
-													<option>purple</option>
-													<option>black</option>
-													<option>pink</option>
-												</select>
-											</div>
-										</div>
-									</div> -->
-									<!-- <div class="quantity">
-										Input Order
-										<div class="input-group">
-											<div class="button minus">
-												<button type="button" class="btn btn-primary btn-number"
-													disabled="disabled" data-type="minus" data-field="quant[1]">
-													<i class="ti-minus"></i>
-												</button>
-											</div>
-											<input type="text" name="quant[1]" class="input-number" data-min="1"
-												data-max="1000" value="1">
-											<div class="button plus">
-												<button type="button" class="btn btn-primary btn-number"
-													data-type="plus" data-field="quant[1]">
-													<i class="ti-plus"></i>
-												</button>
-											</div>
-										</div>
-										/ End Input Order
-									</div> -->
 									<div class="add-to-cart">
 										<a href="#" class="btn">Thêm vào giỏ hàng</a> 
 									</div>
@@ -115,7 +93,6 @@
 					<div class="blog-detail">
 						<h2 class="blog-title">Chi tiết sản phẩm</h2>
 						<div class="content">
-							<p>${sp.moTa}</p>
 							<p>${sp.noiDung}</p>
 						</div>
 					</div>
@@ -162,40 +139,6 @@
 						
 					</div>
 					
-				</div>
-				<div class="col-lg-4 col-12">
-					<div class="main-sidebar">
-
-					
-						<!--/ End Single Widget -->
-						<!-- Single Widget -->
-						<!-- <div class="single-widget recent-post">
-							<h3 class="title">Sản phẩm liên quan</h3>
-							Single Post
-							<div class="single-post">
-								<div class="image">
-									<img src="https://via.placeholder.com/100x100" alt="#">
-								</div>
-								<div class="content">
-									<h5><a href="#">Top 10 Beautyful Women Dress in the world</a></h5>
-									<ul class="comment">
-										<li><i class="fa fa-calendar" aria-hidden="true"></i>Jan 11, 2020</li>
-										<li><i class="fa fa-commenting-o" aria-hidden="true"></i>35</li>
-									</ul>
-								</div>
-							</div>
-							End Single Post
-							
-							
-						</div> -->
-						<!--/ End Single Widget -->
-						<!-- Single Widget -->
-						<!--/ End Single Widget -->
-						<!-- Single Widget -->
-
-						<!--/ End Single Widget -->
-
-					</div>
 				</div>
 			</div>
 			</form:form>

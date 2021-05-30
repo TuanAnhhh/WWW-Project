@@ -62,8 +62,8 @@ public class SanPhamService implements ISanPhamService {
 		return sanPhamRepository.findTop3SanPhamGiamGiaNhieuNhat();
 	}
 	@Override
-	public List<SanPham> findByDanhMucID(Long idDM) {
-		return sanPhamRepository.findByDanhMucID(idDM);
+	public List<SanPham> findByDanhMucIDAndTrangThai(Long idDM,boolean tt, Pageable pageable) {
+		return sanPhamRepository.findByDanhmucIdAndTrangThai(idDM,tt, pageable);
 	}
 	@Override
 	public Long getTotalItem() {
@@ -72,7 +72,6 @@ public class SanPhamService implements ISanPhamService {
 	@Override
 	public List<SanPham> findDSSanPhamNoiBat() {
 		// TODO Auto-generated method stub
-		
 		return sanPhamRepository.findDSSanPhamNoiBat();
 	}
 	@Override
@@ -88,4 +87,8 @@ public class SanPhamService implements ISanPhamService {
 //	public List<SanPham> findByDanhMucID(Long id, Pageable pageable) {
 //		return sanPhamRepository.findByDanhmucID(id, pageable);
 //	}
+	@Override
+	public List<SanPham> search(String keyword , Pageable pageable) {
+		return sanPhamRepository.search(keyword, pageable);
+	}
 }

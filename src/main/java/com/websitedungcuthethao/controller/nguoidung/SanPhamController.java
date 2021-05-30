@@ -10,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -44,7 +45,6 @@ public class SanPhamController {
 		model.addAttribute("dsSanPham", dsSanPham);
 		return "nguoidung/danhsachsanpham";
 	}
-	
 	@GetMapping("danh-muc/{id}")
 	public String getDsSanPhamByDanhMuc(@PathVariable Long id, Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
 		
@@ -53,24 +53,61 @@ public class SanPhamController {
 		abstractDTO.setLimit(limit);
 		
 		
-		Pageable pageable=new PageRequest(page -1, limit);
-		List<SanPham> dsSanPham= sanPhamService.findAllByTrangThaiAndPaging(SystemConstant.ACTIVE_STATUS, pageable);
+		Pageable pageable=new PageRequest(page -1, limit, Direction.ASC,"gia");
+		List<SanPham> dsSanPham= sanPhamService.findByDanhMucIDAndTrangThai(id, SystemConstant.ACTIVE_STATUS, pageable);
 		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
 		abstractDTO.setLimit(limit);
 		
 		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
-//		return "redirect:/danh-sach-san-pham?page=1&limit=3";
-		return "nguoidung/danhsachsanpham";
+		model.addAttribute("danhmucID", id);
+		return "nguoidung/danhsachsanpham_theodanhmuc";
 	}
+	
+	@GetMapping("danh-muc/{id}/sap-xep/{value}")
+	public String getDsSanPhamByDanhMucVaSapXep(@PathVariable String value, @PathVariable Long id, Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
+		
+		AbstractDTO abstractDTO= new AbstractDTO();
+		abstractDTO.setPage(page);
+		abstractDTO.setLimit(limit);
+		
+		
+		Pageable pageable= null;
+		if(value.equals("asc")) {
+			pageable = new PageRequest(page -1, limit, Direction.ASC,"gia");
+		}
+		else {
+			pageable = new PageRequest(page -1, limit, Direction.DESC,"gia");
+		}
+		
+		List<SanPham> dsSanPham= sanPhamService.findByDanhMucIDAndTrangThai(id, SystemConstant.ACTIVE_STATUS, pageable);
+		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
+		abstractDTO.setLimit(limit);
+		
+		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
+		model.addAttribute("abstractDTO",abstractDTO);
+		model.addAttribute("dsSanPham", dsSanPham);
+		model.addAttribute("danhmucID", id);
+		
+//		giaTriSapXep thuộc asc or desc
+		model.addAttribute("giaTriSapXep",value);
+		return "nguoidung/danhsachsanpham_theodanhmuc";
+	}
+	
 	@GetMapping("sap-xep/{value}")
 	public String sapXep(@PathVariable String value, Model model,  @RequestParam("page") int page,@RequestParam("limit") int limit) {
 		AbstractDTO abstractDTO= new AbstractDTO();
 		abstractDTO.setPage(page);
 		abstractDTO.setLimit(limit);
 		
-		Pageable pageable=new PageRequest(page -1, limit, Direction.ASC,"gia");
+		Pageable pageable= null;
+		if(value.equals("asc")) {
+			pageable = new PageRequest(page -1, limit, Direction.ASC,"gia");
+		}
+		else {
+			pageable = new PageRequest(page -1, limit, Direction.DESC,"gia");
+		}
 		
 		List<SanPham> dsSanPham = sanPhamService.findAllByTrangThaiAndPaging(SystemConstant.ACTIVE_STATUS, pageable);
 		dsSanPham.forEach(t-> {
@@ -84,6 +121,14 @@ public class SanPhamController {
 		System.out.println(abstractDTO.toString());
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
+		
+//		giaTriSapXep thuộc asc or desc
+		model.addAttribute("giaTriSapXep",value);
+		return "nguoidung/danhsachsanpham";
+	}
+	@PostMapping("/tim-kiem")
+	public String timKiem (Model model, @RequestParam String tenSanPham ) {
+		
 		
 		return "nguoidung/danhsachsanpham";
 	}

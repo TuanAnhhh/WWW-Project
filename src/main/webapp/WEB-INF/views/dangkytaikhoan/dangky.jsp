@@ -3,6 +3,7 @@
 <%@include file="/common/taglib.jsp"%>
 <title>Đăng ký tài khoản</title>
 <body class="bg-primary">
+<fmt:requestEncoding value = "UTF-8" />
 	<div id="layoutAuthentication">
 		<div id="layoutAuthentication_content">
 			<main>

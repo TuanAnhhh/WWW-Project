@@ -3,21 +3,9 @@
 <%@include file="/common/taglib.jsp"%>
 
 <title>Danh sách sản phẩm</title>
+
 <body>
-<form 
-	action="<c:choose>
-			  <c:when test = "${not empty giaTriSapXep }">
-	           	<c:url value='/danh-sach-san-pham/sap-xep/${giaTriSapXep}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>
-	         </c:when>
-	         <c:otherwise>
-	         	<c:url value='danh-sach-san-pham?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>
-	         </c:otherwise>
-		</c:choose>" 
-
-	id="formSubmit" 
-	method="get">
-
-
+<form action="<c:url value='/danh-sach-san-pham/danh-muc/${danhmucID}/xap-sep/${giaTriSapXep}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" id="formSubmit" method="get" >
 	<!-- Product Style -->
 	<section class="product-area shop-sidebar shop section">
 		<div class="container">
@@ -75,8 +63,8 @@
 							<div class="shop-top">
 								<div class="shop-shorter">									
 									<div class="single-shorter">
-										<label>Sắp xếp theo giá :</label> <select id="sepXep">
-										<c:choose>
+										<label>Sắp xếp theo giá :</label> <select id="sepXepDanhMuc">
+											<c:choose>
 											  <c:when test = "${giaTriSapXep == 'asc' }">
 										           	<option disabled >Giá</option>
 													<option value="asc"selected="selected" >Giá: Thấp đến cao</option>
@@ -93,8 +81,6 @@
 													<option value="desc">Giá: Cao đến thấp</option>
 									         </c:otherwise>
 										</c:choose>
-										
-											
 										</select>
 									</div>
 								</div>
@@ -190,9 +176,9 @@
 			});
 		});
 		
-		$("#sepXep").change(function() {
+		$("#sepXepDanhMuc").change(function() {
 				var x = $("#sepXep").val();
-			  window.location = "http://localhost:8080/website-dungcuthethao/danh-sach-san-pham/sap-xep/"+x+"?page=1&limit=12";
+			  window.location = "http://localhost:8080/website-dungcuthethao/danh-sach-san-pham/danh-muc/"+${danhmucID}+"/sap-xep/"+x+"?page="${abstractDTO.page}"&limit="${abstractDTO.limit};
 			  
 			});
 	</script> </content>

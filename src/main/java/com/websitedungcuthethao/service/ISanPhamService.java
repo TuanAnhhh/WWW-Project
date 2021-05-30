@@ -16,11 +16,11 @@ public interface ISanPhamService {
 	List<SanPham> findTop3SanPhamBySoLuotXem();
 	List<SanPham> findDSSanPhamNoiBat();
 	List<SanPham> findTop3SanPhamGiamGiaNhieuNhat();
-	List<SanPham> findByDanhMucID(Long idDM);
+	List<SanPham> findByDanhMucIDAndTrangThai(Long idDM,boolean tt, Pageable pageable );
 	Long getTotalItem();
 	void setTrangThaiSanPham(Long id, boolean tt);
 	
 	List<SanPham> findAllByTrangThaiAndPaging(boolean tt, Pageable pageable);
 	
-//	List<SanPham> findByDanhMucID(Long id,Pageable pageable);
+	public List<SanPham> search(String keyword, Pageable pageable);
 }
