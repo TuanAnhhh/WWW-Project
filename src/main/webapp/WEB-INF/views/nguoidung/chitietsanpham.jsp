@@ -6,6 +6,7 @@
 	<!-- Start Blog Single -->
 	<section class="blog-single section">
 		<div class="container">
+		<form:form action="luu-binh-luan/${sp.id}" method="POST" enctype="multipart/form-data">
 			<div class="row">
 				<div class="col-lg-12 col-12">
 					<div class="blog-single-main">
@@ -19,14 +20,9 @@
 											<img src="<c:url value="/resources/images/user/sanpham/${sp.anhDaiDien}"/>" alt="#">
 										</div>
 										<div class="single-slider">
-											<img src="https://via.placeholder.com/569x528" alt="#">
+											<img src="<c:url value="/resources/images/user/sanpham/${sp.anhDaiDien}"/>" alt="#">
 										</div>
-										<div class="single-slider">
-											<img src="https://via.placeholder.com/569x528" alt="#">
-										</div>
-										<div class="single-slider">
-											<img src="https://via.placeholder.com/569x528" alt="#">
-										</div>
+										
 									</div>
 								</div>
 								<!-- End Product slider -->
@@ -56,7 +52,7 @@
 											
 										</div>
 									</div>
-									<h3>$29.00</h3>
+									<h3>${sp.gia - sp.gia*sp.phanTramGiamGia} VNĐ</h3>
 									<div class="quickview-peragraph">
 										<p>${sp.moTa}</p>
 									</div>
@@ -119,73 +115,53 @@
 					<div class="blog-detail">
 						<h2 class="blog-title">Chi tiết sản phẩm</h2>
 						<div class="content">
-							<p>What a crazy time. I have five children in colleghigh school graduates.jpge
-								or pursing post graduate studies Each of my children attends college far
-								from home, the closest of which is more than 800 miles away. While I miss
-								being with my older children, I know that a college experience can be the
-								source of great growth and experience can be the source of source of great
-								growth and can provide them with even greater in future.</p>
-							
-							<p>What a crazy time. I have five children in colleghigh school graduates.jpge
-								or pursing post graduate studies Each of my children attends college far
-								from home, the closest of which is more than 800 miles away. While I miss
-								being with my older children, I know that a college experience can be the
-								source of great growth and experience can be the source of source of great
-								growth and can provide them with even greater in future.</p>
-							<p>What a crazy time. I have five children in colleghigh school graduates.jpge
-								or pursing post graduate studies Each of my children attends college far
-								from home, the closest of which is more than 800 miles away. While I miss
-								being with my older children, I know that a college experience can be the
-								source of great growth and experience can be the source of source of great
-								growth and can provide them with even greater in future.</p>
+							<p>${sp.moTa}</p>
+							<p>${sp.noiDung}</p>
 						</div>
 					</div>
 					
 					<div class="comments">
-						<h3 class="comment-title">Bình luận (3)</h3>
+						
+						<div class="row">
+							<div class="col-12">
+							<h3 class="comment-title">Bình luận</h3>
+							
+							<textarea rows = "3" cols = "30" class="form-control" name="binhLuan" > </textarea>
+							<br>
+							</div>
+						</div>
+						
+						<div class="row">
+							<div class="col-10">
+							<input name="anhSanPham" type="file" >	
+							</div>
+							
+							<div class="col-2">
+							<input type="submit" class="btn btn-primary" value="Bình Luận">
+							<%-- 	<a href="<c:url value="luu-binh-luan/${sp.id}" />" type="submit" class="btn btn-primary" >Bình Luận</a> --%>
+							</div>
+						</div>
+						
+						<br>		
+						
+						<c:forEach items="${listBL}" var="bl">	
+						<hr>		
 						<!-- Single Comment -->
 						<div class="single-comment">
-							<img src="https://via.placeholder.com/80x80" alt="#">
+							<img src="https://png.pngtree.com/png-vector/20190710/ourmid/pngtree-user-vector-avatar-png-image_1541962.jpg" alt="#">
 							<div class="content">
-								<h4>Alisa harm <span>At 8:59 pm On Feb 28, 2018</span></h4>
-								<p>Enthusiastically leverage existing premium quality vectors with
-									enterprise-wide innovation collaboration Phosfluorescently leverage
-									others enterprisee Phosfluorescently leverage.</p>
-								<div class="button">
-									<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
-								</div>
+								<h4>${bl.nguoidung.ho} ${bl.nguoidung.ten}<span>${bl.ngayBinhLuan}</span></h4>
 							</div>
 						</div>
-						<!-- End Single Comment -->
-						<!-- Single Comment -->
-						<div class="single-comment left">
-							<img src="https://via.placeholder.com/80x80" alt="#">
-							<div class="content">
-								<h4>john deo <span>Feb 28, 2018 at 8:59 pm</span></h4>
-								<p>Enthusiastically leverage existing premium quality vectors with
-									enterprise-wide innovation collaboration Phosfluorescently leverage
-									others enterprisee Phosfluorescently leverage.</p>
-								<div class="button">
-									<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
-								</div>
+						<div class="content">
+								<p>${bl.binhLuan}</p>
+								<img style="width: 300px;height: 300px" alt="#" src="<c:url value="/resources/images/user/sanpham/${bl.anhSanPham}"/>">
 							</div>
-						</div>
 						<!-- End Single Comment -->
-						<!-- Single Comment -->
-						<div class="single-comment">
-							<img src="https://via.placeholder.com/80x80" alt="#">
-							<div class="content">
-								<h4>megan mart <span>Feb 28, 2018 at 8:59 pm</span></h4>
-								<p>Enthusiastically leverage existing premium quality vectors with
-									enterprise-wide innovation collaboration Phosfluorescently leverage
-									others enterprisee Phosfluorescently leverage.</p>
-								<div class="button">
-									<a href="#" class="btn"><i class="fa fa-reply" aria-hidden="true"></i>Reply</a>
-								</div>
-							</div>
-						</div>
-						<!-- End Single Comment -->
+						</c:forEach>	
+						
 					</div>
+					
 				</div>
 				<div class="col-lg-4 col-12">
 					<div class="main-sidebar">
@@ -193,9 +169,9 @@
 					
 						<!--/ End Single Widget -->
 						<!-- Single Widget -->
-						<div class="single-widget recent-post">
+						<!-- <div class="single-widget recent-post">
 							<h3 class="title">Sản phẩm liên quan</h3>
-							<!-- Single Post -->
+							Single Post
 							<div class="single-post">
 								<div class="image">
 									<img src="https://via.placeholder.com/100x100" alt="#">
@@ -208,10 +184,10 @@
 									</ul>
 								</div>
 							</div>
-							<!-- End Single Post -->
+							End Single Post
 							
 							
-						</div>
+						</div> -->
 						<!--/ End Single Widget -->
 						<!-- Single Widget -->
 						<!--/ End Single Widget -->
@@ -222,7 +198,9 @@
 					</div>
 				</div>
 			</div>
+			</form:form>
 		</div>
+		
 	</section>
 	<!--/ End Blog Single -->
 

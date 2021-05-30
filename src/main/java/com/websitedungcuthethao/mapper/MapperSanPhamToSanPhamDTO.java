@@ -21,7 +21,6 @@ public class MapperSanPhamToSanPhamDTO {
 		spDTO.setSoLuotMua(sp.getSoLuotMua());
 		spDTO.setThoiGianBaoHanh(sp.getThoiGianBaoHanh());
 		spDTO.setTrangThai(sp.isTrangThai());
-		spDTO.setNguoiSua(sp.getNguoiSua());
 		return spDTO;
 	}
 }

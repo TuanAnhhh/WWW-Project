@@ -8,8 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.websitedungcuthethao.entity.SanPham;
-import com.websitedungcuthethao.repository.DanhMucRepository;
-import com.websitedungcuthethao.repository.NhaCungCapRepository;
 import com.websitedungcuthethao.repository.SanPhamRepository;
 import com.websitedungcuthethao.service.ISanPhamService;
 
@@ -18,11 +16,7 @@ public class SanPhamService implements ISanPhamService {
 	@Autowired
 	private SanPhamRepository sanPhamRepository;
 	
-	@Autowired
-	private DanhMucRepository danhMucRepository;
-	
-	@Autowired
-	private NhaCungCapRepository nhaCungCapRepository;
+
 	
 	@Override
 	public List<SanPham> findAllAndPaging(Pageable pageable) {
@@ -59,7 +53,7 @@ public class SanPhamService implements ISanPhamService {
 	}
 	@Override
 	public List<SanPham> findTop3SanPhamBySoLuotXem() {
-		// TODO Auto-generated method stub
+		// TODO Auto-genserated method stub
 		return sanPhamRepository.findTop3SanPhamBySoLuotXem();
 	}
 	@Override
@@ -82,11 +76,6 @@ public class SanPhamService implements ISanPhamService {
 		return sanPhamRepository.findDSSanPhamNoiBat();
 	}
 	@Override
-	public List<SanPham> findByDanhMucIDAndPaging(Long idDM, Pageable pageable) {
-		// TODO Auto-generated method stub
-		return sanPhamRepository.findByDanhmucId(idDM, pageable);
-	}
-	@Override
 	public void setTrangThaiSanPham(Long id, boolean tt) {
 		sanPhamRepository.setTrangThaiSanPham(id, tt);
 	}
@@ -95,4 +84,8 @@ public class SanPhamService implements ISanPhamService {
 		List<SanPham> list = sanPhamRepository.findByTrangThai(tt, pageable);
 		return list;
 	}
+//	@Override
+//	public List<SanPham> findByDanhMucID(Long id, Pageable pageable) {
+//		return sanPhamRepository.findByDanhmucID(id, pageable);
+//	}
 }

@@ -27,9 +27,10 @@ public interface SanPhamRepository extends JpaRepository<SanPham, Long> {
 	@Query(value = "select * from SanPham sp where sp.danhmucID=:idDM",nativeQuery = true)
 	List<SanPham> findByDanhMucID(@Param("idDM") Long idDM);
 	
-	List<SanPham> findByDanhmucId(Long id, Pageable pageable);
 	
 	@Query(value = "update SanPham set trangThai=:trangThai where id=:id",nativeQuery = true)
 	void setTrangThaiSanPham(@Param("id") Long id, @Param("trangThai") boolean trangThai);
 	
+	
+//	List<SanPham> findByDanhmucID(Long id,Pageable pageable);
 }

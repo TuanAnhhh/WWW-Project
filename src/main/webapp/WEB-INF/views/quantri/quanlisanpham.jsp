@@ -9,16 +9,22 @@
 		<main>
 		<div class="container-fluid">
 			<form action="<c:url value='/quan-tri/quan-ly-san-pham/?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" id="formSubmit"> 
-			<h1 class="mt-4">Quản lý sản phẩm</h1>
-				
+			<div class="row">
+			<div class="col-4">
+				<h1 class="mt-4">Quản lý sản phẩm</h1>
+			</div>
+			<div class="col-5" style="margin-top: 35px;">
+				<a href="<c:url value='/quan-tri/quan-ly-san-pham/them-san-pham'/>" class="btn btn-primary">Thêm sản phẩm</a>
+			</div>
+			</div>
 				<!-- dangh muc -->
 				<div class="row">
 					<div class="col-8">
 						<div class="form-group">
 							<label for="exampleFormControlSelect1">Danh Mục</label> <select
-								class="form-control" id="exampleFormControlSelect1">
+								class="form-control" id="exampleFormControlSelect1" name="maDM">
 								<c:forEach items="${list}" var="danhmuc">
-									<option>${danhmuc.ten}</option>
+									<option value="${danhmuc.id}">${danhmuc.ten}</option>
 								</c:forEach>
 							</select>
 						</div>

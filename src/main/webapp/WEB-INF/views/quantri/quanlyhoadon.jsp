@@ -30,6 +30,7 @@
 									<th>Ngày đặt</th>
 									<th>Ngày dự kiến</th>
 									<th>Trạng thái</th>
+									<th>Giao hàng</th>
 									<th>Tác vụ</th>
 									
 								</tr>
@@ -44,7 +45,8 @@
 									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${nd.tongTienHoaDon}" /></span></td>
 									<td>${nd.ngayDat}</td>
 									<td>${nd.ngayNhanDuKien}</td>
-									<td>${nd.trangThai}</td>
+									<td>${nd.trangThai?"Đã xác nhận" :"Chưa xác nhận"}</td>
+									<td>${nd.nguoiDungXacNhan ? "Đã nhận hàng" :"Đang giao"}</td>
 									<td>
 									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/xem-chi-tiet/${nd.id}" />" class="mr-2 ml-2"><i class="fas fa-info-circle mr-2"></i>Xem chi tiết</a>
 									

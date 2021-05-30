@@ -97,6 +97,11 @@
 							<a href="<c:url value="thong-tin-tai-khoan" />" class="single-icon"><i
 								class="fa fa-user-circle-o" aria-hidden="true"></i></a>
 						</div>
+						
+						<div class="sinlge-bar">
+							<a href="<c:url value="don-hang" />" class="single-icon"><i class="ti-alarm-clock"></i></a>
+						</div>
+						
 						<div class="sinlge-bar shopping">
 							
 							<c:choose>

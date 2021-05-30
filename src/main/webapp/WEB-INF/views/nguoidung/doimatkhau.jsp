@@ -10,7 +10,12 @@
 				<div class="card-body">
 					<h2 class="title">Đổi mật khẩu</h2>
 					
-					
+					<div class="row">
+					<div class="col-12">
+						  <p style="color: red">${message}</p>
+						</div>
+						
+					</div>
 					<form method="post">
 						<div class="row">
 						

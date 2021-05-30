@@ -28,35 +28,14 @@ public class BinhLuan {
 	
 	@Column(columnDefinition = "text")
 	private String binhLuan;
-	private int danhGia;
-	private String anhSanPham;
-	private LocalDate ngaySua;
-	public BinhLuan(NguoiDung nguoidung, SanPham sanpham, String binhLuan, int danhGia, String anhSanPham,
-			LocalDate ngaySua) {
-		super();
-		this.nguoidung = nguoidung;
-		this.sanpham = sanpham;
-		this.binhLuan = binhLuan;
-		this.danhGia = danhGia;
-		this.anhSanPham = anhSanPham;
-		this.ngaySua = ngaySua;
-	}
-	
-	public BinhLuan(Long id, NguoiDung nguoidung, SanPham sanpham, String binhLuan, int danhGia, String anhSanPham,
-			LocalDate ngaySua) {
-		super();
-		this.id = id;
-		this.nguoidung = nguoidung;
-		this.sanpham = sanpham;
-		this.binhLuan = binhLuan;
-		this.danhGia = danhGia;
-		this.anhSanPham = anhSanPham;
-		this.ngaySua = ngaySua;
-	}
 
-	public BinhLuan() {
-		super();
-		// TODO Auto-generated constructor stub
+	private String anhSanPham;
+	private LocalDate ngayBinhLuan;
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
 	}
 	public NguoiDung getNguoidung() {
 		return nguoidung;
@@ -76,38 +55,52 @@ public class BinhLuan {
 	public void setBinhLuan(String binhLuan) {
 		this.binhLuan = binhLuan;
 	}
-	public int getDanhGia() {
-		return danhGia;
-	}
-	public void setDanhGia(int danhGia) {
-		this.danhGia = danhGia;
-	}
 	public String getAnhSanPham() {
 		return anhSanPham;
 	}
 	public void setAnhSanPham(String anhSanPham) {
 		this.anhSanPham = anhSanPham;
 	}
-	public LocalDate getNgaySua() {
-		return ngaySua;
+	public LocalDate getNgayBinhLuan() {
+		return ngayBinhLuan;
 	}
-	public void setNgaySua(LocalDate ngaySua) {
-		this.ngaySua = ngaySua;
+	public void setNgayBinhLuan(LocalDate ngayBinhLuan) {
+		this.ngayBinhLuan = ngayBinhLuan;
 	}
-	
-	public Long getId() {
-		return id;
+	/**
+	 * @param nguoidung
+	 * @param sanpham
+	 * @param binhLuan
+	 * @param anhSanPham
+	 * @param ngayBinhLuan
+	 */
+	public BinhLuan(NguoiDung nguoidung, SanPham sanpham, String binhLuan, String anhSanPham, LocalDate ngayBinhLuan) {
+		super();
+		this.nguoidung = nguoidung;
+		this.sanpham = sanpham;
+		this.binhLuan = binhLuan;
+		this.anhSanPham = anhSanPham;
+		this.ngayBinhLuan = ngayBinhLuan;
 	}
-
-	public void setId(Long id) {
+	public BinhLuan(Long id, NguoiDung nguoidung, SanPham sanpham, String binhLuan, String anhSanPham,
+			LocalDate ngayBinhLuan) {
+		super();
 		this.id = id;
+		this.nguoidung = nguoidung;
+		this.sanpham = sanpham;
+		this.binhLuan = binhLuan;
+		this.anhSanPham = anhSanPham;
+		this.ngayBinhLuan = ngayBinhLuan;
 	}
-
 	@Override
 	public String toString() {
-		return "BinhLuan [nguoidung=" + nguoidung + ", sanpham=" + sanpham + ", binhLuan=" + binhLuan + ", danhGia="
-				+ danhGia + ", anhSanPham=" + anhSanPham + ", ngaySua=" + ngaySua + "]";
+		return "BinhLuan [id=" + id + ", nguoidung=" + nguoidung + ", sanpham=" + sanpham + ", binhLuan=" + binhLuan
+				+ ", anhSanPham=" + anhSanPham + ", ngayBinhLuan=" + ngayBinhLuan + "]";
 	}
+	public BinhLuan() {
+		super();
+	}
+	
 	
 	
 

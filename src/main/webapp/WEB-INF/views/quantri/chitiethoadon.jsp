@@ -38,7 +38,12 @@
 			
 			<div class="row">
 			
-				<label class="col-sm-4 col-form-label">Ngày nhận: ${hoaDon.ngayNhanDuKien} </label> 
+				<label class="col-sm-4 col-form-label">Ngày nhận dự kiến: ${hoaDon.ngayNhanDuKien} </label> 
+			</div>
+			
+			<div class="row">
+			
+				<label class="col-sm-4 col-form-label">Ngày nhận : ${hoaDon.ngayNhan} </label> 
 			</div>
 			
 			<div class="row">

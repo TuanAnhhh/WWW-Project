@@ -1,5 +1,6 @@
 package com.websitedungcuthethao.service.impl;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,9 +10,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.websitedungcuthethao.dto.GiohangSanphamDTO;
-import com.websitedungcuthethao.entity.ChiTietHoaDon;
 import com.websitedungcuthethao.entity.HoaDon;
-import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.repository.ChiTietHoaDonRepository;
 import com.websitedungcuthethao.repository.HoaDonRepository;
 import com.websitedungcuthethao.repository.SanPhamRepository;
@@ -71,6 +70,26 @@ public class HoaDonService implements IHoaDonService {
 	@Override
 	public void deleteHoaDon(HoaDon hoaDon) {
 		hoaDonRepository.delete(hoaDon);
+	}
+
+	@Override
+	public List<HoaDon> findByNguoiDungIDAndTrangThaiXacNhan(Long id) {
+		return hoaDonRepository.findByNguoiDungIDAndTrangThaiXacNhan(id);
+	}
+
+	@Override
+	public void setTrangThaiNguoiMuaXacNhan(Long id) {
+		hoaDonRepository.setTrangThaiNguoiMuaXacNhan(id);
+	}
+
+	@Override
+	public void updateHoaDon(HoaDon hoaDon) {
+		hoaDonRepository.save(hoaDon);
+	}
+
+	@Override
+	public void setNgayNhan(LocalDate ngayNhan, Long id) {
+		hoaDonRepository.setNgayNhan(ngayNhan, id);
 	}
 
 	

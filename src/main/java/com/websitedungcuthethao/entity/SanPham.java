@@ -4,7 +4,6 @@ import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -14,10 +13,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 public class SanPham {
@@ -64,235 +60,225 @@ public class SanPham {
 	@CreatedDate
 	private LocalDate ngayTao;
 	
-	@CreatedBy
-	private String nguoiTao;
-	
-	@LastModifiedDate
-	private LocalDate ngaySua;
-
-	@LastModifiedBy
-	private String nguoiSua;
 
 	@OneToMany(mappedBy = "sanpham")
 	private Set<GiaTriThuocTinhSanPham> dsThuocTinhSanPham = new HashSet<GiaTriThuocTinhSanPham>();
 
-	public SanPham(Long id, String ten, DanhMuc danhmuc, NhaCungCap nhacungcap, String moTa, String thuongHieu,
-			String noiDung, double gia, double phanTramGiamGia, int soLuong, String anhDaiDien, int soLuotXem,
-			int soLuotMua, int thoiGianBaoHanh, boolean trangThai, LocalDate ngayTao, String nguoiTao,
-			LocalDate ngaySua, String nguoiSua) {
-		super();
-		this.id = id;
-		this.ten = ten;
-		this.danhmuc = danhmuc;
-		this.nhacungcap = nhacungcap;
-		this.moTa = moTa;
-		this.thuongHieu = thuongHieu;
-		this.noiDung = noiDung;
-		this.gia = gia;
-		this.phanTramGiamGia = phanTramGiamGia;
-		this.soLuong = soLuong;
-		this.anhDaiDien = anhDaiDien;
-		this.soLuotXem = soLuotXem;
-		this.soLuotMua = soLuotMua;
-		this.thoiGianBaoHanh = thoiGianBaoHanh;
-		this.trangThai = trangThai;
-		this.ngayTao = ngayTao;
-		this.nguoiTao = nguoiTao;
-		this.ngaySua = ngaySua;
-		this.nguoiSua = nguoiSua;
-	}
-
-	public SanPham(String ten, DanhMuc danhmuc, NhaCungCap nhacungcap, String moTa, String thuongHieu, String noiDung,
-			double gia, double phanTramGiamGia, int soLuong, String anhDaiDien, int soLuotXem, int soLuotMua,
-			int thoiGianBaoHanh, boolean trangThai, LocalDate ngayTao, String nguoiTao, LocalDate ngaySua,
-			String nguoiSua) {
-		super();
-		this.ten = ten;
-		this.danhmuc = danhmuc;
-		this.nhacungcap = nhacungcap;
-		this.moTa = moTa;
-		this.thuongHieu = thuongHieu;
-		this.noiDung = noiDung;
-		this.gia = gia;
-		this.phanTramGiamGia = phanTramGiamGia;
-		this.soLuong = soLuong;
-		this.anhDaiDien = anhDaiDien;
-		this.soLuotXem = soLuotXem;
-		this.soLuotMua = soLuotMua;
-		this.thoiGianBaoHanh = thoiGianBaoHanh;
-		this.trangThai = trangThai;
-		this.ngayTao = ngayTao;
-		this.nguoiTao = nguoiTao;
-		this.ngaySua = ngaySua;
-		this.nguoiSua = nguoiSua;
-	}
-
-	public SanPham() {
-		super();
-		// TODO Auto-generated constructor stub
-	}
 
 	public Long getId() {
 		return id;
 	}
 
+
 	public void setId(Long id) {
 		this.id = id;
 	}
+
 
 	public String getTen() {
 		return ten;
 	}
 
+
 	public void setTen(String ten) {
 		this.ten = ten;
 	}
+
 
 	public DanhMuc getDanhmuc() {
 		return danhmuc;
 	}
 
+
 	public void setDanhmuc(DanhMuc danhmuc) {
 		this.danhmuc = danhmuc;
 	}
+
 
 	public NhaCungCap getNhacungcap() {
 		return nhacungcap;
 	}
 
+
 	public void setNhacungcap(NhaCungCap nhacungcap) {
 		this.nhacungcap = nhacungcap;
 	}
+
 
 	public String getMoTa() {
 		return moTa;
 	}
 
+
 	public void setMoTa(String moTa) {
 		this.moTa = moTa;
 	}
+
 
 	public String getThuongHieu() {
 		return thuongHieu;
 	}
 
+
 	public void setThuongHieu(String thuongHieu) {
 		this.thuongHieu = thuongHieu;
 	}
+
 
 	public String getNoiDung() {
 		return noiDung;
 	}
 
+
 	public void setNoiDung(String noiDung) {
 		this.noiDung = noiDung;
 	}
+
 
 	public double getGia() {
 		return gia;
 	}
 
+
 	public void setGia(double gia) {
 		this.gia = gia;
 	}
+
 
 	public double getPhanTramGiamGia() {
 		return phanTramGiamGia;
 	}
 
+
 	public void setPhanTramGiamGia(double phanTramGiamGia) {
 		this.phanTramGiamGia = phanTramGiamGia;
 	}
+
 
 	public int getSoLuong() {
 		return soLuong;
 	}
 
+
 	public void setSoLuong(int soLuong) {
 		this.soLuong = soLuong;
 	}
+
 
 	public String getAnhDaiDien() {
 		return anhDaiDien;
 	}
 
+
 	public void setAnhDaiDien(String anhDaiDien) {
 		this.anhDaiDien = anhDaiDien;
 	}
+
 
 	public int getSoLuotXem() {
 		return soLuotXem;
 	}
 
+
 	public void setSoLuotXem(int soLuotXem) {
 		this.soLuotXem = soLuotXem;
 	}
+
 
 	public int getSoLuotMua() {
 		return soLuotMua;
 	}
 
+
 	public void setSoLuotMua(int soLuotMua) {
 		this.soLuotMua = soLuotMua;
 	}
+
 
 	public int getThoiGianBaoHanh() {
 		return thoiGianBaoHanh;
 	}
 
+
 	public void setThoiGianBaoHanh(int thoiGianBaoHanh) {
 		this.thoiGianBaoHanh = thoiGianBaoHanh;
 	}
+
 
 	public boolean isTrangThai() {
 		return trangThai;
 	}
 
+
 	public void setTrangThai(boolean trangThai) {
 		this.trangThai = trangThai;
 	}
+
 
 	public LocalDate getNgayTao() {
 		return ngayTao;
 	}
 
+
 	public void setNgayTao(LocalDate ngayTao) {
 		this.ngayTao = ngayTao;
 	}
 
-	public String getNguoiTao() {
-		return nguoiTao;
-	}
-
-	public void setNguoiTao(String nguoiTao) {
-		this.nguoiTao = nguoiTao;
-	}
-
-	public LocalDate getNgaySua() {
-		return ngaySua;
-	}
-
-	public void setNgaySua(LocalDate ngaySua) {
-		this.ngaySua = ngaySua;
-	}
-
-	public String getNguoiSua() {
-		return nguoiSua;
-	}
-
-	public void setNguoiSua(String nguoiSua) {
-		this.nguoiSua = nguoiSua;
-	}
 
 	public Set<GiaTriThuocTinhSanPham> getDsThuocTinhSanPham() {
 		return dsThuocTinhSanPham;
 	}
-	
-	
+
 
 	public void setDsThuocTinhSanPham(Set<GiaTriThuocTinhSanPham> dsThuocTinhSanPham) {
 		this.dsThuocTinhSanPham = dsThuocTinhSanPham;
 	}
+
+
+	public SanPham(String ten, DanhMuc danhmuc, NhaCungCap nhacungcap, String moTa, String thuongHieu, String noiDung,
+			double gia, double phanTramGiamGia, int soLuong, String anhDaiDien, int soLuotXem, int soLuotMua,
+			int thoiGianBaoHanh, boolean trangThai, LocalDate ngayTao) {
+		super();
+		this.ten = ten;
+		this.danhmuc = danhmuc;
+		this.nhacungcap = nhacungcap;
+		this.moTa = moTa;
+		this.thuongHieu = thuongHieu;
+		this.noiDung = noiDung;
+		this.gia = gia;
+		this.phanTramGiamGia = phanTramGiamGia;
+		this.soLuong = soLuong;
+		this.anhDaiDien = anhDaiDien;
+		this.soLuotXem = soLuotXem;
+		this.soLuotMua = soLuotMua;
+		this.thoiGianBaoHanh = thoiGianBaoHanh;
+		this.trangThai = trangThai;
+		this.ngayTao = ngayTao;
+	}
+
+
+	public SanPham(Long id, String ten, DanhMuc danhmuc, NhaCungCap nhacungcap, String moTa, String thuongHieu,
+			String noiDung, double gia, double phanTramGiamGia, int soLuong, String anhDaiDien, int soLuotXem,
+			int soLuotMua, int thoiGianBaoHanh, boolean trangThai, LocalDate ngayTao) {
+		super();
+		this.id = id;
+		this.ten = ten;
+		this.danhmuc = danhmuc;
+		this.nhacungcap = nhacungcap;
+		this.moTa = moTa;
+		this.thuongHieu = thuongHieu;
+		this.noiDung = noiDung;
+		this.gia = gia;
+		this.phanTramGiamGia = phanTramGiamGia;
+		this.soLuong = soLuong;
+		this.anhDaiDien = anhDaiDien;
+		this.soLuotXem = soLuotXem;
+		this.soLuotMua = soLuotMua;
+		this.thoiGianBaoHanh = thoiGianBaoHanh;
+		this.trangThai = trangThai;
+		this.ngayTao = ngayTao;
+	}
+
 
 	@Override
 	public String toString() {
@@ -300,9 +286,14 @@ public class SanPham {
 				+ moTa + ", thuongHieu=" + thuongHieu + ", noiDung=" + noiDung + ", gia=" + gia + ", phanTramGiamGia="
 				+ phanTramGiamGia + ", soLuong=" + soLuong + ", anhDaiDien=" + anhDaiDien + ", soLuotXem=" + soLuotXem
 				+ ", soLuotMua=" + soLuotMua + ", thoiGianBaoHanh=" + thoiGianBaoHanh + ", trangThai=" + trangThai
-				+ ", ngayTao=" + ngayTao + ", nguoiTao=" + nguoiTao + ", ngaySua=" + ngaySua + ", nguoiSua=" + nguoiSua
-				+ "]";
+				+ ", ngayTao=" + ngayTao + ", dsThuocTinhSanPham=" + dsThuocTinhSanPham + "]";
 	}
 
+
+	public SanPham() {
+		super();
+	}
+
+	
 	
 }

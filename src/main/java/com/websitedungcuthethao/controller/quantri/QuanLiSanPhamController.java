@@ -65,6 +65,8 @@ public class QuanLiSanPhamController {
 		
 		
 		Pageable pageable=new PageRequest(page -1, limit);
+		
+//		List<SanPham>dsSanPham= sanPhamService.findByDanhMucID(list.get(0).getId(), pageable);
 		List<SanPham> dsSanPham= sanPhamService.findAllAndPaging(pageable);
 
 		abstractDTO.setTotalItem(sanPhamService.getTotalItem());

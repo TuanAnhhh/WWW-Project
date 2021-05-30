@@ -6,10 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.websitedungcuthethao.dto.NguoiDungDTONew;
 import com.websitedungcuthethao.dto.TaiKhoanDTO;
 import com.websitedungcuthethao.entity.NguoiDung;
-import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.repository.NguoiDungRepository;
 import com.websitedungcuthethao.service.INguoiDungService;
 

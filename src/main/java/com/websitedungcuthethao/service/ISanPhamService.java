@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.data.domain.Pageable;
 
-import com.websitedungcuthethao.dto.SanPhamDTO;
 import com.websitedungcuthethao.entity.SanPham;
 
 public interface ISanPhamService {
@@ -18,8 +17,10 @@ public interface ISanPhamService {
 	List<SanPham> findDSSanPhamNoiBat();
 	List<SanPham> findTop3SanPhamGiamGiaNhieuNhat();
 	List<SanPham> findByDanhMucID(Long idDM);
-	List<SanPham> findByDanhMucIDAndPaging(Long idDM, Pageable pageable);
 	Long getTotalItem();
 	void setTrangThaiSanPham(Long id, boolean tt);
+	
 	List<SanPham> findAllByTrangThaiAndPaging(boolean tt, Pageable pageable);
+	
+//	List<SanPham> findByDanhMucID(Long id,Pageable pageable);
 }

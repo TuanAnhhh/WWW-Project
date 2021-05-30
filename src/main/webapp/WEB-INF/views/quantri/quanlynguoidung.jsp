@@ -20,8 +20,8 @@
 
 					<div class="table-responsive">
 						
-						<table class="table table-bordered" id="dataTable" width="100%"
-							cellspacing="0">
+						<table class="table table-bordered" id="dataTable" 
+							>
 							<thead>
 								<tr>
 									<th>STT</th>
@@ -29,7 +29,7 @@
 									<th>Họ </th>
 									<th>Tên</th>
 									<th>Giới tính</th>
-									<th>Ngày sinh</th>
+						
 									<th>Email</th>
 									<th>Số điện thoại</th>
 									<th>Ngày tạo</th>
@@ -47,17 +47,13 @@
 									<td>${nd.ho }</td>
 									<td>${nd.ten }</td>
 									<td>${nd.gioiTinh? "Nam" : "Nữ"}</td>
-									<td>${nd.ngaySinh}</td>
 									<td>${nd.email}</td>
 									<td>${nd.soDienThoai }</td>
 									<td>${nd.ngayTao }</td>
 									<td>${nd.trangThai? "Hoạt động":"Đã chặn" }</td>
 									<td>
-									
-									
 									<button  type="button" onclick="myFunction(${nd.id})" ><i class="far fa-edit "></i></button>
-									
-									</td>
+												</td>
 								</tr>
 								</c:forEach>
 							</tbody>

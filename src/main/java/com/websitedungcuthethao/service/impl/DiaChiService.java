@@ -28,6 +28,10 @@ public class DiaChiService implements IDiaChiService{
 	public List<DiaChi> findByNguoiDungID(Long id) {
 		return diaChiRepository.findByNguoiDungID(id);
 	}
+	@Override
+	public void themDiaChi(String quan, String soNha, String tinhTP, Long nguoidungID) {
+		diaChiRepository.themDiaChi(quan, soNha, tinhTP, nguoidungID);
+	}
 	
 
 }

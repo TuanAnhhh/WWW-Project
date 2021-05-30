@@ -6,8 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import com.websitedungcuthethao.dto.NguoiDungDTO;
-import com.websitedungcuthethao.dto.NguoiDungDTONew;
 import com.websitedungcuthethao.entity.NguoiDung;
 
 public interface NguoiDungRepository extends JpaRepository<NguoiDung,Long> {

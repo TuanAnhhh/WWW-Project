@@ -9,4 +9,6 @@ public interface IDiaChiService {
 	void saveDiaChi(DiaChi diaChi);
 	void updateDiaChi(NguoiDungDTONew nguoiDungDTONew);
 	List<DiaChi> findByNguoiDungID(Long id);
+	
+	void themDiaChi(String quan,String soNha,String tinhTP,Long nguoidungID);
 }

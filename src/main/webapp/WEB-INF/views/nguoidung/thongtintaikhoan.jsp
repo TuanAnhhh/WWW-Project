@@ -25,12 +25,21 @@
 				</div>
 				
 				<div class="form-group row">
+					<form:label path="ho" cssClass="col-sm-2 col-form-label">Địa chỉ: </form:label> 
+					<form:label path="ho" cssClass="col-sm-12 col-form-label">${message}</form:label> 
+				</div>
+				
+				<div class="form-group row">
 				<div class="col-3">
 					<a href="<c:url value="/trang-chu" />" type="submit" class="btn btn-primary" > Quay lại</a>
 				</div>
 				<div class="col-1"></div>	
 				<div class="col-3">
 					<a href="<c:url value="doi-mat-khau/${nguoidung.id}" />" type="submit" class="btn btn-danger" > Đổi mất khẩu</a>
+				</div>
+				<div class="col-1"></div>	
+				<div class="col-3">
+					<a href="<c:url value="them-dia-chi/${nguoidung.id}" />" type="submit" class="btn btn-danger" > Thêm địa chỉ</a>
 				</div>
 						
 				</div>

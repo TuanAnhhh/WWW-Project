@@ -6,7 +6,6 @@ import org.springframework.stereotype.Service;
 import com.websitedungcuthethao.entity.GiaTriThuocTinhSanPham;
 import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.repository.GiaTriThuocTinhSanPhamRepository;
-import com.websitedungcuthethao.repository.ThuocTinhSanPhamRepository;
 import com.websitedungcuthethao.service.IGiaTriThuocTinhSanPhamService;
 
 @Service
@@ -15,8 +14,7 @@ public class GiaTriThuocTinhSanPhamService implements IGiaTriThuocTinhSanPhamSer
 
 	@Autowired
 	private GiaTriThuocTinhSanPhamRepository giaTriThuocTinhSanPhamRepository;
-	@Autowired
-	private ThuocTinhSanPhamRepository thuocTinhSanPhamRepository;
+
 	
 
 	
