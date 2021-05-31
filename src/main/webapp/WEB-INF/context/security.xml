@@ -10,9 +10,9 @@
 
 	<http auto-config="false" use-expressions="true" disable-url-rewriting="true">
 	
-		 <!-- <intercept-url pattern="/quan-tri/*" access="hasAnyRole('QUANTRI')" />  -->
+		<intercept-url pattern="/quan-tri/*" access='hasRole("ROLE_QUANTRI")' />  
 		
-		<!-- <intercept-url pattern="/thanh-toan/*" access="hasAnyRole('NGUOIDUNG')" /> -->
+		<!-- <intercept-url pattern="/thanh-toan/*" access="hasRole('ROLE_NGUOIDUNG')" />  -->
 			
 		<intercept-url pattern="/resources/**"
 			access="permitAll" />
@@ -24,7 +24,7 @@
 			authentication-success-handler-ref="customSuccessHandler"
 			authentication-failure-url="/dang-nhap?incorrectAccount" />
 
-		<session-management invalid-session-url="/dang-nhap?sessionTimeout" />
+		<!-- <session-management invalid-session-url="/dang-nhap?sessionTimeout" /> -->
 		<logout delete-cookies="JSESSIONID" />
 	</http>
 

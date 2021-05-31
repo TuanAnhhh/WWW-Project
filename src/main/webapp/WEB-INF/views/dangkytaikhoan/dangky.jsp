@@ -80,7 +80,10 @@
 										<form:label path="" class="small mb-1">Nhập lại mật khẩu</form:label>
 										<form:password cssClass="form-control py-4" path="" />
 									</div>
-									<button type="submit" class="btn btn-primary" style="float: right;">Đăng ký</button>
+									<div class="form-group float-right">
+										<a href="<c:url value="/dang-nhap"/>"class="btn btn-danger">Về đăng nhập</a>
+										<button type="submit" class="btn btn-primary">Đăng ký</button>
+									</div>
 
 								</form:form>
 							</div>

@@ -31,7 +31,7 @@
 										<p class="product-name">
 											<a href="<c:url value="/chi-tiet-san-pham/${item.key}"/>">${item.value.sanPham.ten}</a>
 										</p>
-										<p class="product-des">${item.value.sanPham.moTa}</p>
+										
 									</td>
 									<td class="price" data-title="Price">
 											<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${item.value.getGiaBanThucTe()}" /></span>

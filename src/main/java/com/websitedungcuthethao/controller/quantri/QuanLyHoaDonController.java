@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort.Direction;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -53,7 +54,7 @@ public class QuanLyHoaDonController {
 		abstractDTO.setLimit(limit);
 		
 		
-		Pageable pageable=new PageRequest(page -1, limit);
+		Pageable pageable=new PageRequest(page -1, limit, Direction.DESC,"ngayDat");
 		List<HoaDon> dsHD= hoaDonService.findAllByTrangThaiAndPaging(SystemConstant.ACTIVE_STATUS, pageable);
 		dsHD.forEach(t->{
 			

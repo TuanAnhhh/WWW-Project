@@ -1,13 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<title>Thêm sản phẩm</title>
+<title>Thêm địa chỉ</title>
 <body>
 	<div id="layoutSidenav_content">
 		<main>
 		<div class="container">
 				<div class="col-sm-12 text-center mt-3 mb-3">
-					<h3>Thêm sản phẩm</h3>
+					<h3>Thêm địa chỉ </h3>
 				</div>
 				<form:form action="luu-dia-chi"  method="POST" >
 					
@@ -32,8 +32,11 @@
 				</div>
 				<div class="form-group row" >
 					<div class="col-sm-2"></div>
-					<div class="col-sm-7">
-						<button type="submit" class="btn btn-primary" >Lưu Địa chỉ</button>
+					<div class="col-sm-10">
+							
+						<button type="submit" class="btn btn-primary float-right ml-2"><i class="ti-save mr-2"></i>Lưu Địa chỉ</button>
+						<a href="<c:url value="/thong-tin-tai-khoan" />" type="submit"
+							class="btn btn-danger float-right"><i class="ti-arrow-left"></i>Quay lại</a>
 					</div>
 				</div>
 			</form:form>

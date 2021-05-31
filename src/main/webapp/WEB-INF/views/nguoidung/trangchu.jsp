@@ -239,6 +239,9 @@
 										<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${spGiamGiaTrongNgay.gia}" /></span> 
 										<s><fmt:formatNumber type="number" pattern = "#,### VND" value="${spGiamGiaTrongNgay.gia - spGiamGiaTrongNgay.gia*spGiamGiaTrongNgay.phanTramGiamGia/100}" /></s>
 									</h1>
+									<div class="add-to-cart" >
+											<a href="<c:url value="/gio-hang/them/${spGiamGiaTrongNgay.id}"/>" class="btn" style="color:white;">Thêm vào giỏ hàng</a>
+										</div>
 								
 							</div>
 						</div>

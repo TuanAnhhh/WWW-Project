@@ -29,7 +29,7 @@
 							</security:authorize>
 							
 							<security:authorize access="isAuthenticated()">
-								<li><i class="ti-power-off"></i><a href=" <c:url value="/dang-nhap"/> ">Welcome <%=SecurityUtils.getPrincipal().getFullName() %></a></li>
+								<li><i class="ti-power-off"></i>Welcome <%=SecurityUtils.getPrincipal().getFullName() %></li>
 								<li><i class="ti-arrow-right"></i> <a href="<c:url value="/dang-xuat"/> ">Thoát</a></li>
 							</security:authorize>
 						</ul>
@@ -99,7 +99,7 @@
 						
 						
 						<div class="sinlge-bar">
-							<a href="<c:url value="don-hang" />" class="single-icon"><i class="ti-alarm-clock"></i><span class="total-count"></span></a>
+							<a href="<c:url value="don-hang" />" class="single-icon"><i class="ti-alarm-clock"></i></a>
 						</div>
 						
 						<div class="sinlge-bar shopping">

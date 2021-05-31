@@ -32,9 +32,9 @@ public class CustomUserDetailsService implements UserDetailsService {
 			throw new UsernameNotFoundException("Không tim thấy người dùng");
 		}
 		// put thong tin nguoi dung vao security  vÃ  duy tri dang nhap
-		System.out.println(nguoiDung.toString());
+		
 		LoaiNguoiDung loaiNguoiDung= nguoiDung.getLoainguoidung();
-		System.out.println(loaiNguoiDung.toString());
+
 		
 		
 		List<GrantedAuthority> authorties =new ArrayList<GrantedAuthority>();

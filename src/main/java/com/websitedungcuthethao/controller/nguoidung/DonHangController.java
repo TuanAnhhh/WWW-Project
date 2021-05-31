@@ -46,6 +46,7 @@ public class DonHangController {
 		
 		List<HoaDon> listHD=hoaDonService.findByNguoiDungIDAndTrangThaiXacNhan(nguoidung.getId());
 		model.addAttribute("listHD", listHD);
+		model.addAttribute("soLuongDonHang", listHD.size());
 				
 		return "nguoidung/xacnhandonhang";
 	}

@@ -31,8 +31,7 @@
 							</security:authorize>
 
 							<security:authorize access="isAuthenticated()">
-								<li><i class="ti-power-off"></i><a
-									href=" <c:url value="/dang-nhap"/> ">Welcome <%=SecurityUtils.getPrincipal().getFullName()%></a></li>
+								<li><i class="ti-power-off"></i>Welcome <%=SecurityUtils.getPrincipal().getFullName()%></li>
 								<li><i class="ti-arrow-right"></i> <a
 									href="<c:url value="/dang-xuat"/> ">Thoát</a></li>
 							</security:authorize>
