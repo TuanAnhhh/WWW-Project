@@ -9,25 +9,47 @@ public class ThemSanPhamDTO {
 	private String moTa;
 	private String thuongHieu;
 	private String noiDung;
-	private double gia;
-	private int soLuong;
+	private String gia;
+	private String phanTramGiamGia;
+	private String soLuong;
 	private CommonsMultipartFile anhDaiDien;
-	private int thoiGianBaoHanh;
+	private String thoiGianBaoHanh;
 	private String tenThuocTinh;
 	private String giaTriThuocTinh;
-	
-	
-	public String getTenThuocTinh() {
-		return tenThuocTinh;
+	public ThemSanPhamDTO(String ten, String tenDanhMuc, String tenNhaCungCap, String moTa, String thuongHieu,
+			String noiDung, String gia, String soLuong, CommonsMultipartFile anhDaiDien, String thoiGianBaoHanh, String phanTramGiamGia
+			) {
+		super();
+		this.ten = ten;
+		this.tenDanhMuc = tenDanhMuc;
+		this.tenNhaCungCap = tenNhaCungCap;
+		this.moTa = moTa;
+		this.thuongHieu = thuongHieu;
+		this.noiDung = noiDung;
+		this.gia = gia;
+		this.soLuong = soLuong;
+		this.anhDaiDien = anhDaiDien;
+		this.thoiGianBaoHanh = thoiGianBaoHanh;
+		this.phanTramGiamGia = phanTramGiamGia;
 	}
-	public void setTenThuocTinh(String tenThuocTinh) {
-		this.tenThuocTinh = tenThuocTinh;
+	public ThemSanPhamDTO(String ten, String tenDanhMuc, String tenNhaCungCap, String moTa, String thuongHieu,
+			String noiDung, String gia, String soLuong, String thoiGianBaoHanh, String phanTramGiamGia
+			) {
+		super();
+		this.ten = ten;
+		this.tenDanhMuc = tenDanhMuc;
+		this.tenNhaCungCap = tenNhaCungCap;
+		this.moTa = moTa;
+		this.thuongHieu = thuongHieu;
+		this.noiDung = noiDung;
+		this.gia = gia;
+		this.soLuong = soLuong;
+		this.thoiGianBaoHanh = thoiGianBaoHanh;
+		this.phanTramGiamGia = phanTramGiamGia;
 	}
-	public String getGiaTriThuocTinh() {
-		return giaTriThuocTinh;
-	}
-	public void setGiaTriThuocTinh(String giaTriThuocTinh) {
-		this.giaTriThuocTinh = giaTriThuocTinh;
+	public ThemSanPhamDTO() {
+		super();
+		// TODO Auto-generated constructor stub
 	}
 	public String getTen() {
 		return ten;
@@ -65,37 +87,58 @@ public class ThemSanPhamDTO {
 	public void setNoiDung(String noiDung) {
 		this.noiDung = noiDung;
 	}
-	public double getGia() {
+	public String getGia() {
 		return gia;
 	}
-	public void setGia(double gia) {
+	public void setGia(String gia) {
 		this.gia = gia;
 	}
-	public int getSoLuong() {
+	public String getSoLuong() {
 		return soLuong;
 	}
-	public void setSoLuong(int soLuong) {
+	public void setSoLuong(String soLuong) {
 		this.soLuong = soLuong;
 	}
-	
 	public CommonsMultipartFile getAnhDaiDien() {
 		return anhDaiDien;
 	}
 	public void setAnhDaiDien(CommonsMultipartFile anhDaiDien) {
 		this.anhDaiDien = anhDaiDien;
 	}
-	public int getThoiGianBaoHanh() {
+	public String getThoiGianBaoHanh() {
 		return thoiGianBaoHanh;
 	}
-	public void setThoiGianBaoHanh(int thoiGianBaoHanh) {
+	public void setThoiGianBaoHanh(String thoiGianBaoHanh) {
 		this.thoiGianBaoHanh = thoiGianBaoHanh;
+	}
+	public String getTenThuocTinh() {
+		return tenThuocTinh;
+	}
+	public void setTenThuocTinh(String tenThuocTinh) {
+		this.tenThuocTinh = tenThuocTinh;
+	}
+	public String getGiaTriThuocTinh() {
+		return giaTriThuocTinh;
+	}
+	public void setGiaTriThuocTinh(String giaTriThuocTinh) {
+		this.giaTriThuocTinh = giaTriThuocTinh;
+	}
+	
+	public String getPhanTramGiamGia() {
+		return phanTramGiamGia;
+	}
+	public void setPhanTramGiamGia(String phanTramGiamGia) {
+		this.phanTramGiamGia = phanTramGiamGia;
 	}
 	@Override
 	public String toString() {
 		return "ThemSanPhamDTO [ten=" + ten + ", tenDanhMuc=" + tenDanhMuc + ", tenNhaCungCap=" + tenNhaCungCap
 				+ ", moTa=" + moTa + ", thuongHieu=" + thuongHieu + ", noiDung=" + noiDung + ", gia=" + gia
-				+ ", soLuong=" + soLuong + ", anhDaiDien=" + anhDaiDien + ", thoiGianBaoHanh=" + thoiGianBaoHanh + "]";
+				+ ", soLuong=" + soLuong + ", anhDaiDien=" + anhDaiDien + ", thoiGianBaoHanh=" + thoiGianBaoHanh
+				+ ", tenThuocTinh=" + tenThuocTinh + ", giaTriThuocTinh=" + giaTriThuocTinh + "]";
 	}
+	
+	
 	
 	
 

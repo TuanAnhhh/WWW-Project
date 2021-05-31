@@ -226,20 +226,20 @@
 				<div class="row">
 					<div class="col-lg-6 col-12 padding-right">
 						<div class="image">
-							<img src="https://via.placeholder.com/750x590" alt="#">
+							<img src="<c:url value="/resources/images/user/sanpham/${spGiamGiaTrongNgay.anhDaiDien}"/>" alt="#">
 						</div>
 					</div>
 					<div class="col-lg-6 col-12 padding-left">
 						<div class="content">
 							<div class="heading-block">
 								<p class="small-title">Giảm giá trong ngày</p>
-								<h3 class="title">Beatutyful dress for women</h3>
-								<p class="text">Suspendisse massa leo, vestibulum cursus
-									nulla sit amet, frungilla placerat lorem. Cars fermentum,
-									sapien.</p>
-								<h1 class="price">
-									$1200 <s>$1890</s>
-								</h1>
+									<h3 class="title">${spGiamGiaTrongNgay.ten}</h3>
+									<p class="text">${spGiamGiaTrongNgay.moTa}</p>
+									<h1 class="price">
+										<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${spGiamGiaTrongNgay.gia}" /></span> 
+										<s><fmt:formatNumber type="number" pattern = "#,### VND" value="${spGiamGiaTrongNgay.gia - spGiamGiaTrongNgay.gia*spGiamGiaTrongNgay.phanTramGiamGia/100}" /></s>
+									</h1>
+								
 							</div>
 						</div>
 					</div>

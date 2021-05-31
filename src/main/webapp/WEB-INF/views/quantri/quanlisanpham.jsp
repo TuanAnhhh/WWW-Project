@@ -13,9 +13,6 @@
 			<div class="col-4">
 				<h1 class="mt-4">Quản lý sản phẩm</h1>
 			</div>
-			<div class="col-5" style="margin-top: 35px;">
-				<a href="<c:url value='/quan-tri/quan-ly-san-pham/them-san-pham'/>" class="btn btn-primary">Thêm sản phẩm</a>
-			</div>
 			</div>
 				<!-- dangh muc -->
 				<div class="row">
@@ -47,16 +44,17 @@
 							<table class="table table-bordered" id="dataTable" width="100%"
 								cellspacing="0">
 								<thead>
-									<tr>
+									<tr class="text-center">
 										<th>STT</th>
 										<th>Tên</th>
 										<th>Giá gốc</th>
 										<th>Giá khuyến mãi</th>
 										<th>Lượt mua</th>
-										<th>Thời gian bảo hành</th>
+										<th>Lượt xem</th>
+										<th>Thời gian bảo hành (tháng)</th>
 										<th>Thương hiệu</th>
-										<th>Trạng thái</th>
-										<th>Quản lý</th>
+										<th >Trạng thái</th>
+										<th style="width: 10%">Quản lý</th>
 
 									</tr>
 								</thead>
@@ -67,13 +65,14 @@
 											<td>${count.count}</td>
 											<td>${sp.ten}</td>
 											<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia}" /></span></td>
-											<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia - sp.gia*sp.phanTramGiamGia}" /></span></td>
+											<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia - sp.gia*sp.phanTramGiamGia/100}" /></span></td>
 											<td>${sp.soLuotMua }</td>
-											<td>${sp.thoiGianBaoHanh } Tháng</td>
+											<td>${sp.soLuotXem }</td>
+											<td>${sp.thoiGianBaoHanh == 0? "Không bảo hành" : sp.thoiGianBaoHanh }</td>
 											<td>${sp.thuongHieu }</td>
 											<td>${sp.trangThai? "Đang bán" : "Tạm ngưng" }</td>
-											<td>
-											<a href=" <c:url value="/quan-tri/quan-ly-san-pham/sua-san-pham/${sp.id}" />" class="mr-2 ml-2"><i class="far fa-edit"></i></a>
+											<td class="text-center">
+											<a href=" <c:url value="/quan-tri/quan-ly-san-pham/sua-san-pham/${sp.id}" />" class="mr-2"><i class="far fa-edit"></i></a>
 											
 											<button  type="button" onclick="myFunction(${sp.id})" ><i class="fas fa-trash-alt "></i></button>											
 											</td>

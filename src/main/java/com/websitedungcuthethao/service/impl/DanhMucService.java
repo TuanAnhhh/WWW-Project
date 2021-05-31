@@ -59,6 +59,12 @@ public class DanhMucService implements IDanhMucService {
 		return danhMucRepository.findOne(id);
 	}
 
+	@Override
+	public List<DanhMuc> findAllDanhMucCon() {
+		// TODO Auto-generated method stub
+		return danhMucRepository.findAllDanhMucCon();
+	}
+
 
 	
 }

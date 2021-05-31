@@ -20,7 +20,7 @@
 					<label  class="col-sm-2 col-form-label">${nguoidung.ho} ${nguoidung.ten}</label> 
 				</div>
 				<div class="form-group row">
-					<label  class="col-sm-2 col-form-label">email: </label> 
+					<label  class="col-sm-2 col-form-label">Email: </label> 
 					<label  class="col-sm-2 col-form-label">${nguoidung.email}</label> 
 				</div>
 				<div class="form-group row">
@@ -38,7 +38,7 @@
 				</div>
 				<div class="form-group row">
 					<label  class="col-sm-2 col-form-label">Tổng tiền: </label> 
-					<label  class="col-sm-2 col-form-label">${hd.tongTienHoaDon}</label> 
+					<label  class="col-sm-2 col-form-label"><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${hd.tongTienHoaDon}" /></span></label> 
 				</div>	
 				<div class="form-group row" >
 				<div class="col-9"></div>
@@ -53,15 +53,10 @@
 				<div class="col-3">
 					<a href="<c:url value="/trang-chu" />" type="submit" class="btn btn-primary" > Quay lại</a>
 				</div>
-				
-				
 						
 				</div>
-				
-				
 			</form>
 			<div class="form-group row">
-
 		</div>
 </div>
 		</main>

@@ -18,7 +18,6 @@ public class LuuAnh {
 		String fileName= multipartFile.getOriginalFilename();
 		String path= context.getRealPath("/resources/images/user/sanpham");
 		String filePath= path+ File.separator+fileName;
-		System.out.println(filePath);
 		byte[] bytes= multipartFile.getBytes();
 		BufferedOutputStream stream;
 		try {

@@ -22,7 +22,7 @@
 						<table class="table table-bordered" id="dataTable" width="100%"
 							cellspacing="0">
 							<thead>
-								<tr>
+								<tr class="text-center">
 									<th>STT</th>
 									<th>Mã hóa đơn</th>
 									<th>Khách hàng</th>

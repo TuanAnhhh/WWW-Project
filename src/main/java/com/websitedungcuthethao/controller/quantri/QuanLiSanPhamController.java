@@ -32,7 +32,6 @@ import com.websitedungcuthethao.service.impl.NhaCungCapService;
 import com.websitedungcuthethao.service.impl.SanPhamService;
 import com.websitedungcuthethao.service.impl.ThuocTinhSanPhamService;
 import com.websitedungcuthethao.util.LuuAnh;
-import com.websitedungcuthethao.validate.SanPhamSuaValidation;
 import com.websitedungcuthethao.validate.SanPhamThemValidation;
 
 @Controller
@@ -41,6 +40,7 @@ public class QuanLiSanPhamController {
 	
 	private Long idSP=null;
 	private SanPham sanP=null;
+	ThemSanPhamDTO spSua = null;
 	@Autowired
 	private ThuocTinhSanPhamService thuocTinhSanPhamService;
 	
@@ -62,8 +62,6 @@ public class QuanLiSanPhamController {
 	@Autowired
 	private SanPhamThemValidation sanPhamThemValidation;
 	
-	@Autowired
-	private SanPhamSuaValidation sanPhamSuaValidation;
 	
 	
 	@GetMapping
@@ -104,53 +102,55 @@ public class QuanLiSanPhamController {
 		List<ThuocTinhSanPham> listThuocTinh= thuocTinhSanPhamService.findAll();
 		model.addAttribute("listThuocTinh", listThuocTinh);
 		
-		
 		return "quantri/themsanpham";
 	}
 	
 	
 	@PostMapping("/them-san-pham")
-	public String luuSanPham(@ModelAttribute("sanPham") ThemSanPhamDTO sanPham,HttpSession session,BindingResult bindingResult) throws IOException{
+	public String luuSanPham(@ModelAttribute("sanPham") ThemSanPhamDTO sanPham,HttpSession session,BindingResult bindingResult, Model model) throws IOException{
 		sanPhamThemValidation.validate(sanPham, bindingResult);
 		if(bindingResult.hasErrors()) {
-			return"redirect:/quan-tri/quan-ly-san-pham/them-san-pham";
+			List<DanhMuc> listDanhMuc= danhMucService.findAll();
+			model.addAttribute("listDanhMuc", listDanhMuc);
+			List<NhaCungCap> listNhaCungCap= nhaCungCapService.findAll(); 
+			model.addAttribute("listNhaCungCap", listNhaCungCap);
+			
+			List<ThuocTinhSanPham> listThuocTinh= thuocTinhSanPhamService.findAll();
+			model.addAttribute("listThuocTinh", listThuocTinh);
+			model.addAttribute("mesErr","Thông tin đăng ký không hợp lệ");
+			return"quantri/themsanpham";
 		}
 		SanPham sp= new SanPham();
 		sp.setAnhDaiDien(sanPham.getAnhDaiDien().getOriginalFilename());
-		System.out.println(sanPham.getAnhDaiDien().getOriginalFilename());
 		sp.setTen(sanPham.getTen());
 		sp.setDanhmuc(danhMucService.findByTen(sanPham.getTenDanhMuc()));
 		sp.setNhacungcap(nhaCungCapService.findByTenNhaCungCap(sanPham.getTenNhaCungCap()));
 		sp.setMoTa(sanPham.getMoTa());
 		sp.setThuongHieu(sanPham.getThuongHieu());
 		sp.setNoiDung(sanPham.getNoiDung());
-		sp.setGia(sanPham.getGia());
+		sp.setGia(Double.parseDouble(sanPham.getGia()));
 		sp.setPhanTramGiamGia(0);
-		sp.setSoLuong(sanPham.getSoLuong());
+		sp.setSoLuong(Integer.parseInt(sanPham.getSoLuong()));
 		sp.setSoLuotMua(0);
 		sp.setSoLuotXem(0);
-		sp.setThoiGianBaoHanh(sanPham.getThoiGianBaoHanh());
+		sp.setThoiGianBaoHanh(Integer.parseInt(sanPham.getThoiGianBaoHanh()));
 		sp.setTrangThai(true);
 		sp.setNgayTao(LocalDate.now());
 		sanPhamService.save(sp);
 		
 		
-		System.out.println(thuocTinhSanPhamService.findOneByTenThuoctinh(sanPham.getTenThuocTinh()));
-		System.out.println(1);
 		luuAnh.luuAnh(sanPham.getAnhDaiDien(), session);
 		
-		ThuocTinhSanPham thuocTinhSanPham= thuocTinhSanPhamService.findOneByTenThuoctinh(sanPham.getTenThuocTinh());
-		
-		giaTriThuocTinhSanPhamService.saveGTTTSP(sp.getId(), thuocTinhSanPham.getId(), sanPham.getGiaTriThuocTinh());
-		
-		
-		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
+		if(!sanPham.getGiaTriThuocTinh().equals("")) {
+			ThuocTinhSanPham thuocTinhSanPham= thuocTinhSanPhamService.findOneByTenThuoctinh(sanPham.getTenThuocTinh());
+			giaTriThuocTinhSanPhamService.saveGTTTSP(sp.getId(), thuocTinhSanPham.getId(), sanPham.getGiaTriThuocTinh());
+		}
+		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=12";
 	}
 	
 	@GetMapping("/xoa-san-pham/{id}")
 	public String tamNgungSanPham(@PathVariable Long id) {
 		try {
-			System.out.println(sanPhamService.findById(id).isTrangThai());
 			if(sanPhamService.findById(id).isTrangThai()==true) {
 				sanPhamService.setTrangThaiSanPham(id, SystemConstant.INACTIVE_STATUS);
 				
@@ -162,7 +162,7 @@ public class QuanLiSanPhamController {
 		} catch (Exception e) {
 			// TODO: handle exception
 		}
-		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
+		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=12";
 	}
 	
 	@GetMapping("/sua-san-pham/{id}")
@@ -175,10 +175,7 @@ public class QuanLiSanPhamController {
 	}
 	@PostMapping("/sua-san-pham/luu-thong-tin")
 	public String suaSanPham(@ModelAttribute SanPham sanPham,BindingResult  bindingResult) {
-		sanPhamSuaValidation.validate(sanPham, bindingResult);
-		if(bindingResult.hasErrors()) {
-			return "redirect:/quan-tri/sua-san-pham/"+idSP;
-		}
+		
 		sanP.setTen(sanPham.getTen());
 		sanP.setAnhDaiDien(sanPham.getAnhDaiDien());
 		sanP.setGia(sanPham.getGia());
@@ -191,6 +188,16 @@ public class QuanLiSanPhamController {
 		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
 		
 		
+	}
+	@GetMapping("/them-thuoc-tinh-san-pham")
+	public String themThuocTinhSanPham(Model model) {
+		return "quantri/themthuoctinhsanpham";
+	}
+	@PostMapping("/them-thuoc-tinh-san-pham")
+	public String themThuocTinhSanPhamSubmit(@RequestParam String tenThuocTinh , Model model) {
+		ThuocTinhSanPham thuocTinhSanPham = new ThuocTinhSanPham(tenThuocTinh);
+		thuocTinhSanPhamService.saveTTSP(thuocTinhSanPham);
+		return "redirect:/quan-tri/quan-ly-san-pham/them-san-pham";
 	}
 	
 	

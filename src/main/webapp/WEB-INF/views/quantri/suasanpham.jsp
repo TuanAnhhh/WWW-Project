@@ -1,20 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<title>Thêm sản phẩm</title>
+<title>Sửa sản phẩm</title>
 <style type="text/css">
 .error {
 	color: red;
 }
 </style>
 <body>
+<fmt:requestEncoding value = "UTF-8" />
 	<div id="layoutSidenav_content">
 		<main>
 		<div class="container">
 				<div class="col-sm-12 text-center mt-3 mb-3">
 					<h3>Sửa sản phẩm</h3>
 				</div>
-				<form:input path="id" type="hidden"/>
+			<%-- 	<form:input path="id" type="hidden"/> --%>
 				<form:form action="luu-thong-tin" method="POST" modelAttribute="sanPham">
 				<div class="form-group row">
 					<form:label path="ten" cssClass="col-sm-2 col-form-label">Tên sản phẩm</form:label> 
@@ -81,7 +82,7 @@
 					<div class="col-sm-2"></div>
 					
 					<div class="col-sm-3">
-						<a href="<c:url value="/quan-tri/quan-ly-san-pham?page=1&limit=3" />" type="submit" class="btn btn-danger" >Hủy</a>
+						<a href="<c:url value="/quan-tri/quan-ly-san-pham?page=1&limit=12" />" type="submit" class="btn btn-danger" >Hủy</a>
 					</div>
 					<div class="col-sm-7">
 						<button type="submit" class="btn btn-primary" >Sửa sản phẩm</button>

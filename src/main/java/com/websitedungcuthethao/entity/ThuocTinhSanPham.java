@@ -16,24 +16,23 @@ public class ThuocTinhSanPham {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(columnDefinition = "nvarchar(50)")
+	@Column(columnDefinition = "nvarchar(255)")
 	private String tenThuoctinh;
 	
 	@OneToMany(mappedBy = "thuoctinhsanpham")
 	private List<GiaTriThuocTinhSanPham> dsGiaTriThuocTinh = new ArrayList<GiaTriThuocTinhSanPham>();
 
-	public ThuocTinhSanPham(Long id, String tenThuoctinh, List<GiaTriThuocTinhSanPham> dsGiaTriThuocTinh) {
+	public ThuocTinhSanPham(Long id, String tenThuoctinh) {
 		super();
 		this.id = id;
 		this.tenThuoctinh = tenThuoctinh;
-		this.dsGiaTriThuocTinh = dsGiaTriThuocTinh;
 	}
 
-	public ThuocTinhSanPham(String tenThuoctinh, List<GiaTriThuocTinhSanPham> dsGiaTriThuocTinh) {
+	public ThuocTinhSanPham(String tenThuoctinh) {
 		super();
 		this.tenThuoctinh = tenThuoctinh;
-		this.dsGiaTriThuocTinh = dsGiaTriThuocTinh;
 	}
+	
 
 	public ThuocTinhSanPham() {
 		super();
@@ -66,8 +65,10 @@ public class ThuocTinhSanPham {
 
 	@Override
 	public String toString() {
-		return "ThuocTinhSanPham [id=" + id + ", tenThuoctinh=" + tenThuoctinh+"]";
+		return "ThuocTinhSanPham [id=" + id + ", tenThuoctinh=" + tenThuoctinh + "]";
 	}
+
+	
 	
 	
 	

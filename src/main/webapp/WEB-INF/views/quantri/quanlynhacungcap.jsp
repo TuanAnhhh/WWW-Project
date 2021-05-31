@@ -31,7 +31,7 @@
 
 							<table class="table table-bordered" id="dataTable">
 								<thead>
-									<tr>
+									<tr class="text-center">
 										<th>STT</th>
 										<th>Tên nhà cung cấp</th>
 										<th>Địa chỉ</th>

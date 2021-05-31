@@ -1,4 +1,4 @@
-package com.websitedungcuthethao.validate;
+ package com.websitedungcuthethao.validate;
 
 import java.util.List;
 
@@ -23,45 +23,61 @@ public class DangKiTaiKhoanValidation implements Validator{
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		if(!supports(getClass()))
+		if(!supports(target.getClass()))
 			return;
 		
 		NguoiDung nguoiDung= (NguoiDung) target;
 		String ho= nguoiDung.getHo();
-		if(!ho.matches("^[A-Za-z]+$")) {
-			errors.rejectValue("ho", null, "Họ người dùng không được để trống");
+		if(!ho.matches("[a-zA-ZđêếềệểễưứừửữựôốồộổỗăắằặẳẵâầấẩẫậeéèẹẽẻuúùủụũoóòỏọõaáàảạãĐẾỀỆỂỄƯỨỪỬỮỰÔỐỒỘỔỖĂẮẰẶẲẴÂẦẤẨẪẬÉÈẸẼẺÚÙỦỤŨÓÒỎỌỎÕÁÀẢÃÃyýỳỵỹỷỉịìĩíỈỊÌÍĨ]+$")) {
+			errors.rejectValue("ho", null, "Họ không chứa số");
 		}
 		
 		String ten = nguoiDung.getTen();
-		if(!ten.matches("^[A-Za-z]+$")) {
-			errors.rejectValue("ten", null, "Tên người dùng không được để trống");
+		if(!ten.matches("[a-zA-ZđêếềệểễưứừửữựôốồộổỗăắằặẳẵâầấẩẫậeéèẹẽẻuúùủụũoóòỏọõaáàảạãĐẾỀỆỂỄƯỨỪỬỮỰÔỐỒỘỔỖĂẮẰẶẲẴÂẦẤẨẪẬÉÈẸẼẺÚÙỦỤŨÓÒỎỌỎÕÁÀẢÃÃyýỳỵỹỷỉịìĩíỈỊÌÍĨ]+(\\s[a-zA-ZđêếềệểễưứừửữựôốồộổỗăắằặẳẵâầấẩẫậeéèẹẽẻuúùủụũoóòỏọõaáàảạãỉịìĩíĐẾỀỆỂỄƯỨỪỬỮỰÔỐỒỘỔỖĂẮẰẶẲẴÂẦẤẨẪẬÉÈẸẼẺÚÙỦỤŨÓÒỎỌỎÕÁÀẢÃÃyýỳỵỹỷÝỶỲÝỴỈỊÌÍĨ]+)*")) {
+			errors.rejectValue("ten", null, "Tên không chứa số");
 		}
 		
 		String tenDangNhap=nguoiDung.getTenDangNhap();
 		if(tenDangNhap.equals("")) {
-			errors.rejectValue("tenDangNhap", null, "Tên đăng nhập không được để trống");
-			
+			errors.rejectValue("tenDangNhap", null, "Không được để trống");
 		}
-		List<NguoiDung>listND=nguoiDungService.findAll();
-		for (NguoiDung nd : listND) {
-			if(tenDangNhap.equals(nd.getTenDangNhap())) {
-				errors.rejectValue("tenDangNhap", null, "Tên đăng nhập đã tồn tại!");
+		else {
+			List<NguoiDung>listND=nguoiDungService.findAll();
+			for (NguoiDung nd : listND) {
+				if(tenDangNhap.equals(nd.getTenDangNhap())) {
+					errors.rejectValue("tenDangNhap", null, "Tên đăng nhập đã tồn tại");
+				}
 			}
 		}
 		
+		
 		String email= nguoiDung.getEmail();
-		if(!email.matches("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,}$")) {
-			errors.rejectValue("email", null, "email không hợp lệ");
+		if(!email.matches("^[a-zA-Z][\\w-]+@([\\w]+\\.[\\w]+|[\\w]+\\.[\\w]{2,}\\.[\\w]{2,})$")) {
+			errors.rejectValue("email", null, "Email không hợp lệ");
+		} else {
+			List<NguoiDung>listND=nguoiDungService.findAll();
+			for (NguoiDung nd : listND) {
+				if(email.equals(nd.getEmail())) {
+					errors.rejectValue("email", null, "Email đã được sử dụng với tài khoản khác");
+				}
+			}
 		}
 		
 		String soDienThoai=nguoiDung.getSoDienThoai();
 		if(!soDienThoai.matches("^0+[0-9]{9}$")) {
-			errors.rejectValue("soDienThoai", null, "số điện thoại không được để trống và phải bắt đầu bằng số 0");
+			errors.rejectValue("soDienThoai", null, "Không được để trống và bắt đầu bằng '0' theo sau là 9 chữ số");
+		}else {
+			List<NguoiDung>listND=nguoiDungService.findAll();
+			for (NguoiDung nd : listND) {
+				if(soDienThoai.equals(nd.getSoDienThoai())) {
+					errors.rejectValue("soDienThoai", null, "Số điện thoại này sử dụng với tài khoản khác");
+				}
+			}
 		}
 		
 		String matKhau= nguoiDung.getMatKhau();
 		if(!matKhau.matches("^[A-Za-z0-9]{6,}$")) {
-			errors.rejectValue("matKhau", null, "Mật khẩu không được để trống và chỉ bài gồm chữ cái và số!");
+			errors.rejectValue("matKhau", null, "Mật khẩu ít nhất 6 kí tự!");
 		}
 	}
 

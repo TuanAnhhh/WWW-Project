@@ -3,9 +3,14 @@
 <%@include file="/common/taglib.jsp"%>
 
 <title>Danh sách sản phẩm</title>
-
 <body>
-<form action="<c:url value='/danh-sach-san-pham/danh-muc/${danhmucID}/xap-sep/${giaTriSapXep}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" id="formSubmit" method="get" >
+<form 
+	action="<c:url value='/danh-sach-san-pham/danh-muc/${danhmucID}/xap-sep/${giaTriSapXep}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" 
+
+	id="formSubmit" 
+	method="get">
+
+
 	<!-- Product Style -->
 	<section class="product-area shop-sidebar shop section">
 		<div class="container">
@@ -15,44 +20,16 @@
 
 						<!-- Single Widget -->
 						<div class="single-widget category">
-							<h3 class="title">Categories </h3>
+							<h3 class="title">Loại sản phẩm</h3>
 							<ul class="categor-list">
-								<li><a href="#">T-shirts</a></li>
-								<li><a href="#">jacket</a></li>
-								<li><a href="#">jeans</a></li>
-								<li><a href="#">sweatshirts</a></li>
-								<li><a href="#">trousers</a></li>
-								<li><a href="#">kitwears</a></li>
-								<li><a href="#">accessories</a></li>
+								<c:forEach items="${listDanhMuc}" var="item">
+									<li><a href="<c:url value="/danh-sach-san-pham/danh-muc/${item.id}?page=1&limit=12"/>">${item.ten}</a></li>
+								</c:forEach>
+								
 							</ul>
 						</div>
 						<!--/ End Single Widget -->
 						
-						<!-- Single Widget -->
-						<div class="single-widget recent-post">
-							<h3 class="title">Sản phẩm gợi ý</h3>
-							<!-- Single Post -->
-							<div class="single-post first">
-								<div class="image">
-									<img src="https://via.placeholder.com/75x75" alt="#">
-								</div>
-								<div class="content">
-									<h5>
-										<a href="#">Girls Dress</a>
-									</h5>
-									<p class="price">$99.50</p>
-									<ul class="reviews">
-										<li class="yellow"><i class="ti-star"></i></li>
-										<li class="yellow"><i class="ti-star"></i></li>
-										<li class="yellow"><i class="ti-star"></i></li>
-										<li><i class="ti-star"></i></li>
-										<li><i class="ti-star"></i></li>
-									</ul>
-								</div>
-							</div>
-							<!-- End Single Post -->
-						</div>
-						<!--/ End Single Widget -->
 						
 					</div>
 				</div>
@@ -63,8 +40,8 @@
 							<div class="shop-top">
 								<div class="shop-shorter">									
 									<div class="single-shorter">
-										<label>Sắp xếp theo giá :</label> <select id="sepXepDanhMuc">
-											<c:choose>
+										<label>Sắp xếp theo giá :</label> <select id="sepXep">
+										<c:choose>
 											  <c:when test = "${giaTriSapXep == 'asc' }">
 										           	<option disabled >Giá</option>
 													<option value="asc"selected="selected" >Giá: Thấp đến cao</option>
@@ -81,6 +58,8 @@
 													<option value="desc">Giá: Cao đến thấp</option>
 									         </c:otherwise>
 										</c:choose>
+										
+											
 										</select>
 									</div>
 								</div>
@@ -176,9 +155,9 @@
 			});
 		});
 		
-		$("#sepXepDanhMuc").change(function() {
+		$("#sepXep").change(function() {
 				var x = $("#sepXep").val();
-			  window.location = "http://localhost:8080/website-dungcuthethao/danh-sach-san-pham/danh-muc/"+${danhmucID}+"/sap-xep/"+x+"?page="${abstractDTO.page}"&limit="${abstractDTO.limit};
+				window.location = "http://localhost:8080/website-dungcuthethao/danh-sach-san-pham/danh-muc/"+${danhmucID}+"/sap-xep/"+x+"?page="${abstractDTO.page}"&limit="${abstractDTO.limit};
 			  
 			});
 	</script> </content>

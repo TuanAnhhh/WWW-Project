@@ -18,58 +18,63 @@ public class SanPhamThemValidation implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		if(!supports(getClass()))
-			return ;
+		if(!supports(target.getClass()))
+			return;
 		
 		ThemSanPhamDTO sanPhamDTO=(ThemSanPhamDTO) target;
 		
 		String ten=sanPhamDTO.getTen();
 		if(ten.equals("")) {
-			errors.rejectValue("ten", null, "Tên sản phẩm không được để trống");
+			errors.rejectValue("ten", null, "Không được để trống");
 		}
 		
 		CommonsMultipartFile anhDaiDien=sanPhamDTO.getAnhDaiDien();
 		
 		if(anhDaiDien.getOriginalFilename().equals("")) {
-			errors.rejectValue("anhDaiDien", null, "Chưa chọn ảnh đại diện");
+			errors.rejectValue("anhDaiDien", null, "Chưa chọn ảnh");
 		}
 		
 		
 		try {
-			double gia=sanPhamDTO.getGia();
+			double gia=Double.parseDouble(sanPhamDTO.getGia());
 		} catch (Exception e) {
-			errors.rejectValue("gia", null, "Giá sản phẩm phải là chữ số");
+			errors.rejectValue("gia", null, "không hợp lệ");
 		}
 		String moTa=sanPhamDTO.getMoTa();
 		if(moTa.equals("")) {
-			errors.rejectValue("moTa", null, "Mô tả sản phẩm không được để trống");
+			errors.rejectValue("moTa", null, "Không được để trống");
 		}
 		String noiDung=sanPhamDTO.getNoiDung();
 		if(noiDung.equals("")) {
-			errors.rejectValue("noiDung", null, "Nội dung sản phẩm không được để trống");
+			errors.rejectValue("noiDung", null, "Không được để trống");
 		}
 		
 		try {
-			int soLuong=sanPhamDTO.getSoLuong();
+			int soLuong=Integer.parseInt(sanPhamDTO.getSoLuong());
 		} catch (Exception e) {
-			errors.rejectValue("soLuong", null, "Số lượng phẩm phải là chữ số");
+			errors.rejectValue("soLuong", null, "Không hợp lệ");
 		}
 		
 		try {
-			int thoiGianBaoHanh=sanPhamDTO.getThoiGianBaoHanh();
+			int thoiGianBaoHanh=Integer.parseInt(sanPhamDTO.getThoiGianBaoHanh());
 		} catch (Exception e) {
-			errors.rejectValue("thoiGianBaoHanh", null, "thời gian bảo hành sản phẩm phải là chữ số");
-		}
-		
-		String giaTriThuocTinh=sanPhamDTO.getGiaTriThuocTinh();
-		if(giaTriThuocTinh.equals("")) {
-			errors.rejectValue("giaTriThuocTinh", null, "Giá trị thuộc tính sản phẩm không được để trống");
+			errors.rejectValue("thoiGianBaoHanh", null, "Không hợp lệ");
 		}
 		
 		String thuongHieu=sanPhamDTO.getThuongHieu();
-		if(giaTriThuocTinh.equals("")) {
-			errors.rejectValue("thuongHieu", null, "Thương hiệu sản phẩm không được để trống");
+		if(thuongHieu.equals("")) {
+			errors.rejectValue("thuongHieu", null, "Không được để trống");
 		}
+		
+//		String giaTriThuocTinh=sanPhamDTO.getGiaTriThuocTinh();
+//		if(giaTriThuocTinh.equals("")) {
+//			errors.rejectValue("giaTriThuocTinh", null, "GiÃ¡ trá»‹ thuá»™c tÃ­nh sáº£n pháº©m khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng");
+//		}
+//		
+//		String thuongHieu=sanPhamDTO.getThuongHieu();
+//		if(giaTriThuocTinh.equals("")) {
+//			errors.rejectValue("thuongHieu", null, "ThÆ°Æ¡ng hiá»‡u sáº£n pháº©m khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng");
+//		}
 	}
 
 }

@@ -37,7 +37,7 @@
 				<div class="nav">
 					<div class="sb-sidenav-menu-heading">Đơn hàng</div>
 
-					</a> <a class="nav-link" href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=3" />">
+					</a> <a class="nav-link" href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=12" />">
 						<div class="sb-nav-link-icon">
 							<i class="fas fa-table"></i>
 						</div> Đơn hàng chưa xác nhận
@@ -57,15 +57,15 @@
 						aria-labelledby="headingOne" data-parent="#sidenavAccordion">
 						<nav class="sb-sidenav-menu-nested nav">
 							<a class="nav-link"
-								href="<c:url value="/quan-tri/quan-ly-nguoi-dung?page=1&limit=3"/> ">Quán
+								href="<c:url value="/quan-tri/quan-ly-nguoi-dung?page=1&limit=12"/> ">Quán
 								lý người dùng</a> <a class="nav-link"
-								href=" <c:url value="/quan-tri/quan-ly-san-pham?page=1&limit=3"/> ">Quản lý
+								href=" <c:url value="/quan-tri/quan-ly-san-pham?page=1&limit=12"/> ">Quản lý
 								sản phẩm</a> 
-								<a class="nav-link" href="<c:url value="/quan-tri/quan-ly-hoa-don?page=1&limit=3"/> ">Quản
+								<a class="nav-link" href="<c:url value="/quan-tri/quan-ly-hoa-don?page=1&limit=12"/> ">Quản
 								lý hóa đơn</a>
 								
-								<a class="nav-link" href="<c:url value="/quan-tri/danh-muc?page=1&limit=3"/> ">Quản lý danh mục</a>
-								<a class="nav-link" href="<c:url value="/quan-tri/nha-cung-cap?page=1&limit=3"/> ">Quản lý nhà cung cấp</a>
+								<a class="nav-link" href="<c:url value="/quan-tri/danh-muc?page=1&limit=12"/> ">Quản lý danh mục</a>
+								<a class="nav-link" href="<c:url value="/quan-tri/nha-cung-cap?page=1&limit=12"/> ">Quản lý nhà cung cấp</a>
 								
 								
 								
@@ -75,8 +75,8 @@
 				</div>
 			</div>
 			<div class="sb-sidenav-footer">
-				<div class="small">Logged in as:</div>
-				Start Bootstrap
+				<div class="small"></div>Eshop
+				
 			</div>
 		</nav>
 	</div>

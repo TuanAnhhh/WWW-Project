@@ -2,11 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <title>Thêm sản phẩm</title>
-<style type="text/css">
-.error {
-	color: red;
-}
-</style>
 <body>
 	<div id="layoutSidenav_content">
 		<main>
@@ -14,6 +9,9 @@
 				<div class="col-sm-12 text-center mt-3 mb-3">
 					<h3>Thêm sản phẩm</h3>
 				</div>
+				<c:if test="${not empty mesErr}">
+								<div class="alert alert-danger text-center">${mesErr}</div>
+							</c:if>
 				<form:form action="them-san-pham" method="POST" modelAttribute="sanPham" enctype="multipart/form-data">
 				<div class="form-group row">
 					<form:label path="ten" cssClass="col-sm-2 col-form-label">Tên sản phẩm</form:label> 
@@ -101,16 +99,17 @@
 				
 				<div class="form-group row">
 					<form:label path="tenNhaCungCap" cssClass="col-sm-2 col-form-label">Thuộc tính sản phẩm</form:label>
-					 <div class="col-sm-10">
-					<form:select class="form-control" id="exampleFormControlSelect1"
-						path="tenThuocTinh">
-						<c:forEach items="${listThuocTinh}" var="tt">
-							<form:option value="${tt.tenThuoctinh}">${tt.tenThuoctinh}</form:option>
-						</c:forEach>
-					</form:select>	
+					 <div class="col-sm-8">
+						<form:select class="form-control" id="exampleFormControlSelect1"
+							path="tenThuocTinh">
+							<c:forEach items="${listThuocTinh}" var="tt">
+								<form:option value="${tt.tenThuoctinh}">${tt.tenThuoctinh}</form:option>
+							</c:forEach>
+						</form:select>	
 					</div>
-					
-					
+					 <div class="col-sm-2">
+						<a href="<c:url value="/quan-tri/quan-ly-san-pham/them-thuoc-tinh-san-pham"/>" class="btn btn-primary">Thêm thuộc tính</a>
+					</div>
 				</div>
 				
 				<div class="form-group row">
@@ -126,7 +125,7 @@
 					<div class="col-sm-2"></div>
 					
 					<div class="col-sm-3">
-						<a href="<c:url value="/quan-tri/quan-ly-san-pham?page=1&limit=3" />" type="submit" class="btn btn-danger" >Hủy</a>
+						<a href="<c:url value="/quan-tri/quan-ly-san-pham?page=1&limit=12" />" type="submit" class="btn btn-danger" >Hủy</a>
 					</div>
 					<div class="col-sm-7">
 						<button type="submit" class="btn btn-primary" >Thêm sản phẩm</button>

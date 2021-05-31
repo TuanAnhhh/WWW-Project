@@ -3,7 +3,10 @@ package com.websitedungcuthethao.controller.nguoidung;
 import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -42,26 +45,30 @@ public class DangKyTaiKhoanController {
 		model.addAttribute("nguoiDung",new NguoiDung());
 		return "dangkytaikhoan/dangky";
 	}
-	@PostMapping("/xac-nhan")
-	public String xacNhan(Model model, @ModelAttribute("nguoiDung") NguoiDung nguoiDung,BindingResult bindingResult) {
+	@PostMapping
+	public String xacNhan(Model model, @ModelAttribute NguoiDung nguoiDung,BindingResult bindingResult) {
 		dangKyTaiKhoanValidation.validate(nguoiDung, bindingResult);
 		if(bindingResult.hasErrors()) {
-			return "redirect:/dangky";
+			model.addAttribute("mesErr","Thông tin đăng ký không hợp lệ");
+			return "dangkytaikhoan/dangky";
 		}
 		
 		nd = nguoiDung;
-		System.out.println(nd.toString());
 		ran = ThreadLocalRandom.current().nextLong(100000, 999999);
 		senMail.SenEmail(nguoiDung.getEmail(), "Mã xác nhận đăng ký","Ma xac nhan dang ky tai khoan ESHOP: "+String.valueOf(ran));
 		return "dangkytaikhoan/xacnhanma";
 	}
 	
 	@PostMapping("/luu-nguoi-dung")
-	public String themNgStringuoiDung(@ModelAttribute("nguoiDung") NguoiDung nguoiDung,@RequestParam Long maXN ) {
-		
-		System.out.println(ran);
-		System.out.println(maXN);
-		if((long)maXN==(long)ran) {
+	public String themNgStringuoiDung(@ModelAttribute("nguoiDung") NguoiDung nguoiDung,@RequestParam String maXN , Model model) {
+		Long ma = null;
+		try {
+			ma = Long.parseLong(maXN);
+		} catch (Exception e) {
+			model.addAttribute("mesMaXacNhanSai","Mã xác nhận sai. Vui lòng nhập lại");
+			return "dangkytaikhoan/xacnhanma";
+		}
+		if((long)ma==(long)ran) {
 			nd.setLoainguoidung(loaiNguoiDungService.findByTenLoaiNguoiDung(SystemConstant.ROLE_NGUOIDUNG));
 			nd.setTrangThai(SystemConstant.ACTIVE_STATUS);
 			nd.setMatKhau(BCrypt.hashpw(nd.getMatKhau(), BCrypt.gensalt(12)));
@@ -69,7 +76,8 @@ public class DangKyTaiKhoanController {
 			nguoiDungService.saveNguoiDung(nd);
 			return "redirect:/dang-nhap";
 		}
-		return "redirect:/dangky/xac-nhan";
+		model.addAttribute("mesMaXacNhanSai","Mã xác nhận sai. Vui lòng nhập lại");
+		return "dangkytaikhoan/xacnhanma";
 		
 	}
 	

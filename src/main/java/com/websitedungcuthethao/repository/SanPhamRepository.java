@@ -30,6 +30,6 @@ public interface SanPhamRepository extends JpaRepository<SanPham, Long> {
 	@Query(value = "update SanPham set trangThai=:trangThai where id=:id",nativeQuery = true)
 	void setTrangThaiSanPham(@Param("id") Long id, @Param("trangThai") boolean trangThai);
 	
-	@Query("SELECT p FROM SanPham p WHERE CONCAT(p.ten, p.thuongHieu) LIKE %?1%")
+	@Query("SELECT p FROM SanPham p WHERE trangThai= 'true' And CONCAT(p.ten, p.thuongHieu) LIKE %?1%")
 	public List<SanPham> search(String keyword, Pageable pageable);
 }

@@ -8,9 +8,12 @@ encoding//src/main/java/com/websitedungcuthethao/controller/nguoidung/TrangChuCo
 encoding//src/main/java/com/websitedungcuthethao/controller/quantri/QuanLyHoaDonController.java=UTF-8
 encoding//src/main/java/com/websitedungcuthethao/controller/quantri/TrangChu_QuanTri.java=UTF-8
 encoding//src/main/java/com/websitedungcuthethao/service/impl/CustomUserDetailsService.java=UTF-8
+encoding//src/main/java/com/websitedungcuthethao/validate/DangKiTaiKhoanValidation.java=UTF-8
+encoding//src/main/java/com/websitedungcuthethao/validate/SanPhamThemValidation.java=UTF-8
 encoding//src/main/webapp/WEB-INF/views/nguoidung/chinhsachbaohanh.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/nguoidung/danhsachsanpham.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/nguoidung/giohang.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/nguoidung/gioithieu.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/quantri/quanlynguoidung.jsp=UTF-8
 encoding//src/main/webapp/WEB-INF/views/quantri/trangchu.jsp=UTF-8
+encoding/<project>=UTF-8

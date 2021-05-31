@@ -17,4 +17,7 @@ public interface DanhMucRepository extends JpaRepository<DanhMuc, Long> {
 	
 	@Query(value = "SELECT * FROM DANHMUC WHERE danhMucCha = ?1", nativeQuery = true)
 	List<DanhMuc> findAllDanhMucConById(Long id);
+	
+	@Query(value = "SELECT * FROM DANHMUC where danhMucCha IS NOT NULL", nativeQuery = true)
+	List<DanhMuc> findAllDanhMucCon();
 }

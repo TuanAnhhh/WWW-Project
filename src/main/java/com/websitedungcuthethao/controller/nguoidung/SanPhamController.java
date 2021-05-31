@@ -16,15 +16,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.websitedungcuthethao.constant.SystemConstant;
 import com.websitedungcuthethao.dto.AbstractDTO;
+import com.websitedungcuthethao.entity.DanhMuc;
 import com.websitedungcuthethao.entity.SanPham;
+import com.websitedungcuthethao.repository.DanhMucRepository;
+import com.websitedungcuthethao.service.impl.DanhMucService;
 import com.websitedungcuthethao.service.impl.SanPhamService;
 
 @Controller
-@RequestMapping(value = "danh-sach-san-pham")
+@RequestMapping(value = "/danh-sach-san-pham")
 public class SanPhamController {
 	
 	@Autowired
 	private SanPhamService sanPhamService;
+	
+	@Autowired 
+	DanhMucService danhService;
+	
 	@GetMapping
 	public String index (Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
 		
@@ -40,9 +47,12 @@ public class SanPhamController {
 		abstractDTO.setLimit(limit);
 		
 		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
-		System.out.println(abstractDTO.toString());
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
+		
+		List<DanhMuc> listDanhMuc = danhService.findAllDanhMucCon();
+		model.addAttribute("listDanhMuc", listDanhMuc);
+		
 		return "nguoidung/danhsachsanpham";
 	}
 	@GetMapping("danh-muc/{id}")
@@ -62,6 +72,9 @@ public class SanPhamController {
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
 		model.addAttribute("danhmucID", id);
+		
+		List<DanhMuc> listDanhMuc = danhService.findAllDanhMucCon();
+		model.addAttribute("listDanhMuc", listDanhMuc);
 		return "nguoidung/danhsachsanpham_theodanhmuc";
 	}
 	
@@ -92,6 +105,9 @@ public class SanPhamController {
 		
 //		giaTriSapXep thuộc asc or desc
 		model.addAttribute("giaTriSapXep",value);
+		
+		List<DanhMuc> listDanhMuc = danhService.findAllDanhMucCon();
+		model.addAttribute("listDanhMuc", listDanhMuc);
 		return "nguoidung/danhsachsanpham_theodanhmuc";
 	}
 	
@@ -110,10 +126,6 @@ public class SanPhamController {
 		}
 		
 		List<SanPham> dsSanPham = sanPhamService.findAllByTrangThaiAndPaging(SystemConstant.ACTIVE_STATUS, pageable);
-		dsSanPham.forEach(t-> {
-			System.out.println(t.getGia());
-		});
-		
 		abstractDTO.setTotalItem(sanPhamService.getTotalItem());		
 		abstractDTO.setLimit(limit);
 		
@@ -124,12 +136,31 @@ public class SanPhamController {
 		
 //		giaTriSapXep thuộc asc or desc
 		model.addAttribute("giaTriSapXep",value);
+		
+		List<DanhMuc> listDanhMuc = danhService.findAllDanhMucCon();
+		model.addAttribute("listDanhMuc", listDanhMuc);
 		return "nguoidung/danhsachsanpham";
 	}
-	@PostMapping("/tim-kiem")
-	public String timKiem (Model model, @RequestParam String tenSanPham ) {
+	@GetMapping("/tim-kiem/{keywork}")
+	public String timKiem (Model model, @PathVariable String keywork,  @RequestParam("page") int page,@RequestParam("limit") int limit ) {
+
+		AbstractDTO abstractDTO= new AbstractDTO();
+		abstractDTO.setPage(page);
+		abstractDTO.setLimit(limit);
 		
 		
-		return "nguoidung/danhsachsanpham";
+		Pageable pageable=new PageRequest(page -1, limit, Direction.ASC,"gia");
+		List<SanPham> dsSanPham= sanPhamService.search(keywork, pageable);
+		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
+		abstractDTO.setLimit(limit);
+		
+		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
+		model.addAttribute("abstractDTO",abstractDTO);
+		model.addAttribute("dsSanPham", dsSanPham);
+		model.addAttribute("keywork",keywork);
+		
+		List<DanhMuc> listDanhMuc = danhService.findAllDanhMucCon();
+		model.addAttribute("listDanhMuc", listDanhMuc);
+		return "nguoidung/ketqua_timkiem";
 	}
 }

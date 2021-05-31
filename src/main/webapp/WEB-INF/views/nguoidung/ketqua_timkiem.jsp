@@ -5,14 +5,7 @@
 <title>Danh sách sản phẩm</title>
 <body>
 <form 
-	action="<c:choose>
-			  <c:when test = "${not empty giaTriSapXep }">
-	           	<c:url value='/danh-sach-san-pham/sap-xep/${giaTriSapXep}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>
-	         </c:when>
-	         <c:otherwise>
-	         	<c:url value='danh-sach-san-pham?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>
-	         </c:otherwise>
-		</c:choose>" 
+	action="<c:url value='/danh-sach-san-pham/tim-kiem/${keywork}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" 
 
 	id="formSubmit" 
 	method="get">
@@ -36,7 +29,6 @@
 							</ul>
 						</div>
 						<!--/ End Single Widget -->
-						
 						
 						
 					</div>

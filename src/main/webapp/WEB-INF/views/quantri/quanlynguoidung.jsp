@@ -23,7 +23,7 @@
 						<table class="table table-bordered" id="dataTable" 
 							>
 							<thead>
-								<tr>
+								<tr class="text-center">
 									<th>STT</th>
 									<th>ID</th>
 									<th>Họ </th>
@@ -51,9 +51,9 @@
 									<td>${nd.soDienThoai }</td>
 									<td>${nd.ngayTao }</td>
 									<td>${nd.trangThai? "Hoạt động":"Đã chặn" }</td>
-									<td>
-									<button  type="button" onclick="myFunction(${nd.id})" ><i class="far fa-edit "></i></button>
-												</td>
+									<td class="text-center">
+										<button  type="button" onclick="myFunction(${nd.id})" ><i class="fas fa-trash-alt"></i></button>
+									</td>
 								</tr>
 								</c:forEach>
 							</tbody>

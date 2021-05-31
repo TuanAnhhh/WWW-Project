@@ -16,7 +16,7 @@ public class SanPhamSuaValidation implements Validator {
 
 	@Override
 	public void validate(Object target, Errors errors) {
-		if(!supports(getClass()))
+		if(!supports(target.getClass()))
 			return ;
 		
 		SanPham sanPham= (SanPham) target;

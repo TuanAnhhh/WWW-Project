@@ -61,10 +61,10 @@
 				<div class="col-lg-8 col-md-7 col-12">
 					<div class="search-bar-top">
 						<div class="search-bar">
-							<form method="post" action="<c:url value="danh-sach-san-pham/tim-kiem"/> ">
-								<input name="tenSanPham" placeholder="Tìm kiếm tại đây..."
-									type="search">
-								<button class="btnn" id="btn-search-sp" type="submit">
+							<form>
+								<input name="keywork" placeholder="Tìm kiếm tại đây..."
+									type="search" id="keywork">
+								<button class="btnn" id="btn-search-sp" type="button">
 									<i class="ti-search"></i>
 								</button>
 							</form>

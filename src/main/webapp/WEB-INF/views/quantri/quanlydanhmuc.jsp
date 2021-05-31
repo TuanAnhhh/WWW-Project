@@ -51,7 +51,7 @@
 							<div class="table-responsive" style="margin-top: 20px;">
 							<table class="table table-bordered" id="dataTable">
 								<thead>
-									<tr>
+									<tr class="text-center">
 										<th>STT</th>
 										<th>Tên loại sản phẩm</th>
 										<th>Quản lý</th>
