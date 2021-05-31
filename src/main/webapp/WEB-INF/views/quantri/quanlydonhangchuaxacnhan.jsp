@@ -40,6 +40,9 @@
 									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${nd.tongTienHoaDon}" /></span></td>
 									<td>${nd.ngayDat}</td>
 									<td>
+									
+									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/xem-chi-tiet-chua-xac-nhan/${nd.id}" />" class="mr-2 ml-2">Xem chi tiết</a>
+									||
 									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan/xac-nhan/${nd.id}" />" class="mr-2 ml-2">Xác nhận</a>
 									||
 									<a href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan/tu-choi/${nd.id}" />" class="mr-2 ml-2">Từ chối</a>

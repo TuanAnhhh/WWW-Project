@@ -1,19 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<title>Quản lý hóa đơn</title>
+<title>Chi tiết đơn hàng</title>
 
 <body>
 	<div id="layoutSidenav_content">
 		<main>
 		<div class="container-fluid">
 		<form> 
-			<h1 class="mt-4">Quản lý hóa đơn</h1>
+
 			
 			<div class="card mb-4">
 				<div class="card-header">
-					<i class="fas fa-table mr-1"></i> Chi tiết hóa đơn
-					
+					<i class="fas fa-table mr-1"></i> Chi tiết đơn hàng
 				</div>
 			</div>
 			
@@ -73,7 +72,7 @@
 									<th>Tên sản phẩm</th>
 										<th>Ảnh sản phẩm</th>
 									<th>Giá</th>
-									<th>Giá giảm</th>
+							
 									<th>Thời gian bảo hành</th>
 									<th>Thương hiệu</th>
 								</tr>
@@ -85,7 +84,7 @@
 									<td>${stt.count}</td>
 									<td>${sp.ten}</td>
 									<td><img style="width:100px;height: 100px;" alt="" src="<c:url value="/resources/images/user/sanpham/${sp.anhDaiDien}"/>">  </td>
-									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia}" /></span></td>
+								
 									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia - sp.gia * sp.phanTramGiamGia}" /></span></td>
 									<td>${sp.thoiGianBaoHanh } Tháng</td>
 									<td>${sp.thuongHieu }</td>
@@ -108,11 +107,6 @@
 					</div>
 					<div class="col-1"></div>
 			</div>
-			<div style="width: 100%; text-align: center;">
-			<a href="<c:url value='/quan-tri/quan-ly-hoa-don?page=1&limit=3'/>" class="btn btn-primary">Quay Lại</a>
-			</div>
-		
-			
 			</form>
 		</div>
 		</main>

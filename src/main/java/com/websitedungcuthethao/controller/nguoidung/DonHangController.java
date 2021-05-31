@@ -1,7 +1,9 @@
 package com.websitedungcuthethao.controller.nguoidung;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,8 +13,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.websitedungcuthethao.dto.NguoiDungDTO;
+import com.websitedungcuthethao.entity.ChiTietHoaDon;
 import com.websitedungcuthethao.entity.HoaDon;
 import com.websitedungcuthethao.entity.NguoiDung;
+import com.websitedungcuthethao.entity.SanPham;
 import com.websitedungcuthethao.service.impl.HoaDonService;
 import com.websitedungcuthethao.service.impl.NguoiDungService;
 import com.websitedungcuthethao.util.SecurityUtils;
@@ -60,4 +64,32 @@ public class DonHangController {
 		}
 		return "redirect:/don-hang";
 	}
+	
+//	/don-hang-da-nhan/${nguoidung.id}
+	
+	@GetMapping("/don-hang-da-nhan/{id}")
+	public String formDonHangDaNhan(Model model,@PathVariable Long id) {
+		List<HoaDon> listHD=hoaDonService.findListHoaDonDaGiao(id);
+		model.addAttribute("listHD", listHD);
+				
+		return "nguoidung/donhangdanhan";
+	}
+	
+//	don-hang/don-hang-da-nhan/xem-chi-tiet/3
+	
+	@GetMapping("/don-hang-da-nhan/xem-chi-tiet/{id}")
+	public String xemChiTietDonHangDaNhan(Model model,@PathVariable Long id) {
+		HoaDon hoaDon =hoaDonService.findById(id);
+		Set<ChiTietHoaDon> listCTHD= hoaDon.getDsChiTietHoaDon();
+		NguoiDung nguoiDung=hoaDon.getNguoidung();
+		List<SanPham> listSP=new ArrayList<SanPham>();
+		for (ChiTietHoaDon chiTietHoaDon : listCTHD) {
+			listSP.add(chiTietHoaDon.getSanpham());
+		}
+		model.addAttribute("hoaDon", hoaDon);
+		model.addAttribute("listSP", listSP);
+		model.addAttribute("nguoiDung", nguoiDung);
+		return "nguoidung/xemchitietdonhangdanhan";
+	}
+	
 }

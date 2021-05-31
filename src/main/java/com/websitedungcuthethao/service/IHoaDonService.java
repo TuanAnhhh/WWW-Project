@@ -24,4 +24,5 @@ public interface IHoaDonService {
 	void updateHoaDon(HoaDon hoaDon);
 	
 	void setNgayNhan( LocalDate ngayNhan ,Long id);
+	List<HoaDon> findListHoaDonDaGiao(Long id);
 }

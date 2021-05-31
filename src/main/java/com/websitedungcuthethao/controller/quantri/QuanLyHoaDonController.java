@@ -92,6 +92,28 @@ public class QuanLyHoaDonController {
 		return "quantri/chitiethoadon";
 	}
 	
+	
+	@GetMapping("/xem-chi-tiet-chua-xac-nhan/{id}")
+	public String chitietHoaDonChuaXacNhan(Model model,@PathVariable Long id) {
+		List<SanPham> listSanPham= new ArrayList<SanPham>();
+		HoaDon hoaDon=hoaDonService.findById(id);
+		List<ChiTietHoaDon> listCT=chiTietHoaDonService.findByMaHoaDon(id);
+		NguoiDung nguoiDung=nguoiDungService.findById(hoaDon.getNguoidung().getId());
+		System.out.println(listCT);
+		for (ChiTietHoaDon ct : listCT) {
+			System.out.println(ct.getSanpham().getId());
+			Long idSP=ct.getSanpham().getId();
+			SanPham sanPham= sanPhamService.findById(idSP);
+			System.out.println(sanPham);
+			listSanPham.add(sanPham);
+		}
+		model.addAttribute("hoaDon", hoaDon);
+		model.addAttribute("listCT", listCT);
+		model.addAttribute("nguoiDung", nguoiDung);
+		model.addAttribute("listSP", listSanPham);
+		return "quantri/chitietdonhangchuaxacnhan";
+	}
+	
 	@GetMapping("/don-hang-chua-xac-nhan")
 	public String donHangChuaXacNhan(Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
 		

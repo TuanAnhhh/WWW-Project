@@ -8,6 +8,7 @@
 		<div class="container">
 				<div class="col-sm-12 text-center mt-3 mb-3">
 					<h3>Đơn Hàng đang giao</h3>
+					
 					<hr>
 				</div>
 				<form action="trang-chu" method="get">
@@ -53,7 +54,12 @@
 				<div class="col-3">
 					<a href="<c:url value="/trang-chu" />" type="submit" class="btn btn-primary" > Quay lại</a>
 				</div>
-						
+				<div class="col-4">
+					
+				</div>
+				<div class="col-3">
+					<a href="<c:url value="don-hang/don-hang-da-nhan/${nguoidung.id}" />" type="submit" class="btn btn-primary" >Đơn hàng đã nhận</a>
+				</div>
 				</div>
 			</form>
 			<div class="form-group row">

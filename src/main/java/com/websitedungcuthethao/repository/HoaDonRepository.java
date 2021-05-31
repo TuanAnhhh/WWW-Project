@@ -25,5 +25,8 @@ public interface HoaDonRepository extends JpaRepository<HoaDon, Long> {
 	
 	@Query(value = "update HoaDon set ngayNhan=:ngayNhan where id=:id",nativeQuery = true)
 	void setNgayNhan( @Param("ngayNhan") LocalDate ngayNhan , @Param("id") Long id);
-
+	
+	
+	@Query(value = "select * from HoaDon Where  nguoiDungXacNhan='true' AND trangThai='true' And nguoidungID=?1",nativeQuery = true)
+	List<HoaDon> findListHoaDonDaGiao(Long id);
 }

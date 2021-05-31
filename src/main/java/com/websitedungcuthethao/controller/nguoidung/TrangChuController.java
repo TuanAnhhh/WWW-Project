@@ -32,7 +32,7 @@ public class TrangChuController {
 		ArrayList<SanPham> dsSanPhamGiamGiaCaoNhat = (ArrayList<SanPham>) sanPhamService.findTop3SanPhamGiamGiaNhieuNhat();
 		model.addAttribute("dsSanPhamGiamGiaCaoNhat", dsSanPhamGiamGiaCaoNhat);
 		
-		model.addAttribute("spGiamGiaTrongNgay",dsSanPhamNoiBat.get(4));
+		model.addAttribute("spGiamGiaTrongNgay",dsSanPhamNoiBat.get(0));
 
 		return "nguoidung/trangchu";
 	}

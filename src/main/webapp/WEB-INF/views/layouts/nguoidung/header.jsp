@@ -84,7 +84,7 @@
 
 						<div class="sinlge-bar">
 							<a href="<c:url value="don-hang" />" class="single-icon"><i
-								class="ti-alarm-clock"></i><span class="total-count"></span></a>
+								class="ti-alarm-clock"></i></a>
 						</div>
 
 						<div class="sinlge-bar shopping">

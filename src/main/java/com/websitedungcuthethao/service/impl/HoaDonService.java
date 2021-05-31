@@ -92,6 +92,11 @@ public class HoaDonService implements IHoaDonService {
 		hoaDonRepository.setNgayNhan(ngayNhan, id);
 	}
 
+	@Override
+	public List<HoaDon> findListHoaDonDaGiao(Long id) {
+		return hoaDonRepository.findListHoaDonDaGiao(id);
+	}
+
 	
 	
 }

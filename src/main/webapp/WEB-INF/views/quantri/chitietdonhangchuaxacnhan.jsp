@@ -108,8 +108,17 @@
 					</div>
 					<div class="col-1"></div>
 			</div>
-			<div style="width: 100%; text-align: center;">
-			<a href="<c:url value='/quan-tri/quan-ly-hoa-don?page=1&limit=3'/>" class="btn btn-primary">Quay Lại</a>
+			<div class="row mt-3 mb-3">
+			<div class="col-1"></div>
+			<div class="col-3">
+				<a href="<c:url value='/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=3'/>" class="btn btn-primary">Quay Lại</a>
+			</div>
+			<div class="col-3">
+				<a href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan/xac-nhan/${hoaDon.id}" />" class="btn btn-success">Xác nhận</a>
+			</div>
+			<div class="col-3">
+				<a href="<c:url value="/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan/tu-choi/${hoaDon.id}" />" class="btn btn-danger">Từ chối</a>
+			</div>
 			</div>
 		
 			
