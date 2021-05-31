@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <title>Đăng ký tài khoản</title>
+<style type="text/css">
+.error {
+	color: red;
+}
+</style>
 <body class="bg-primary">
 <fmt:requestEncoding value = "UTF-8" />
 	<div id="layoutAuthentication">
@@ -21,12 +26,14 @@
 											<div class="form-group">
 												<form:label class="small mb-1" path="ho">Họ</form:label> 
 												<form:input cssClass="form-control py-4" type="text"  path="ho" />
+												<form:errors path="ho" cssClass="error"></form:errors>
 											</div>
 										</div>
 										<div class="col-7">
 											<div class="form-group">
 												<form:label path="ten" class="small mb-1">Tên</form:label>
 												<form:input cssClass="form-control py-4" type="text"  path="ten" />
+												<form:errors path="ten" cssClass="error"></form:errors>
 											</div>
 										</div>
 									</div>
@@ -47,19 +54,23 @@
 									<div class="form-group">
 										<form:label path="tenDangNhap"  class="small mb-1">Tên đăng nhập</form:label>
 										<form:input cssClass="form-control py-4" type="text" path="tenDangNhap" />
+										<form:errors path="tenDangNhap" cssClass="error"></form:errors>
 									</div>	
 									<div class="form-group">
 										<form:label path="email" class="small mb-1">Email</form:label>
 										<form:input cssClass="form-control py-4" type="email" path="email" />
+										<form:errors path="email" cssClass="error"></form:errors>
 									</div>
 									<div class="form-group">
 										<form:label path="soDienThoai" class="small mb-1">Số điện thoại</form:label>
 										<form:input cssClass="form-control py-4" type="text"
 											path="soDienThoai" />
+											<form:errors path="soDienThoai" cssClass="error"></form:errors>
 									</div>
 									<div class="form-group">
 										<form:label path="matKhau" class="small mb-1">Mật khẩu</form:label>
 										<form:password cssClass="form-control py-4" path="matKhau" />
+										<form:errors path="matKhau" cssClass="error"></form:errors>
 									</div>
 									<div class="form-group">
 										<form:label path="" class="small mb-1">Nhập lại mật khẩu</form:label>

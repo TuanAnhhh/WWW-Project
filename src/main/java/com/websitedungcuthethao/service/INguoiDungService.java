@@ -19,4 +19,6 @@ public interface INguoiDungService {
 	NguoiDung findOneByTenDangNhap(String tenDangNhap);
 	Long getTotalItem();
 	void setTrangThaiNguoiDung(Long id, boolean tt);
+	 List<NguoiDung> findAll();
+		
 }

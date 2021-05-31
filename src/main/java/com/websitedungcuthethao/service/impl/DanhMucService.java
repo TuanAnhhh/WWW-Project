@@ -3,6 +3,7 @@ package com.websitedungcuthethao.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.websitedungcuthethao.entity.DanhMuc;
@@ -40,6 +41,22 @@ public class DanhMucService implements IDanhMucService {
 		if(dM!=null) {
 			danhMucRepository.save(danhMuc);
 		}		
+	}
+
+	@Override
+	public List<DanhMuc> findAllAndPaging(Pageable pageable) {
+		return danhMucRepository.findAll(pageable).getContent();
+	}
+
+	@Override
+	public void themDanhMuc(DanhMuc danhMuc) {
+		danhMucRepository.save(danhMuc);
+	}
+
+	@Override
+	public DanhMuc findOne(Long id) {
+		// TODO Auto-generated method stub
+		return danhMucRepository.findOne(id);
 	}
 
 

@@ -30,7 +30,7 @@
 						<input type="text" class="form-control" name="tinhThanhPho"> 	
 					</div>
 				</div>
-				<div class="form-group row" style="float: right;">
+				<div class="form-group row" >
 					<div class="col-sm-2"></div>
 					<div class="col-sm-7">
 						<button type="submit" class="btn btn-primary" >Lưu Địa chỉ</button>

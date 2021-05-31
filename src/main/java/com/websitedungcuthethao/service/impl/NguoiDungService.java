@@ -70,4 +70,9 @@ public class NguoiDungService  implements INguoiDungService{
 		nguoiDungRepository.setTrangThaiNguoiDung(id, tt);	
 	}
 
+	@Override
+	public List<NguoiDung> findAll() {
+		return nguoiDungRepository.findAll();
+	}
+
 }

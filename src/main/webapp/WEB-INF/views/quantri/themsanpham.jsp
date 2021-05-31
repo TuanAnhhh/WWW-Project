@@ -2,6 +2,11 @@
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
 <title>Thêm sản phẩm</title>
+<style type="text/css">
+.error {
+	color: red;
+}
+</style>
 <body>
 	<div id="layoutSidenav_content">
 		<main>
@@ -14,18 +19,21 @@
 					<form:label path="ten" cssClass="col-sm-2 col-form-label">Tên sản phẩm</form:label> 
 					 <div class="col-sm-10">
 						<form:input type="text" cssClass="form-control" path="ten"/> 	
+						<form:errors path="ten" cssClass="error"></form:errors>
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<form:label path="anhDaiDien" cssClass="col-sm-2 col-form-label">Ảnh đại diện</form:label> 
 					 <div class="col-sm-4">
-					<form:input type="file" cssClass="form-control-file" path="anhDaiDien" /> 	
+					<form:input type="file" cssClass="form-control-file" path="anhDaiDien" /> 
+					<form:errors path="anhDaiDien" cssClass="error"></form:errors>	
 					</div>
 					
 					<form:label path="gia" cssClass="col-sm-1 col-form-label">Giá</form:label> 
 					 <div class="col-sm-5">
-					<form:input type="text" cssClass="form-control" path="gia" /> 	
+					<form:input type="text" cssClass="form-control" path="gia" /> 
+					<form:errors path="gia" cssClass="error"></form:errors>		
 					</div>
 					
 				</div>
@@ -34,13 +42,15 @@
 					<form:label path="moTa" cssClass="col-sm-2 col-form-label">Mô tả</form:label> 
 					 <div class="col-sm-10">
 					<form:textarea rows = "3" cols = "30" cssClass="form-control" path="moTa" /> 	
+					<form:errors path="moTa" cssClass="error"></form:errors>	
 					</div>
 				</div>
 				
 				<div class="form-group row">
 					<form:label path="noiDung" cssClass="col-sm-2 col-form-label">Nội dung</form:label> 
 					 <div class="col-sm-10">
-					<form:textarea rows = "3" cols = "30" cssClass="form-control" path="noiDung" /> 	
+					<form:textarea rows = "3" cols = "30" cssClass="form-control" path="noiDung" /> 
+					<form:errors path="noiDung" cssClass="error"></form:errors>		
 					</div>
 				</div>
 				
@@ -48,16 +58,19 @@
 					<form:label path="soLuong" cssClass="col-sm-2 col-form-label">Số lượng</form:label> 
 					 <div class="col-sm-2">
 					<form:input type="text" cssClass="form-control" path="soLuong" /> 	
+					<form:errors path="soLuong" cssClass="error"></form:errors>		
 					</div>
 					
 					<form:label path="thoiGianBaoHanh" cssClass="col-sm-2 col-form-label">Thời gian bảo hành</form:label> 
 					 <div class="col-sm-2">
 					<form:input type="text" cssClass="form-control" path="thoiGianBaoHanh" /> 
+					<form:errors path="thoiGianBaoHanh" cssClass="error"></form:errors>	
 					</div>	
 					
 					<form:label path="thuongHieu" cssClass="col-sm-2 col-form-label">Thương hiệu</form:label> 
 					 <div class="col-sm-2">
-					<form:input type="text" cssClass="form-control" path="thuongHieu" /> 
+					<form:input type="text" cssClass="form-control" path="thuongHieu" />
+					<form:errors path="thuongHieu" cssClass="error"></form:errors>	 
 					</div>	
 				</div>
 				
@@ -105,6 +118,7 @@
 				<form:label path="giaTriThuocTinh" cssClass="col-sm-2 col-form-label">Giá trị thuộc tính</form:label> 
 					 <div class="col-sm-10">
 					<form:input type="text" cssClass="form-control" path="giaTriThuocTinh" /> 
+					<form:errors path="giaTriThuocTinh" cssClass="error"></form:errors>	 
 					</div>
 				</div>
 				

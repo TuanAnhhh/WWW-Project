@@ -30,7 +30,6 @@ public class XemThongTinCaNhanController {
 	
 	@RequestMapping(value = "/thong-tin-tai-khoan",method = RequestMethod.GET)
 	public String xemThongTin(Model  model) {
-		System.out.println(1);
 		NguoiDungDTO nguoidungDTO = null;
 		try {
 			nguoidungDTO = SecurityUtils.getPrincipal();
@@ -38,17 +37,9 @@ public class XemThongTinCaNhanController {
 			return "redirect:/dang-nhap";
 		}
 		NguoiDung nguoidung = nguoiDungService.findOneByTenDangNhap(nguoidungDTO.getUsername());
-		
-		
-		System.out.println(nguoidung.getId());
 		Set<DiaChi> listDC=nguoidung.getDsDiaChi();
-		System.out.println(listDC);
-		String messeage="";
-		for (DiaChi diaChi : listDC) {
-			messeage+=diaChi.toString()+"\n";
-		}
-		model.addAttribute("message",messeage);
 		
+		model.addAttribute("listDC",listDC);
 		
 		model.addAttribute("nguoidung",nguoidung);
 		return "nguoidung/thongtintaikhoan";
@@ -91,12 +82,10 @@ public class XemThongTinCaNhanController {
 	
 	@PostMapping("/them-dia-chi/luu-dia-chi")
 	public String luuDiaChi(@RequestParam String soNha,@RequestParam String quanHuyen, @RequestParam String tinhThanhPho) {
-		System.out.println(soNha);
-		System.out.println(quanHuyen);
-		System.out.println(tinhThanhPho);
-		System.out.println(1);
+		
 		if(soNha!=null && quanHuyen!=null && tinhThanhPho!=null) {
-			 diaChiService.themDiaChi(quanHuyen, soNha, tinhThanhPho, idND);
+//			 diaChiService.themDiaChi(quanHuyen, soNha, tinhThanhPho, idND);
+			diaChiService.saveDiaChi(new DiaChi(nguoiDungService.findById(idND), soNha, quanHuyen, tinhThanhPho));
 			 return "redirect:/thong-tin-tai-khoan";
 		 }
 		

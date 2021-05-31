@@ -3,6 +3,7 @@ package com.websitedungcuthethao.service.impl;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.websitedungcuthethao.entity.NhaCungCap;
@@ -32,14 +33,26 @@ public class NhaCungCapService implements INhaCungCapService{
 
 
 	@Override
-	public boolean updateNCC(NhaCungCap nhaCungCap) {
-		// TODO Auto-generated method stub
-		return false;
+	public void updateNCC(NhaCungCap nhaCungCap) {
+		if(nhaCungCap.getId()!=null) {
+			nhaCungCapRepository.save(nhaCungCap);
+		}
 	}
-
 
 	@Override
 	public List<NhaCungCap> findAll() {
 		return nhaCungCapRepository.findAll();
+	}
+
+
+	@Override
+	public List<NhaCungCap> findAllAndPaging(Pageable pageable) {
+		return nhaCungCapRepository.findAll(pageable).getContent();
+	}
+
+
+	@Override
+	public void deleteNCC(NhaCungCap nhaCungCap) {
+		nhaCungCapRepository.delete(nhaCungCap);
 	}
 }

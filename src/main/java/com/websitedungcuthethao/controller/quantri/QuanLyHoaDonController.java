@@ -113,13 +113,10 @@ public class QuanLyHoaDonController {
 		try {
 			HoaDon hoaDon= hoaDonService.findById(id);
 			NguoiDung nguoiDung=nguoiDungService.findById(hoaDon.getNguoidung().getId());
-			
-			hoaDonService.setTrangThaiHoaDon(id, SystemConstant.ACTIVE_STATUS);
-			
-			
-//			gui mail thong bao
 			senMail.SenEmail(nguoiDung.getEmail(),
 					"Xac nhan don hang","Don hang cua ban da duoc xac nhan và dang trong qua trinh van chuyen vui long xem cac thong tin duoi day:"+"\n"+"Tong tien:"+hoaDon.getTongTienHoaDon()+" VNĐ"+"\n"+"Ngay nhan du kien:"+hoaDon.getNgayNhanDuKien()+"\n"+"Xin chan thanh cam on su ung ho qua ban."+"\n"+"Moi chi tiet vui long lien he:0702074032");
+			
+			hoaDonService.setTrangThaiHoaDon(id, SystemConstant.ACTIVE_STATUS);
 			
 		} catch (Exception e) {
 		}

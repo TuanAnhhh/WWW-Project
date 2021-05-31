@@ -48,7 +48,7 @@
 										</select>
 										
 									</div>
-									<a href="">Sử dụng địa chỉ khác</a>
+									<a href="<c:url value="thong-tin-tai-khoan" />">Sử dụng địa chỉ khác</a>
 								</div>
 								
 								

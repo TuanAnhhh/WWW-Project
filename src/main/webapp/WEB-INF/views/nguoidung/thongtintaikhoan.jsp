@@ -26,7 +26,10 @@
 				
 				<div class="form-group row">
 					<form:label path="ho" cssClass="col-sm-2 col-form-label">Địa chỉ: </form:label> 
-					<form:label path="ho" cssClass="col-sm-12 col-form-label">${message}</form:label> 
+					<c:forEach items="${listDC}" var="dc" varStatus="stt">
+					<form:label path="ho" cssClass="col-sm-10 col-form-label">${stt.count}: ${dc.toString()}</form:label> 
+					<form:label path="ho" cssClass="col-sm-2 col-form-label"></form:label>
+					</c:forEach>
 				</div>
 				
 				<div class="form-group row">

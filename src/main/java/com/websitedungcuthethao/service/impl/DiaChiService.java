@@ -2,6 +2,7 @@ package com.websitedungcuthethao.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.websitedungcuthethao.dto.NguoiDungDTONew;
@@ -11,6 +12,7 @@ import com.websitedungcuthethao.service.IDiaChiService;
 
 @Service
 public class DiaChiService implements IDiaChiService{
+	@Autowired
 	private DiaChiRepository diaChiRepository;
 	@Override
 	public void saveDiaChi(DiaChi diaChi) {

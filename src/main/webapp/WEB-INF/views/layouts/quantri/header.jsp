@@ -58,11 +58,16 @@
 						<nav class="sb-sidenav-menu-nested nav">
 							<a class="nav-link"
 								href="<c:url value="/quan-tri/quan-ly-nguoi-dung?page=1&limit=3"/> ">Quán
-								lú người dùng</a> <a class="nav-link"
+								lý người dùng</a> <a class="nav-link"
 								href=" <c:url value="/quan-tri/quan-ly-san-pham?page=1&limit=3"/> ">Quản lý
 								sản phẩm</a> 
 								<a class="nav-link" href="<c:url value="/quan-tri/quan-ly-hoa-don?page=1&limit=3"/> ">Quản
 								lý hóa đơn</a>
+								
+								<a class="nav-link" href="<c:url value="/quan-tri/danh-muc?page=1&limit=3"/> ">Quản lý danh mục</a>
+								<a class="nav-link" href="<c:url value="/quan-tri/nha-cung-cap?page=1&limit=3"/> ">Quản lý nhà cung cấp</a>
+								
+								
 								
 						</nav>
 					</div>

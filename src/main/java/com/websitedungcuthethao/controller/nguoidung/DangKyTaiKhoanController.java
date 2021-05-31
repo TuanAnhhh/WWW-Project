@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,6 +19,7 @@ import com.websitedungcuthethao.entity.NguoiDung;
 import com.websitedungcuthethao.service.impl.LoaiNguoiDungService;
 import com.websitedungcuthethao.service.impl.NguoiDungService;
 import com.websitedungcuthethao.util.SenMail;
+import com.websitedungcuthethao.validate.DangKiTaiKhoanValidation;
 
 @Controller
 @RequestMapping("/dangky")
@@ -26,6 +28,8 @@ public class DangKyTaiKhoanController {
 	private Long ran=0L;
 	@Autowired
 	private SenMail senMail;
+	@Autowired
+	private DangKiTaiKhoanValidation dangKyTaiKhoanValidation;
 	
 	@Autowired
 	NguoiDungService nguoiDungService;
@@ -39,17 +43,22 @@ public class DangKyTaiKhoanController {
 		return "dangkytaikhoan/dangky";
 	}
 	@PostMapping("/xac-nhan")
-	public String xacNhan(Model model, @ModelAttribute("nguoiDung") NguoiDung nguoiDung) {
+	public String xacNhan(Model model, @ModelAttribute("nguoiDung") NguoiDung nguoiDung,BindingResult bindingResult) {
+		dangKyTaiKhoanValidation.validate(nguoiDung, bindingResult);
+		if(bindingResult.hasErrors()) {
+			return "redirect:/dangky";
+		}
+		
 		nd = nguoiDung;
 		System.out.println(nd.toString());
 		ran = ThreadLocalRandom.current().nextLong(100000, 999999);
-		senMail.SenEmail(nguoiDung.getEmail(), "Mã xác nhận đăng ký", String.valueOf(ran));
+		senMail.SenEmail(nguoiDung.getEmail(), "Mã xác nhận đăng ký","Ma xac nhan dang ky tai khoan ESHOP: "+String.valueOf(ran));
 		return "dangkytaikhoan/xacnhanma";
 	}
 	
 	@PostMapping("/luu-nguoi-dung")
 	public String themNgStringuoiDung(@ModelAttribute("nguoiDung") NguoiDung nguoiDung,@RequestParam Long maXN ) {
-	
+		
 		System.out.println(ran);
 		System.out.println(maXN);
 		if((long)maXN==(long)ran) {

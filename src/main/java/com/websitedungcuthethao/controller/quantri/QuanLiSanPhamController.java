@@ -11,6 +11,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -31,10 +32,14 @@ import com.websitedungcuthethao.service.impl.NhaCungCapService;
 import com.websitedungcuthethao.service.impl.SanPhamService;
 import com.websitedungcuthethao.service.impl.ThuocTinhSanPhamService;
 import com.websitedungcuthethao.util.LuuAnh;
+import com.websitedungcuthethao.validate.SanPhamSuaValidation;
+import com.websitedungcuthethao.validate.SanPhamThemValidation;
 
 @Controller
 @RequestMapping("/quan-tri/quan-ly-san-pham")
 public class QuanLiSanPhamController {
+	
+	private Long idSP=null;
 	private SanPham sanP=null;
 	@Autowired
 	private ThuocTinhSanPhamService thuocTinhSanPhamService;
@@ -53,6 +58,12 @@ public class QuanLiSanPhamController {
 	
 	@Autowired
 	private LuuAnh luuAnh;
+	
+	@Autowired
+	private SanPhamThemValidation sanPhamThemValidation;
+	
+	@Autowired
+	private SanPhamSuaValidation sanPhamSuaValidation;
 	
 	
 	@GetMapping
@@ -99,13 +110,11 @@ public class QuanLiSanPhamController {
 	
 	
 	@PostMapping("/them-san-pham")
-	public String luuSanPham(@ModelAttribute("sanPham") ThemSanPhamDTO sanPham,HttpSession session) throws IOException{
-		System.out.println(sanPham.getTenThuocTinh());
-		
-		
-		System.out.println(sanPham.toString());
-		System.out.println(sanPham.getTenDanhMuc());
-		System.out.println(danhMucService.findByTen(sanPham.getTenDanhMuc()));
+	public String luuSanPham(@ModelAttribute("sanPham") ThemSanPhamDTO sanPham,HttpSession session,BindingResult bindingResult) throws IOException{
+		sanPhamThemValidation.validate(sanPham, bindingResult);
+		if(bindingResult.hasErrors()) {
+			return"redirect:/quan-tri/quan-ly-san-pham/them-san-pham";
+		}
 		SanPham sp= new SanPham();
 		sp.setAnhDaiDien(sanPham.getAnhDaiDien().getOriginalFilename());
 		System.out.println(sanPham.getAnhDaiDien().getOriginalFilename());
@@ -158,13 +167,18 @@ public class QuanLiSanPhamController {
 	
 	@GetMapping("/sua-san-pham/{id}")
 	public String suaSanPham(@PathVariable Long id,Model model) {
+		idSP=id;
 		SanPham sanPham= sanPhamService.findById(id);
 		sanP= sanPham;
 		model.addAttribute("sanPham", sanPham);
 		return "quantri/suasanpham";
 	}
 	@PostMapping("/sua-san-pham/luu-thong-tin")
-	public String suaSanPham(@ModelAttribute SanPham sanPham) {
+	public String suaSanPham(@ModelAttribute SanPham sanPham,BindingResult  bindingResult) {
+		sanPhamSuaValidation.validate(sanPham, bindingResult);
+		if(bindingResult.hasErrors()) {
+			return "redirect:/quan-tri/sua-san-pham/"+idSP;
+		}
 		sanP.setTen(sanPham.getTen());
 		sanP.setAnhDaiDien(sanPham.getAnhDaiDien());
 		sanP.setGia(sanPham.getGia());

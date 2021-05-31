@@ -74,7 +74,15 @@ public class DiaChi{
 
 	@Override
 	public String toString() {
-		return ""+soNha + "," + quan + "," + tinhTP ;
+		return ""+soNha + ", " + quan + ", " + tinhTP ;
+	}
+
+	public DiaChi(NguoiDung nguoidung, String soNha, String quan, String tinhTP) {
+		super();
+		this.nguoidung = nguoidung;
+		this.soNha = soNha;
+		this.quan = quan;
+		this.tinhTP = tinhTP;
 	}
 	
 	
