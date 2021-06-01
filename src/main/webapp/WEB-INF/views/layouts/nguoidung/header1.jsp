@@ -78,10 +78,10 @@
 									<option>mobile</option>
 									<option>kid’s item</option>
 								</select> -->
-							<form">
-								<input name="search" placeholder="Tìm kiếm tại đây..."
-									type="search">
-								<button class="btnn">
+							<form>
+								<input name="keywork" placeholder="Tìm kiếm tại đây..."
+									type="search" id="keywork">
+								<button class="btnn" id="btn-search-sp" type="button">
 									<i class="ti-search"></i>
 								</button>
 							</form>

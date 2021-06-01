@@ -21,9 +21,7 @@
 				</security:authorize>
 			</a>
 			<div class="dropdown-menu dropdown-menu-right"
-				aria-labelledby="dropdownMenuButton">
-				<a class="dropdown-item" href="#">Action</a> <a
-					class="dropdown-item" href="#">Another action</a> <a
+				aria-labelledby="dropdownMenuButton"> <a
 					class="dropdown-item" href="<c:url value="/dang-xuat"/>">Đăng xuất</a>
 			</div>
 		</div>
