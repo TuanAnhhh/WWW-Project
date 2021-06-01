@@ -1,14 +1,25 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@include file="/common/taglib.jsp"%>
-<title>Danh sách người dùng</title>
+<title>Danh sách sản phẩm</title>
 
 <body>
 
 	<div id="layoutSidenav_content">
 		<main>
 		<div class="container-fluid">
-			<form action="<c:url value='/quan-tri/quan-ly-san-pham/?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" id="formSubmit"> 
+			
+		
+			<form 
+				 action="<c:choose>
+				  <c:when test ="${not empty idDanhMuc}">
+		           	<c:url value='/quan-tri/quan-ly-san-pham/loc-san-pham/${idDanhMuc}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>
+		         </c:when>
+		         <c:otherwise>
+		         	<c:url value='/quan-tri/quan-ly-san-pham/?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>
+		         </c:otherwise>
+				</c:choose>" 
+			 id="formSubmit"> 
 			<div class="row">
 			<div class="col-4">
 				<h1 class="mt-4">Quản lý sản phẩm</h1>
@@ -16,15 +27,28 @@
 			</div>
 				<!-- dangh muc -->
 				<div class="row">
-					<div class="col-8">
+					<div class="col-7">
 						<div class="form-group">
 							<label for="exampleFormControlSelect1">Danh Mục</label> <select
-								class="form-control" id="exampleFormControlSelect1" name="maDM">
+								class="form-control" id="loc">
 								<c:forEach items="${list}" var="danhmuc">
-									<option value="${danhmuc.id}">${danhmuc.ten}</option>
+									<c:choose>
+										  <c:when test ="${danhmuc.id == idDanhMuc}">
+								           		<option value="${danhmuc.id}" selected="selected">${danhmuc.ten}</option>
+								         </c:when>
+								         <c:otherwise>
+								         		<option value="${danhmuc.id}">${danhmuc.ten}</option>
+								         </c:otherwise>
+									</c:choose>
+									
+								
 								</c:forEach>
 							</select>
 						</div>
+					</div>
+					
+					<div class="col-1" style="margin-top: 29px;">
+						<button type="button" class="btn btn-primary" onclick="locSanPham()">Lọc</button> 
 					</div>
 					<div class="col-4" style="margin-top: 29px;">
 						<a href="<c:url value='/quan-tri/quan-ly-san-pham/them-san-pham'/>" class="btn btn-primary">Thêm sản phẩm</a>
@@ -129,7 +153,10 @@
             } else{
 				alert("Đã hủy thay đổi")
 			}
-          
         }
+		function locSanPham(){
+			var id = $( "#loc" ).val();
+			window.location.href= "http://localhost:8080/website-dungcuthethao/quan-tri/quan-ly-san-pham/loc-san-pham/"+id+"?page=1&limit=12";
+		};
 	</script> </content>
 </body>

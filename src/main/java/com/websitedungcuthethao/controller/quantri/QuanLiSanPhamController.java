@@ -66,7 +66,7 @@ public class QuanLiSanPhamController {
 	
 	@GetMapping
 	public String index(Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
-		List<DanhMuc>list= danhMucService.findAll();
+		List<DanhMuc>list= danhMucService.findAllDanhMucCon();
 		
 		AbstractDTO abstractDTO= new AbstractDTO();
 		abstractDTO.setPage(page);
@@ -81,11 +81,10 @@ public class QuanLiSanPhamController {
 		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
 		abstractDTO.setLimit(limit);
 		
-		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
+		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit()));
 		model.addAttribute("list",list);
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
-		
 		
 		return"quantri/quanlisanpham";
 	}
@@ -198,6 +197,31 @@ public class QuanLiSanPhamController {
 		ThuocTinhSanPham thuocTinhSanPham = new ThuocTinhSanPham(tenThuocTinh);
 		thuocTinhSanPhamService.saveTTSP(thuocTinhSanPham);
 		return "redirect:/quan-tri/quan-ly-san-pham/them-san-pham";
+	}
+	
+	@GetMapping("/loc-san-pham/{id}")
+	public String locSanPham(@PathVariable Long id, Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
+		List<DanhMuc>list= danhMucService.findAllDanhMucCon();
+		
+		AbstractDTO abstractDTO= new AbstractDTO();
+		abstractDTO.setPage(page);
+		abstractDTO.setLimit(limit);
+		
+		
+		Pageable pageable=new PageRequest(page -1, limit);
+		
+		List<SanPham> dsSanPham= sanPhamService.findByDanhMucIDAndTrangThai(id, SystemConstant.ACTIVE_STATUS, pageable);
+
+		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
+		abstractDTO.setLimit(limit);
+		
+		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit()));
+		model.addAttribute("list",list);
+		model.addAttribute("abstractDTO",abstractDTO);
+		model.addAttribute("dsSanPham", dsSanPham);
+		// bien check kiem tra form submit vao dau
+		model.addAttribute("idDanhMuc",id);
+		return"quantri/quanlisanpham";
 	}
 	
 	
