@@ -33,19 +33,18 @@ public class QuanLyNhaCungCapController {
 		Pageable pageable=new PageRequest(page -1, limit);
 		List<NhaCungCap> listNCC= nhaCungCapService.findAllAndPaging(pageable);
 		abstractDTO.setTotalItem((long) listNCC.size());
+		System.out.println((long) listNCC.size());
 		abstractDTO.setLimit(limit);
-		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit()));
+		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
 		model.addAttribute("listNCC",listNCC);
 		model.addAttribute("abstractDTO",abstractDTO);
 		return"quantri/quanlynhacungcap";
 	}
-	
-	
 	@GetMapping("/xoa-nha-cung-cap/{id}")
 	public String xoaNhaCungCap(@PathVariable Long id) {
 		NhaCungCap nhaCungCap=nhaCungCapService.findNCCByID(id);
 		nhaCungCapService.deleteNCC(nhaCungCap);
-		return"redirect:/quan-tri/nha-cung-cap?page=1&limit=3";
+		return"redirect:/quan-tri/nha-cung-cap?page=1&limit=12";
 	}
 	
 	@GetMapping("/sua-nha-cung-cap/{id}")
@@ -62,7 +61,7 @@ public class QuanLyNhaCungCapController {
 		ncc.setSoDienThoai(nhaCungCap.getSoDienThoai());
 		ncc.setTenNhaCungCap(nhaCungCap.getTenNhaCungCap());
 		nhaCungCapService.updateNCC(ncc);
-		return "redirect:/quan-tri/nha-cung-cap?page=1&limit=3";
+		return "redirect:/quan-tri/nha-cung-cap?page=1&limit=12";
 	}
 	@GetMapping("/them-nha-cung-cap")
 	public String formThemNhaCungCap(Model model) {
@@ -73,6 +72,6 @@ public class QuanLyNhaCungCapController {
 	@PostMapping("/them-nha-cung-cap")
 	public String formThemNhaCungCap(@ModelAttribute NhaCungCap nhaCungCap) {
 		nhaCungCapService.saveNCC(nhaCungCap);
-		return "redirect:/quan-tri/nha-cung-cap?page=1&limit=3";
+		return "redirect:/quan-tri/nha-cung-cap?page=1&limit=12";
 	}
 }

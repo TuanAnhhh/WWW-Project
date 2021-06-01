@@ -34,13 +34,18 @@
 						<form:input type="text" cssClass="form-control" path="email"/> 
 					</div>
 				</div>
-				
+				<div class="form-group row">
+					<form:label path="diachi" cssClass="col-sm-2 col-form-label">Địa chỉ:</form:label> 
+					 <div class="col-sm-10">
+						<form:input type="text" cssClass="form-control" path="diachi"/> 
+					</div>
+				</div>
 			
 				<div class="form-group row" style="float: right;">
 					<div class="col-sm-2"></div>
 					
 					<div class="col-sm-3">
-						<a href="<c:url value="/quan-tri/nha-cung-cap?page=1&limit=3" />" type="submit" class="btn btn-danger" >Hủy</a>
+						<a href="<c:url value="/quan-tri/nha-cung-cap?page=1&limit=12" />" type="submit" class="btn btn-danger" >Hủy</a>
 					</div>
 					<div class="col-sm-7">
 						<button type="submit" class="btn btn-primary" >Lưu thông tin</button>
