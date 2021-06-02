@@ -38,7 +38,7 @@ import com.websitedungcuthethao.validate.SanPhamThemValidation;
 @RequestMapping("/quan-tri/quan-ly-san-pham")
 public class QuanLiSanPhamController {
 	
-	private Long idSP=null;
+
 	private SanPham sanP=null;
 	ThemSanPhamDTO spSua = null;
 	@Autowired
@@ -166,7 +166,7 @@ public class QuanLiSanPhamController {
 	
 	@GetMapping("/sua-san-pham/{id}")
 	public String suaSanPham(@PathVariable Long id,Model model) {
-		idSP=id;
+
 		SanPham sanPham= sanPhamService.findById(id);
 		sanP= sanPham;
 		model.addAttribute("sanPham", sanPham);
@@ -212,13 +212,14 @@ public class QuanLiSanPhamController {
 		
 		List<SanPham> dsSanPham= sanPhamService.findByDanhMucIDAndTrangThai(id, SystemConstant.ACTIVE_STATUS, pageable);
 
-		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
+		abstractDTO.setTotalItem(dsSanPham.size()*1L);
 		abstractDTO.setLimit(limit);
 		
 		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit()));
 		model.addAttribute("list",list);
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
+		
 		// bien check kiem tra form submit vao dau
 		model.addAttribute("idDanhMuc",id);
 		return"quantri/quanlisanpham";

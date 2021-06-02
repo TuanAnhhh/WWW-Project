@@ -28,12 +28,16 @@ public class DangKiTaiKhoanValidation implements Validator{
 		
 		NguoiDung nguoiDung= (NguoiDung) target;
 		String ho= nguoiDung.getHo();
-		if(!ho.matches("[a-zA-ZđêếềệểễưứừửữựôốồộổỗăắằặẳẵâầấẩẫậeéèẹẽẻuúùủụũoóòỏọõaáàảạãĐẾỀỆỂỄƯỨỪỬỮỰÔỐỒỘỔỖĂẮẰẶẲẴÂẦẤẨẪẬÉÈẸẼẺÚÙỦỤŨÓÒỎỌỎÕÁÀẢÃÃyýỳỵỹỷỉịìĩíỈỊÌÍĨ]+$")) {
+		if(!ho.matches("^[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ\r\n" + 
+				"fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu\r\n" + 
+				"UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ ]{1,}$")) {
 			errors.rejectValue("ho", null, "Họ không chứa số");
 		}
 		
 		String ten = nguoiDung.getTen();
-		if(!ten.matches("[a-zA-ZđêếềệểễưứừửữựôốồộổỗăắằặẳẵâầấẩẫậeéèẹẽẻuúùủụũoóòỏọõaáàảạãĐẾỀỆỂỄƯỨỪỬỮỰÔỐỒỘỔỖĂẮẰẶẲẴÂẦẤẨẪẬÉÈẸẼẺÚÙỦỤŨÓÒỎỌỎÕÁÀẢÃÃyýỳỵỹỷỉịìĩíỈỊÌÍĨ]+(\\s[a-zA-ZđêếềệểễưứừửữựôốồộổỗăắằặẳẵâầấẩẫậeéèẹẽẻuúùủụũoóòỏọõaáàảạãỉịìĩíĐẾỀỆỂỄƯỨỪỬỮỰÔỐỒỘỔỖĂẮẰẶẲẴÂẦẤẨẪẬÉÈẸẼẺÚÙỦỤŨÓÒỎỌỎÕÁÀẢÃÃyýỳỵỹỷÝỶỲÝỴỈỊÌÍĨ]+)*")) {
+		if(!ten.matches("^[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ\r\n" + 
+				"fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu\r\n" + 
+				"UùÙủỦũŨúÚụỤưƯừỪửỬữỮứỨựỰvVwWxXyYỳỲỷỶỹỸýÝỵỴzZ ]{1,}$")) {
 			errors.rejectValue("ten", null, "Tên không chứa số");
 		}
 		

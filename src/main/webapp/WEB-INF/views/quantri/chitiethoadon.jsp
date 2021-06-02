@@ -53,7 +53,7 @@
 			
 			<div class="row">
 		
-				<label class="col-sm-4 col-form-label">Tổng tiền: ${hoaDon.tongTienHoaDon} VNĐ </label> 
+				<label class="col-sm-4 col-form-label">Tổng tiền:<span><fmt:formatNumber type="number" pattern = "#,### VND" value="${hoaDon.tongTienHoaDon}" /></span> </label> 
 			</div>
 			
 			<div class="row">
@@ -86,7 +86,7 @@
 									<td>${sp.ten}</td>
 									<td><img style="width:100px;height: 100px;" alt="" src="<c:url value="/resources/images/user/sanpham/${sp.anhDaiDien}"/>">  </td>
 									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia}" /></span></td>
-									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia - sp.gia * sp.phanTramGiamGia}" /></span></td>
+									<td><span><fmt:formatNumber type="number" pattern = "#,### VND" value="${sp.gia - sp.gia * sp.phanTramGiamGia / 100}" /></span></td>
 									<td>${sp.thoiGianBaoHanh } Tháng</td>
 									<td>${sp.thuongHieu }</td>
 								</tr>

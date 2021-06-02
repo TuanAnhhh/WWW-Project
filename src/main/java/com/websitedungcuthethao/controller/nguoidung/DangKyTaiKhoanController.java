@@ -76,6 +76,7 @@ public class DangKyTaiKhoanController {
 			nguoiDungService.saveNguoiDung(nd);
 			return "redirect:/dang-nhap";
 		}
+		
 		model.addAttribute("mesMaXacNhanSai","Mã xác nhận sai. Vui lòng nhập lại");
 		return "dangkytaikhoan/xacnhanma";
 		

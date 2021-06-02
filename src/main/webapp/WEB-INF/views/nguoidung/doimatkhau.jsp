@@ -19,11 +19,11 @@
 					<form method="post">
 						<div class="row">
 						
-						<div class="col-4">
-							<label class="label">Mật khẩu</label> <input
+						<div class="col-12">
+							<label class="label col-2">Mật khẩu</label> <input
 								class="input--style-4" type="password" placeholder="mật khẩu mới" name="matkhau">
 								<br>
-								<label class="label">Xác nhận mật khẩu</label> <input
+								<label class="label col-2">Xác nhận mật khẩu</label> <input
 								class="input--style-4" type="password" placeholder="nhập lại mật khẩu" name="xacnhanmatkhau">
 						</div>
 						<div class="col-12">

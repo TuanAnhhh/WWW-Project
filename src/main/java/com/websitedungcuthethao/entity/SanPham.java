@@ -36,7 +36,7 @@ public class SanPham {
 	@Column(columnDefinition = "nvarchar(50)")
 	private String thuongHieu;
 
-	@Column(columnDefinition = "text")
+	@Column(columnDefinition = "Ntext")
 	private String noiDung;
 
 	private double gia;

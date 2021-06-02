@@ -26,7 +26,7 @@ public class BinhLuan {
 	@JoinColumn(name = "sanphamID")
 	private SanPham sanpham;
 	
-	@Column(columnDefinition = "text")
+	@Column(columnDefinition = "Ntext")
 	private String binhLuan;
 
 	private String anhSanPham;

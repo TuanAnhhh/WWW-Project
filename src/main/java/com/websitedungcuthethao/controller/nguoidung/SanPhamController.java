@@ -151,7 +151,7 @@ public class SanPhamController {
 		
 		Pageable pageable=new PageRequest(page -1, limit, Direction.ASC,"gia");
 		List<SanPham> dsSanPham= sanPhamService.search(keywork, pageable);
-		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
+		abstractDTO.setTotalItem(dsSanPham.size()*1L);
 		abstractDTO.setLimit(limit);
 		
 		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
