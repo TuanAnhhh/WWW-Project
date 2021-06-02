@@ -36,7 +36,6 @@ public class SanPhamService implements ISanPhamService {
 		if(sanPhamRepository.findOne(id)!=null) {
 			sanPhamRepository.delete(sanPhamRepository.findOne(id));
 		}
-		 
 	}
 	@Override
 	public void save(SanPham sanPham) {
