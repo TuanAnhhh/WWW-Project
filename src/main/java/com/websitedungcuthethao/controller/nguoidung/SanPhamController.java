@@ -63,7 +63,7 @@ public class SanPhamController {
 		
 		Pageable pageable=new PageRequest(page -1, limit, Direction.ASC,"gia");
 		List<SanPham> dsSanPham= sanPhamService.findByDanhMucIDAndTrangThai(id, SystemConstant.ACTIVE_STATUS, pageable);
-		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
+		abstractDTO.setTotalItem((long) dsSanPham.size());
 		abstractDTO.setLimit(limit);
 		
 		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
@@ -93,7 +93,7 @@ public class SanPhamController {
 		}
 		
 		List<SanPham> dsSanPham= sanPhamService.findByDanhMucIDAndTrangThai(id, SystemConstant.ACTIVE_STATUS, pageable);
-		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
+		abstractDTO.setTotalItem((long) dsSanPham.size());
 		abstractDTO.setLimit(limit);
 		
 		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
@@ -138,6 +138,7 @@ public class SanPhamController {
 		model.addAttribute("listDanhMuc", listDanhMuc);
 		return "nguoidung/danhsachsanpham";
 	}
+	
 	@GetMapping("/tim-kiem/{keywork}")
 	public String timKiem (Model model, @PathVariable String keywork,  @RequestParam("page") int page,@RequestParam("limit") int limit ) {
 
@@ -155,9 +156,40 @@ public class SanPhamController {
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
 		model.addAttribute("keywork",keywork);
+		List<DanhMuc> listDanhMuc = danhService.findAllDanhMucCon();
+		model.addAttribute("listDanhMuc", listDanhMuc);
+		return "nguoidung/ketqua_timkiem";
+	}
+	@GetMapping(value = "/tim-kiem/{keywork}/sap-xep/{value}")
+	public String timKiemVaSapXep (Model model, @PathVariable String keywork, @PathVariable String value, @RequestParam("page") int page,@RequestParam("limit") int limit ) {
+		AbstractDTO abstractDTO= new AbstractDTO();
+		abstractDTO.setPage(page);
+		abstractDTO.setLimit(limit);
+		
+		Pageable pageable= null;
+		if(value.equals("asc")) {
+			pageable = new PageRequest(page -1, limit, Direction.ASC,"gia");
+		}
+		else {
+			pageable = new PageRequest(page -1, limit, Direction.DESC,"gia");
+		}
+		
+		List<SanPham> dsSanPham= sanPhamService.search(keywork, pageable);
+		
+		abstractDTO.setTotalItem((long) dsSanPham.size());
+		abstractDTO.setLimit(limit);
+		
+		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
+		model.addAttribute("abstractDTO",abstractDTO);
+		model.addAttribute("dsSanPham", dsSanPham);
+		model.addAttribute("keywork",keywork);
+//		giaTriSapXep thuộc asc or desc
+		model.addAttribute("giaTriSapXep",value);
 		
 		List<DanhMuc> listDanhMuc = danhService.findAllDanhMucCon();
 		model.addAttribute("listDanhMuc", listDanhMuc);
 		return "nguoidung/ketqua_timkiem";
 	}
+	
+
 }

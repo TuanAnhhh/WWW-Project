@@ -175,7 +175,6 @@ public class QuanLiSanPhamController {
 	}
 	@PostMapping("/sua-san-pham/luu-thong-tin")
 	public String suaSanPham(@ModelAttribute("themSanPhamDTO") ThemSanPhamDTO themSanPhamDTO,BindingResult  bindingResult,HttpSession session) throws IOException {
-		System.out.println(themSanPhamDTO.toString());
 		
 		System.out.println(1);
 		

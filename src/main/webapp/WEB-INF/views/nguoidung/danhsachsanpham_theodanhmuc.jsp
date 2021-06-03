@@ -5,7 +5,15 @@
 <title>Danh sách sản phẩm</title>
 <body>
 <form 
-	action="<c:url value='/danh-sach-san-pham/danh-muc/${danhmucID}/xap-sep/${giaTriSapXep}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" 
+	action="
+		<c:choose>
+			  <c:when test = "${not empty giaTriSapXep }">
+	           	<c:url value='/danh-sach-san-pham/danh-muc/${danhmucID}/sap-xep/${giaTriSapXep}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>
+	         </c:when>
+	         <c:otherwise>
+	         	<c:url value='/danh-sach-san-pham/danh-muc/${danhmucID}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>
+	         </c:otherwise>
+		</c:choose>" 
 
 	id="formSubmit" 
 	method="get">
@@ -157,7 +165,7 @@
 		
 		$("#sepXep").change(function() {
 				var x = $("#sepXep").val();
-				window.location = "http://localhost:8080/website-dungcuthethao/danh-sach-san-pham/danh-muc/"+${danhmucID}+"/sap-xep/"+x+"?page="${abstractDTO.page}"&limit="${abstractDTO.limit};
+			  window.location = "http://localhost:8080/website-dungcuthethao/danh-sach-san-pham/danh-muc/"+${danhmucID}+"/sap-xep/"+x+"?page=1&limit=12";
 			  
 			});
 	</script> </content>

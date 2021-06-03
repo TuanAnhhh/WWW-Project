@@ -5,12 +5,17 @@
 <title>Danh sách sản phẩm</title>
 <body>
 <form 
-	action="<c:url value='/danh-sach-san-pham/tim-kiem/${keywork}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>" 
+	action="<c:choose>
+			  <c:when test = "${not empty giaTriSapXep }">
+	           	<c:url value='/danh-sach-san-pham/tim-kiem/${keywork}/sap-xep/${giaTriSapXep}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>
+	         </c:when>
+	         <c:otherwise>
+	         	<c:url value='/danh-sach-san-pham/tim-kiem/${keywork}?page=${abstractDTO.page}&limit=${abstractDTO.limit}'/>
+	         </c:otherwise>
+		</c:choose>" 
 
 	id="formSubmit" 
 	method="get">
-
-
 	<!-- Product Style -->
 	<section class="product-area shop-sidebar shop section">
 		<div class="container">
@@ -61,6 +66,7 @@
 										
 											
 										</select>
+										
 									</div>
 								</div>
 								<!-- <ul class="view-mode">
@@ -115,7 +121,8 @@
 								</div>
 							</div>
 						</c:forEach>
-
+						
+					<form:input path="keywork" value="${keywork}" id="khoa" type="hidden"/>
 
 					</div>
 
@@ -140,6 +147,7 @@
 	var totalPages = ${abstractDTO.totalPage};
 	var currentPage = ${abstractDTO.page};
 	var limit = ${abstractDTO.limit};
+	
 		$(function() {
 			window.pagObj = $('#pagination').twbsPagination({
 				totalPages : totalPages,
@@ -156,9 +164,12 @@
 		});
 		
 		$("#sepXep").change(function() {
-				var x = $("#sepXep").val();
-			  window.location = "http://localhost:8080/website-dungcuthethao/danh-sach-san-pham/sap-xep/"+x+"?page=1&limit=12";
-			  
-			});
+			var keywork = $("#khoa").val();
+			var x = $("#sepXep").val();
+		
+			window.location.href= "http://localhost:8080/website-dungcuthethao/danh-sach-san-pham/tim-kiem/"+keywork+"/sap-xep/"+x+"?page=1&limit=12";   
+
+		  
+		});
 	</script> </content>
 </body>
