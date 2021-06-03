@@ -53,6 +53,10 @@ public class ThanhToanController {
 		
 		int soLuongSp = (int) session.getAttribute("tongSoLuongGioHang");
 		double tongTienHD = (double) session.getAttribute("tongThanhTienGioHang");
+//		kiem tra dia chi
+		if(nguoidung.getDsDiaChi().size()==0) {
+			return "redirect:/them-dia-chi/"+nguoidung.getId();
+		}
 //		lap hoa don
 		HoaDon hd = new HoaDon(nguoiDungService.findOneByTenDangNhap(nguoidung.getTenDangNhap()),false,LocalDate.now(),LocalDate.now().plusDays(7),null,soLuongSp,tongTienHD);
 		hoaDonService.saveHoaDon(hd);

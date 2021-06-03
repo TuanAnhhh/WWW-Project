@@ -16,9 +16,7 @@
 					<div class="col-9">
 					<i class="fas fa-table mr-1"></i> Danh sách người dùng
 					</div>
-						
 				</div>
-						
 						<div class="card-body">
 
 					<div class="table-responsive">
@@ -110,8 +108,6 @@
 			}
           
         }
-        
-		
 	</script>
 	 </content>
 </body>
