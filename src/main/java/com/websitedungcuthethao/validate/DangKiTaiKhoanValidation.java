@@ -7,6 +7,8 @@ import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.Validator;
 
+import com.websitedungcuthethao.dto.NguoiDungDTO;
+import com.websitedungcuthethao.dto.NguoiDungDangKyDTO;
 import com.websitedungcuthethao.entity.NguoiDung;
 import com.websitedungcuthethao.service.impl.NguoiDungService;
 
@@ -18,7 +20,7 @@ public class DangKiTaiKhoanValidation implements Validator{
 	
 	@Override
 	public boolean supports(Class<?> clazz) {
-		return NguoiDung.class.isAssignableFrom(clazz);
+		return NguoiDungDangKyDTO.class.isAssignableFrom(clazz);
 	}
 
 	@Override
@@ -26,7 +28,7 @@ public class DangKiTaiKhoanValidation implements Validator{
 		if(!supports(target.getClass()))
 			return;
 		
-		NguoiDung nguoiDung= (NguoiDung) target;
+		NguoiDungDangKyDTO nguoiDung= (NguoiDungDangKyDTO) target;
 		String ho= nguoiDung.getHo();
 		if(!ho.matches("^[aAàÀảẢãÃáÁạẠăĂằẰẳẲẵẴắẮặẶâÂầẦẩẨẫẪấẤậẬbBcCdDđĐeEèÈẻẺẽẼéÉẹẸêÊềỀểỂễỄếẾệỆ\r\n" + 
 				"fFgGhHiIìÌỉỈĩĨíÍịỊjJkKlLmMnNoOòÒỏỎõÕóÓọỌôÔồỒổỔỗỖốỐộỘơƠờỜởỞỡỠớỚợỢpPqQrRsStTu\r\n" + 
@@ -82,6 +84,10 @@ public class DangKiTaiKhoanValidation implements Validator{
 		String matKhau= nguoiDung.getMatKhau();
 		if(!matKhau.matches("^[A-Za-z0-9]{6,}$")) {
 			errors.rejectValue("matKhau", null, "Mật khẩu ít nhất 6 kí tự!");
+		}
+		String xacNhanMatKhau= nguoiDung.getXacNhanMatKhau();
+		if(!xacNhanMatKhau.equals(matKhau)) {
+			errors.rejectValue("xacNhanMatKhau", null, "Mật khẩu xác nhận không trùng với mật khẩu");
 		}
 	}
 

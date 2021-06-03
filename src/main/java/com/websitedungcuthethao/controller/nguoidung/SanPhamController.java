@@ -10,7 +10,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,7 +17,6 @@ import com.websitedungcuthethao.constant.SystemConstant;
 import com.websitedungcuthethao.dto.AbstractDTO;
 import com.websitedungcuthethao.entity.DanhMuc;
 import com.websitedungcuthethao.entity.SanPham;
-import com.websitedungcuthethao.repository.DanhMucRepository;
 import com.websitedungcuthethao.service.impl.DanhMucService;
 import com.websitedungcuthethao.service.impl.SanPhamService;
 
@@ -130,7 +128,6 @@ public class SanPhamController {
 		abstractDTO.setLimit(limit);
 		
 		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit())+1);
-		System.out.println(abstractDTO.toString());
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
 		

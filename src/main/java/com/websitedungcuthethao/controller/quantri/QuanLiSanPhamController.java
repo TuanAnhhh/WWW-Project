@@ -184,7 +184,7 @@ public class QuanLiSanPhamController {
 		sanP.setThuongHieu(sanPham.getThuongHieu());
 		sanP.setPhanTramGiamGia(sanPham.getPhanTramGiamGia());
 		sanPhamService.updateSanPham(sanP);
-		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=3";
+		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=12";
 		
 		
 	}

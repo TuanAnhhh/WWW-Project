@@ -64,5 +64,6 @@ public class QuanLyNguoiDungController {
 		
 		return "redirect:/quan-tri/quan-ly-nguoi-dung?page=1&limit=3";
 	}
+
 	
 }

@@ -5,6 +5,7 @@
 <style type="text/css">
 .error {
 	color: red;
+	font-weight: bold;
 }
 </style>
 <body class="bg-primary">
@@ -24,11 +25,12 @@
 								<div class="alert alert-danger text-center">${mesErr}</div>
 							</c:if>
 							<div class="card-body">
-								<form:form method="POST" action="" modelAttribute="nguoiDung">
+							
+								<form:form method="POST" action="" modelAttribute="nguoiDungDangKy">
 									<div class="row">
 										<div class="col-5">
 											<div class="form-group">
-												<form:label class="small mb-1" path="ho">Họ</form:label> 
+												<form:label cssClass="small mb-1" path="ho">Họ</form:label> 
 												<form:input cssClass="form-control py-4" type="text"  path="ho" />
 												<form:errors path="ho" cssClass="error"></form:errors>
 											</div>
@@ -77,8 +79,9 @@
 										<form:errors path="matKhau" cssClass="error"></form:errors>
 									</div>
 									<div class="form-group">
-										<form:label path="" class="small mb-1">Nhập lại mật khẩu</form:label>
-										<form:password cssClass="form-control py-4" path="" />
+										<form:label path="xacNhanMatKhau" class="small mb-1">Nhập lại mật khẩu</form:label>
+										<form:password cssClass="form-control py-4" path="xacNhanMatKhau" />
+										<form:errors path="xacNhanMatKhau" cssClass="error"></form:errors>
 									</div>
 									<div class="form-group float-right">
 										<a href="<c:url value="/dang-nhap"/>"class="btn btn-danger">Về đăng nhập</a>

@@ -12,11 +12,14 @@
 			
 
 			<div class="card mb-4">
-				<div class="card-header">
+				<div class="card-header row">
+					<div class="col-9">
 					<i class="fas fa-table mr-1"></i> Danh sách người dùng
+					</div>
+						
 				</div>
-
-				<div class="card-body">
+						
+						<div class="card-body">
 
 					<div class="table-responsive">
 						
@@ -107,5 +110,8 @@
 			}
           
         }
-	</script> </content>
+        
+		
+	</script>
+	 </content>
 </body>

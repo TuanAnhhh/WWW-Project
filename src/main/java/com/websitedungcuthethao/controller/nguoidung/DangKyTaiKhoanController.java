@@ -3,10 +3,7 @@ package com.websitedungcuthethao.controller.nguoidung;
 import java.time.LocalDate;
 import java.util.concurrent.ThreadLocalRandom;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.websitedungcuthethao.constant.SystemConstant;
+import com.websitedungcuthethao.dto.NguoiDungDangKyDTO;
 import com.websitedungcuthethao.entity.NguoiDung;
 import com.websitedungcuthethao.service.impl.LoaiNguoiDungService;
 import com.websitedungcuthethao.service.impl.NguoiDungService;
@@ -27,7 +25,7 @@ import com.websitedungcuthethao.validate.DangKiTaiKhoanValidation;
 @Controller
 @RequestMapping("/dangky")
 public class DangKyTaiKhoanController {
-	private NguoiDung nd=null;
+	private NguoiDung nd=new NguoiDung();
 	private Long ran=0L;
 	@Autowired
 	private SenMail senMail;
@@ -42,25 +40,35 @@ public class DangKyTaiKhoanController {
 
 	@GetMapping
 	public String dangKy(Model model) {
-		model.addAttribute("nguoiDung",new NguoiDung());
+		model.addAttribute("nguoiDungDangKy",new NguoiDungDangKyDTO());
 		return "dangkytaikhoan/dangky";
 	}
 	@PostMapping
-	public String xacNhan(Model model, @ModelAttribute NguoiDung nguoiDung,BindingResult bindingResult) {
+	public String xacNhan(Model model, @ModelAttribute("nguoiDungDangKy") NguoiDungDangKyDTO nguoiDung,BindingResult bindingResult) {
 		dangKyTaiKhoanValidation.validate(nguoiDung, bindingResult);
 		if(bindingResult.hasErrors()) {
 			model.addAttribute("mesErr","Thông tin đăng ký không hợp lệ");
 			return "dangkytaikhoan/dangky";
 		}
 		
-		nd = nguoiDung;
+		nd.setHo(nguoiDung.getHo());
+		nd.setTen(nguoiDung.getTen());
+		nd.setEmail(nguoiDung.getEmail());
+		nd.setTenDangNhap(nguoiDung.getTenDangNhap());
+		nd.setSoDienThoai(nguoiDung.getSoDienThoai());
+		nd.setGioiTinh(nguoiDung.isGioiTinh());
+		nd.setLoainguoidung(loaiNguoiDungService.findByTenLoaiNguoiDung(SystemConstant.ROLE_NGUOIDUNG));
+		nd.setTrangThai(SystemConstant.ACTIVE_STATUS);
+		nd.setMatKhau(BCrypt.hashpw(nguoiDung.getMatKhau(), BCrypt.gensalt(12)));
+		nd.setNgayTao(LocalDate.now());
+		
 		ran = ThreadLocalRandom.current().nextLong(100000, 999999);
 		senMail.SenEmail(nguoiDung.getEmail(), "Mã xác nhận đăng ký","Ma xac nhan dang ky tai khoan ESHOP: "+String.valueOf(ran));
 		return "dangkytaikhoan/xacnhanma";
 	}
 	
 	@PostMapping("/luu-nguoi-dung")
-	public String themNgStringuoiDung(@ModelAttribute("nguoiDung") NguoiDung nguoiDung,@RequestParam String maXN , Model model) {
+	public String themNgStringuoiDung(@RequestParam String maXN , Model model) {
 		Long ma = null;
 		try {
 			ma = Long.parseLong(maXN);
@@ -69,10 +77,7 @@ public class DangKyTaiKhoanController {
 			return "dangkytaikhoan/xacnhanma";
 		}
 		if((long)ma==(long)ran) {
-			nd.setLoainguoidung(loaiNguoiDungService.findByTenLoaiNguoiDung(SystemConstant.ROLE_NGUOIDUNG));
-			nd.setTrangThai(SystemConstant.ACTIVE_STATUS);
-			nd.setMatKhau(BCrypt.hashpw(nd.getMatKhau(), BCrypt.gensalt(12)));
-			nd.setNgayTao(LocalDate.now());
+			
 			nguoiDungService.saveNguoiDung(nd);
 			return "redirect:/dang-nhap";
 		}

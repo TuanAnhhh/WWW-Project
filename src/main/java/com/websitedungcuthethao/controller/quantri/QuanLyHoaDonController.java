@@ -143,7 +143,7 @@ public class QuanLyHoaDonController {
 			
 		} catch (Exception e) {
 		}
-		return"redirect:/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=3";
+		return"redirect:/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=6";
 	}
 	
 	
@@ -174,6 +174,6 @@ public class QuanLyHoaDonController {
 			
 		} catch (Exception e) {
 		}
-		return"redirect:/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=3";
+		return"redirect:/quan-tri/quan-ly-hoa-don/don-hang-chua-xac-nhan?page=1&limit=6";
 	}
 }
