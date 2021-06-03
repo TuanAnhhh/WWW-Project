@@ -137,6 +137,17 @@ public class ThemSanPhamDTO {
 				+ ", soLuong=" + soLuong + ", anhDaiDien=" + anhDaiDien + ", thoiGianBaoHanh=" + thoiGianBaoHanh
 				+ ", tenThuocTinh=" + tenThuocTinh + ", giaTriThuocTinh=" + giaTriThuocTinh + "]";
 	}
+	public ThemSanPhamDTO(String ten, String moTa, String thuongHieu, String noiDung, String gia,
+			String phanTramGiamGia, String thoiGianBaoHanh) {
+		super();
+		this.ten = ten;
+		this.moTa = moTa;
+		this.thuongHieu = thuongHieu;
+		this.noiDung = noiDung;
+		this.gia = gia;
+		this.phanTramGiamGia = phanTramGiamGia;
+		this.thoiGianBaoHanh = thoiGianBaoHanh;
+	}
 	
 	
 	

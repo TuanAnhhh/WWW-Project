@@ -57,6 +57,7 @@ public class ThanhToanController {
 		if(nguoidung.getDsDiaChi().size()==0) {
 			return "redirect:/them-dia-chi/"+nguoidung.getId();
 		}
+		
 //		lap hoa don
 		HoaDon hd = new HoaDon(nguoiDungService.findOneByTenDangNhap(nguoidung.getTenDangNhap()),false,LocalDate.now(),LocalDate.now().plusDays(7),null,soLuongSp,tongTienHD);
 		hoaDonService.saveHoaDon(hd);

@@ -169,20 +169,26 @@ public class QuanLiSanPhamController {
 
 		SanPham sanPham= sanPhamService.findById(id);
 		sanP= sanPham;
-		model.addAttribute("sanPham", sanPham);
+		ThemSanPhamDTO themSanPhamDTO = new ThemSanPhamDTO(sanPham.getTen(), sanPham.getMoTa(), sanPham.getThuongHieu(), sanPham.getNoiDung(),String.valueOf( sanPham.getGia()),String.valueOf(sanPham.getPhanTramGiamGia()),String.valueOf( sanPham.getThoiGianBaoHanh()));
+		model.addAttribute("themSanPhamDTO", themSanPhamDTO);
 		return "quantri/suasanpham";
 	}
 	@PostMapping("/sua-san-pham/luu-thong-tin")
-	public String suaSanPham(@ModelAttribute SanPham sanPham,BindingResult  bindingResult) {
+	public String suaSanPham(@ModelAttribute("themSanPhamDTO") ThemSanPhamDTO themSanPhamDTO,BindingResult  bindingResult,HttpSession session) throws IOException {
+		System.out.println(themSanPhamDTO.toString());
 		
-		sanP.setTen(sanPham.getTen());
-		sanP.setAnhDaiDien(sanPham.getAnhDaiDien());
-		sanP.setGia(sanPham.getGia());
-		sanP.setMoTa(sanPham.getMoTa());
-		sanP.setNoiDung(sanPham.getNoiDung());
-		sanP.setThoiGianBaoHanh(sanPham.getThoiGianBaoHanh());
-		sanP.setThuongHieu(sanPham.getThuongHieu());
-		sanP.setPhanTramGiamGia(sanPham.getPhanTramGiamGia());
+		System.out.println(1);
+		
+		luuAnh.luuAnh(themSanPhamDTO.getAnhDaiDien(), session);
+		
+		sanP.setTen(themSanPhamDTO.getTen());
+		sanP.setAnhDaiDien(themSanPhamDTO.getAnhDaiDien().getOriginalFilename());
+		sanP.setGia(Double.parseDouble(themSanPhamDTO.getGia()));
+		sanP.setMoTa(themSanPhamDTO.getMoTa());
+		sanP.setNoiDung(themSanPhamDTO.getNoiDung());
+		sanP.setThoiGianBaoHanh(Integer.parseInt(themSanPhamDTO.getThoiGianBaoHanh()));
+		sanP.setThuongHieu(themSanPhamDTO.getThuongHieu());
+		sanP.setPhanTramGiamGia(Double.parseDouble(themSanPhamDTO.getPhanTramGiamGia()));
 		sanPhamService.updateSanPham(sanP);
 		return "redirect:/quan-tri/quan-ly-san-pham?page=1&limit=12";
 		

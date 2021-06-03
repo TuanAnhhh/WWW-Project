@@ -16,7 +16,7 @@
 					<h3>Sửa sản phẩm</h3>
 				</div>
 			<%-- 	<form:input path="id" type="hidden"/> --%>
-				<form:form action="luu-thong-tin" method="POST" modelAttribute="sanPham">
+				<form:form action="luu-thong-tin" method="POST" modelAttribute="themSanPhamDTO" enctype="multipart/form-data">
 				<div class="form-group row">
 					<form:label path="ten" cssClass="col-sm-2 col-form-label">Tên sản phẩm</form:label> 
 					 <div class="col-sm-10">
