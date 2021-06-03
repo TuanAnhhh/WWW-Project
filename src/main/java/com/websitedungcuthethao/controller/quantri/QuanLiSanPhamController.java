@@ -32,6 +32,7 @@ import com.websitedungcuthethao.service.impl.NhaCungCapService;
 import com.websitedungcuthethao.service.impl.SanPhamService;
 import com.websitedungcuthethao.service.impl.ThuocTinhSanPhamService;
 import com.websitedungcuthethao.util.LuuAnh;
+import com.websitedungcuthethao.validate.SanPhamSuaValidation;
 import com.websitedungcuthethao.validate.SanPhamThemValidation;
 
 @Controller
@@ -62,7 +63,8 @@ public class QuanLiSanPhamController {
 	@Autowired
 	private SanPhamThemValidation sanPhamThemValidation;
 	
-	
+	@Autowired
+	private SanPhamSuaValidation sanPhamSuaValidation;
 	
 	@GetMapping
 	public String index(Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
@@ -81,7 +83,7 @@ public class QuanLiSanPhamController {
 		abstractDTO.setTotalItem(sanPhamService.getTotalItem());
 		abstractDTO.setLimit(limit);
 		
-		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit()));
+		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit()+1));
 		model.addAttribute("list",list);
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);
@@ -176,6 +178,11 @@ public class QuanLiSanPhamController {
 	@PostMapping("/sua-san-pham/luu-thong-tin")
 	public String suaSanPham(@ModelAttribute("themSanPhamDTO") ThemSanPhamDTO themSanPhamDTO,BindingResult  bindingResult,HttpSession session) throws IOException {
 		
+		sanPhamSuaValidation.validate(themSanPhamDTO, bindingResult);
+		if(bindingResult.hasErrors()) {
+			return"redirect:/quan-tri/quan-ly-san-pham/sua-san-pham/"+sanP.getId();
+		}
+		
 		System.out.println(1);
 		
 		luuAnh.luuAnh(themSanPhamDTO.getAnhDaiDien(), session);
@@ -216,11 +223,10 @@ public class QuanLiSanPhamController {
 		Pageable pageable=new PageRequest(page -1, limit);
 		
 		List<SanPham> dsSanPham= sanPhamService.findByDanhMucIDAndTrangThai(id, SystemConstant.ACTIVE_STATUS, pageable);
-
-		abstractDTO.setTotalItem(dsSanPham.size()*1L);
+		abstractDTO.setTotalItem((long) dsSanPham.size());
 		abstractDTO.setLimit(limit);
 		
-		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit()));
+		abstractDTO.setTotalPage((int) Math.ceil(abstractDTO.getTotalItem()/abstractDTO.getLimit() +1));
 		model.addAttribute("list",list);
 		model.addAttribute("abstractDTO",abstractDTO);
 		model.addAttribute("dsSanPham", dsSanPham);

@@ -29,9 +29,8 @@
 					<form:label path="anhDaiDien" cssClass="col-sm-2 col-form-label">Ảnh đại diện</form:label> 
 					 <div class="col-sm-4">
 					<form:input type="file" cssClass="form-control-file" path="anhDaiDien" /> 	
-					<form:errors cssClass="error" path="anhDaiDien"></form:errors>	
 					</div>
-					
+					<form:errors cssClass="error" path="anhDaiDien"></form:errors>
 					<form:label path="gia" cssClass="col-sm-1 col-form-label">Giá</form:label> 
 					 <div class="col-sm-5">
 					<form:input type="text" cssClass="form-control" path="gia" /> 
