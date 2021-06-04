@@ -37,8 +37,11 @@ public class SanPhamThemValidation implements Validator {
 		
 		try {
 			double gia=Double.parseDouble(sanPhamDTO.getGia());
+			if(gia<0) {
+				errors.rejectValue("gia", null, "Giá phải lớn hơn 0");
+			}
 		} catch (Exception e) {
-			errors.rejectValue("gia", null, "không hợp lệ");
+			errors.rejectValue("gia", null, "Giá phải là chữ số");
 		}
 		String moTa=sanPhamDTO.getMoTa();
 		if(moTa.equals("")) {
@@ -51,12 +54,18 @@ public class SanPhamThemValidation implements Validator {
 		
 		try {
 			int soLuong=Integer.parseInt(sanPhamDTO.getSoLuong());
+			if(soLuong<0) {
+				errors.rejectValue("soLuong", null, "Số lượng phải lớn hơn hoặc bằng  0");
+			}
 		} catch (Exception e) {
 			errors.rejectValue("soLuong", null, "Không hợp lệ");
 		}
 		
 		try {
 			int thoiGianBaoHanh=Integer.parseInt(sanPhamDTO.getThoiGianBaoHanh());
+			if(thoiGianBaoHanh<0) {
+				errors.rejectValue("thoiGianBaoHanh", null, "Thời gian phải lớn hơn hoặc bằng 0");
+			}
 		} catch (Exception e) {
 			errors.rejectValue("thoiGianBaoHanh", null, "Không hợp lệ");
 		}

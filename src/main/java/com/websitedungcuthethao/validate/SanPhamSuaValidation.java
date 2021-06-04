@@ -36,6 +36,9 @@ public class SanPhamSuaValidation implements Validator {
 		
 		try {
 			double gia= Double.parseDouble( sanPham.getGia());
+			if(gia<0) {
+				errors.rejectValue("gia", null, "Giá sản phẩm phải lớn hơn 0");
+			}
 		} catch (Exception e) {
 			errors.rejectValue("gia", null, "Giá sản phẩm phải là chữ số");
 		}
@@ -50,12 +53,18 @@ public class SanPhamSuaValidation implements Validator {
 		
 		try {
 			double phanTramgiamGia= Double.parseDouble( sanPham.getPhanTramGiamGia());
+			if(phanTramgiamGia<0) {
+				errors.rejectValue("phanTramgiamGia", null, "phầm trăm giảm giá sản phẩm phải là lớn hơn 0");
+			}
 		} catch (Exception e) {
 			errors.rejectValue("phanTramgiamGia", null, "phầm trăm giảm giá sản phẩm phải là chữ số");
 		}
 		
 		try {
 			int thoiGianBaoHanh= Integer.parseInt(sanPham.getThoiGianBaoHanh());
+			if(thoiGianBaoHanh<0) {
+				errors.rejectValue("thoiGianBaoHanh", null, "thời gian bảo hành sản phẩm phải lớn hơn 0");
+			}
 		} catch (Exception e) {
 			errors.rejectValue("thoiGianBaoHanh", null, "thời gian bảo hành sản phẩm phải là chữ số");
 		}
