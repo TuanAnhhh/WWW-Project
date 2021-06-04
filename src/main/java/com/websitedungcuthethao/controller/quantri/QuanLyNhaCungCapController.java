@@ -7,6 +7,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.websitedungcuthethao.dto.AbstractDTO;
 import com.websitedungcuthethao.entity.NhaCungCap;
 import com.websitedungcuthethao.service.impl.NhaCungCapService;
+import com.websitedungcuthethao.validate.NhaCungCapValidation;
 
 @Controller
 @RequestMapping("/quan-tri/nha-cung-cap")
@@ -24,6 +26,8 @@ public class QuanLyNhaCungCapController {
 	private NhaCungCap ncc=null;
 	@Autowired
 	private NhaCungCapService nhaCungCapService;
+	@Autowired
+	private NhaCungCapValidation nhaCungCapValidation;
 	
 	@GetMapping
 	public String index(Model model, @RequestParam("page") int page,@RequestParam("limit") int limit) {
@@ -55,7 +59,12 @@ public class QuanLyNhaCungCapController {
 		return "quantri/suanhacungcap";
 	}
 	@PostMapping("/sua-nha-cung-cap/luu-thong-tin")
-	public String luuThongTin(@ModelAttribute NhaCungCap nhaCungCap) {
+	public String luuThongTin(@ModelAttribute NhaCungCap nhaCungCap,Model model,BindingResult bindingResult) {
+		nhaCungCapValidation.validate(nhaCungCap, bindingResult);
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("nhaCungCap", nhaCungCap);
+			return "quantri/suanhacungcap";
+		}
 		ncc.setDiachi(nhaCungCap.getDiachi());
 		ncc.setEmail(nhaCungCap.getEmail());
 		ncc.setSoDienThoai(nhaCungCap.getSoDienThoai());
@@ -65,12 +74,18 @@ public class QuanLyNhaCungCapController {
 	}
 	@GetMapping("/them-nha-cung-cap")
 	public String formThemNhaCungCap(Model model) {
+		
 		model.addAttribute("nhaCungCap", new NhaCungCap());
 		return "quantri/themnhacungcap";
 	}
 	
 	@PostMapping("/them-nha-cung-cap")
-	public String formThemNhaCungCap(@ModelAttribute NhaCungCap nhaCungCap) {
+	public String formThemNhaCungCap(@ModelAttribute NhaCungCap nhaCungCap,BindingResult bindingResult,Model model) {
+		nhaCungCapValidation.validate(nhaCungCap, bindingResult);
+		if(bindingResult.hasErrors()) {
+			model.addAttribute("nhaCungCap", nhaCungCap);
+			return "quantri/themnhacungcap";
+		}
 		nhaCungCapService.saveNCC(nhaCungCap);
 		return "redirect:/quan-tri/nha-cung-cap?page=1&limit=12";
 	}

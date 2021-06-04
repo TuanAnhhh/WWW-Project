@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.websitedungcuthethao.entity.DanhMuc;
 import com.websitedungcuthethao.service.impl.DanhMucService;
+import com.websitedungcuthethao.validate.DanhMucValidation;
 
 @Controller
 @RequestMapping("/quan-tri/danh-muc")
@@ -22,6 +24,10 @@ public class QuanLiDanhMucController {
 	private DanhMuc dM=null;
 	@Autowired
 	private DanhMucService danhMucService;
+	
+	@Autowired
+	private DanhMucValidation danhMucValidation;
+	
 	@GetMapping
 	public String index(Model model) {
 		List<DanhMuc> listDMCha= danhMucService.findAllDanhMucCha();
@@ -51,8 +57,14 @@ public class QuanLiDanhMucController {
 	}
 	
 	@PostMapping("/them-danh-muc")
-	public String luuDanhMuc(@ModelAttribute DanhMuc danhmuc) {
-		System.out.println(danhmuc);
+	public String luuDanhMuc(@ModelAttribute DanhMuc danhmuc,Model model,BindingResult bindingResult) {
+		danhMucValidation.validate(danhmuc, bindingResult);
+		if(bindingResult.hasErrors()) {
+			List<DanhMuc> listDMCha= danhMucService.findAllDanhMucCha();
+			model.addAttribute("listDMCha", listDMCha);
+			model.addAttribute("danhmuc", danhmuc);
+			return "quantri/themdanhmuc";
+		}
 		danhMucService.themDanhMuc(danhmuc);
 		return"redirect:/quan-tri/danh-muc";
 	}
@@ -69,7 +81,14 @@ public class QuanLiDanhMucController {
 	}
 	
 	@PostMapping("/sua-danh-muc/luu-thong-tin")
-	public String luuTTDanhMuc(@ModelAttribute DanhMuc danhmuc) {
+	public String luuTTDanhMuc(@ModelAttribute DanhMuc danhmuc,Model model,BindingResult bindingResult) {
+		danhMucValidation.validate(danhmuc, bindingResult);
+		if(bindingResult.hasErrors()) {
+			List<DanhMuc> listDMCha= danhMucService.findAllDanhMucCha();
+			model.addAttribute("listDMCha", listDMCha);
+			model.addAttribute("danhmuc",danhmuc);
+			return "quantri/suadanhmuc";
+		}
 		dM.setTen(danhmuc.getTen());
 		dM.setDanhMucCha(danhmuc.getDanhMucCha());
 		danhMucService.updateDanhMuc(dM);

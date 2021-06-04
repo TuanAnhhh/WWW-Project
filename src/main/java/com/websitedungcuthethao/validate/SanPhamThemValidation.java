@@ -75,6 +75,8 @@ public class SanPhamThemValidation implements Validator {
 			errors.rejectValue("thuongHieu", null, "Không được để trống");
 		}
 		
+	
+		
 //		String giaTriThuocTinh=sanPhamDTO.getGiaTriThuocTinh();
 //		if(giaTriThuocTinh.equals("")) {
 //			errors.rejectValue("giaTriThuocTinh", null, "GiÃ¡ trá»‹ thuá»™c tÃ­nh sáº£n pháº©m khÃ´ng Ä‘Æ°á»£c Ä‘á»ƒ trá»‘ng");

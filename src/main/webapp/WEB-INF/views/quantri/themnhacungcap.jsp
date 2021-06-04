@@ -19,6 +19,7 @@
 					<form:label path="tenNhaCungCap" cssClass="col-sm-2 col-form-label">Tên nhà cung cấp:</form:label> 
 					 <div class="col-sm-10">
 						<form:input type="text" cssClass="form-control" path="tenNhaCungCap"/> 
+						<form:errors cssClass="error" path="tenNhaCungCap"></form:errors>
 					</div>
 				</div>
 				
@@ -26,18 +27,21 @@
 					<form:label path="soDienThoai" cssClass="col-sm-2 col-form-label">Số điện thoại:</form:label> 
 					 <div class="col-sm-10">
 						<form:input type="text" cssClass="form-control" path="soDienThoai"/> 
+						<form:errors cssClass="error" path="soDienThoai"></form:errors>
 					</div>
 				</div>
 				<div class="form-group row">
 					<form:label path="email" cssClass="col-sm-2 col-form-label">Email:</form:label> 
 					 <div class="col-sm-10">
 						<form:input type="text" cssClass="form-control" path="email"/> 
+						<form:errors cssClass="error" path="email"></form:errors>
 					</div>
 				</div>
 				<div class="form-group row">
 					<form:label path="diachi" cssClass="col-sm-2 col-form-label">Địa chỉ:</form:label> 
 					 <div class="col-sm-10">
-						<form:input type="text" cssClass="form-control" path="diachi"/> 
+						<form:input type="text" cssClass="form-control" path="diachi"/>
+						<form:errors cssClass="error" path="diachi"></form:errors> 
 					</div>
 				</div>
 			

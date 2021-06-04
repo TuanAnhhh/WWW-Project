@@ -22,6 +22,7 @@
 					<form:label path="ten" cssClass="col-sm-2 col-form-label">Tên loại sản phẩm:</form:label>
 					<div class="col-sm-10">
 						<form:input type="text" cssClass="form-control" path="ten" />
+						<form:errors cssClass="error" path="ten"></form:errors>
 					</div>
 				</div>
 				<div class="form-group row">
@@ -38,7 +39,7 @@
 				</div>
 
 
-				<div class="form-group row" style="float: right;">
+				<div class="form-group row" >
 					<div class="col-sm-2"></div>
 
 					<div class="col-sm-3">

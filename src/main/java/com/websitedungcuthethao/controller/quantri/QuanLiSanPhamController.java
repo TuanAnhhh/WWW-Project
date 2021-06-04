@@ -176,14 +176,14 @@ public class QuanLiSanPhamController {
 		return "quantri/suasanpham";
 	}
 	@PostMapping("/sua-san-pham/luu-thong-tin")
-	public String suaSanPham(@ModelAttribute("themSanPhamDTO") ThemSanPhamDTO themSanPhamDTO,BindingResult  bindingResult,HttpSession session) throws IOException {
+	public String suaSanPham(@ModelAttribute("themSanPhamDTO") ThemSanPhamDTO themSanPhamDTO,BindingResult  bindingResult,HttpSession session,Model model) throws IOException {
 		
 		sanPhamSuaValidation.validate(themSanPhamDTO, bindingResult);
 		if(bindingResult.hasErrors()) {
-			return"redirect:/quan-tri/quan-ly-san-pham/sua-san-pham/"+sanP.getId();
+			model.addAttribute("themSanPhamDTO", themSanPhamDTO);
+			return"quantri/suasanpham";
 		}
 		
-		System.out.println(1);
 		
 		luuAnh.luuAnh(themSanPhamDTO.getAnhDaiDien(), session);
 		

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,14 +82,14 @@ public class XemThongTinCaNhanController {
 	}
 	
 	@PostMapping("/them-dia-chi/luu-dia-chi")
-	public String luuDiaChi(@RequestParam String soNha,@RequestParam String quanHuyen, @RequestParam String tinhThanhPho) {
+	public String luuDiaChi(@RequestParam String soNha,@RequestParam String quanHuyen, @RequestParam String tinhThanhPho,Model model) {
 		
-		if(soNha!=null && quanHuyen!=null && tinhThanhPho!=null) {
-//			 diaChiService.themDiaChi(quanHuyen, soNha, tinhThanhPho, idND);
+		
+		if(!soNha.equals("") || !quanHuyen.equals("") || !tinhThanhPho.equals("")) {
 			diaChiService.saveDiaChi(new DiaChi(nguoiDungService.findById(idND), soNha, quanHuyen, tinhThanhPho));
 			 return "redirect:/thong-tin-tai-khoan";
 		 }
-		
-		return "redirect:/them-dia-chi/"+idND;
+		model.addAttribute("message", "Thông tin không hợp lệ");
+		return "nguoidung/themdiachi";
 	}
 }

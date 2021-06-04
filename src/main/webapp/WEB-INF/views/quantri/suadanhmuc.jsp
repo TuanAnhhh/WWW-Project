@@ -20,13 +20,14 @@
 			<form:form method="POST" modelAttribute="danhmuc"
 				action="luu-thong-tin">
 				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Tên danh mục:</label>
+					<label class="col-sm-2 col-form-label">Tên loại sản phẩm:</label>
 					<div class="col-sm-10">
 						<form:input type="text" cssClass="form-control" path="ten" />
+						<form:errors cssClass="error" path="ten"></form:errors>
 					</div>
 				</div>
 				<div class="form-group row">
-					<label class="col-sm-2 col-form-label">Danh mục cha (nếu
+					<label class="col-sm-2 col-form-label">Loại sản phẩm(nếu
 						có):</label>
 					<div class="col-sm-10">
 						<select class="form-control" id="exampleFormControlSelect1"

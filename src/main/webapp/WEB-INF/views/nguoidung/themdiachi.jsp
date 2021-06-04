@@ -9,6 +9,9 @@
 				<div class="col-sm-12 text-center mt-3 mb-3">
 					<h3>Thêm địa chỉ </h3>
 				</div>
+				<c:if test="${not empty message}">
+								<div class="alert alert-danger text-center">${message}</div>
+							</c:if>
 				<form:form action="luu-dia-chi"  method="POST" >
 					
 				

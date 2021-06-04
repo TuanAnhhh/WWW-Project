@@ -52,12 +52,12 @@ public class SanPhamSuaValidation implements Validator {
 		}
 		
 		try {
-			double phanTramgiamGia= Double.parseDouble( sanPham.getPhanTramGiamGia());
-			if(phanTramgiamGia<0) {
-				errors.rejectValue("phanTramgiamGia", null, "phầm trăm giảm giá sản phẩm phải là lớn hơn 0");
+			double phanTramGiamGia= Double.parseDouble(sanPham.getPhanTramGiamGia());
+			if(phanTramGiamGia<0 || phanTramGiamGia>100) {
+				errors.rejectValue("phanTramGiamGia", null, "phầm trăm giảm giá sản phẩm phải là lớn hơn 0 và nhỏ hơn 100");
 			}
 		} catch (Exception e) {
-			errors.rejectValue("phanTramgiamGia", null, "phầm trăm giảm giá sản phẩm phải là chữ số");
+			errors.rejectValue("phanTramGiamGia", null, "phầm trăm giảm giá sản phẩm phải là chữ số");
 		}
 		
 		try {

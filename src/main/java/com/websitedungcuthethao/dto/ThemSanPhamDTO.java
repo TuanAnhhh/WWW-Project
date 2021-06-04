@@ -148,9 +148,4 @@ public class ThemSanPhamDTO {
 		this.phanTramGiamGia = phanTramGiamGia;
 		this.thoiGianBaoHanh = thoiGianBaoHanh;
 	}
-	
-	
-	
-	
-
 }

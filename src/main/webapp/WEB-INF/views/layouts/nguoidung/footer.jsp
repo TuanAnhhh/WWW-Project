@@ -44,8 +44,8 @@
 							</div>
 							<!-- End Single Widget -->
 							<ul>
-								<li><a href="#"><i class="ti-facebook"></i></a></li>
-								<li><a href="#"><i class="ti-instagram"></i></a></li>
+								<li><a href="https://www.facebook.com/truongdinh.phuoc1707/"><i class="ti-facebook"></i></a></li>
+								<li><a href="https://www.instagram.com/diem.moon2k/"><i class="ti-instagram"></i></a></li>
 							</ul>
 						</div>
 						<!-- End Single Widget -->
