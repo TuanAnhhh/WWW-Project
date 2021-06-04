@@ -12,7 +12,8 @@
 	
 		<intercept-url pattern="/quan-tri/*" access='hasRole("ROLE_QUANTRI")' />  
 		
-		<intercept-url pattern="/thanh-toan/*" access="hasRole('ROLE_NGUOIDUNG')" /> 
+		<intercept-url pattern="/thanh-toan/*" access="hasRole('ROLE_NGUOIDUNG')" />
+		
 			
 		<intercept-url pattern="/resources/**"
 			access="permitAll" />

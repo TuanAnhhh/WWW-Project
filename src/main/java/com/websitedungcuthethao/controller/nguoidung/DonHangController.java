@@ -70,6 +70,12 @@ public class DonHangController {
 	
 	@GetMapping("/don-hang-da-nhan/{id}")
 	public String formDonHangDaNhan(Model model,@PathVariable Long id) {
+		NguoiDungDTO nguoidungDTO = null;
+		try {
+			nguoidungDTO = SecurityUtils.getPrincipal();
+		} catch (Exception e) {
+			return "redirect:/dang-nhap";
+		}
 		List<HoaDon> listHD=hoaDonService.findListHoaDonDaGiao(id);
 		model.addAttribute("listHD", listHD);
 				
